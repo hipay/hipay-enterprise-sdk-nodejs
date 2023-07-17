@@ -1,0 +1,305 @@
+{
+  "productCode": "4xcb-no-fees",
+  "brandName": "4x Carte Bancaire sans frais - Oney",
+  "category": "credit-card",
+  "comment": "Available only in France.",
+  "can3ds": 1,
+  "canRecurring": 0,
+  "canManualCapture": 1,
+  "canManualCapturePartially": 1,
+  "canRefund": 1,
+  "canRefundPartially": 1,
+  "basketRequired": 1,
+  "currencies": [
+    "EUR"
+  ],
+  "countries": [
+    "FR"
+  ],
+  "checkoutFieldsMandatory": [],
+  "additionalFields": {
+    "sdkClass": "XTimesCreditCardPaymentMethod",
+    "formFields": {
+      "cid": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "email": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "birthdate": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "ipaddr": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "gender": {
+        "label": {
+          "en": "Gender",
+          "fr": "Civilité"
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "firstname": {
+        "label": {
+          "en": "Firstname",
+          "fr": "Prénom"
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "lastname": {
+        "label": {
+          "en": "Lastname",
+          "fr": "Nom"
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "streetaddress": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "streetaddress2": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "city": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "zipcode": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "country": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "msisdn": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "phone": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "shipto_gender": {
+        "label": {
+          "en": "Gender",
+          "fr": "Civilité"
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_firstname": {
+        "label": {
+          "en": "Firstname",
+          "fr": "Prénom"
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_lastname": {
+        "label": {
+          "en": "Lastname",
+          "fr": "Nom"
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_streetaddress": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_streetaddress2": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "shipto_city": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_zipcode": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_country": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_msisdn": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "shipto_phone": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "eci": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "order_category_code": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "delivery_date": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "delivery_method": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "carrier_description": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "basket": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "payment_product_parameters": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      }
+    }
+  },
+  "priority": 6
+}

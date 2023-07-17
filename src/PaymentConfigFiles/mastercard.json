@@ -1,0 +1,37 @@
+{
+  "productCode": "mastercard",
+  "brandName": "MasterCard",
+  "category": "credit-card",
+  "comment": "",
+  "can3ds": 1,
+  "canRecurring": 1,
+  "canManualCapture": 1,
+  "canManualCapturePartially": 1,
+  "canRefund": 1,
+  "canRefundPartially": 1,
+  "basketRequired": 0,
+  "currencies": [],
+  "countries": [],
+  "checkoutFieldsMandatory": [],
+  "additionalFields": {
+    "sdkClass": "CardTokenPaymentMethod",
+    "formFields": {
+      "cardtoken": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "eci": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "authentication_indicator": {
+        "type": "text",
+        "required": true,
+        "display": false
+      }
+    }
+  },
+  "priority": 3
+}

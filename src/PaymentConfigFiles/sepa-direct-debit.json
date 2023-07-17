@@ -1,0 +1,95 @@
+{
+  "productCode": "sepa-direct-debit",
+  "brandName": "SEPA Direct Debit",
+  "category": "realtime-banking",
+  "comment": "",
+  "can3ds": 0,
+  "canRecurring": 1,
+  "canManualCapture": 0,
+  "canManualCapturePartially": 0,
+  "canRefund": 0,
+  "canRefundPartially": 0,
+  "basketRequired": 0,
+  "currencies": [],
+  "countries": [],
+  "checkoutFieldsMandatory": [],
+  "additionalFields": {
+    "sdkClass": "SEPADirectDebitPaymentMethod",
+    "defaultFieldsValue": {
+      "recurring_payment": 0
+    },
+    "formFields": {
+      "client_type": {
+        "type": "text",
+        "required": true
+      },
+      "gender": {
+        "label": {
+          "en": "Gender",
+          "fr": "Civilité"
+        },
+        "type": "gender",
+        "required": false
+      },
+      "firstname": {
+        "label": {
+          "en": "Firstname",
+          "fr": "Prénom"
+        },
+        "type": "text",
+        "required": false
+      },
+      "lastname": {
+        "label": {
+          "en": "Lastname",
+          "fr": "Nom"
+        },
+        "type": "text",
+        "required": false
+      },
+      "company_type": {
+        "label": {
+          "en": "Company type",
+          "fr": "Forme juridique"
+        },
+        "type": "text",
+        "required": false
+      },
+      "company": {
+        "label": {
+          "en": "Company name",
+          "fr": "Nom de la compagnie"
+        },
+        "type": "text",
+        "required": false
+      },
+      "bank_name": {
+        "label": {
+          "en": "Bank name",
+          "fr": "Nom de la banque"
+        },
+        "type": "text",
+        "required": true
+      },
+      "iban": {
+        "label": {
+          "en": "IBAN",
+          "fr": "IBAN"
+        },
+        "type": "text",
+        "required": true,
+        "controlType": "iban"
+      },
+      "issuer_bank_id": {
+        "label": {
+          "en": "BIC",
+          "fr": "BIC"
+        },
+        "type": "text",
+        "required": false,
+        "controlType": "bic"
+      }
+    }
+  },
+  "priority": 7
+}

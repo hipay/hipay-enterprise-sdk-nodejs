@@ -1,0 +1,71 @@
+{
+  "productCode": "multibanco",
+  "brandName": "Multibanco",
+  "category": "debit-card",
+  "comment": "",
+  "can3ds": 0,
+  "canRecurring": 0,
+  "canManualCapture": 0,
+  "canManualCapturePartially": 0,
+  "canRefund": 0,
+  "canRefundPartially": 0,
+  "basketRequired": 0,
+  "currencies": [
+    "EUR"
+  ],
+  "countries": [
+    "PT"
+  ],
+  "checkoutFieldsMandatory": [],
+  "additionalFields": {
+    "sdkClass": "MultibancoPaymentMethod",
+    "formFields": {
+      "expiration_limit": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "streetaddress": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "zipcode": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "phone": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "email": {
+        "label": {
+          "en": "",
+          "fr": ""
+        },
+        "type": "text",
+        "required": true,
+        "display": false
+      }
+    }
+  },
+  "priority": 26
+}

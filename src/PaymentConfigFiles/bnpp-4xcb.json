@@ -1,0 +1,114 @@
+{
+  "productCode": "bnpp-4xcb",
+  "brandName": "4x Carte Bancaire - BNP Personal Finance",
+  "category": "credit-consumption",
+  "comment": "",
+  "can3ds": 1,
+  "canRecurring": 0,
+  "canManualCapture": 0,
+  "canManualCapturePartially": 0,
+  "canRefund": 1,
+  "canRefundPartially": 1,
+  "basketRequired": 1,
+  "currencies": [
+    "EUR"
+  ],
+  "countries": [
+    "FR"
+  ],
+  "checkoutFieldsMandatory": [
+    "phone",
+    "gender"
+  ],
+  "additionalFields": {
+    "sdkClass": "BNPPersonalFinancePaymentMethod",
+    "formFields": {
+      "email": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "gender": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "firstname": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "lastname": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "streetaddress": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "streetaddress2": {
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "city": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "zipcode": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "country": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "phone": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_firstname": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_lastname": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_streetaddress": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_streetaddress2": {
+        "type": "text",
+        "required": false,
+        "display": false
+      },
+      "shipto_city": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_zipcode": {
+        "type": "text",
+        "required": true,
+        "display": false
+      },
+      "shipto_country": {
+        "type": "text",
+        "required": true,
+        "display": false
+      }
+    }
+  },
+  "priority": 13
+}
