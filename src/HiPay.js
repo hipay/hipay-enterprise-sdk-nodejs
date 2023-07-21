@@ -1,18 +1,38 @@
 'use strict';
 
-const Configuration = require('./Gateway/HTTP/Configuration/Configuration');
-const OrderRequest = require('./Gateway/Request/OrderRequest');
 const InvalidArgumentException = require('./Error/InvalidArgumentException');
-const PIDataClient = require('./Gateway/PIDataClient/PIDataClient');
-const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper');
-const HostedPaymentPageRequest = require('./Gateway/Request/HostedPaymentPageRequest');
-const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
-const MaintenanceRequest = require('./Gateway/Request/MaintenanceRequest');
-const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
-const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
-const AbstractRequestPart = require('./Gateway/Request/AbstractRequestPart');
-const AbstractModel = require('./Gateway/Request/Model/AbstractModel');
+
+const Configuration = require('./Gateway/HTTP/Configuration/Configuration');
 const SimpleHTTPClient = require('./Gateway/HTTP/SimpleHTTPClient');
+
+const PIDataClient = require('./Gateway/PIDataClient/PIDataClient');
+
+const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper');
+const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
+const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
+const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
+
+const AbstractModel = require('./Gateway/Request/Model/AbstractModel');
+const AbstractRequestPart = require('./Gateway/Request/AbstractRequestPart');
+
+const OrderRequest = require('./Gateway/Request/OrderRequest');
+const HostedPaymentPageRequest = require('./Gateway/Request/HostedPaymentPageRequest');
+const MaintenanceRequest = require('./Gateway/Request/MaintenanceRequest');
+
+const CustomerBillingInfoRequest = require('./Gateway/Request/Info/CustomerBillingInfoRequest');
+const CustomerShippingInfoRequest = require('./Gateway/Request/Info/CustomerShippingInfoRequest');
+const DeliveryShippingInfoRequest = require('./Gateway/Request/Info/DeliveryShippingInfoRequest');
+
+const ThreeDSTwoModels = require('./Gateway/Request/Model/ThreeDSTwo');
+const PaymentMethods = require('./Gateway/Request/PaymentMethod');
+
+const TransactionEnums = require('./Enum/Transaction');
+const ThreeDSTwoEnums = require('./Enum/ThreeDSTwo');
+const HelperEnums = require('./Enum/Helper');
+const CustomerEnums = require('./Enum/Customer');
+const CartEnums = require('./Enum/Cart');
+
+const DataCollections = require('./Data');
 
 class HiPay {
   /**
@@ -104,18 +124,6 @@ class HiPay {
    */
   static get METHOD_SECURITY_SETTINGS() {
     return 'GET';
-  }
-
-  static get OrderRequest() {
-    return OrderRequest;
-  }
-
-  static get HostedPaymentPageRequest() {
-    return HostedPaymentPageRequest;
-  }
-
-  static get MaintenanceRequest() {
-    return MaintenanceRequest;
   }
 
   /**
@@ -402,5 +410,26 @@ class HiPay {
     return propName.replace(/([A-Z])/g, '_$1').toLowerCase();
   }
 }
+
+HiPay.OrderRequest = OrderRequest;
+HiPay.HostedPaymentPageRequest = HostedPaymentPageRequest;
+HiPay.MaintenanceRequest = MaintenanceRequest;
+
+HiPay.CustomerBillingInfoRequest = CustomerBillingInfoRequest;
+HiPay.CustomerShippingInfoRequest = CustomerShippingInfoRequest;
+HiPay.DeliveryShippingInfoRequest = DeliveryShippingInfoRequest;
+
+HiPay.PaymentMethods = PaymentMethods;
+
+HiPay.Transaction = TransactionEnums;
+HiPay.ThreeDSTwo = {
+  ...ThreeDSTwoEnums,
+  ...ThreeDSTwoModels
+};
+HiPay.Helper = HelperEnums;
+HiPay.Customer = CustomerEnums;
+HiPay.Cart = CartEnums;
+
+HiPay.DataCollections = DataCollections;
 
 module.exports = HiPay;
