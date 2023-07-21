@@ -2,9 +2,14 @@
 const AbstractModel = require('../../AbstractModel');
 
 class Payment extends AbstractModel {
+  /**
+   * Creates a Payment Info Object
+   *
+   * @param {Object} [values = {}]
+   * @param {Number} [values.enrollment_date] Payment card first use date, format YYYYMMDD
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -16,6 +21,8 @@ class Payment extends AbstractModel {
   }
 
   initValues() {
+    super.initValues();
+
     this.enrollment_date = null;
   }
 }

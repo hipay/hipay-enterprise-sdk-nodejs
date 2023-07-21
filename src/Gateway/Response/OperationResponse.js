@@ -1,12 +1,14 @@
 'use strict';
 
-class OperationResponse {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class OperationResponse extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'type')) {
       this.type = values.type;
@@ -29,6 +31,8 @@ class OperationResponse {
   }
 
   initValues() {
+    super.initValues();
+
     this.type = null;
     this.id = null;
     this.reference = null;

@@ -1,6 +1,6 @@
 'use strict';
 
-class AbstractRequestPart {
+class AbstractResponsePart {
   constructor() {
     this.initValues();
   }
@@ -8,4 +8,4 @@ class AbstractRequestPart {
   initValues() {}
 }
 
-module.exports = AbstractRequestPart;
+module.exports = AbstractResponsePart;

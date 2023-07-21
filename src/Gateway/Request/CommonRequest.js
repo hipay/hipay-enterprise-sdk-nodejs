@@ -1,11 +1,22 @@
 'use strict';
 
 const AbstractRequestPart = require('./AbstractRequestPart');
+const packageData = require('../../../package.json');
 
 class CommonRequest extends AbstractRequestPart {
+  /**
+   * Common requests data, used in all types of requests
+   * @param {Object} [values = {}]
+   * @param {Object} [values.customData] Request's custom data
+   * @param {Object} [values.source] Request's source data
+   * @param {'AUTO'|'SAPI'|'CONS'|'PAGE'|'TPE'|'RTRY'|'MANU'|'PREF'|'REVI'|'CMS'|'SSDK'|'CSDK'} [values.source.source] Technical source of this call
+   * @param {string} [values.source.integration_version] Integration version (version of the CMS module for example)
+   * @param {string} [values.source.brand] Source Brand (CMS name or Site name)
+   * @param {string} [values.source.brand_version] Version of the brand (version of your site)
+   * @param {Object} [values.basket] Request's basket data
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -16,7 +27,7 @@ class CommonRequest extends AbstractRequestPart {
     }
 
     if (Object.prototype.hasOwnProperty.call(values, 'source')) {
-      this.source = values.source;
+      this.source = { ...this.source, ...values.source };
     }
 
     if (Object.prototype.hasOwnProperty.call(values, 'basket')) {
@@ -25,8 +36,14 @@ class CommonRequest extends AbstractRequestPart {
   }
 
   initValues() {
+    super.initValues();
+
     this.customData = null;
-    this.source = null;
+    this.source = {
+      source: 'AUTO',
+      brand: 'sdk_nodejs',
+      brand_version: packageData.version
+    };
     this.basket = null;
   }
 }

@@ -1,12 +1,14 @@
 'use strict';
 
-class ThreeDSecure {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class ThreeDSecure extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
       this.eci = values.eci;
@@ -32,6 +34,8 @@ class ThreeDSecure {
   }
 
   initValues() {
+    super.initValues();
+
     this.eci = null;
     this.enrollmentStatus = null;
     this.enrollmentMessage = null;

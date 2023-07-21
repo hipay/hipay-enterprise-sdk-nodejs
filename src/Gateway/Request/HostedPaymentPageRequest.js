@@ -1,15 +1,12 @@
 'use strict';
 
 const TransactionRequest = require('./TransactionRequest');
-const InvalidArgumentException = require('../../Error/InvalidArgumentException');
-const AbstractPaymentMethod = require('./PaymentMethod/AbstractPaymentMethod');
-const BrowserInfo = require('./Model/ThreeDSTwo/BrowserInfo');
+const Template = require('../../Enum/Transaction/Template');
 
-class OrderRequest extends TransactionRequest {
+class HostedPaymentPageRequest extends TransactionRequest {
   /**
-   * @inheritDoc
+   * Creates a Hosted Payment Page Request Object Ready to use with the SDK
    *
-   * Creates an OrderRequest ready to use with the SDK
    * @param {Object} values
    *
    * --- Inherited from TransactionRequest
@@ -51,10 +48,14 @@ class OrderRequest extends TransactionRequest {
    * @param {RecurringInfo} [values.recurringInfo] Reccurent order information, for 3DS validation purposes
    * @param {Number} [values.requestId] The request ID
    *
-   * @param {string} values.paymentProduct Payment product for the order
-   * @param {BrowserInfo} [values.browserInfo] Browser information as sent by the HiPay Front JS SDK, for 3DS validation purposes
-   * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
-   * @param {AbstractPaymentMethod} [values.paymentMethod] Payment data for this order
+   * @param {Array<String>|string} [values.paymentProductList] List of payment means you want to display on the payment page
+   * @param {Array<String>|string} [values.paymentProductCategoryList] List of payment means categories you want to display on the payment page
+   * @param {string} [values.template='basic-js'] Template to use. See Transaction.Template enum
+   * @param {string} [values.timeLimitToPay] Time validity of the payment page, in seconds
+   * @param {Number} [values.multiUse] 0 : Generated Token is not reusable, 1 : Generated Token is reusable
+   * @param {string} [values.merchantDisplayName] Merchant name displayed on the payment page
+   * @param {string} [values.css] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. CSS URL to use on the Payment Page
+   * @param {Number} [values.displaySelector] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. 0 : Do not display payment means selector | 1 : Display selector
    */
   constructor(values) {
     super(values);
@@ -63,45 +64,53 @@ class OrderRequest extends TransactionRequest {
       values = {};
     }
 
-    if (Object.prototype.hasOwnProperty.call(values, 'paymentProduct')) {
-      this.paymentProduct = values.paymentProduct;
-    } else {
-      throw new InvalidArgumentException(
-        'Order Request must have a Payment Product'
-      );
+    if (Object.prototype.hasOwnProperty.call(values, 'paymentProductList')) {
+      this.paymentProductList = values.paymentProductList;
     }
 
-    if (Object.prototype.hasOwnProperty.call(values, 'paymentMethod')) {
-      if (!values.paymentMethod instanceof AbstractPaymentMethod) {
-        throw new InvalidArgumentException(
-          'paymentMethod must be instance of AbstractPaymentMethod'
-        );
-      }
-
-      this.paymentMethod = values.paymentMethod;
+    if (
+      Object.prototype.hasOwnProperty.call(values, 'paymentProductCategoryList')
+    ) {
+      this.paymentProductCategoryList = values.paymentProductCategoryList;
     }
 
-    if (Object.prototype.hasOwnProperty.call(values, 'browserInfo')) {
-      if (values.browserInfo instanceof BrowserInfo) {
-        this.browserInfo = values.browserInfo;
-      } else {
-        this.browserInfo = new BrowserInfo(values.browserInfo);
-      }
+    if (Object.prototype.hasOwnProperty.call(values, 'template')) {
+      this.template = values.template;
     }
 
-    if (Object.prototype.hasOwnProperty.call(values, 'salesChannel')) {
-      this.salesChannel = values.salesChannel;
+    if (Object.prototype.hasOwnProperty.call(values, 'timeLimitToPay')) {
+      this.timeLimitToPay = values.timeLimitToPay;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(values, 'multiUse')) {
+      this.multiUse = values.multiUse;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(values, 'merchantDisplayName')) {
+      this.merchantDisplayName = values.merchantDisplayName;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(values, 'css')) {
+      this.css = values.css;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(values, 'displaySelector')) {
+      this.displaySelector = values.displaySelector;
     }
   }
 
   initValues() {
     super.initValues();
 
-    this.paymentProduct = null;
-    this.paymentMethod = null;
-    this.browserInfo = null;
-    this.salesChannel = null;
+    this.paymentProductList = null;
+    this.paymentProductCategoryList = null;
+    this.template = Template.BASIC_JS;
+    this.timeLimitToPay = null;
+    this.multiUse = null;
+    this.merchantDisplayName = null;
+    this.css = null;
+    this.displaySelector = null;
   }
 }
 
-module.exports = OrderRequest;
+module.exports = HostedPaymentPageRequest;

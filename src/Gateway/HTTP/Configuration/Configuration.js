@@ -1,9 +1,8 @@
 'use strict';
 
-const ConfigurationInterface = require('./ConfigurationInterface');
 const InvalidArgumentException = require('../../../Error/InvalidArgumentException');
 
-class Configuration extends ConfigurationInterface {
+class Configuration {
   static get SECURE_VAULT_ENDPOINT_PROD() {
     return 'https://secure2-vault.hipay-tpp.com';
   }
@@ -18,6 +17,14 @@ class Configuration extends ConfigurationInterface {
 
   static get API_ENDPOINT_STAGE() {
     return 'https://stage-secure-gateway.hipay-tpp.com';
+  }
+
+  static get HPAYMENT_API_ENDPOINT_PROD() {
+    return 'https://api.hipay.com';
+  }
+
+  static get HPAYMENT_API_ENDPOINT_STAGE() {
+    return 'https://stage-api.hipay.com';
   }
 
   static get DATA_API_ENDPOINT_PROD() {
@@ -56,85 +63,77 @@ class Configuration extends ConfigurationInterface {
     return ['username', 'password'];
   }
 
-  constructor(params) {
-    super();
+  /**
+   *
+   @param {Object} options
+   @param {string} [options.apiToken=null] Your authentication token for the HiPay API. Either this or username and password must be specified.
+   @param {string} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
+   @param {string} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
+   @param {string} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
+   @param {string} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
+   @param {Object} [options.proxy={}] Proxy information to add to the requests
+   @param {string} [options.proxy.host] Your proxy host
+   @param {Number} [options.proxy.port] Your proxy port
+   @param {Object} [options.proxy.auth] Your proxy authentication information
+   @param {string} [options.proxy.auth.username] Proxy authentication Username
+   @param {string} [options.proxy.auth.password] Proxy authentication Password
+   @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
+   @param {string} [options.httpUserAgent='HiPayFullservice/1.0 (SDK NodeJS)'] The user agent of the requests.
+   */
+  constructor(options = {}) {
+    const {
+      apiToken = null,
+      apiUsername = null,
+      apiPassword = null,
+      apiEnv = Configuration.API_ENV_STAGE,
+      customApiURL = null,
+      customDataApiURL = null,
+      apiHTTPHeaderAccept = 'application/json',
+      proxy = {},
+      timeout = 35,
+      httpUserAgent = 'HiPayFullservice/1.0 (SDK NodeJS)'
+    } = options;
 
-    if (
-      Object.prototype.hasOwnProperty.call(params, 'apiToken') &&
-      params.apiToken !== null
-    ) {
-      this.apiToken = params.apiToken;
-    } else {
-      if (
-        !Object.prototype.hasOwnProperty.call(params, 'apiUsername') ||
-        !Object.prototype.hasOwnProperty.call(params, 'apiPassword')
-      ) {
-        throw new InvalidArgumentException(
-          'Constructor must be called with at least apiUsername and apiPassword parameters'
-        );
-      }
-
-      this.apiUsername = params.apiUsername;
-      this.apiPassword = params.apiPassword;
-      this.apiToken = null;
+    if (!apiToken && (!apiUsername || !apiPassword)) {
+      throw new InvalidArgumentException(
+        'Constructor must be called with at least apiUsername and apiPassword parameters'
+      );
     }
 
-    if (
-      Object.prototype.hasOwnProperty.call(params, 'apiEnv') &&
-      params.apiEnv !== null
-    ) {
-      this.apiEnv = params.apiEnv;
+    if (apiToken) {
+      this.apiToken = apiToken;
     } else {
-      this.apiEnv = Configuration.API_ENV_STAGE;
+      this.apiUsername = apiUsername;
+      this.apiPassword = apiPassword;
     }
+
+    this.apiEnv = apiEnv;
 
     if (
       this.apiEnv === Configuration.API_ENV_CUSTOM &&
-      Object.prototype.hasOwnProperty.call(params, 'customApiURL') &&
-      /^(?:http(s)?:\/\/)[\w.-]+((?:\.[\w.-]+)+)?[\w\-._~:/[\]@!$&'()+,;=]+$/.test(
-        params.customApiURL
+      customApiURL &&
+      /^http(s)?:\/\/[\w.-]+((?:\.[\w.-]+)+)?[\w\-._~:/[\]@!$&'()+,;=]+$/.test(
+        customApiURL
       )
     ) {
-      this._urlCustom = params.customApiURL;
+      this._urlCustom = customApiURL;
     } else {
       this._urlCustom = Configuration.API_ENDPOINT_STAGE;
     }
 
     if (
-      Object.prototype.hasOwnProperty.call(params, 'apiHTTPHeaderAccept') &&
-      params.apiHTTPHeaderAccept !== null
+      customDataApiURL &&
+      /^http(s)?:\/\/[\w.-]+((?:\.[\w.-]+)+)?[\w\-._~:/[\]@!$&'()+,;=]+$/.test(
+        customDataApiURL
+      )
     ) {
-      this.apiHTTPHeaderAccept = params.apiHTTPHeaderAccept;
-    } else {
-      this.apiHTTPHeaderAccept = 'application/json';
+      this._urlDataCustom = customDataApiURL;
     }
 
-    if (
-      Object.prototype.hasOwnProperty.call(params, 'proxy') &&
-      params.proxy !== null
-    ) {
-      this.proxy = params.proxy;
-    } else {
-      this.proxy = {};
-    }
-
-    if (
-      Object.prototype.hasOwnProperty.call(params, 'timeout') &&
-      params.timeout !== null
-    ) {
-      this.timeout = params.timeout;
-    } else {
-      this.timeout = 35;
-    }
-
-    if (
-      Object.prototype.hasOwnProperty.call(params, 'httpUserAgent') &&
-      params.httpUserAgent !== null
-    ) {
-      this.httpUserAgent = params.httpUserAgent;
-    } else {
-      this.httpUserAgent = 'HiPayFullservice/1.0 (SDK NodeJS)';
-    }
+    this.apiHTTPHeaderAccept = apiHTTPHeaderAccept;
+    this.proxy = proxy;
+    this.timeout = timeout;
+    this.httpUserAgent = httpUserAgent;
   }
 
   get apiEndpointProd() {
@@ -145,6 +144,14 @@ class Configuration extends ConfigurationInterface {
     return Configuration.API_ENDPOINT_STAGE;
   }
 
+  get hpaymentApiEndpointProd() {
+    return Configuration.HPAYMENT_API_ENDPOINT_PROD;
+  }
+
+  get hpaymentApiEndpointStage() {
+    return Configuration.HPAYMENT_API_ENDPOINT_STAGE;
+  }
+
   get apiEndpoint() {
     let endpoint;
     switch (this.apiEnv) {
@@ -152,7 +159,7 @@ class Configuration extends ConfigurationInterface {
         if (
           typeof this._urlCustom === 'string' &&
           this._urlCustom !== '' &&
-          /^(?:http(s)?:\/\/)[\w.-]+((?:\.[\w.-]+)+)?[\w\-._~:/[\]@!$&'()+,;=]+$/.test(
+          /^http(s)?:\/\/[\w.-]+((?:\.[\w.-]+)+)?[\w\-._~:/[\]@!$&'()+,;=]+$/.test(
             this._urlCustom
           )
         ) {
@@ -167,6 +174,35 @@ class Configuration extends ConfigurationInterface {
       case Configuration.API_ENV_STAGE:
       default:
         endpoint = this.apiEndpointStage;
+        break;
+    }
+
+    return endpoint;
+  }
+
+  get hpaymentApiEndpoint() {
+    let endpoint;
+    switch (this.apiEnv) {
+      case Configuration.API_ENV_CUSTOM:
+        if (
+          typeof this._urlCustom === 'string' &&
+          this._urlCustom !== '' &&
+          /^http(s)?:\/\/[\w.-]+((?:\.[\w.-]+)+)?[\w\-._~:/[\]@!$&'()+,;=]+$/.test(
+            this._urlCustom
+          )
+        ) {
+          endpoint = this._urlCustom;
+        } else {
+          endpoint = this.hpaymentApiEndpointStage;
+        }
+        break;
+      case Configuration.API_ENV_PRODUCTION:
+        endpoint = this.hpaymentApiEndpointProd;
+        break;
+      case Configuration.API_ENV_STAGE:
+      default:
+        endpoint = this.hpaymentApiEndpointStage;
+        break;
     }
 
     return endpoint;
@@ -181,13 +217,11 @@ class Configuration extends ConfigurationInterface {
   }
 
   get dataApiEndpoint() {
-    const { constants } = require('../../../../../constants');
-    return (
-      constants.API_DATA_URL_CUSTOM ||
-      (this.apiEnv === Configuration.API_ENV_PRODUCTION
-        ? this.dataApiEndpointProd
-        : this.dataApiEndpointStage)
-    );
+    return this._urlDataCustom
+      ? this._urlDataCustom
+      : this.apiEnv === Configuration.API_ENV_PRODUCTION
+      ? this.dataApiEndpointProd
+      : this.dataApiEndpointStage;
   }
 
   get dataApiHttpUserAgent() {
@@ -273,6 +307,15 @@ class Configuration extends ConfigurationInterface {
     return this._proxy;
   }
 
+  /**
+   *
+   * @param {Object} proxy
+   * @param {string} [proxy.host] Your proxy host
+   * @param {Number} [proxy.port] Your proxy port
+   * @param {Object} [proxy.auth] Your proxy authentication information
+   * @param {string} [proxy.auth.username] Proxy authentication Username
+   * @param {string} [proxy.auth.password] Proxy authentication Password
+   */
   set proxy(proxy) {
     if (typeof proxy !== 'object') {
       throw new InvalidArgumentException('Proxy should be an object');

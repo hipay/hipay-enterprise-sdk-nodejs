@@ -1,16 +1,16 @@
 'use strict';
 
-const CommonInterface = require('../../../CommonInterface');
+class MapperInterface {
+  get mappedObject() {
+    throw new Error('You must implement this function');
+  }
 
-class MapperInterface extends CommonInterface {
-  constructor() {
-    const requiredMethods = {
-      mapResponseToModel: [],
-      mappedObject: ['get'],
-      source: ['get']
-    };
+  get source() {
+    throw new Error('You must implement this function');
+  }
 
-    super(requiredMethods);
+  mapResponseToModel() {
+    throw new Error('You must implement this function');
   }
 }
 

@@ -1,12 +1,14 @@
 'use strict';
 
-class Order {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class Order extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'id')) {
       this.id = values.id;
@@ -50,6 +52,8 @@ class Order {
   }
 
   initValues() {
+    super.initValues();
+
     this.id = null;
     this.customerId = null;
     this.amount = null;

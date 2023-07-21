@@ -1,12 +1,14 @@
 'use strict';
 
-class PersonalInformation {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class PersonalInformation extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'firstname')) {
       this.firstname = values.firstname;
@@ -41,6 +43,8 @@ class PersonalInformation {
   }
 
   initValues() {
+    super.initValues();
+
     this.firstname = null;
     this.lastname = null;
     this.streetAddress = null;

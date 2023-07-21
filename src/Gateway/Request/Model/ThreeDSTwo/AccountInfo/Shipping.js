@@ -2,9 +2,16 @@
 const AbstractModel = require('../../AbstractModel');
 
 class Shipping extends AbstractModel {
+  /**
+   * Creates a Shipping Info Object
+   *
+   * @param {Object} [values = {}]
+   * @param {Number} [values.shipping_used_date] Last date this shipping address was used, format YYYYMMDD
+   * @param {Number} [values.name_indicator] Is the name on the card the same as the shipping name ? See NameIndicator Enum
+   * @param {Number} [values.suspicious_activity] Is the customer activity suspicious ? See SuspiciousActivity Enum
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -22,6 +29,8 @@ class Shipping extends AbstractModel {
   }
 
   initValues() {
+    super.initValues();
+
     this.shipping_used_date = null;
     this.name_indicator = null;
     this.suspicious_activity = null;

@@ -2,9 +2,14 @@
 const AbstractModel = require('../AbstractModel');
 
 class PreviousAuthInfo extends AbstractModel {
+  /**
+   * Creates a PreviousAuthInfo Object
+   *
+   * @param {Object} [values = {}]
+   * @param {string} [values.transaction_reference] Previous transaction reference made by the customer
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -16,6 +21,8 @@ class PreviousAuthInfo extends AbstractModel {
   }
 
   initValues() {
+    super.initValues();
+
     this.transaction_reference = null;
   }
 }

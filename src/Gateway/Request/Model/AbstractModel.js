@@ -1,6 +1,8 @@
 'use strict';
 
-class AbstractModel {
+const AbstractRequestPart = require('../AbstractRequestPart');
+
+class AbstractModel extends AbstractRequestPart {
   toJson() {
     return JSON.stringify(this);
   }

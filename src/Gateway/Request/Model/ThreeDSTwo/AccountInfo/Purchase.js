@@ -2,9 +2,17 @@
 const AbstractModel = require('../../AbstractModel');
 
 class Purchase extends AbstractModel {
+  /**
+   * Creates a Purchase Info Object
+   *
+   * @param {Object} [values = {}]
+   * @param {Number} [values.count] Total number of purchases made by ths customer on the website
+   * @param {Number} [values.card_stored_24h] Number of cards saved by the customer on this website on the last 24h
+   * @param {Number} [values.payment_attempts_24h] Number of payment attempts made by the customer on the last 24h
+   * @param {Number} [values.payment_attempts_1y] Number of payment attempts made by the customer on the last year
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -25,6 +33,8 @@ class Purchase extends AbstractModel {
   }
 
   initValues() {
+    super.initValues();
+
     this.count = null;
     this.card_stored_24h = null;
     this.payment_attempts_24h = null;

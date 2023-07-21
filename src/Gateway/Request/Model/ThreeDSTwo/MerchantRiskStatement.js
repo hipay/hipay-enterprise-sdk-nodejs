@@ -1,10 +1,22 @@
 'use strict';
 const AbstractModel = require('../AbstractModel');
+const GiftCard = require('./MerchantRiskStatement/GiftCard');
 
 class MerchantRiskStatement extends AbstractModel {
+  /**
+   * Creates a MerchantRiskStatement Object
+   *
+   * @param {Object} [values = {}]
+   * @param {string} [values.email_delivery_address] Customer's email adress for electronic goods
+   * @param {Number} [values.delivery_time_frame] See DeliveryTimeFrame Enum
+   * @param {Number} [values.purchase_indicator] See PurchaseIndicator Enum
+   * @param {Number} [values.pre_order_date] Date of the pre-order, format YYYYMMDD
+   * @param {Number} [values.reorder_indicator] See ReorderIndicator Enum
+   * @param {Number} [values.shipping_indicator] See ShippingIndicator Enum
+   * @param {GiftCard} [values.gift_card] GiftCard information
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -31,11 +43,17 @@ class MerchantRiskStatement extends AbstractModel {
       this.shipping_indicator = values.shipping_indicator;
     }
     if (Object.prototype.hasOwnProperty.call(values, 'gift_card')) {
-      this.gift_card = values.gift_card;
+      if (values.gift_card instanceof GiftCard) {
+        this.gift_card = values.gift_card;
+      } else {
+        this.gift_card = new GiftCard(values.gift_card);
+      }
     }
   }
 
   initValues() {
+    super.initValues();
+
     this.email_delivery_address = null;
     this.delivery_time_frame = null;
     this.purchase_indicator = null;

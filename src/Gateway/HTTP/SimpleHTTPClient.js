@@ -1,22 +1,17 @@
 'use strict';
 
-const { constants } = require('../../../../constants');
-const gaxios = require('gaxios');
-const ClientInterface = require('./ClientInterface');
-const ConfigurationInterface = require('./Configuration/ConfigurationInterface');
+const axios = require('axios');
 const Response = require('./Response/Response');
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
 const ApiErrorException = require('../../Error/ApiErrorException');
-const { LoggerManager } = require('@hipay/gcp-toolbox-express');
-const log = LoggerManager.logger;
+const Configuration = require('./Configuration/Configuration');
 
-class SimpleHTTPClient extends ClientInterface {
+class SimpleHTTPClient {
   /**
    *
-   * @param configuration ConfigurationInterface
+   * @param configuration Configuration
    */
   constructor(configuration) {
-    super();
     this.configuration = configuration;
   }
 
@@ -25,9 +20,9 @@ class SimpleHTTPClient extends ClientInterface {
   }
 
   set configuration(configuration) {
-    if (!(configuration instanceof ConfigurationInterface)) {
+    if (!(configuration instanceof Configuration)) {
       throw new InvalidArgumentException(
-        'Configuration should extend ConfigurationInterface'
+        'Configuration should be a Configuration object'
       );
     } else {
       this._configuration = configuration;
@@ -35,15 +30,21 @@ class SimpleHTTPClient extends ClientInterface {
   }
 
   /**
+   *  Makes an HTTP request using provided data & configuration
    *
-   * @param method
-   * @param endpoint
-   * @param params
-   * @param isVault
-   * @param isData
+   * @param {'GET'|'HEAD'|'POST'|'DELETE'|'PUT'|'CONNECT'|'OPTIONS'|'TRACE'|'PATCH'} method HTTP method for this request
+   * @param {string} endpoint Endpoint of the request. May be a complete URL or a URL Endpoint in conjunction with baseURL in the options object.
+   * @param {Object} [options={}] Additional options
+   * @param {string|null} [options.baseUrl = ''] Request base URL
+   * @param {Object|null} [options.body = null] Request body parameters
+   * @param {boolean} [options.isData = false] Is the request a request to the data API ?
    * @returns Response
    */
-  async request(method, endpoint, params, isVault = false, isData = false) {
+  async request(
+    method,
+    endpoint,
+    { baseUrl = '', body = null, isData = false } = {}
+  ) {
     if (
       typeof method !== 'string' ||
       ![
@@ -73,14 +74,10 @@ class SimpleHTTPClient extends ClientInterface {
 
     let timeout = this.configuration.timeout;
 
-    let url = isVault
-      ? this.configuration.secureVaultEndpoint
-      : this.configuration.apiEndpoint;
-
     let userAgent = this.configuration.httpUserAgent;
 
     if (isData) {
-      url = this.configuration.dataApiEndpoint;
+      baseUrl = this.configuration.dataApiEndpoint;
       timeout = 60;
       userAgent = this.configuration.dataApiHttpUserAgent;
     }
@@ -88,7 +85,7 @@ class SimpleHTTPClient extends ClientInterface {
     let requestOptions = {
       url: endpoint,
       method: method,
-      baseURL: url,
+      baseURL: baseUrl,
       timeout: timeout * 1000,
       headers: {
         Accept: this.configuration.apiHTTPHeaderAccept,
@@ -123,41 +120,27 @@ class SimpleHTTPClient extends ClientInterface {
     if (method === 'POST') {
       if (isData) {
         requestOptions.headers['Content-Type'] = 'application/json';
-        requestOptions.data = JSON.stringify(params);
+        requestOptions.data = JSON.stringify(body);
       } else {
         requestOptions.headers['Content-Type'] =
           'application/x-www-form-urlencoded';
-        requestOptions.data = Object.keys(params)
+        requestOptions.data = Object.keys(body)
           .map(function (key) {
-            return key + '=' + encodeURIComponent(params[key]);
+            return key + '=' + encodeURIComponent(body[key]);
           })
           .join('&');
       }
     }
 
     try {
-      if (
-        isData &&
-        constants.ENVIRONMENT === 'dev' &&
-        !constants.API_DATA_URL_CUSTOM
-      ) {
-        log.debug('Call to API Data has been skipped');
-      } else {
-        log.info(
-          `Sending request to ${requestOptions.baseURL}${requestOptions.url}`,
-          requestOptions
-        );
-        const rawResponse = await gaxios.request(requestOptions);
+      const rawResponse = await axios.request(requestOptions);
 
-        log.debug('Request done', rawResponse);
-
-        return new Response(rawResponse.data, rawResponse.status, {
-          'Content-Type': 'application/json; encoding=UTF-8'
-        });
-      }
+      return new Response(rawResponse.data, rawResponse.status, {
+        'Content-Type': 'application/json; encoding=UTF-8'
+      });
     } catch (error) {
       if (!isData) {
-        if (error.constructor.name === gaxios.GaxiosError.name) {
+        if (error.constructor.name === axios.AxiosError.name) {
           let errorResponse = error.response;
           let errorData = error.response.data;
 
@@ -175,7 +158,7 @@ class SimpleHTTPClient extends ClientInterface {
           throw error;
         }
       } else {
-        log.error('Call to API Data has thrown exception', error);
+        console.error('Call to API Data has thrown exception', error);
       }
     }
   }

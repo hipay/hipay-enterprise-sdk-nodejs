@@ -1,11 +1,7 @@
 'use strict';
 
-const ResponseInterface = require('./ResponseInterface');
-
-class Response extends ResponseInterface {
+class Response {
   constructor(body, status, headers) {
-    super();
-
     this._body = body;
     this._statusCode = status;
     this._headers = headers;

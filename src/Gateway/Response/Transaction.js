@@ -1,12 +1,14 @@
 'use strict';
 
-class Transaction {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class Transaction extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'mid')) {
       this.mid = values.mid;
@@ -110,6 +112,8 @@ class Transaction {
   }
 
   initValues() {
+    super.initValues();
+
     this.mid = null;
     this.authorizationCode = null;
     this.transactionReference = null;

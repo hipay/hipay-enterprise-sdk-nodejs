@@ -2,9 +2,16 @@
 const AbstractModel = require('../../AbstractModel');
 
 class GiftCard extends AbstractModel {
+  /**
+   * Creates a GiftCard Info Object
+   *
+   * @param {Object} [values = {}]
+   * @param {Number} [values.amount] Amount of the gift card
+   * @param {Number} [values.count] Number of gift cards purchased by the client
+   * @param {string} [values.currency] Currency of the gift card
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -22,6 +29,8 @@ class GiftCard extends AbstractModel {
   }
 
   initValues() {
+    super.initValues();
+
     this.amount = null;
     this.count = null;
     this.currency = null;

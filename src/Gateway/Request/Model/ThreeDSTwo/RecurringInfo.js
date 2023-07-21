@@ -2,9 +2,15 @@
 const AbstractModel = require('../AbstractModel');
 
 class RecurringInfo extends AbstractModel {
+  /**
+   * Creates a Recurring Info Object
+   *
+   * @param {Object} [values = {}]
+   * @param {Number} [values.expiration_date] Recurring payment expiration date, format YYYYMMDD
+   * @param {Number} [values.frequency] Recurring payment frequency in days
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -19,6 +25,8 @@ class RecurringInfo extends AbstractModel {
   }
 
   initValues() {
+    super.initValues();
+
     this.expiration_date = null;
     this.frequency = null;
   }

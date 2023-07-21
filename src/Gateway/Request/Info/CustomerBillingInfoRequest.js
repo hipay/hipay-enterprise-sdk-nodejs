@@ -2,9 +2,29 @@
 const AbstractRequestPart = require('../AbstractRequestPart');
 
 class CustomerBillingInfoRequest extends AbstractRequestPart {
+  /**
+   * Creates a Customer Billing Info object
+   *
+   * @param {Object} [values = {}]
+   * @param {string} [values.email] Customer's email
+   * @param {string} [values.phone] Customer's phone
+   * @param {string} [values.msisdn] Customer's mobile phone
+   * @param {string} [values.birthdate] Customer's birthdate, in format YYYYMMDD
+   * @param {string} [values.gender] Customer's gender. See Gender Enum
+   * @param {string} [values.firstname] Customer's firstname
+   * @param {string} [values.lastname] Customer's lastname
+   * @param {string} [values.recipientinfo] Customer's Additional information (Mr, Mrs, Dr, etc...)
+   * @param {string} [values.house_extension] Customer's house extension
+   * @param {string} [values.house_number] Customer's house number
+   * @param {string} [values.streetaddress] Customer's address
+   * @param {string} [values.streetaddress2] Customer's address (line 2)
+   * @param {string} [values.city] Customer's city
+   * @param {string} [values.state] Customer's state or province
+   * @param {string} [values.zipcode] Customer's zipcode
+   * @param {string} [values.country] Customer's country, to letter ISO code
+   */
   constructor(values) {
     super();
-    this.initValues();
 
     if (typeof values !== 'object') {
       values = {};
@@ -76,6 +96,8 @@ class CustomerBillingInfoRequest extends AbstractRequestPart {
   }
 
   initValues() {
+    super.initValues();
+
     this.email = null;
     this.phone = null;
     this.msisdn = null;

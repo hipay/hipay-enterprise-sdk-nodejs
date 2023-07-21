@@ -1,11 +1,10 @@
 'use strict';
 
-const PIDataClientInterface = require('./PIDataClientInterface');
-const ClientInterface = require('../HTTP/ClientInterface');
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
 const crypto = require('crypto');
+const SimpleHTTPClient = require('../HTTP/SimpleHTTPClient');
 
-class PIDataClient extends PIDataClientInterface {
+class PIDataClient {
   /**
    * endpoint to create / update a data set
    * @var {string} ENDPOINT_DATA_API
@@ -24,28 +23,37 @@ class PIDataClient extends PIDataClientInterface {
 
   /**
    * Construct gateway client with an HTTP client
-   * @param {ClientInterface} clientProvider client provider
+   * @param {SimpleHTTPClient} clientProvider client provider
    */
   constructor(clientProvider) {
-    super();
-
-    if (!(clientProvider instanceof ClientInterface)) {
+    if (!(clientProvider instanceof SimpleHTTPClient)) {
       throw new InvalidArgumentException(
-        'Client provider should extend ClientInterface'
+        'Client provider should extend SimpleHTTPClient'
       );
     } else {
+      /**
+       * @type {SimpleHTTPClient}
+       * @private
+       */
       this._clientProvider = clientProvider;
     }
     this._requestDate = this.setNewDate();
   }
 
+  /**
+   * Execute HTTP request
+   * @param data
+   * @returns {Promise<void>}
+   */
   async sendData(data) {
     await this.clientProvider.request(
       PIDataClient.METHOD_DATA_API,
       PIDataClient.ENDPOINT_DATA_API,
-      data,
-      false,
-      true
+      {
+        baseUrl: this._clientProvider.configuration.dataApiEndpoint,
+        body: data,
+        isData: true
+      }
     );
   }
 
@@ -57,9 +65,11 @@ class PIDataClient extends PIDataClientInterface {
    * @returns {Object} Order parameters
    */
   getOrderData(dataId, orderRequest, transaction) {
-    let params = {
+    const sourceData = orderRequest.source ?? {};
+    Ò;
+    return {
       id: dataId,
-      event: 'request',
+      event: 'initHpayment',
       amount: Number(orderRequest.amount),
       currency: orderRequest.currency,
       order_id: orderRequest.orderid,
@@ -78,15 +88,24 @@ class PIDataClient extends PIDataClientInterface {
         date_request: this._requestDate,
         date_response: this.setNewDate()
       },
-      domain: this.getDomainFromUrl(orderRequest.acceptUrl)
+      domain: this.getDomainFromUrl(orderRequest.acceptUrl),
+      components: {
+        cms: sourceData.brand ?? 'sdk_nodejs',
+        cms_version: sourceData.brandVersion ?? '',
+        cms_module_version: sourceData.integration_version ?? '',
+        sdk_server: 'nodejs',
+        // Save hipay-fullservice-sdk-nodejs version in data API (for later use)
+        sdk_server_version:
+          process.versions['hipay-fullservice-sdk-nodejs'] ??
+          sourceData.sdk_server_version,
+        sdk_server_engine_version: process.version
+      }
     };
-
-    return params;
   }
 
   /**
    * Return current HTTP client provider
-   * @returns {ClientInterface} client provider
+   * @returns {SimpleHTTPClient} client provider
    */
   get clientProvider() {
     return this._clientProvider;
@@ -108,22 +127,26 @@ class PIDataClient extends PIDataClientInterface {
   getDomainFromUrl(url) {
     try {
       return new URL(url).hostname.replace(/www\./, '');
-    } catch (e) {
-      return;
-    }
+    } catch (e) {}
   }
 
   /**
-   * Encrypt on sha256 header Referer
-   * @param {Request} req
+   * Encrypt on sha256 string with the following format: device_fingerprint:host_domain
+   * @param {String} deviceFingerprint Device Fingerprint
+   * @param {String} acceptUrl Accept URL
+   * @param {String} orderId Order ID
    * @returns {(String|undefined)} sha256 dataId
    */
-  getDataId(req) {
-    if (req.originalReferer) {
+  getDataId(deviceFingerprint, acceptUrl, orderId) {
+    // If device fingerprint is available, add it in ID, otherwise only use orderId
+    if (deviceFingerprint) {
+      let domain = this.getDomainFromUrl(acceptUrl);
       return crypto
         .createHash('sha256')
-        .update(req.originalReferer, 'utf8')
+        .update(deviceFingerprint + (domain ? ':' + domain : ''), 'utf8')
         .digest('hex');
+    } else {
+      return crypto.createHash('sha256').update(orderId, 'utf8').digest('hex');
     }
   }
 }

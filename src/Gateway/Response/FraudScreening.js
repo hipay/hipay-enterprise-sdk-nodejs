@@ -1,12 +1,14 @@
 'use strict';
 
-class FraudScreening {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class FraudScreening extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'scoring')) {
       this.scoring = values.scoring;
@@ -20,6 +22,8 @@ class FraudScreening {
   }
 
   initValues() {
+    super.initValues();
+
     this.scoring = null;
     this.result = null;
     this.review = null;

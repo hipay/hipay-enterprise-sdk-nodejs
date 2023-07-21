@@ -1,10 +1,20 @@
 'use strict';
-const AbstractPaymentMethod = require('./AbstractPaymentMethod');
+const InvalidArgumentException = require('../../../Error/InvalidArgumentException');
+const IssuerBankIDPaymentMethod = require('./IssuerBankIDPaymentMethod');
 
-class SEPADirectDebitPaymentMethod extends AbstractPaymentMethod {
+class SEPADirectDebitPaymentMethod extends IssuerBankIDPaymentMethod {
+  /**
+   * Creates a SEPA Direct Debit Payment Method Object
+   *
+   * @param {Object} values
+   * @param {string} values.issuer_bank_id Business Identifier Code of the customer's bank
+   * @param {string} [values.debit_agreement_id] Debit agreement ID
+   * @param {Number} [values.recurring_payment = 0] Indicates if the debit agreement will be created for a single-use or a multi-use. 0 : Single use, 1 : Multi-use
+   * @param {string} values.bank_name Customer's bank name
+   * @param {string} values.iban Customer's IBAN
+   */
   constructor(values) {
-    super();
-    this.initValues();
+    super(values);
 
     if (typeof values !== 'object') {
       values = {};
@@ -20,43 +30,24 @@ class SEPADirectDebitPaymentMethod extends AbstractPaymentMethod {
 
     if (Object.prototype.hasOwnProperty.call(values, 'bank_name')) {
       this.bank_name = values.bank_name;
+    } else {
+      throw new InvalidArgumentException('Bank name must be present');
     }
 
     if (Object.prototype.hasOwnProperty.call(values, 'iban')) {
       this.iban = values.iban;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(values, 'firstname')) {
-      this.firstname = values.firstname;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(values, 'lastname')) {
-      this.lastname = values.lastname;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(values, 'gender')) {
-      this.gender = values.gender;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(values, 'company_type')) {
-      this.company_type = values.company_type;
-    }
-
-    if (Object.prototype.hasOwnProperty.call(values, 'company')) {
-      this.company = values.company;
+    } else {
+      throw new InvalidArgumentException('IBAN must be present');
     }
   }
 
   initValues() {
+    super.initValues();
+
     this.debit_agreement_id = null;
-    this.recurring_payment = null;
+    this.recurring_payment = 0;
     this.bank_name = null;
     this.iban = null;
-    this.firstname = null;
-    this.lastname = null;
-    this.gender = null;
-    this.company_type = null;
-    this.company = null;
   }
 }
 

@@ -1,12 +1,14 @@
 'use strict';
 
-class PaymentMethod {
+const AbstractResponsePart = require('./AbstractResponsePart');
+
+class PaymentMethod extends AbstractResponsePart {
   constructor(values) {
     if (typeof values !== 'object') {
       values = {};
     }
 
-    this.initValues();
+    super(values);
 
     if (Object.prototype.hasOwnProperty.call(values, 'token')) {
       this.token = values.token;
@@ -35,6 +37,8 @@ class PaymentMethod {
   }
 
   initValues() {
+    super.initValues();
+
     this.token = null;
     this.brand = null;
     this.pan = null;
