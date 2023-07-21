@@ -133,8 +133,8 @@ class ShippingMethod {
    */
   getDisplayName(langIsoCode = ShippingMethod.DEFAULT_LANG_ISO_CODE) {
     return (
-      this._displayName[langIsoCode] ??
-      this._displayName[ShippingMethod.DEFAULT_LANG_ISO_CODE]
+      this._displayName?.[langIsoCode] ??
+      this._displayName?.[ShippingMethod.DEFAULT_LANG_ISO_CODE]
     );
   }
 

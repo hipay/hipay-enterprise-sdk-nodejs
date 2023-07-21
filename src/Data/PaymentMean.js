@@ -1,6 +1,58 @@
 'use strict';
 const fs = require('fs');
 
+class PaymentMeanAdditionalFields {
+  /**
+   * Name of the SDK Class for this payment mean
+   *
+   * @type {string}
+   * @private
+   */
+  _sdkClass;
+
+  /**
+   * Additional fields available for this payment mean
+   * @type {Object}
+   * @private
+   */
+  _formFields = [];
+
+  /**
+   *
+   * @param {Object} [additionalFields]
+   * @param {string} [additionalFields.sdkClass] Name of the SDK Class for this payment mean
+   * @param {Object} [additionalFields.formFields] Additional fields available for this payment mean
+   */
+  constructor(additionalFields = {}) {
+    this._sdkClass = additionalFields.sdkClass;
+    this._formFields = additionalFields.formFields;
+  }
+
+  get sdkClass() {
+    return require('../Gateway/Request/PaymentMethod/' + this._sdkClass);
+  }
+
+  get formFields() {
+    return this._formFields;
+  }
+
+  getLocalizedFields(language = 'en') {
+    let localizedFields = {};
+
+    for (let fieldKey in this._formFields) {
+      localizedFields[fieldKey] = { ...this._formFields[fieldKey] };
+
+      if (localizedFields[fieldKey].label) {
+        localizedFields[fieldKey].label =
+          localizedFields[fieldKey].label[language] ??
+          localizedFields[fieldKey].label['en'];
+      }
+    }
+
+    return localizedFields;
+  }
+}
+
 /**
  * The collection of all payment means handled by this SDK
  */
@@ -100,14 +152,14 @@ class PaymentMean {
 
   /**
    * Mandatory fields for this payment mean
-   * @type {Array<String>}
+   * @type {Array<Object>}
    * @private
    */
   _checkoutFieldsMandatory = [];
 
   /**
    * Optional fields for this payment mean
-   * @type {Array<String>}
+   * @type {Array<Object>}
    * @private
    */
   _additionalFields = [];
@@ -124,15 +176,31 @@ class PaymentMean {
    * @param {Object} [paymentMeanData = {}]
    */
   constructor(paymentMeanData = {}) {
-    for (let prop in paymentMeanData) {
-      if (this.hasOwnProperty('_' + prop)) {
-        this[`_${prop}`] = paymentMeanData[prop];
-      }
-    }
+    this._paymentMeanCode =
+      paymentMeanData.paymentMeanCode ?? paymentMeanData.productCode;
+    this._brandName = paymentMeanData.brandName;
+    this._category = paymentMeanData.category;
+    this._comment = paymentMeanData.comment ?? '';
+    this._can3ds = Boolean(paymentMeanData.can3ds);
+    this._canRecurring = Boolean(paymentMeanData.canRecurring);
+    this._canManualCapture = Boolean(paymentMeanData.canManualCapture);
+    this._canManualCapturePartially = Boolean(
+      paymentMeanData.canManualCapturePartially
+    );
+    this._canRefund = Boolean(paymentMeanData.canRefund);
+    this._canRefundPartially = Boolean(paymentMeanData.canRefundPartially);
+    this._basketRequired = Boolean(paymentMeanData.basketRequired);
 
-    if (!this._paymentMeanCode && paymentMeanData.productCode) {
-      this._paymentMeanCode = paymentMeanData.productCode;
-    }
+    this._currencies = paymentMeanData.currencies ?? [];
+    this._countries = paymentMeanData.countries ?? [];
+
+    this._checkoutFieldsMandatory =
+      paymentMeanData.checkoutFieldsMandatory ?? [];
+    this._additionalFields = new PaymentMeanAdditionalFields(
+      paymentMeanData.additionalFields
+    );
+
+    this._priority = paymentMeanData.priority ?? 99;
   }
 
   /**
@@ -310,12 +378,14 @@ class PaymentMean {
     return allData;
   }
 
+  /**
+   * Sorts payment mean code list by priority and returns associated Payment Means
+   *
+   * @param {Array<String>} paymentMeanList
+   * @returns {Array<PaymentMean>}
+   */
   static orderByPriority(paymentMeanList = []) {
     const paymentMeanSorted = [];
-
-    if (!paymentMeanList) {
-      return null;
-    }
 
     if (!Array.isArray(paymentMeanList)) {
       paymentMeanList = paymentMeanList.split(',');

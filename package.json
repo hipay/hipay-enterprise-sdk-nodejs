@@ -37,7 +37,11 @@
       "text"
     ],
     "testResultsProcessor": "jest-sonar-reporter",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
+
   },
   "jestSonar": {
     "reportPath": "reports",
@@ -52,7 +56,7 @@
   },
   "husky": {
     "hooks": {
-      "precommit": "lint-staged"
+      "pre-commit": "lint-staged"
     }
   }
 }

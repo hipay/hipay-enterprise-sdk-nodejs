@@ -10,57 +10,38 @@
   "canRefund": 0,
   "canRefundPartially": 0,
   "basketRequired": 0,
-  "currencies": [
-    "EUR"
-  ],
-  "countries": [
-    "PT"
-  ],
+  "currencies": ["EUR"],
+  "countries": ["PT"],
   "checkoutFieldsMandatory": [],
   "additionalFields": {
     "sdkClass": "MultibancoPaymentMethod",
     "formFields": {
       "expiration_limit": {
-        "label": {
-          "en": "",
-          "fr": ""
-        },
+        "label": { "en": "Expiration limit", "fr": "Limite de paiement" },
         "type": "text",
         "required": false,
         "display": false
       },
       "streetaddress": {
-        "label": {
-          "en": "",
-          "fr": ""
-        },
+        "label": { "en": "Street address", "fr": "Adresse" },
         "type": "text",
         "required": true,
         "display": false
       },
       "zipcode": {
-        "label": {
-          "en": "",
-          "fr": ""
-        },
+        "label": { "en": "Zipcode", "fr": "Code postal" },
         "type": "text",
         "required": true,
         "display": false
       },
       "phone": {
-        "label": {
-          "en": "",
-          "fr": ""
-        },
+        "label": { "en": "Phone", "fr": "Téléphone" },
         "type": "text",
         "required": true,
         "display": false
       },
       "email": {
-        "label": {
-          "en": "",
-          "fr": ""
-        },
+        "label": { "en": "Email", "fr": "Email" },
         "type": "text",
         "required": true,
         "display": false
