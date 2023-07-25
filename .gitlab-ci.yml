@@ -1,5 +1,8 @@
+variables:
+  NODE_VERSION: 18
+
 include:
   - project: common/templates/ci-microservices
-    ref: 1.7.0
+    ref: 1.7.1
     file:
       - microservice_node_ci.yaml
