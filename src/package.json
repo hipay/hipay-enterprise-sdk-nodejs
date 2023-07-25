@@ -22,7 +22,6 @@
     "eslint": "^8.45.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "husky": "^3.1.0",
     "install": "^0.13.0",
     "jest": "^24.9.0",
     "jest-html-reporters": "^1.2.1",
@@ -48,16 +47,5 @@
     "reportPath": "reports",
     "indent": 4,
     "reportFile": "test-report.xml"
-  },
-  "lint-staged": {
-    "*.{js,json},!nodes_modules/*": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
