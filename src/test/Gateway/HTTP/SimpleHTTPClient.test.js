@@ -10,6 +10,7 @@ jest.mock('../../../Gateway/HTTP/Configuration/Configuration');
 
 const axios = require('axios');
 jest.mock('axios');
+axios.AxiosError = jest.requireActual('axios').AxiosError;
 
 afterEach(async () => {
     await axios.request.mockReset();
@@ -69,10 +70,51 @@ describe('Test SimpleHTTPClient constructor, getters & setters', () => {
     });
 });
 
-/*
 describe('Test order request method', () => {
+    const SimpleHTTPClient = require('../../../Gateway/HTTP/SimpleHTTPClient');
+
+    it('calls API if everything is empty', async (done) => {
+        let mockConfig = new Configuration({});
+        mockConfig.timeout = 5;
+        mockConfig.apiEndpoint = '{API_ENDPOINT}';
+        mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
+        mockConfig.apiHTTPHeaderAccept = '{HTTP_ACCEPT}';
+        mockConfig.apiToken = '{API_TOKEN}';
+        mockConfig.proxy = {};
+
+        let client = new SimpleHTTPClient(mockConfig);
+
+        axios.request.mockReturnValue({
+            data: '{DATA}',
+            status: '{STATUS}'
+        });
+
+        const mockResponse = new Response('{DATA}', '{STATUS}', {
+            'Content-Type': 'application/json; encoding=UTF-8'
+        });
+
+        let actualResponse = await client.request('POST', '{ENDPOINT}');
+        expect(actualResponse).toBeInstanceOf(Response);
+        expect(actualResponse).toStrictEqual(mockResponse);
+        expect(axios.request).toHaveBeenCalledWith({
+            url: '{ENDPOINT}',
+            method: 'POST',
+            timeout: 5000,
+            headers: {
+                Accept: '{HTTP_ACCEPT}',
+                'User-Agent': '{HTTP_USER_AGENT}',
+                Authorization: 'Bearer {API_TOKEN}',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            baseURL: '',
+            data: ''
+        });
+
+        done();
+    });
+
     it('calls API if everything is right', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -87,7 +129,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockReturnValue({
+        axios.request.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -96,10 +138,10 @@ describe('Test order request method', () => {
             'Content-Type': 'application/json; encoding=UTF-8'
         });
 
-        let actualResponse = await client.request('POST', '{ENDPOINT}', params);
+        let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(gaxios.request).toHaveBeenCalledWith({
+        expect(axios.request).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -117,7 +159,7 @@ describe('Test order request method', () => {
     });
 
     it('calls API in GET if everything is right', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -132,7 +174,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockReturnValue({
+        axios.request.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -141,10 +183,10 @@ describe('Test order request method', () => {
             'Content-Type': 'application/json; encoding=UTF-8'
         });
 
-        let actualResponse = await client.request('GET', '{ENDPOINT}', params);
+        let actualResponse = await client.request('GET', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(gaxios.request).toHaveBeenCalledWith({
+        expect(axios.request).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'GET',
             baseURL: '{API_ENDPOINT}',
@@ -160,7 +202,7 @@ describe('Test order request method', () => {
     });
 
     it('calls API with proxy if everything is right', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -178,7 +220,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockReturnValue({
+        axios.request.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -187,10 +229,10 @@ describe('Test order request method', () => {
             'Content-Type': 'application/json; encoding=UTF-8'
         });
 
-        let actualResponse = await client.request('POST', '{ENDPOINT}', params);
+        let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(gaxios.request).toHaveBeenCalledWith({
+        expect(axios.request).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -212,7 +254,7 @@ describe('Test order request method', () => {
     });
 
     it('calls API with basic credentials if everything is right', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -228,7 +270,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockReturnValue({
+        axios.request.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -237,10 +279,10 @@ describe('Test order request method', () => {
             'Content-Type': 'application/json; encoding=UTF-8'
         });
 
-        let actualResponse = await client.request('POST', '{ENDPOINT}', params);
+        let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(gaxios.request).toHaveBeenCalledWith({
+        expect(axios.request).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -258,7 +300,7 @@ describe('Test order request method', () => {
     });
 
     it('calls data API if everything is right', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.dataApiEndpoint = '{DATA_API_ENDPOINT}';
@@ -276,7 +318,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockReturnValue({
+        axios.request.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -285,10 +327,10 @@ describe('Test order request method', () => {
             'Content-Type': 'application/json; encoding=UTF-8'
         });
 
-        let actualResponse = await client.request('POST', '{ENDPOINT}', params, false, true);
+        let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}', isData: true });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(gaxios.request).toHaveBeenCalledWith({
+        expect(axios.request).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{DATA_API_ENDPOINT}',
@@ -305,38 +347,8 @@ describe('Test order request method', () => {
         done();
     });
 
-    it('does not call data API when environment is dev', async (done) => {
-        delete process.env.GOOGLE_CLOUD_PROJECT;
-        const SimpleHTTPClient = require('../../../../../../services/orderAPI/Gateway/HTTP/SimpleHTTPClient');
-        const ConfigurationInterface = require('../../../../../../services/orderAPI/Gateway/HTTP/Configuration/ConfigurationInterface');
-        const gaxios = require('gaxios');
-
-        let mockConfig = new ConfigurationInterface();
-        mockConfig.timeout = 5;
-        mockConfig.apiEndpoint = '{API_ENDPOINT}';
-        mockConfig.dataApiEndpoint = '{DATA_API_ENDPOINT}';
-        mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
-        mockConfig.dataApiHttpUserAgent = '{DATA_HTTP_USER_AGENT}';
-        mockConfig.apiHTTPHeaderAccept = '{HTTP_ACCEPT}';
-        mockConfig.apiUsername = '{API_USERNAME}';
-        mockConfig.apiPassword = '{API_PASSWORD}';
-        mockConfig.proxy = {};
-
-        let client = new SimpleHTTPClient(mockConfig);
-
-        let params = {
-            mockProp: 'mockValue',
-            mockProp2: 'mockValue2'
-        };
-
-        await client.request('POST', '{ENDPOINT}', params, false, true);
-        expect(gaxios.request).toHaveBeenCalledTimes(0);
-
-        done();
-    });
-
     it('calls data API with error without stopping request', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.dataApiEndpoint = '{DATA_API_ENDPOINT}';
@@ -354,69 +366,17 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockImplementation(() => {
-            throw new gaxios.GaxiosError();
+        axios.request.mockImplementation(() => {
+            throw new axios.AxiosError();
         });
 
-        await expect(client.request('POST', '{ENDPOINT}', params, false, true)).resolves.not.toThrow();
-
-        await expect(log.error).toHaveBeenCalledTimes(1);
-        await expect(log.error).toHaveBeenNthCalledWith(1, 'Call to API Data has thrown exception', expect.any(Error));
-
-        done();
-    });
-
-    it('calls vault API if everything is right', async (done) => {
-        let mockConfig = new ConfigurationInterface();
-        mockConfig.timeout = 5;
-        mockConfig.apiEndpoint = '{API_ENDPOINT}';
-        mockConfig.secureVaultEndpoint = '{VAULT_API_ENDPOINT}';
-        mockConfig.dataApiEndpoint = '{DATA_API_ENDPOINT}';
-        mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
-        mockConfig.dataApiHttpUserAgent = '{DATA_HTTP_USER_AGENT}';
-        mockConfig.apiHTTPHeaderAccept = '{HTTP_ACCEPT}';
-        mockConfig.apiUsername = '{API_USERNAME}';
-        mockConfig.apiPassword = '{API_PASSWORD}';
-        mockConfig.proxy = {};
-
-        let client = new SimpleHTTPClient(mockConfig);
-
-        let params = {
-            mockProp: 'mockValue',
-            mockProp2: 'mockValue2'
-        };
-
-        gaxios.request.mockReturnValue({
-            data: '{DATA}',
-            status: '{STATUS}'
-        });
-
-        const mockResponse = new Response('{DATA}', '{STATUS}', {
-            'Content-Type': 'application/json; encoding=UTF-8'
-        });
-
-        let actualResponse = await client.request('POST', '{ENDPOINT}', params, true, false);
-        expect(actualResponse).toBeInstanceOf(Response);
-        expect(actualResponse).toStrictEqual(mockResponse);
-        expect(gaxios.request).toHaveBeenCalledWith({
-            url: '{ENDPOINT}',
-            method: 'POST',
-            baseURL: '{VAULT_API_ENDPOINT}',
-            timeout: 5000,
-            headers: {
-                Accept: '{HTTP_ACCEPT}',
-                'User-Agent': '{HTTP_USER_AGENT}',
-                'Content-Type': 'application/x-www-form-urlencoded',
-                Authorization: 'Basic e0FQSV9VU0VSTkFNRX06e0FQSV9QQVNTV09SRH0='
-            },
-            data: 'mockProp=mockValue&mockProp2=mockValue2'
-        });
+        await expect(client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}', isData: true })).resolves.not.toThrow();
 
         done();
     });
 
     it('errors if method is not string', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
         let params = {
@@ -424,20 +384,19 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        await expect(client.request(true, '{ENDPOINT}', params, true, false)).rejects.toThrow();
-
         try {
-            await client.request(true, '{ENDPOINT}', params, true, false);
+            await client.request(true, '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
-            expect(err.message).toEqual('HTTP METHOD must a string and a valid HTTP METHOD Value');
         }
+
+        expect(InvalidArgumentException).toHaveBeenCalledWith('HTTP METHOD must a string and a valid HTTP METHOD Value');
 
         done();
     });
 
     it('errors if method is not valid', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
         let params = {
@@ -445,20 +404,19 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        await expect(client.request(true, '{ENDPOINT}', params, true, false)).rejects.toThrow();
-
         try {
-            await client.request('{METHOD}', '{ENDPOINT}', params, true, false);
+            await client.request('{METHOD}', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
-            expect(err.message).toEqual('HTTP METHOD must a string and a valid HTTP METHOD Value');
         }
+
+        expect(InvalidArgumentException).toHaveBeenCalledWith('HTTP METHOD must a string and a valid HTTP METHOD Value');
 
         done();
     });
 
     it('errors if endpoint is not string', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
         let params = {
@@ -466,20 +424,19 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        await expect(client.request('POST', true, params, true, false)).rejects.toThrow();
-
         try {
-            await client.request('POST', true, params, true, false);
+            await client.request('POST', true, { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
-            expect(err.message).toEqual('Endpoint must be a string and a valid api endpoint');
         }
+
+        expect(InvalidArgumentException).toHaveBeenCalledWith('Endpoint must be a string and a valid api endpoint');
 
         done();
     });
 
     it('errors if endpoint is empty', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
         let params = {
@@ -487,20 +444,19 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        await expect(client.request('POST', '', params, true, false)).rejects.toThrow();
-
         try {
-            await client.request('POST', '', params, true, false);
+            await client.request('POST', '', { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
-            expect(err.message).toEqual('Endpoint must be a string and a valid api endpoint');
         }
+
+        expect(InvalidArgumentException).toHaveBeenCalledWith('Endpoint must be a string and a valid api endpoint');
 
         done();
     });
 
     it('errors if order API errors', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -515,9 +471,11 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockImplementation(() => {
-            throw new gaxios.GaxiosError(
+        axios.request.mockImplementation(() => {
+            throw new axios.AxiosError(
                 'Sample error',
+                'CODE',
+                {},
                 {},
                 {
                     data: {
@@ -530,23 +488,19 @@ describe('Test order request method', () => {
             );
         });
 
-        await expect(client.request('POST', '{ENDPOINT}', params, false, false)).rejects.toThrow();
-
         try {
-            await client.request('POST', '{ENDPOINT}', params, false, false);
+            await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
             expect(err).toBeInstanceOf(ApiErrorException);
-            expect(err.message).toEqual('{ERROR_MESSAGE}');
-            expect(err.status).toEqual('{ERROR_STATUS}');
-            expect(err.code).toEqual('{ERROR_CODE}');
-            expect(err.description).toEqual('{ERROR_DESCRIPTION}');
         }
+
+        expect(ApiErrorException).toHaveBeenCalledWith('{ERROR_MESSAGE}', '{ERROR_STATUS}', '{ERROR_CODE}', '{ERROR_DESCRIPTION}');
 
         done();
     });
 
     it('errors if order API errors with no info', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -561,26 +515,36 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockImplementation(() => {
-            throw new gaxios.GaxiosError(
-                'Sample error',
-                {},
-                {
-                    data: {
-                        message: '{ERROR_MESSAGE}',
-                        description: '{ERROR_DESCRIPTION}'
-                    },
-                    status: '{ERROR_STATUS}'
-                }
-            );
+        let error = new axios.AxiosError(
+            'Sample error',
+            'CODE',
+            {},
+            {},
+            {
+                data: {
+                    message: '{ERROR_MESSAGE}',
+                    description: '{ERROR_DESCRIPTION}'
+                },
+                status: '{ERROR_STATUS}'
+            }
+        );
+
+        axios.request.mockImplementation(() => {
+            throw error;
         });
 
-        await expect(client.request('POST', '{ENDPOINT}', params, false, false)).rejects.toThrow();
+        await expect(
+            client.request('POST', '{ENDPOINT}', {
+                body: params,
+                baseUrl: '{API_ENDPOINT}'
+            })
+        ).rejects.toThrow();
 
         try {
-            await client.request('POST', '{ENDPOINT}', params, false, false);
+            await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
-            expect(err).toBeInstanceOf(Error);
+            expect(err).toBeInstanceOf(axios.AxiosError);
+            expect(err).toEqual(error);
             expect(err.message).toEqual('Sample error');
             expect(err.response).toEqual({
                 data: {
@@ -594,8 +558,8 @@ describe('Test order request method', () => {
         done();
     });
 
-    it('errors if gaxios errors', async (done) => {
-        let mockConfig = new ConfigurationInterface();
+    it('errors if axios errors', async (done) => {
+        let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
@@ -610,14 +574,14 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        gaxios.request.mockImplementation(() => {
+        axios.request.mockImplementation(() => {
             throw new Error('Sample error');
         });
 
-        await expect(client.request('POST', '{ENDPOINT}', params, false, false)).rejects.toThrow();
+        await expect(client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' })).rejects.toThrow();
 
         try {
-            await client.request('POST', '{ENDPOINT}', params, false, false);
+            await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         } catch (err) {
             expect(err).toBeInstanceOf(Error);
             expect(err.message).toEqual('Sample error');
@@ -626,4 +590,3 @@ describe('Test order request method', () => {
         done();
     });
 });
-*/

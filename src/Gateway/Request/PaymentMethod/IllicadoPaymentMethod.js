@@ -3,41 +3,35 @@ const AbstractPaymentMethod = require('./AbstractPaymentMethod');
 const InvalidArgumentException = require('../../../Error/InvalidArgumentException');
 
 class IllicadoPaymentMethod extends AbstractPaymentMethod {
-  /**
-   * Creates an Illicado Payment Method Object
-   *
-   * @param {Object} values
-   * @param {string} values.prepaid_card_number Illicado card number
-   * @param {string} values.prepaid_card_security_code Illicado card security code
-   */
-  constructor(values) {
-    super();
+    /**
+     * Creates an Illicado Payment Method Object
+     *
+     * @param {Object} values
+     * @param {string} values.prepaid_card_number Illicado card number
+     * @param {string} values.prepaid_card_security_code Illicado card security code
+     */
+    constructor(values) {
+        super();
 
-    if (typeof values !== 'object') {
-      values = {};
+        if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_number')) {
+            this.prepaid_card_number = values.prepaid_card_number;
+        } else {
+            throw new InvalidArgumentException('Card Number must be present');
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_security_code')) {
+            this.prepaid_card_security_code = values.prepaid_card_security_code;
+        } else {
+            throw new InvalidArgumentException('Card Security Code must be present');
+        }
     }
 
-    if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_number')) {
-      this.prepaid_card_number = values.prepaid_card_number;
-    } else {
-      throw new InvalidArgumentException('Card Number must be present');
+    initValues() {
+        super.initValues();
+
+        this.prepaid_card_number = null;
+        this.prepaid_card_security_code = null;
     }
-
-    if (
-      Object.prototype.hasOwnProperty.call(values, 'prepaid_card_security_code')
-    ) {
-      this.prepaid_card_security_code = values.prepaid_card_security_code;
-    } else {
-      throw new InvalidArgumentException('Card Security Code must be present');
-    }
-  }
-
-  initValues() {
-    super.initValues();
-
-    this.prepaid_card_number = null;
-    this.prepaid_card_security_code = null;
-  }
 }
 
 module.exports = IllicadoPaymentMethod;
