@@ -35,6 +35,7 @@ describe('Test constructor', () => {
         expect(order.gender).toEqual('{GENDER}');
         expect(order.language).toEqual('{LANGUAGE}');
         expect(order.shippingAddress).toEqual('{SHIPPINGADDRESS}');
+        expect(order.email).toEqual('{EMAIL}');
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -57,6 +58,7 @@ describe('Test constructor', () => {
         expect(order.gender).toEqual(null);
         expect(order.language).toEqual(null);
         expect(order.shippingAddress).toEqual(null);
+        expect(order.email).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -79,5 +81,6 @@ describe('Test constructor', () => {
         expect(order.gender).toEqual(null);
         expect(order.language).toEqual(null);
         expect(order.shippingAddress).toEqual(null);
+        expect(order.email).toEqual(null);
     });
 });

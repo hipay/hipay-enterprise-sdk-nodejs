@@ -2,7 +2,7 @@
 
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
 const AbstractRequestPart = require('./AbstractRequestPart');
-const packageData = require('../../../package.json');
+const packageData = require('../../package.json');
 
 class CommonRequest extends AbstractRequestPart {
     /**

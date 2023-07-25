@@ -1,5 +1,5 @@
 const CommonRequest = require('../../../Gateway/Request/CommonRequest');
-const packageData = require('../../../../package.json');
+const packageData = require('../../../package.json');
 const InvalidArgumentException = require('../../../Error/InvalidArgumentException');
 
 jest.mock('../../../Error/InvalidArgumentException');

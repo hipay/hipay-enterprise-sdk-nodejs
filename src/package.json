@@ -8,15 +8,14 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "jest",
-    "fix": "yarn eslint . --fix",
-    "lint": "yarn eslint ."
+    "test": "../node_modules/.bin/jest",
+    "fix": "yarn ../node_modules/.bin/eslint . --fix",
+    "lint": "yarn ../node_modules/.bin/eslint ."
   },
   "dependencies": {
     "axios": "^1.4.0"
   },
   "devDependencies": {
-    "@jest/globals": "^29.6.1",
     "@stryker-mutator/core": "^7.1.1",
     "@stryker-mutator/jest-runner": "^7.1.1",
     "eslint": "^6.6.0",
