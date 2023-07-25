@@ -176,7 +176,7 @@ class DeliveryMethod {
    */
   constructor(deliveryMethodData = {}) {
     for (let prop in deliveryMethodData) {
-      if (this.hasOwnProperty('_' + prop)) {
+      if (Object.prototype.hasOwnProperty.call(this, ('_' + prop))) {
         this[`_${prop}`] = deliveryMethodData[prop];
       }
     }

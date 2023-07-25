@@ -106,7 +106,7 @@ class ShippingMethod {
    */
   constructor(shippingMethodData = {}) {
     for (let prop in shippingMethodData) {
-      if (this.hasOwnProperty('_' + prop)) {
+      if (Object.prototype.hasOwnProperty.call(this, ('_' + prop))) {
         this[`_${prop}`] = shippingMethodData[prop];
       }
     }

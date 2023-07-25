@@ -201,7 +201,7 @@ class ProductCategory {
    */
   constructor(categoryData = {}) {
     for (let prop in categoryData) {
-      if (this.hasOwnProperty('_' + prop)) {
+      if (Object.prototype.hasOwnProperty.call(this, ('_' + prop))) {
         this[`_${prop}`] = categoryData[prop];
       }
     }
