@@ -2,6 +2,7 @@ const HostedPaymentPageRequest = require('../../../../Gateway/Request/HostedPaym
 const Template = require('../../../../Enum/Transaction/Template');
 
 const InvalidArgumentException = require('../../../../Error/InvalidArgumentException');
+const { AuthenticationIndicator } = require('../../../../Enum/Transaction');
 jest.mock('../../../../Error/InvalidArgumentException');
 
 afterEach(() => {
@@ -25,7 +26,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         }).not.toThrow();
 
@@ -42,6 +52,15 @@ describe('Test constructor', () => {
         expect(hpaymentRequest.merchantDisplayName).toEqual('{MERCHANTDISPLAYNAME}');
         expect(hpaymentRequest.css).toEqual('{CSS}');
         expect(hpaymentRequest.displaySelector).toEqual('{DISPLAYSELECTOR}');
+        expect(hpaymentRequest.eci).toEqual('{ECI}');
+        expect(hpaymentRequest.authenticationIndicator).toEqual('{AUTHENTICATIONINDICATOR}');
+        expect(hpaymentRequest.expirationLimit).toEqual('{EXPIRATIONLIMIT}');
+        expect(hpaymentRequest.orderCategoryCode).toEqual('{ORDERCATEGORYCODE}');
+        expect(hpaymentRequest.carrierDescription).toEqual('{CARRIERDESCRIPTION}');
+        expect(hpaymentRequest.salesChannel).toEqual('{SALESCHANNEL}');
+        expect(hpaymentRequest.softDescriptor).toEqual('{SOFTDESCRIPTOR}');
+        expect(hpaymentRequest.themeCode).toEqual('{THEMECODE}');
+        expect(hpaymentRequest.displayCancelButton).toEqual('{DISPLAYCANCELBUTTON}');
     });
 
     it('Initializes correctly with minimal parameters', () => {
@@ -69,6 +88,15 @@ describe('Test constructor', () => {
         expect(hpaymentRequest.merchantDisplayName).toEqual(null);
         expect(hpaymentRequest.css).toEqual(null);
         expect(hpaymentRequest.displaySelector).toEqual(null);
+        expect(hpaymentRequest.eci).toEqual(null);
+        expect(hpaymentRequest.authenticationIndicator).toEqual(AuthenticationIndicator.AVAILABLE);
+        expect(hpaymentRequest.expirationLimit).toEqual(3);
+        expect(hpaymentRequest.orderCategoryCode).toEqual(null);
+        expect(hpaymentRequest.carrierDescription).toEqual(null);
+        expect(hpaymentRequest.salesChannel).toEqual(null);
+        expect(hpaymentRequest.softDescriptor).toEqual(null);
+        expect(hpaymentRequest.themeCode).toEqual(null);
+        expect(hpaymentRequest.displayCancelButton).toEqual(false);
     });
 
     it('Errors when orderid is absent', () => {
@@ -86,7 +114,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         }).toThrow();
 
@@ -102,7 +139,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -125,7 +171,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         }).toThrow();
 
@@ -141,7 +196,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -164,7 +228,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         }).toThrow();
 
@@ -180,7 +253,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -203,7 +285,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         }).toThrow();
 
@@ -219,7 +310,16 @@ describe('Test constructor', () => {
                 multiUse: '{MULTIUSE}',
                 merchantDisplayName: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                displaySelector: '{DISPLAYSELECTOR}'
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);

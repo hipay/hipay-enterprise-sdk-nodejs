@@ -2,6 +2,7 @@
 
 const TransactionRequest = require('./TransactionRequest');
 const Template = require('../../Enum/Transaction/Template');
+const { AuthenticationIndicator } = require('../../Enum/Transaction');
 
 class HostedPaymentPageRequest extends TransactionRequest {
     /**
@@ -56,6 +57,15 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {string} [values.merchantDisplayName] Merchant name displayed on the payment page
      * @param {string} [values.css] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. CSS URL to use on the Payment Page
      * @param {Number} [values.displaySelector] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. 0 : Do not display payment means selector | 1 : Display selector
+     * @param {Number} [values.eci] Transaction Electronic Commerce Indicator. See the Transaction.ECI Enum
+     * @param {Number} [values.authentication_indicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
+     * @param {Number} [values.expirationLimit = 3] Expiration limit in days
+     * @param {string} [values.orderCategoryCode] Category of the order. See ProductCategory Collection
+     * @param {string} [values.carrierDescription] Short Description of your carrier
+     * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
+     * @param {string} [values.softDescriptor] Billing descriptor.
+     * @param {string} [values.themeCode] Custom theme code to display in the payment page
+     * @param {boolean} [values.displayCancelButton = false] Whether to add a cancel button to the page or not
      */
     constructor(values) {
         super(values);
@@ -91,6 +101,42 @@ class HostedPaymentPageRequest extends TransactionRequest {
         if (Object.prototype.hasOwnProperty.call(values, 'displaySelector')) {
             this.displaySelector = values.displaySelector;
         }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+            this.eci = values.eci;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'authenticationIndicator')) {
+            this.authenticationIndicator = values.authenticationIndicator;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'expirationLimit')) {
+            this.expirationLimit = values.expirationLimit;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'orderCategoryCode')) {
+            this.orderCategoryCode = values.orderCategoryCode;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'carrierDescription')) {
+            this.carrierDescription = values.carrierDescription;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'salesChannel')) {
+            this.salesChannel = values.salesChannel;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'softDescriptor')) {
+            this.softDescriptor = values.softDescriptor;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'themeCode')) {
+            this.themeCode = values.themeCode;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'displayCancelButton')) {
+            this.displayCancelButton = values.displayCancelButton;
+        }
     }
 
     initValues() {
@@ -104,6 +150,16 @@ class HostedPaymentPageRequest extends TransactionRequest {
         this.merchantDisplayName = null;
         this.css = null;
         this.displaySelector = null;
+
+        this.eci = null;
+        this.authenticationIndicator = AuthenticationIndicator.AVAILABLE;
+        this.expirationLimit = 3;
+        this.orderCategoryCode = null;
+        this.carrierDescription = null;
+        this.salesChannel = null;
+        this.softDescriptor = null;
+        this.themeCode = null;
+        this.displayCancelButton = false;
     }
 }
 
