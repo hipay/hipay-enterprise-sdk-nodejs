@@ -1062,7 +1062,16 @@ describe('HiPay object', () => {
             multiUse: '{MULTIUSE}',
             merchantDisplayName: '{MERCHANTDISPLAYNAME}',
             css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}'
+            displaySelector: '{DISPLAYSELECTOR}',
+            eci: '{ECI}',
+            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+            expirationLimit: '{EXPIRATIONLIMIT}',
+            orderCategoryCode: '{ORDERCATEGORYCODE}',
+            carrierDescription: '{CARRIERDESCRIPTION}',
+            salesChannel: '{SALESCHANNEL}',
+            softDescriptor: '{SOFTDESCRIPTOR}',
+            themeCode: '{THEMECODE}',
+            displayCancelButton: '{DISPLAYCANCELBUTTON}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -1179,7 +1188,16 @@ describe('HiPay object', () => {
                 multi_use: '{MULTIUSE}',
                 merchant_display_name: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}'
+                display_selector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                expiration_limit: '{EXPIRATIONLIMIT}',
+                order_category_code: '{ORDERCATEGORYCODE}',
+                carrier_description: '{CARRIERDESCRIPTION}',
+                sales_channel: '{SALESCHANNEL}',
+                soft_descriptor: '{SOFTDESCRIPTOR}',
+                theme_code: '{THEMECODE}',
+                display_cancel_button: '{DISPLAYCANCELBUTTON}'
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -1291,7 +1309,16 @@ describe('HiPay object', () => {
             multiUse: '{MULTIUSE}',
             merchantDisplayName: '{MERCHANTDISPLAYNAME}',
             css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}'
+            displaySelector: '{DISPLAYSELECTOR}',
+            eci: '{ECI}',
+            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+            expirationLimit: '{EXPIRATIONLIMIT}',
+            orderCategoryCode: '{ORDERCATEGORYCODE}',
+            carrierDescription: '{CARRIERDESCRIPTION}',
+            salesChannel: '{SALESCHANNEL}',
+            softDescriptor: '{SOFTDESCRIPTOR}',
+            themeCode: '{THEMECODE}',
+            displayCancelButton: '{DISPLAYCANCELBUTTON}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue(null);
@@ -1408,7 +1435,16 @@ describe('HiPay object', () => {
                 multi_use: '{MULTIUSE}',
                 merchant_display_name: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}'
+                display_selector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                expiration_limit: '{EXPIRATIONLIMIT}',
+                order_category_code: '{ORDERCATEGORYCODE}',
+                carrier_description: '{CARRIERDESCRIPTION}',
+                sales_channel: '{SALESCHANNEL}',
+                soft_descriptor: '{SOFTDESCRIPTOR}',
+                theme_code: '{THEMECODE}',
+                display_cancel_button: '{DISPLAYCANCELBUTTON}'
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -1520,7 +1556,16 @@ describe('HiPay object', () => {
             multiUse: '{MULTIUSE}',
             merchantDisplayName: '{MERCHANTDISPLAYNAME}',
             css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}'
+            displaySelector: '{DISPLAYSELECTOR}',
+            eci: '{ECI}',
+            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+            expirationLimit: '{EXPIRATIONLIMIT}',
+            orderCategoryCode: '{ORDERCATEGORYCODE}',
+            carrierDescription: '{CARRIERDESCRIPTION}',
+            salesChannel: '{SALESCHANNEL}',
+            softDescriptor: '{SOFTDESCRIPTOR}',
+            themeCode: '{THEMECODE}',
+            displayCancelButton: '{DISPLAYCANCELBUTTON}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -1637,7 +1682,16 @@ describe('HiPay object', () => {
                 multi_use: '{MULTIUSE}',
                 merchant_display_name: '{MERCHANTDISPLAYNAME}',
                 css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}'
+                display_selector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                expiration_limit: '{EXPIRATIONLIMIT}',
+                order_category_code: '{ORDERCATEGORYCODE}',
+                carrier_description: '{CARRIERDESCRIPTION}',
+                sales_channel: '{SALESCHANNEL}',
+                soft_descriptor: '{SOFTDESCRIPTOR}',
+                theme_code: '{THEMECODE}',
+                display_cancel_button: '{DISPLAYCANCELBUTTON}'
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
