@@ -286,7 +286,8 @@ describe('Test API Data object', () => {
                 sdk_server: 'nodejs',
                 sdk_server_engine_version: process.version,
                 template: 'TEMPLATE'
-            }
+            },
+            display_cancel_button: false
         };
 
         const params = piDataClient.getHPaymentData(dataId, hpaymentRequest);
@@ -306,7 +307,8 @@ describe('Test API Data object', () => {
                 email: 'john@email.com',
                 cid: 'cid'
             },
-            acceptUrl: 'http://example.com'
+            acceptUrl: 'http://example.com',
+            displayCancelButton: true
         };
 
         const expected = {
@@ -333,7 +335,8 @@ describe('Test API Data object', () => {
                 sdk_server: 'nodejs',
                 sdk_server_engine_version: process.version,
                 template: 'TEMPLATE'
-            }
+            },
+            display_cancel_button: true
         };
 
         const params = piDataClient.getHPaymentData(dataId, hpaymentRequest);

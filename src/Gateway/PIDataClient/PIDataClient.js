@@ -91,7 +91,8 @@ class PIDataClient {
             components: {
                 ...commonData.components,
                 template: hostedPaymentPageRequest.template
-            }
+            },
+            display_cancel_button: Boolean(hostedPaymentPageRequest.displayCancelButton)
         };
     }
 
