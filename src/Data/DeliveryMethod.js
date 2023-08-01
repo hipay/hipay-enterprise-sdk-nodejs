@@ -151,7 +151,7 @@ class DeliveryMethod {
 
     /**
      * Technical code
-     * @type {string}
+     * @type {string|number}
      * @private
      */
     _code;
@@ -184,14 +184,14 @@ class DeliveryMethod {
 
     /**
      * Technical code
-     * @returns {string}
+     * @returns {string|number}
      */
     get code() {
         return this._code;
     }
 
     /**
-     * @param {string} value
+     * @param {string|number} value
      */
     set code(value) {
         this._code = value;
