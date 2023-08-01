@@ -20,13 +20,13 @@
  * @type {{RESULT_BLOCKED: string, REVIEW_DENIED: string, RESULT_PENDING: string, RESULT_ACCEPTED: string, REVIEW_ALLOWED: string, REVIEW_PENDING: string, RESULT_CHALLENGED: string, REVIEW_NONE: string, RESULT_UNKNOWN: string}}
  */
 module.exports = {
-  RESULT_UNKNOWN: 'unknown',
-  RESULT_PENDING: 'pending',
-  RESULT_ACCEPTED: 'accepted',
-  RESULT_BLOCKED: 'blocked',
-  RESULT_CHALLENGED: 'challenged',
-  REVIEW_NONE: 'none',
-  REVIEW_PENDING: 'pending',
-  REVIEW_ALLOWED: 'allowed',
-  REVIEW_DENIED: 'denied'
+    RESULT_UNKNOWN: 'unknown',
+    RESULT_PENDING: 'pending',
+    RESULT_ACCEPTED: 'accepted',
+    RESULT_BLOCKED: 'blocked',
+    RESULT_CHALLENGED: 'challenged',
+    REVIEW_NONE: 'none',
+    REVIEW_PENDING: 'pending',
+    REVIEW_ALLOWED: 'allowed',
+    REVIEW_DENIED: 'denied'
 };

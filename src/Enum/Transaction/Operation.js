@@ -12,9 +12,9 @@
  * @type {{DENY_CHALLENGE: string, REFUND: string, CANCEL: string, ACCEPT_CHALLENGE: string, CAPTURE: string}}
  */
 module.exports = {
-  CAPTURE: 'capture',
-  REFUND: 'refund',
-  CANCEL: 'cancel',
-  ACCEPT_CHALLENGE: 'acceptChallenge',
-  DENY_CHALLENGE: 'denyChallenge'
+    CAPTURE: 'capture',
+    REFUND: 'refund',
+    CANCEL: 'cancel',
+    ACCEPT_CHALLENGE: 'acceptChallenge',
+    DENY_CHALLENGE: 'denyChallenge'
 };

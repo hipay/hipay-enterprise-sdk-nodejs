@@ -6,8 +6,8 @@ const ProductCategory = require('./ProductCategory');
 const ShippingMethod = require('./ShippingMethod');
 
 module.exports = {
-  DeliveryMethod,
-  PaymentMean,
-  ProductCategory,
-  ShippingMethod
+    DeliveryMethod,
+    PaymentMean,
+    ProductCategory,
+    ShippingMethod
 };

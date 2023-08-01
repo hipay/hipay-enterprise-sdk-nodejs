@@ -28,10 +28,10 @@
  * @type {{NOT_APPLICABLE: string, NOT_SUPPORTED: string, NOT_PROCESSED: string, NO_MATCH: string, MISSING: string, MATCH: string}}
  */
 module.exports = {
-  NOT_APPLICABLE: ' ',
-  MATCH: 'M',
-  NO_MATCH: 'N',
-  NOT_PROCESSED: 'P',
-  MISSING: 'S',
-  NOT_SUPPORTED: 'U'
+    NOT_APPLICABLE: ' ',
+    MATCH: 'M',
+    NO_MATCH: 'N',
+    NOT_PROCESSED: 'P',
+    MISSING: 'S',
+    NOT_SUPPORTED: 'U'
 };

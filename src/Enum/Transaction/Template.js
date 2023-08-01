@@ -9,6 +9,6 @@
  * @type {{BASIC_JS: string, IFRAME_JS: string}}
  */
 module.exports = {
-  BASIC_JS: 'basic_js',
-  IFRAME_JS: 'iframe_js'
+    BASIC_JS: 'basic_js',
+    IFRAME_JS: 'iframe_js'
 };

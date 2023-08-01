@@ -10,8 +10,8 @@
  * @type {{NOT_APPLICABLE: string, CVV: string, NONE: string, CID: string}}
  */
 module.exports = {
-  NONE: 'none',
-  NOT_APPLICABLE: 'not_applicable',
-  CVV: 'cvv',
-  CID: 'cid'
+    NONE: 'none',
+    NOT_APPLICABLE: 'not_applicable',
+    CVV: 'cvv',
+    CID: 'cid'
 };

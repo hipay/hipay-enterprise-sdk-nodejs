@@ -15,9 +15,9 @@ const PreviousAuthInfo = require('./PreviousAuthInfo');
 const RecurringInfo = require('./RecurringInfo');
 
 module.exports = {
-  AccountInfo,
-  BrowserInfo,
-  MerchantRiskStatement,
-  PreviousAuthInfo,
-  RecurringInfo
+    AccountInfo,
+    BrowserInfo,
+    MerchantRiskStatement,
+    PreviousAuthInfo,
+    RecurringInfo
 };

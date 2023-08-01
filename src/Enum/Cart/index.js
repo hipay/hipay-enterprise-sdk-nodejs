@@ -3,5 +3,5 @@
 const TypeItems = require('./TypeItems');
 
 module.exports = {
-  TypeItems
+    TypeItems
 };

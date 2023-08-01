@@ -1,27 +1,27 @@
 {
-  "productCode": "carte-cadeau",
-  "brandName": "Oney Carte Cadeau",
-  "category": "",
-  "comment": "",
-  "can3ds": 0,
-  "canRecurring": 0,
-  "canManualCapture": 0,
-  "canManualCapturePartially": 0,
-  "canRefund": 0,
-  "canRefundPartially": 0,
-  "basketRequired": 0,
-  "currencies": [],
-  "countries": [],
-  "checkoutFieldsMandatory": [],
-  "additionalFields": {
-    "sdkClass": "OneyCarteCadeauPaymentMethod",
-    "formFields": {
-      "payment_product_parameters": {
-        "type": "text",
-        "required": true,
-        "display": true
-      }
-    }
-  },
-  "priority": 99
+    "productCode": "carte-cadeau",
+    "brandName": "Oney Carte Cadeau",
+    "category": "",
+    "comment": "",
+    "can3ds": 0,
+    "canRecurring": 0,
+    "canManualCapture": 0,
+    "canManualCapturePartially": 0,
+    "canRefund": 0,
+    "canRefundPartially": 0,
+    "basketRequired": 0,
+    "currencies": [],
+    "countries": [],
+    "checkoutFieldsMandatory": [],
+    "additionalFields": {
+        "sdkClass": "OneyCarteCadeauPaymentMethod",
+        "formFields": {
+            "payment_product_parameters": {
+                "type": "text",
+                "required": true,
+                "display": true
+            }
+        }
+    },
+    "priority": 99
 }

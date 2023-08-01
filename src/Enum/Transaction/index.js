@@ -13,15 +13,15 @@ const TransactionState = require('./TransactionState');
 const TransactionStatus = require('./TransactionStatus');
 
 module.exports = {
-  AuthenticationIndicator,
-  AVSResult,
-  CVCResult,
-  ECI,
-  FraudScreening,
-  Operation,
-  SecurityCodeType,
-  Template,
-  ThreeDSecureStatus,
-  TransactionState,
-  TransactionStatus
+    AuthenticationIndicator,
+    AVSResult,
+    CVCResult,
+    ECI,
+    FraudScreening,
+    Operation,
+    SecurityCodeType,
+    Template,
+    ThreeDSecureStatus,
+    TransactionState,
+    TransactionStatus
 };

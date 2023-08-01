@@ -339,6 +339,11 @@ class HiPay {
         return securitySettingsMapper.mappedObject;
     }
 
+    /**
+     * Formats parameters recursively for order API
+     * @param {Object} object The object to format
+     * @param {Object} formattedParams The formatted params to update
+     */
     static #formatParams(object, formattedParams) {
         for (let prop in object) {
             if (Object.prototype.hasOwnProperty.call(object, prop)) {
@@ -363,6 +368,11 @@ class HiPay {
         }
     }
 
+    /**
+     * Transforms a camelCase string into a snake_case string
+     * @param {String} propName
+     * @returns {String}
+     */
     static #camelCaseToSnakeCase(propName) {
         return propName.replace(/([A-Z])/g, '_$1').toLowerCase();
     }

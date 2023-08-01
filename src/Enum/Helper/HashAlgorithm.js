@@ -8,7 +8,7 @@
  * @type {{SHA256: string, SHA1: string, SHA512: string}}
  */
 module.exports = {
-  SHA1: 'SHA1',
-  SHA256: 'SHA256',
-  SHA512: 'SHA512'
+    SHA1: 'SHA1',
+    SHA256: 'SHA256',
+    SHA512: 'SHA512'
 };

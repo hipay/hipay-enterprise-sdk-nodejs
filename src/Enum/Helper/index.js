@@ -3,5 +3,5 @@
 const HashAlgorithm = require('./HashAlgorithm');
 
 module.exports = {
-  HashAlgorithm
+    HashAlgorithm
 };

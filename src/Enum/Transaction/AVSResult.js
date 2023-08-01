@@ -19,14 +19,14 @@
  * @type {{NOT_APPLICABLE: string, EXACT_MATCH: string, ADDRESS_MATCH: string, NOT_SUPPORTED: string, NO_MATCH: string, NOT_ALLOWED: string, UNAVAILABLE: string, NOT_COMPATIBLE: string, RETRY: string, POSTCODE_MATCH: string}}
  */
 module.exports = {
-  NOT_APPLICABLE: ' ',
-  EXACT_MATCH: 'Y',
-  ADDRESS_MATCH: 'A',
-  POSTCODE_MATCH: 'P',
-  NO_MATCH: 'N',
-  NOT_COMPATIBLE: 'C',
-  NOT_ALLOWED: 'E',
-  UNAVAILABLE: 'U',
-  RETRY: 'R',
-  NOT_SUPPORTED: 'S'
+    NOT_APPLICABLE: ' ',
+    EXACT_MATCH: 'Y',
+    ADDRESS_MATCH: 'A',
+    POSTCODE_MATCH: 'P',
+    NO_MATCH: 'N',
+    NOT_COMPATIBLE: 'C',
+    NOT_ALLOWED: 'E',
+    UNAVAILABLE: 'U',
+    RETRY: 'R',
+    NOT_SUPPORTED: 'S'
 };

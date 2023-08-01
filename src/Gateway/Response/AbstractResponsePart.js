@@ -1,11 +1,11 @@
 'use strict';
 
 class AbstractResponsePart {
-  constructor() {
-    this.initValues();
-  }
+    constructor() {
+        this.initValues();
+    }
 
-  initValues() {}
+    initValues() {}
 }
 
 module.exports = AbstractResponsePart;

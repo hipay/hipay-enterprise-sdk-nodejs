@@ -3,23 +3,23 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class SecuritySettings extends AbstractResponsePart {
-  constructor(values) {
-    if (typeof values !== 'object') {
-      values = {};
+    constructor(values) {
+        if (typeof values !== 'object') {
+            values = {};
+        }
+
+        super(values);
+
+        if (Object.prototype.hasOwnProperty.call(values, 'hashingAlgorithm')) {
+            this.hashingAlgorithm = values.hashingAlgorithm;
+        }
     }
 
-    super(values);
+    initValues() {
+        super.initValues();
 
-    if (Object.prototype.hasOwnProperty.call(values, 'hashingAlgorithm')) {
-      this.hashingAlgorithm = values.hashingAlgorithm;
+        this.hashingAlgorithm = null;
     }
-  }
-
-  initValues() {
-    super.initValues();
-
-    this.hashingAlgorithm = null;
-  }
 }
 
 module.exports = SecuritySettings;

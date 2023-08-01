@@ -17,8 +17,8 @@
  * @type {{AVAILABLE: number, BYPASS: number, MANDATORY: number, SIGN: number}}
  */
 module.exports = {
-  BYPASS: 0,
-  AVAILABLE: 1,
-  MANDATORY: 2,
-  SIGN: 1
+    BYPASS: 0,
+    AVAILABLE: 1,
+    MANDATORY: 2,
+    SIGN: 1
 };

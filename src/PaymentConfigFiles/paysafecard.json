@@ -1,20 +1,20 @@
 {
-  "productCode": "paysafecard",
-  "brandName": "PaysafeCard",
-  "category": "prepaid-card",
-  "comment": "",
-  "can3ds": 0,
-  "canRecurring": 0,
-  "canManualCapture": 0,
-  "canManualCapturePartially": 0,
-  "canRefund": 0,
-  "canRefundPartially": 0,
-  "basketRequired": 0,
-  "currencies": [],
-  "countries": [],
-  "checkoutFieldsMandatory": [],
-  "additionalFields": {
-    "sdkClass": "AbstractPaymentMethod"
-  },
-  "priority": 100
+    "productCode": "paysafecard",
+    "brandName": "PaysafeCard",
+    "category": "prepaid-card",
+    "comment": "",
+    "can3ds": 0,
+    "canRecurring": 0,
+    "canManualCapture": 0,
+    "canManualCapturePartially": 0,
+    "canRefund": 0,
+    "canRefundPartially": 0,
+    "basketRequired": 0,
+    "currencies": [],
+    "countries": [],
+    "checkoutFieldsMandatory": [],
+    "additionalFields": {
+        "sdkClass": "AbstractPaymentMethod"
+    },
+    "priority": 100
 }

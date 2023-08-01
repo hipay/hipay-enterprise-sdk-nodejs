@@ -3,5 +3,5 @@
 const Gender = require('./Gender');
 
 module.exports = {
-  Gender
+    Gender
 };

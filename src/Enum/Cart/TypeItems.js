@@ -6,7 +6,7 @@
  * @type {{FEE: string, GOOD: string, DISCOUNT: string}}
  */
 module.exports = {
-  GOOD: 'good',
-  DISCOUNT: 'discount',
-  FEE: 'fee'
+    GOOD: 'good',
+    DISCOUNT: 'discount',
+    FEE: 'fee'
 };

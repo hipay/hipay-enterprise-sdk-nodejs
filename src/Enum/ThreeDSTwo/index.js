@@ -10,12 +10,12 @@ const ShippingIndicator = require('./ShippingIndicator');
 const SuspiciousActivity = require('./SuspiciousActivity');
 
 module.exports = {
-  DeliveryTimeFrame,
-  DeviceChannel,
-  NameIndicator,
-  PurchaseIndicator,
-  ReorderIndicator,
-  SalesChannel,
-  ShippingIndicator,
-  SuspiciousActivity
+    DeliveryTimeFrame,
+    DeviceChannel,
+    NameIndicator,
+    PurchaseIndicator,
+    ReorderIndicator,
+    SalesChannel,
+    ShippingIndicator,
+    SuspiciousActivity
 };

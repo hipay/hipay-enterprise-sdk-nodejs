@@ -22,9 +22,9 @@
  * @type {{COMPLETED: string, ERROR: string, PENDING: string, FORWARDING: string, DECLINED: string}}
  */
 module.exports = {
-  COMPLETED: 'completed',
-  FORWARDING: 'forwarding',
-  PENDING: 'pending',
-  DECLINED: 'declined',
-  ERROR: 'error'
+    COMPLETED: 'completed',
+    FORWARDING: 'forwarding',
+    PENDING: 'pending',
+    DECLINED: 'declined',
+    ERROR: 'error'
 };
