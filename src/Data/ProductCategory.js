@@ -190,7 +190,8 @@ class ProductCategory {
 
     /**
      * Translations
-     * @type {{isoCode: string}}
+     * @template {String} ISO the ISO code of a language
+     * @type {Object<ISO, String>}
      * @private
      */
     _locals;

@@ -97,6 +97,7 @@ class ShippingMethod {
      * Human readable name, localized
      * @template {String} ISO the ISO code of a language
      * @type {Object<ISO, String>}
+     * @private
      */
     _displayName;
 
