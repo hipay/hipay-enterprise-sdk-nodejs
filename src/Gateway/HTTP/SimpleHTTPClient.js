@@ -123,8 +123,6 @@ class SimpleHTTPClient {
                 } else {
                     throw error;
                 }
-            } else {
-                // console.error('Call to API Data has thrown exception', error);
             }
         }
     }
