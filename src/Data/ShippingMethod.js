@@ -95,8 +95,8 @@ class ShippingMethod {
 
     /**
      * Human readable name, localized
-     * @type {{isoCode: string}}
-     * @private
+     * @template {String} ISO the ISO code of a language
+     * @type {Object<ISO, String>}
      */
     _displayName;
 

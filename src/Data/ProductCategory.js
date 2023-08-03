@@ -225,8 +225,10 @@ class ProductCategory {
 
     /**
      * Translations
-     * @returns {{isoCode: string}}
+     * @template {String} ISO the ISO code of a language
+     * @returns {Object<ISO, String>}
      */
+
     get locals() {
         return this._locals;
     }
