@@ -56,22 +56,21 @@ class Configuration {
     }
 
     /**
-   *
-   @param {Object} options
-   @param {string} [options.apiToken=null] Your authentication token for the HiPay API. Either this or username and password must be specified.
-   @param {string} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
-   @param {string} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
-   @param {string} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
-   @param {string} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
-   @param {Object} [options.proxy={}] Proxy information to add to the requests
-   @param {string} [options.proxy.host] Your proxy host
-   @param {Number} [options.proxy.port] Your proxy port
-   @param {Object} [options.proxy.auth] Your proxy authentication information
-   @param {string} [options.proxy.auth.username] Proxy authentication Username
-   @param {string} [options.proxy.auth.password] Proxy authentication Password
-   @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
-   @param {string} [options.httpUserAgent='HiPayFullservice/1.0 (SDK NodeJS)'] The user agent of the requests.
-   */
+     * @param {Object} [options] options
+     * @param {string} [options.apiToken] Your authentication token for the HiPay API. Either this or username and password must be specified.
+     * @param {string} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
+     * @param {string} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
+     * @param {string} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
+     * @param {string} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
+     * @param {Object} [options.proxy={}] Proxy information to add to the requests
+     * @param {string} [options.proxy.host] Your proxy host
+     * @param {Number} [options.proxy.port] Your proxy port
+     * @param {Object} [options.proxy.auth] Your proxy authentication information
+     * @param {string} [options.proxy.auth.username] Proxy authentication Username
+     * @param {string} [options.proxy.auth.password] Proxy authentication Password
+     * @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
+     * @param {string} [options.httpUserAgent='HiPayFullservice/1.0 (SDK NodeJS)'] The user agent of the requests.
+     */
     constructor(options) {
         const {
             apiToken = null,
@@ -130,39 +129,27 @@ class Configuration {
     }
 
     get apiEndpoint() {
-        let endpoint;
         switch (this.apiEnv) {
             case Configuration.API_ENV_CUSTOM:
-                endpoint = this._urlCustom ?? this.apiEndpointStage;
-                break;
+                return this._urlCustom ?? this.apiEndpointStage;
             case Configuration.API_ENV_PRODUCTION:
-                endpoint = this.apiEndpointProd;
-                break;
+                return this.apiEndpointProd;
             case Configuration.API_ENV_STAGE:
             default:
-                endpoint = this.apiEndpointStage;
-                break;
+                return this.apiEndpointStage;
         }
-
-        return endpoint;
     }
 
     get hpaymentApiEndpoint() {
-        let endpoint;
         switch (this.apiEnv) {
             case Configuration.API_ENV_CUSTOM:
-                endpoint = this._urlCustom ?? this.hpaymentApiEndpointStage;
-                break;
+                return this._urlCustom ?? this.hpaymentApiEndpointStage;
             case Configuration.API_ENV_PRODUCTION:
-                endpoint = this.hpaymentApiEndpointProd;
-                break;
+                return this.hpaymentApiEndpointProd;
             case Configuration.API_ENV_STAGE:
             default:
-                endpoint = this.hpaymentApiEndpointStage;
-                break;
+                return this.hpaymentApiEndpointStage;
         }
-
-        return endpoint;
     }
 
     get dataApiEndpointProd() {
@@ -227,7 +214,7 @@ class Configuration {
 
     set apiHTTPHeaderAccept(apiHTTPHeaderAccept) {
         if (!Configuration.VALID_HTTP_HEADERS.includes(apiHTTPHeaderAccept)) {
-            throw new InvalidArgumentException('Api HTTP Header Accept should be one of these values: ' + Configuration.VALID_HTTP_HEADERS.join());
+            throw new InvalidArgumentException(`Api HTTP Header Accept should be one of these values: ${Configuration.VALID_HTTP_HEADERS.join()}`);
         } else {
             this._apiHTTPHeaderAccept = apiHTTPHeaderAccept;
         }
@@ -238,7 +225,7 @@ class Configuration {
     }
 
     /**
-     *
+     * Set proxy
      * @param {Object} proxy
      * @param {string} [proxy.host] Your proxy host
      * @param {Number} [proxy.port] Your proxy port
@@ -250,9 +237,9 @@ class Configuration {
         if (typeof proxy !== 'object') {
             throw new InvalidArgumentException('Proxy should be an object');
         } else {
-            for (let prop in proxy) {
+            for (const prop in proxy) {
                 if (Object.prototype.hasOwnProperty.call(proxy, prop) && !Configuration.VALID_PROXY_KEYS.includes(prop)) {
-                    throw new InvalidArgumentException('Proxy keys should be: ' + Configuration.VALID_PROXY_KEYS.join());
+                    throw new InvalidArgumentException(`Proxy keys should be: ${Configuration.VALID_PROXY_KEYS.join()}`);
                 }
             }
 
@@ -271,16 +258,16 @@ class Configuration {
             if (proxy.auth) {
                 if (typeof proxy.auth !== 'object') {
                     throw new InvalidArgumentException(
-                        'Proxy auth should be an object with the following properties : ' + Configuration.VALID_PROXY_AUTH_KEYS.join()
+                        `Proxy auth should be an object with the following properties : ${Configuration.VALID_PROXY_AUTH_KEYS.join()}`
                     );
                 } else {
-                    for (let prop in proxy.auth) {
+                    for (const prop in proxy.auth) {
                         if (
                             Object.prototype.hasOwnProperty.call(proxy.auth, prop) &&
                             (!Configuration.VALID_PROXY_AUTH_KEYS.includes(prop) || typeof proxy.auth[prop] !== 'string')
                         ) {
                             throw new InvalidArgumentException(
-                                'Proxy auth keys should be: ' + Configuration.VALID_PROXY_AUTH_KEYS.join() + ' and should be string'
+                                `Proxy auth keys should be: ${Configuration.VALID_PROXY_AUTH_KEYS.join()} and should be string`
                             );
                         }
                     }

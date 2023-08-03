@@ -5,7 +5,7 @@ const PaymentMethod = require('../PaymentMethod');
 
 class PaymentMethodMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             token: typeof this.source.token !== 'undefined' ? this.source.token : null,
             brand: typeof this.source.brand !== 'undefined' ? this.source.brand : null,
             pan: typeof this.source.pan !== 'undefined' ? this.source.pan : null,

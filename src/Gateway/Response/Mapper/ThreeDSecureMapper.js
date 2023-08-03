@@ -5,7 +5,7 @@ const ThreeDSecure = require('../ThreeDSecure');
 
 class ThreeDSecureMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             eci: typeof this.source.eci !== 'undefined' ? this.source.eci : null,
             enrollmentStatus: typeof this.source.enrollmentStatus !== 'undefined' ? this.source.enrollmentStatus : null,
             enrollmentMessage: typeof this.source.enrollmentMessage !== 'undefined' ? this.source.enrollmentMessage : null,

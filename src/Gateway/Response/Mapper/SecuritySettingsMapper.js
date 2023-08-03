@@ -5,7 +5,7 @@ const SecuritySettings = require('../SecuritySettings');
 
 class SecuritySettingsMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             hashingAlgorithm: typeof this.source.hashing_algorithm !== 'undefined' ? this.source.hashing_algorithm : null
         };
 

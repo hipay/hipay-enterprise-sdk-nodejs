@@ -5,7 +5,7 @@ const OperationResponse = require('../OperationResponse');
 
 class OperationResponseMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             type: typeof this.source.type !== 'undefined' ? this.source.type : null,
             id: typeof this.source.id !== 'undefined' ? this.source.id : null,
             reference: typeof this.source.reference !== 'undefined' ? this.source.reference : null,

@@ -8,8 +8,7 @@ const Configuration = require('./Configuration/Configuration');
 
 class SimpleHTTPClient {
     /**
-     *
-     * @param configuration Configuration
+     * @param {Configuration} configuration
      */
     constructor(configuration) {
         this.configuration = configuration;
@@ -36,7 +35,6 @@ class SimpleHTTPClient {
      * @param {string|null} [options.baseUrl = ''] Request base URL
      * @param {Object} [options.body = {}] Request body parameters
      * @param {boolean} [options.isData = false] Is the request a request to the data API ?
-     * @returns Response
      */
     async request(method, endpoint, { baseUrl = '', body = {}, isData = false } = {}) {
         if (
@@ -62,7 +60,7 @@ class SimpleHTTPClient {
             userAgent = this.configuration.dataApiHttpUserAgent;
         }
 
-        let requestOptions = {
+        const requestOptions = {
             url: endpoint,
             method: method,
             baseURL: baseUrl,
@@ -74,10 +72,11 @@ class SimpleHTTPClient {
         };
 
         if (typeof this.configuration.apiToken !== 'undefined' && this.configuration.apiToken !== null) {
-            requestOptions.headers.Authorization = 'Bearer ' + this.configuration.apiToken;
+            requestOptions.headers.Authorization = `Bearer ${this.configuration.apiToken}`;
         } else {
-            requestOptions.headers.Authorization =
-                'Basic ' + Buffer.from(this.configuration.apiUsername + ':' + this.configuration.apiPassword).toString('base64');
+            requestOptions.headers.Authorization = `Basic ${Buffer.from(
+                `${this.configuration.apiUsername}:${this.configuration.apiPassword}`
+            ).toString('base64')}`;
         }
 
         if (this.configuration.proxy.host) {
@@ -97,7 +96,7 @@ class SimpleHTTPClient {
                 requestOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded';
                 requestOptions.data = Object.keys(body)
                     .map(function (key) {
-                        return key + '=' + encodeURIComponent(body[key]);
+                        return `${key}=${encodeURIComponent(body[key])}`;
                     })
                     .join('&');
             }
@@ -112,8 +111,8 @@ class SimpleHTTPClient {
         } catch (error) {
             if (!isData) {
                 if (error instanceof axios.AxiosError) {
-                    let errorResponse = error.response;
-                    let errorData = error.response.data;
+                    const errorResponse = error.response;
+                    const errorData = error.response.data;
 
                     if (errorData.code) {
                         throw new ApiErrorException(errorData.message, errorResponse.status, errorData.code, errorData.description);

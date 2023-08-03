@@ -5,7 +5,7 @@ const FraudScreening = require('../FraudScreening');
 
 class FraudScreeningMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             scoring: typeof this.source.scoring !== 'undefined' ? this.source.scoring : null,
             result: typeof this.source.result !== 'undefined' ? this.source.result : null,
             review: typeof this.source.review !== 'undefined' ? this.source.review : null

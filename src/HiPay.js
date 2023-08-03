@@ -158,26 +158,26 @@ class HiPay {
     /**
      * Request New Order
      * @param {OrderRequest} orderRequest
-     * @returns {Promise<Transaction>}
+     * @returns {Promise<import('./Gateway/Response/Transaction')>}
      */
     async requestNewOrder(orderRequest) {
         if (!(orderRequest instanceof OrderRequest)) {
             orderRequest = new OrderRequest(orderRequest);
         }
 
-        let piDataClient = new PIDataClient(this._clientProvider);
-        let piDataId = piDataClient.getDataId(orderRequest.deviceFingerprint, orderRequest.acceptUrl, orderRequest.orderid);
+        const piDataClient = new PIDataClient(this._clientProvider);
+        const piDataId = piDataClient.getDataId(orderRequest.deviceFingerprint, orderRequest.acceptUrl, orderRequest.orderid);
 
-        let formattedParams = {};
+        const formattedParams = {};
         HiPay.#formatParams(orderRequest, formattedParams);
 
-        let response = await this._clientProvider.request(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
+        const response = await this._clientProvider.request(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
             baseUrl: this._configuration.apiEndpoint,
             body: formattedParams
         });
 
-        let transactionMapper = new TransactionMapper(response.body);
-        let transaction = transactionMapper.mappedObject;
+        const transactionMapper = new TransactionMapper(response.body);
+        const transaction = transactionMapper.mappedObject;
 
         if (piDataId) {
             piDataClient.sendData(piDataClient.getOrderData(piDataId, orderRequest, transaction));
@@ -190,7 +190,7 @@ class HiPay {
      * Executes Hosted Payment Page request
      * @param {HostedPaymentPageRequest} pageRequest
      * @param {boolean} legacy Call the legacy payment page
-     * @returns {Promise<Transaction>} Resolves generate page URL
+     * @returns {Promise<import('./Gateway/Response/Transaction')>} Resolves generate page URL
      */
     async requestHostedPaymentPage(pageRequest, legacy = false) {
         if (!(pageRequest instanceof HostedPaymentPageRequest)) {
@@ -198,13 +198,13 @@ class HiPay {
         }
 
         // Data API client
-        let piDataClient = new PIDataClient(this._clientProvider);
+        const piDataClient = new PIDataClient(this._clientProvider);
 
         // Gets ID for Data API
         // If there is no device fingerprint, only uses acceptUrl
-        let piDataId = piDataClient.getDataId(pageRequest.deviceFingerprint, pageRequest.acceptUrl, pageRequest.orderid);
+        const piDataId = piDataClient.getDataId(pageRequest.deviceFingerprint, pageRequest.acceptUrl, pageRequest.orderid);
 
-        let formattedParams = {};
+        const formattedParams = {};
         HiPay.#formatParams(pageRequest, formattedParams);
 
         const endpointHpayment = legacy ? HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE : HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2;
@@ -212,13 +212,13 @@ class HiPay {
         const hpaymentUrl = legacy ? this._configuration.apiEndpoint : this._configuration.hpaymentApiEndpoint;
 
         // Call Hosted Payment Page generation endpoint
-        let response = await this._clientProvider.request(HiPay.METHOD_HOSTED_PAYMENT_PAGE, endpointHpayment, {
+        const response = await this._clientProvider.request(HiPay.METHOD_HOSTED_PAYMENT_PAGE, endpointHpayment, {
             baseUrl: hpaymentUrl,
             body: formattedParams
         });
 
-        let transactionMapper = new HostedPaymentPageMapper(response.body);
-        let transaction = transactionMapper.mappedObject;
+        const transactionMapper = new HostedPaymentPageMapper(response.body);
+        const transaction = transactionMapper.mappedObject;
 
         // If Data API ID was generated, send data to DATA API
         if (piDataId) {
@@ -232,7 +232,7 @@ class HiPay {
      * Executes a maintenance Operation
      * @param {MaintenanceRequest} maintenanceRequest
      * @param {String} transactionReference Transaction targeted by the maintenance
-     * @returns {Promise<Operation>}
+     * @returns {Promise<import('./Gateway/Response/Operation')>}
      */
     async requestMaintenanceOperation(maintenanceRequest, transactionReference) {
         if (!(maintenanceRequest instanceof MaintenanceRequest)) {
@@ -243,17 +243,17 @@ class HiPay {
             throw new InvalidArgumentException('Transaction reference must be a string');
         }
 
-        let formattedParams = {};
+        const formattedParams = {};
         HiPay.#formatParams(maintenanceRequest, formattedParams);
 
-        let endPoint = HiPay.ENDPOINT_MAINTENANCE_OPERATION.split('{transaction}').join(transactionReference);
+        const endPoint = HiPay.ENDPOINT_MAINTENANCE_OPERATION.split('{transaction}').join(transactionReference);
 
-        let response = await this._clientProvider.request(HiPay.METHOD_MAINTENANCE_OPERATION, endPoint, {
+        const response = await this._clientProvider.request(HiPay.METHOD_MAINTENANCE_OPERATION, endPoint, {
             baseUrl: this._configuration.apiEndpoint,
             body: formattedParams
         });
 
-        let operationMapper = new OperationMapper(response.body);
+        const operationMapper = new OperationMapper(response.body);
 
         return operationMapper.mappedObject;
     }
@@ -262,23 +262,23 @@ class HiPay {
      * Returns a transaction information
      *
      * @param {String} transactionReference The HiPay transaction reference
-     * @returns {Promise<Transaction|null>}
+     * @returns {Promise<import('./Gateway/Response/Transaction')|null>}
      */
     async requestTransactionInformation(transactionReference) {
         if (!transactionReference || typeof transactionReference !== 'string') {
             throw new InvalidArgumentException('Transaction reference must be a string');
         }
 
-        let endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join(transactionReference);
+        const endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join(transactionReference);
 
-        let response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_INFORMATION, endPoint, {
+        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_INFORMATION, endPoint, {
             baseUrl: this._configuration.apiEndpoint
         });
 
         if (response.body.transaction) {
             response.body.transaction.basket = response.body.basket;
 
-            let transactionMapper = new TransactionMapper(response.body.transaction);
+            const transactionMapper = new TransactionMapper(response.body.transaction);
 
             return transactionMapper.mappedObject;
         } else {
@@ -290,32 +290,32 @@ class HiPay {
      * Returns a transaction information based on a order ID
      *
      * @param {String} orderId The order id to search for
-     * @returns {Promise<Array<Transaction>>}
+     * @returns {Promise<Array<import('./Gateway/Response/Transaction')>>}
      */
     async requestOrderTransactionInformation(orderId) {
         if (!orderId || typeof orderId !== 'string') {
             throw new InvalidArgumentException('Order ID must be a string');
         }
 
-        let transactions = [];
+        const transactions = [];
 
-        let endPoint = `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid=${orderId}`;
+        const endPoint = `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid=${orderId}`;
 
-        let response = await this._clientProvider.request(HiPay.METHOD_ORDER_TRANSACTION_INFORMATION, endPoint, {
+        const response = await this._clientProvider.request(HiPay.METHOD_ORDER_TRANSACTION_INFORMATION, endPoint, {
             baseUrl: this._configuration.apiEndpoint
         });
 
         if (response.body.transaction) {
             // Single transaction response
             if (response.body.transaction.state) {
-                let transactionMapper = new TransactionMapper(response.body.transaction);
+                const transactionMapper = new TransactionMapper(response.body.transaction);
 
                 transactions.push(transactionMapper.mappedObject);
             } else {
                 //Array of transactions
 
-                for (let transaction of response.body.transaction) {
-                    let transactionMapper = new TransactionMapper(transaction);
+                for (const transaction of response.body.transaction) {
+                    const transactionMapper = new TransactionMapper(transaction);
 
                     transactions.push(transactionMapper.mappedObject);
                 }
@@ -328,14 +328,14 @@ class HiPay {
     /**
      * Returns security settings
      *
-     * @returns {Promise<SecuritySettings>}
+     * @returns {Promise<import('./Gateway/Response/SecuritySettings')>}
      */
     async requestSecuritySettings() {
-        let response = await this._clientProvider.request(HiPay.METHOD_SECURITY_SETTINGS, HiPay.ENDPOINT_SECURITY_SETTINGS, {
+        const response = await this._clientProvider.request(HiPay.METHOD_SECURITY_SETTINGS, HiPay.ENDPOINT_SECURITY_SETTINGS, {
             baseUrl: this._configuration.apiEndpoint
         });
 
-        let securitySettingsMapper = new SecuritySettingsMapper(response.body);
+        const securitySettingsMapper = new SecuritySettingsMapper(response.body);
         return securitySettingsMapper.mappedObject;
     }
 
@@ -345,7 +345,7 @@ class HiPay {
      * @param {Object} formattedParams The formatted params to update
      */
     static #formatParams(object, formattedParams) {
-        for (let prop in object) {
+        for (const prop in object) {
             if (Object.prototype.hasOwnProperty.call(object, prop)) {
                 let value = object[prop];
 
@@ -371,7 +371,6 @@ class HiPay {
     /**
      * Transforms a camelCase string into a snake_case string
      * @param {String} propName
-     * @returns {String}
      */
     static #camelCaseToSnakeCase(propName) {
         return propName.replace(/([A-Z])/g, '_$1').toLowerCase();

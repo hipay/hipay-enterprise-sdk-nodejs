@@ -6,7 +6,7 @@ const Order = require('../Order');
 
 class OrderMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             id: typeof this.source.id !== 'undefined' ? this.source.id : null,
             customerId: typeof this.source.customerId !== 'undefined' ? this.source.customerId : null,
             amount: typeof this.source.amount !== 'undefined' ? this.source.amount : null,

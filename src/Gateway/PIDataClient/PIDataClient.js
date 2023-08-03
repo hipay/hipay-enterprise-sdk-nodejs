@@ -40,8 +40,7 @@ class PIDataClient {
 
     /**
      * Execute HTTP request
-     * @param data
-     * @returns {Promise<void>}
+     * @param {Object} data
      */
     async sendData(data) {
         await this.clientProvider.request(PIDataClient.METHOD_DATA_API, PIDataClient.ENDPOINT_DATA_API, {
@@ -56,7 +55,7 @@ class PIDataClient {
      * @param {(String|undefined)} dataId sha256 dataId
      * @param {OrderRequest} orderRequest Order Request
      * @param {Transaction} transaction Transaction
-     * @returns {Object} Order parameters
+     * @returns Order parameters
      */
     getOrderData(dataId, orderRequest, transaction) {
         const commonData = this.getCommonData(dataId, orderRequest);
@@ -76,7 +75,7 @@ class PIDataClient {
      * Returns HPayment Request data
      * @param {(String|undefined)} dataId sha256 dataId
      * @param {HostedPaymentPageRequest} hostedPaymentPageRequest Order Request
-     * @returns {Object} Order parameters
+     * @returns Hpayment parameters
      */
     getHPaymentData(dataId, hostedPaymentPageRequest) {
         const commonData = this.getCommonData(dataId, hostedPaymentPageRequest);
@@ -133,7 +132,7 @@ class PIDataClient {
 
     /**
      * Return current HTTP client provider
-     * @returns {SimpleHTTPClient} client provider
+     * @returns client provider
      */
     get clientProvider() {
         return this._clientProvider;
@@ -141,7 +140,7 @@ class PIDataClient {
 
     /**
      * Generate new UTC Date
-     * @returns {Date} new date
+     * @returns new date
      */
     setNewDate() {
         return new Date().toISOString();
@@ -150,7 +149,7 @@ class PIDataClient {
     /**
      * Get domain of an URL
      * @param {String} url URL
-     * @returns {(String|undefined)} domain
+     * @returns domain
      */
     getDomainFromUrl(url) {
         try {
@@ -165,7 +164,7 @@ class PIDataClient {
      * @param {String} deviceFingerprint Device Fingerprint
      * @param {String} acceptUrl Accept URL
      * @param {String} orderId Order ID
-     * @returns {(String|undefined)} sha256 dataId
+     * @returns sha256 dataId
      */
     getDataId(deviceFingerprint, acceptUrl, orderId) {
         // If device fingerprint is available, add it in ID, otherwise only use orderId
@@ -173,7 +172,7 @@ class PIDataClient {
             let domain = this.getDomainFromUrl(acceptUrl);
             return crypto
                 .createHash('sha256')
-                .update(deviceFingerprint + (domain ? ':' + domain : ''), 'utf8')
+                .update(deviceFingerprint + (domain ? `:${domain}` : ''), 'utf8')
                 .digest('hex');
         } else {
             return crypto.createHash('sha256').update(orderId, 'utf8').digest('hex');

@@ -5,7 +5,7 @@ const PersonalInformation = require('../PersonalInformation');
 
 class PersonalInformationMapper extends AbstractMapper {
     mapResponseToModel() {
-        let values = {
+        const values = {
             firstname: typeof this.source.firstname !== 'undefined' ? this.source.firstname : null,
             lastname: typeof this.source.lastname !== 'undefined' ? this.source.lastname : null,
             streetAddress: typeof this.source.streetAddress !== 'undefined' ? this.source.streetAddress : null,
