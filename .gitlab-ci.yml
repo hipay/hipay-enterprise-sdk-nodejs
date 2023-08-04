@@ -16,3 +16,6 @@ include:
 install:
   script:
     - cd $PATH_SRC/ && yarn install
+
+.npm-publish-template:
+  needs: [install]
