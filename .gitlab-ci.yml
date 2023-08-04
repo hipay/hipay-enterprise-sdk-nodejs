@@ -19,3 +19,10 @@ install:
 
 .npm-publish-template:
   needs: [install]
+  script:
+    - cd $PATH_SRC/
+    - echo $PKG_VERSION
+    - echo $PKG_TAG
+    - npm --no-git-tag-version --allow-same-version version $PKG_VERSION
+    - npm publish --access public --tag $PKG_TAG
+
