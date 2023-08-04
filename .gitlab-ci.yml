@@ -1,6 +1,12 @@
 variables:
   NODE_VERSION: 18
 
+.cache:
+  variables:
+    PATH_NODE_MODULES: src/node_modules/
+    PATH_NPMRC: src/.npmrc
+    PATH_SRC: src
+
 include:
   - project: common/templates/ci-microservices
     ref: 1.7.1
