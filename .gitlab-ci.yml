@@ -6,3 +6,4 @@ include:
     ref: 1.7.1
     file:
       - microservice_node_ci.yaml
+      - library-ci.yaml
