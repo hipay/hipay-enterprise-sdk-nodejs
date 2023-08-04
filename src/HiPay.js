@@ -148,7 +148,7 @@ class HiPay {
      * @param {string} [options.proxy.auth.username] Proxy authentication Username
      * @param {string} [options.proxy.auth.password] Proxy authentication Password
      * @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
-     * @param {string} [options.httpUserAgent='HiPayFullservice/1.0 (SDK NodeJS)'] The user agent of the requests.
+     * @param {string} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
      */
     constructor(options) {
         this._configuration = new Configuration(options);

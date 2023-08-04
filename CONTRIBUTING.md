@@ -1,8 +1,8 @@
-# Contributing to the HiPay Fullservice SDK NodeJS
+# Contributing to the HiPay Enterprise SDK NodeJS
 
 > :warning: This repository is a mirror of a private repository for this plugin, so we are not able to merge your PRs directly in GitHub. Any open PRs will be added to the main repository and closed in GitHub. Any contributor will be credited in the plugin's changelog.
 
-Contributions to the HiPay Fullservice SDK NodeJS should be made via GitHub [pull requests][pull-requests] and discussed using GitHub [issues][issues].
+Contributions to the HiPay Enterprise SDK NodeJS should be made via GitHub [pull requests][pull-requests] and discussed using GitHub [issues][issues].
 
 ## Before you start
 
@@ -18,9 +18,9 @@ Any contributions should pass all tests.
 
 ## Licensing
 
-The HiPay FullserviceSDK PHP is released under an [Apache 2.0][project-license] license. Any code you submit will be released under that license.
+The HiPay Enterprise SDK NodeJS is released under an [Apache 2.0][project-license] license. Any code you submit will be released under that license.
 
 [project-license]: LICENSE.md
 
-[pull-requests]: https://github.com/hipay/hipay-fullservice-sdk-nodejs/pulls
-[issues]: https://github.com/hipay/hipay-fullservice-sdk-nodejs/issues
+[pull-requests]: https://github.com/hipay/hipay-enterprise-sdk-nodejs/pulls
+[issues]: https://github.com/hipay/hipay-enterprise-sdk-nodejs/issues

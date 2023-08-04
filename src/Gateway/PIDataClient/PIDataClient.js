@@ -123,8 +123,8 @@ class PIDataClient {
                 cms_version: sourceData.brandVersion ?? '',
                 cms_module_version: sourceData.integration_version ?? '',
                 sdk_server: 'nodejs',
-                // Save hipay-fullservice-sdk-nodejs version in data API (for later use)
-                sdk_server_version: process.versions['hipay-fullservice-sdk-nodejs'] ?? sourceData.sdk_server_version,
+                // Save hipay-enterprise-sdk-nodejs version in data API (for later use)
+                sdk_server_version: process.versions['hipay-enterprise-sdk-nodejs'] ?? sourceData.sdk_server_version,
                 sdk_server_engine_version: process.version
             }
         };

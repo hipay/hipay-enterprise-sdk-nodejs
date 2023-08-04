@@ -89,7 +89,7 @@ describe('Configuration', () => {
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});
         expect(conf.timeout).toEqual(35);
-        expect(conf.httpUserAgent).toEqual('HiPayFullservice/1.0 (SDK NodeJS)');
+        expect(conf.httpUserAgent).toEqual('HiPayEnterprise/1.0 (SDK NodeJS)');
     });
 
     it('constructs minimal production', () => {
@@ -108,7 +108,7 @@ describe('Configuration', () => {
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});
         expect(conf.timeout).toEqual(35);
-        expect(conf.httpUserAgent).toEqual('HiPayFullservice/1.0 (SDK NodeJS)');
+        expect(conf.httpUserAgent).toEqual('HiPayEnterprise/1.0 (SDK NodeJS)');
     });
 
     it('constructs minimal username + password', () => {
@@ -127,7 +127,7 @@ describe('Configuration', () => {
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});
         expect(conf.timeout).toEqual(35);
-        expect(conf.httpUserAgent).toEqual('HiPayFullservice/1.0 (SDK NodeJS)');
+        expect(conf.httpUserAgent).toEqual('HiPayEnterprise/1.0 (SDK NodeJS)');
     });
 
     it('constructs wrong custom env', () => {
@@ -147,7 +147,7 @@ describe('Configuration', () => {
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});
         expect(conf.timeout).toEqual(35);
-        expect(conf.httpUserAgent).toEqual('HiPayFullservice/1.0 (SDK NodeJS)');
+        expect(conf.httpUserAgent).toEqual('HiPayEnterprise/1.0 (SDK NodeJS)');
     });
 
     it('constructs wrong custom data env', () => {
@@ -166,7 +166,7 @@ describe('Configuration', () => {
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});
         expect(conf.timeout).toEqual(35);
-        expect(conf.httpUserAgent).toEqual('HiPayFullservice/1.0 (SDK NodeJS)');
+        expect(conf.httpUserAgent).toEqual('HiPayEnterprise/1.0 (SDK NodeJS)');
     });
 
     it('errors when no authentication', () => {

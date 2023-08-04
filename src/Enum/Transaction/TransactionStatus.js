@@ -3,7 +3,7 @@
 /**
  * Enumeration for Transaction statues
  *
- * List of possible statues returned by Fullservice API
+ * List of possible statues returned by Enterprise API
  *
  * UNKNOWN Unknown status
  * CREATED The payment attempt was created

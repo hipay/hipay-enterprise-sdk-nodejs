@@ -1,5 +1,5 @@
 {
-    "name": "@hipay/hipay-fullservice-sdk",
+    "name": "@hipay/hipay-enterprise-sdk",
     "description": "HiPay Backend SDK",
     "version": "1.0.0",
     "license": "Apache-2.0",
