@@ -19,6 +19,8 @@ install:
 
 .npm-publish-template:
   needs: [install]
+  before_script:
+    - cp *.md $PATH_SRC/
   script:
     - cd $PATH_SRC/
     - echo $PKG_VERSION
