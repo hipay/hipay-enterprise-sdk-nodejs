@@ -3,6 +3,21 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class Order extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {String} [values.id]
+     * @param {String} [values.customerId]
+     * @param {Number} [values.amount]
+     * @param {Number} [values.tax]
+     * @param {Number} [values.shipping]
+     * @param {String} [values.dateCreated]
+     * @param {Number} [values.attempts]
+     * @param {String} [values.currency]
+     * @param {Number} [values.decimals]
+     * @param {String} [values.gender]
+     * @param {String} [values.language]
+     * @param {import('./PersonalInformation')} [values.shippingAddress]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};
@@ -46,9 +61,6 @@ class Order extends AbstractResponsePart {
         if (Object.prototype.hasOwnProperty.call(values, 'shippingAddress')) {
             this.shippingAddress = values.shippingAddress;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'email')) {
-            this.email = values.email;
-        }
     }
 
     initValues() {
@@ -66,7 +78,6 @@ class Order extends AbstractResponsePart {
         this.gender = null;
         this.language = null;
         this.shippingAddress = null;
-        this.email = null;
     }
 }
 

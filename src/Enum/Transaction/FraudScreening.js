@@ -17,7 +17,7 @@
  * REVIEW_ALLOWED The transaction has been released for processing
  * REVIEW_DENIED The transaction has been cancelled
  *
- * @type {{RESULT_BLOCKED: string, REVIEW_DENIED: string, RESULT_PENDING: string, RESULT_ACCEPTED: string, REVIEW_ALLOWED: string, REVIEW_PENDING: string, RESULT_CHALLENGED: string, REVIEW_NONE: string, RESULT_UNKNOWN: string}}
+ * @type {{RESULT_BLOCKED: String, REVIEW_DENIED: String, RESULT_PENDING: String, RESULT_ACCEPTED: String, REVIEW_ALLOWED: String, REVIEW_PENDING: String, RESULT_CHALLENGED: String, REVIEW_NONE: String, RESULT_UNKNOWN: String}}
  */
 module.exports = {
     RESULT_UNKNOWN: 'unknown',

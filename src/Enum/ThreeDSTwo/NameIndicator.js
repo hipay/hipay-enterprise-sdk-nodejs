@@ -8,7 +8,7 @@
  *     IDENTICAL: The delivery name is the same as the card holder
  *     DIFFERENT: The delivery name is different from the card holder
  *
- * @type {{IDENTICAL: number, DIFFERENT: number}}
+ * @type {{IDENTICAL: Number, DIFFERENT: Number}}
  */
 module.exports = {
     IDENTICAL: 1,

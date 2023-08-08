@@ -5,7 +5,7 @@ class PaymentMeanAdditionalFields {
     /**
      * Name of the SDK Class for this payment mean
      *
-     * @type {string}
+     * @type {String}
      * @private
      */
     _sdkClass;
@@ -20,7 +20,7 @@ class PaymentMeanAdditionalFields {
     /**
      *
      * @param {Object} [additionalFields]
-     * @param {string} [additionalFields.sdkClass] Name of the SDK Class for this payment mean
+     * @param {String} [additionalFields.sdkClass] Name of the SDK Class for this payment mean
      * @param {Object} [additionalFields.formFields] Additional fields available for this payment mean
      */
     constructor(additionalFields = {}) {
@@ -29,7 +29,7 @@ class PaymentMeanAdditionalFields {
     }
 
     get sdkClass() {
-        return require('../Gateway/Request/PaymentMethod/' + this._sdkClass);
+        return require(`../Gateway/Request/PaymentMethod/${this._sdkClass}`);
     }
 
     get formFields() {
@@ -55,81 +55,81 @@ class PaymentMeanAdditionalFields {
  * The collection of all payment means handled by this SDK
  */
 class PaymentMean {
-    static _PAYMENT_CONFIG_FILE_PATH = __dirname + '/../PaymentConfigFiles/';
+    static _PAYMENT_CONFIG_FILE_PATH = `${__dirname}/../PaymentConfigFiles/`;
 
     /**
      * The technical code of the payment mean
-     * @type {string}
+     * @type {String}
      * @private
      */
     _paymentMeanCode;
 
     /**
      * Human readable name of the payment mean
-     * @type {string}
+     * @type {String}
      * @private
      */
     _brandName;
 
     /**
      * Payment mean's category
-     * @type {string}
+     * @type {String}
      * @private
      */
     _category;
 
     /**
      * Short payment mean description
-     * @type {string}
+     * @type {String}
      * @private
      */
     _comment = '';
 
     /**
      * Can use 3DS security
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _can3ds = false;
 
     /**
      * Can be used for recurring payment
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _canRecurring = false;
 
     /**
      * Can be captured manually
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _canManualCapture = false;
 
     /**
      * Can be captured partially
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _canManualCapturePartially = false;
 
     /**
      * Can be refunded
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _canRefund = false;
 
     /**
      * Can be refunded partially
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _canRefundPartially = false;
 
     /**
      * Is the basket description required
-     * @type {boolean}
+     * @type {Boolean}
      * @private
      */
     _basketRequired = false;
@@ -164,7 +164,7 @@ class PaymentMean {
 
     /**
      * Payment mean priority in the payment page
-     * @type {number}
+     * @type {Number}
      * @private
      */
     _priority = 99;
@@ -197,7 +197,7 @@ class PaymentMean {
 
     /**
      * The technical code of the payment mean
-     * @returns {string}
+     * @returns {String}
      */
     get paymentMeanCode() {
         return this._paymentMeanCode;
@@ -205,7 +205,7 @@ class PaymentMean {
 
     /**
      * Human readable name of the payment mean
-     * @returns {string}
+     * @returns {String}
      */
     get brandName() {
         return this._brandName;
@@ -213,7 +213,7 @@ class PaymentMean {
 
     /**
      * Payment mean's category
-     * @returns {string}
+     * @returns {String}
      */
     get category() {
         return this._category;
@@ -221,7 +221,7 @@ class PaymentMean {
 
     /**
      * Short payment mean description
-     * @returns {string}
+     * @returns {String}
      */
     get comment() {
         return this._comment;
@@ -229,7 +229,7 @@ class PaymentMean {
 
     /**
      * Can use 3DS security
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get can3ds() {
         return this._can3ds;
@@ -237,7 +237,7 @@ class PaymentMean {
 
     /**
      * Can be used for recurring payment
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get canRecurring() {
         return this._canRecurring;
@@ -245,7 +245,7 @@ class PaymentMean {
 
     /**
      * Can be captured manually
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get canManualCapture() {
         return this._canManualCapture;
@@ -253,7 +253,7 @@ class PaymentMean {
 
     /**
      * Can be captured partially
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get canManualCapturePartially() {
         return this._canManualCapturePartially;
@@ -261,7 +261,7 @@ class PaymentMean {
 
     /**
      * Can be refunded
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get canRefund() {
         return this._canRefund;
@@ -269,7 +269,7 @@ class PaymentMean {
 
     /**
      * Can be refunded partially
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get canRefundPartially() {
         return this._canRefundPartially;
@@ -277,7 +277,7 @@ class PaymentMean {
 
     /**
      * Is the basket description required
-     * @returns {boolean}
+     * @returns {Boolean}
      */
     get basketRequired() {
         return this._basketRequired;
@@ -317,7 +317,7 @@ class PaymentMean {
 
     /**
      * Payment mean priority in the payment page
-     * @returns {number}
+     * @returns {Number}
      */
     get priority() {
         return this._priority;
@@ -330,7 +330,7 @@ class PaymentMean {
      */
     static getPaymentMean(paymentMeanCode) {
         try {
-            const paymentMeanData = require(this._PAYMENT_CONFIG_FILE_PATH + paymentMeanCode + '.json');
+            const paymentMeanData = require(`${this._PAYMENT_CONFIG_FILE_PATH + paymentMeanCode}.json`);
 
             return new PaymentMean(paymentMeanData);
         } catch (e) {

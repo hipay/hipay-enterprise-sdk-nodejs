@@ -7,11 +7,11 @@ class SEPADirectDebitPaymentMethod extends IssuerBankIDPaymentMethod {
      * Creates a SEPA Direct Debit Payment Method Object
      *
      * @param {Object} values
-     * @param {string} values.issuer_bank_id Business Identifier Code of the customer's bank
-     * @param {string} [values.debit_agreement_id] Debit agreement ID
+     * @param {String} values.issuer_bank_id Business Identifier Code of the customer's bank
+     * @param {String} [values.debit_agreement_id] Debit agreement ID
      * @param {Number} [values.recurring_payment = 0] Indicates if the debit agreement will be created for a single-use or a multi-use. 0 : Single use, 1 : Multi-use
-     * @param {string} values.bank_name Customer's bank name
-     * @param {string} values.iban Customer's IBAN
+     * @param {String} values.bank_name Customer's bank name
+     * @param {String} values.iban Customer's IBAN
      */
     constructor(values) {
         super(values);

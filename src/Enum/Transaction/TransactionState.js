@@ -19,7 +19,7 @@
  * DECLINED Transaction is declined
  * ERROR an error occurred
  *
- * @type {{COMPLETED: string, ERROR: string, PENDING: string, FORWARDING: string, DECLINED: string}}
+ * @type {{COMPLETED: String, ERROR: String, PENDING: String, FORWARDING: String, DECLINED: String}}
  */
 module.exports = {
     COMPLETED: 'completed',

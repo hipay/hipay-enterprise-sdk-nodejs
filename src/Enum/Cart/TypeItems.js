@@ -3,7 +3,7 @@
 /**
  * Type items for params Basket
  *
- * @type {{FEE: string, GOOD: string, DISCOUNT: string}}
+ * @type {{FEE: String, GOOD: String, DISCOUNT: String}}
  */
 module.exports = {
     GOOD: 'good',

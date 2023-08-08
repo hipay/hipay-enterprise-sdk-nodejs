@@ -8,7 +8,7 @@ class IssuerBankIDPaymentMethod extends AbstractPaymentMethod {
      * Used in iDeal & SEPA Direct Debit Payment Methods
      *
      * @param {Object} values
-     * @param {string} values.issuer_bank_id Business Identifier Code of the customer's bank
+     * @param {String} values.issuer_bank_id Business Identifier Code of the customer's bank
      */
     constructor(values) {
         super();

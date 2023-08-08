@@ -3,6 +3,10 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class SecuritySettings extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {String} [values.hashingAlgorithm]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};

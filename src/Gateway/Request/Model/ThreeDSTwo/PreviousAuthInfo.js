@@ -6,7 +6,7 @@ class PreviousAuthInfo extends AbstractModel {
      * Creates a PreviousAuthInfo Object
      *
      * @param {Object} [values = {}]
-     * @param {string} [values.transaction_reference] Previous transaction reference made by the customer
+     * @param {String} [values.transaction_reference] Previous transaction reference made by the customer
      */
     constructor(values) {
         super();

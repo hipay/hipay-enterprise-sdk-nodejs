@@ -8,8 +8,8 @@ class XTimesCreditCardPaymentMethod extends AbstractPaymentMethod {
      *
      * @param {Object} values
      * @param {Number} values.eci Transaction Electronic Commerce Indicator. See the Transaction.ECI Enum
-     * @param {string} [values.order_category_code] Category of the order. See ProductCategory Collection
-     * @param {string} [values.carrier_description] Short Description of your carrier
+     * @param {String} [values.order_category_code] Category of the order. See ProductCategory Collection
+     * @param {String} [values.carrier_description] Short Description of your carrier
      * @param {Object} [values.payment_product_parameters] Additional parameters
      */
     constructor(values) {

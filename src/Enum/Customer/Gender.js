@@ -3,7 +3,7 @@
 /**
  * Customer gender constant values
  *
- * @type {{UNKNOWN: string, MALE: string, FEMALE: string}}
+ * @type {{UNKNOWN: String, MALE: String, FEMALE: String}}
  */
 module.exports = {
     UNKNOWN: 'U',

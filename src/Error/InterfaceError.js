@@ -2,10 +2,6 @@
 
 const HiPayNodeSDKError = require('./HiPayNodeSDKError');
 
-class InterfaceError extends HiPayNodeSDKError {
-    constructor(...args) {
-        super(...args);
-    }
-}
+class InterfaceError extends HiPayNodeSDKError {}
 
 module.exports = InterfaceError;

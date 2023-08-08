@@ -16,7 +16,7 @@
  * UNAVAILABLE  Address information is unavailable for that account number, or the card issuer does not support AVS.
  * RETRY  Issuer authorization system is unavailable, try again later.
  * NOT_SUPPORTED  Card issuer does not support AVS.
- * @type {{NOT_APPLICABLE: string, EXACT_MATCH: string, ADDRESS_MATCH: string, NOT_SUPPORTED: string, NO_MATCH: string, NOT_ALLOWED: string, UNAVAILABLE: string, NOT_COMPATIBLE: string, RETRY: string, POSTCODE_MATCH: string}}
+ * @type {{NOT_APPLICABLE: String, EXACT_MATCH: String, ADDRESS_MATCH: String, NOT_SUPPORTED: String, NO_MATCH: String, NOT_ALLOWED: String, UNAVAILABLE: String, NOT_COMPATIBLE: String, RETRY: String, POSTCODE_MATCH: String}}
  */
 module.exports = {
     NOT_APPLICABLE: ' ',

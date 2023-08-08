@@ -8,7 +8,7 @@
  *     NO_SUSPICIOUS_ACTIVITY: No suspicious activity detected
  *     SUSPICIOUS_ACTIVITY: Suspicious activity detected, this payment should be made with care
  *
- * @type {{NO_SUSPICIOUS_ACTIVITY: number, SUSPICIOUS_ACTIVITY: number}}
+ * @type {{NO_SUSPICIOUS_ACTIVITY: Number, SUSPICIOUS_ACTIVITY: Number}}
  */
 module.exports = {
     NO_SUSPICIOUS_ACTIVITY: 1,

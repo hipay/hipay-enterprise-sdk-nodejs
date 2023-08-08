@@ -7,7 +7,7 @@ class MerchantRiskStatement extends AbstractModel {
      * Creates a MerchantRiskStatement Object
      *
      * @param {Object} [values = {}]
-     * @param {string} [values.email_delivery_address] Customer's email adress for electronic goods
+     * @param {String} [values.email_delivery_address] Customer's email adress for electronic goods
      * @param {Number} [values.delivery_time_frame] See DeliveryTimeFrame Enum
      * @param {Number} [values.purchase_indicator] See PurchaseIndicator Enum
      * @param {Number} [values.pre_order_date] Date of the pre-order, format YYYYMMDD

@@ -151,7 +151,7 @@ class DeliveryMethod {
 
     /**
      * Technical code
-     * @type {string|number}
+     * @type {String|Number}
      * @private
      */
     _code;
@@ -176,7 +176,7 @@ class DeliveryMethod {
      */
     constructor(deliveryMethodData = {}) {
         for (let prop in deliveryMethodData) {
-            if (Object.prototype.hasOwnProperty.call(this, '_' + prop)) {
+            if (Object.prototype.hasOwnProperty.call(this, `_${prop}`)) {
                 this[`_${prop}`] = deliveryMethodData[prop];
             }
         }
@@ -184,14 +184,14 @@ class DeliveryMethod {
 
     /**
      * Technical code
-     * @returns {string|number}
+     * @returns {String|Number}
      */
     get code() {
         return this._code;
     }
 
     /**
-     * @param {string|number} value
+     * @param {String|Number} value
      */
     set code(value) {
         this._code = value;

@@ -36,91 +36,91 @@ const DataCollections = require('./Data');
 
 class HiPay {
     /**
-     * @return {string} ENDPOINT_NEW_ORDER endpoint to create a new transaction order
+     * @return {String} ENDPOINT_NEW_ORDER endpoint to create a new transaction order
      */
     static get ENDPOINT_NEW_ORDER() {
         return '/rest/v1/order';
     }
 
     /**
-     * @return {string} METHOD_NEW_ORDER http method to create a new transaction order
+     * @return {String} METHOD_NEW_ORDER http method to create a new transaction order
      */
     static get METHOD_NEW_ORDER() {
         return 'POST';
     }
 
     /**
-     * @return {string} ENDPOINT_HOSTED_PAYMENT_PAGE endpoint to call Hosted payment page
+     * @return {String} ENDPOINT_HOSTED_PAYMENT_PAGE endpoint to call Hosted payment page
      */
     static get ENDPOINT_HOSTED_PAYMENT_PAGE() {
         return '/rest/v1/hpayment';
     }
 
     /**
-     * @return {string} ENDPOINT_HOSTED_PAYMENT_PAGE_V2 endpoint to call new Hosted payment page
+     * @return {String} ENDPOINT_HOSTED_PAYMENT_PAGE_V2 endpoint to call new Hosted payment page
      */
     static get ENDPOINT_HOSTED_PAYMENT_PAGE_V2() {
         return '/v1/hpayment';
     }
 
     /**
-     * @return {string} METHOD_HOSTED_PAYMENT_PAGE http method to call Hosted payment page
+     * @return {String} METHOD_HOSTED_PAYMENT_PAGE http method to call Hosted payment page
      */
     static get METHOD_HOSTED_PAYMENT_PAGE() {
         return 'POST';
     }
 
     /**
-     * @return {string} ENDPOINT_MAINTENANCE_OPERATION endpoint to do a maintenance operation (capture, refund, accept, etc, ...)
+     * @return {String} ENDPOINT_MAINTENANCE_OPERATION endpoint to do a maintenance operation (capture, refund, accept, etc, ...)
      */
     static get ENDPOINT_MAINTENANCE_OPERATION() {
         return '/rest/v1/maintenance/transaction/{transaction}';
     }
 
     /**
-     * @return {string} METHOD_MAINTENANCE_OPERATION http method to do a maintenance operation
+     * @return {String} METHOD_MAINTENANCE_OPERATION http method to do a maintenance operation
      */
     static get METHOD_MAINTENANCE_OPERATION() {
         return 'POST';
     }
 
     /**
-     * @return {string} ENDPOINT_TRANSACTION_DETAILS endpoint to call transaction information
+     * @return {String} ENDPOINT_TRANSACTION_DETAILS endpoint to call transaction information
      */
     static get ENDPOINT_TRANSACTION_INFORMATION() {
         return '/rest/v1/transaction/{transaction}';
     }
 
     /**
-     * @return {string} METHOD_TRANSACTION_DETAILS http method to call transaction information
+     * @return {String} METHOD_TRANSACTION_DETAILS http method to call transaction information
      */
     static get METHOD_TRANSACTION_INFORMATION() {
         return 'GET';
     }
 
     /**
-     * @return {string} ENDPOINT_ORDER_TRANSACTION_INFORMATION endpoint to call transaction information
+     * @return {String} ENDPOINT_ORDER_TRANSACTION_INFORMATION endpoint to call transaction information
      */
     static get ENDPOINT_ORDER_TRANSACTION_INFORMATION() {
         return '/rest/v1/transaction';
     }
 
     /**
-     * @return {string} METHOD_ORDER_TRANSACTION_INFORMATION http method to call transaction information
+     * @return {String} METHOD_ORDER_TRANSACTION_INFORMATION http method to call transaction information
      */
     static get METHOD_ORDER_TRANSACTION_INFORMATION() {
         return 'GET';
     }
 
     /**
-     * @return {string} ENDPOINT_SECURITY_SETTINGS endpoint to call security settings information
+     * @return {String} ENDPOINT_SECURITY_SETTINGS endpoint to call security settings information
      */
     static get ENDPOINT_SECURITY_SETTINGS() {
         return '/rest/v2/security-settings';
     }
 
     /**
-     * @return {string} METHOD_ORDER_TRANSACTION_INFORMATION http method to call transaction information
+     * @return {String} METHOD_ORDER_TRANSACTION_INFORMATION http method to call transaction information
      */
     static get METHOD_SECURITY_SETTINGS() {
         return 'GET';
@@ -136,19 +136,19 @@ class HiPay {
      * Creates an instance of the SDK
      *
      * @param {Object} options
-     * @param {string} [options.apiToken=null] Your authentication token for the HiPay API. Either this or username and password must be specified.
-     * @param {string} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
-     * @param {string} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
-     * @param {string} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
-     * @param {string} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
+     * @param {String} [options.apiToken=null] Your authentication token for the HiPay API. Either this or username and password must be specified.
+     * @param {String} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
+     * @param {String} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
+     * @param {String} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
+     * @param {String} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
      * @param {Object} [options.proxy={}] Proxy information to add to the requests
-     * @param {string} [options.proxy.host] Your proxy host
+     * @param {String} [options.proxy.host] Your proxy host
      * @param {Number} [options.proxy.port] Your proxy port
      * @param {Object} [options.proxy.auth] Your proxy authentication information
-     * @param {string} [options.proxy.auth.username] Proxy authentication Username
-     * @param {string} [options.proxy.auth.password] Proxy authentication Password
+     * @param {String} [options.proxy.auth.username] Proxy authentication Username
+     * @param {String} [options.proxy.auth.password] Proxy authentication Password
      * @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
-     * @param {string} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
+     * @param {String} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
      */
     constructor(options) {
         this._configuration = new Configuration(options);
@@ -189,7 +189,7 @@ class HiPay {
     /**
      * Executes Hosted Payment Page request
      * @param {HostedPaymentPageRequest} pageRequest
-     * @param {boolean} legacy Call the legacy payment page
+     * @param {Boolean} legacy Call the legacy payment page
      * @returns {Promise<import('./Gateway/Response/Transaction')>} Resolves generate page URL
      */
     async requestHostedPaymentPage(pageRequest, legacy = false) {

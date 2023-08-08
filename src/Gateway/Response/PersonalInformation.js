@@ -3,6 +3,19 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class PersonalInformation extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {String} [values.firstname]
+     * @param {String} [values.lastname]
+     * @param {String} [values.streetAddress]
+     * @param {String} [values.locality]
+     * @param {String} [values.postalCode]
+     * @param {String} [values.country]
+     * @param {String} [values.msisdn]
+     * @param {String} [values.phone]
+     * @param {String} [values.phoneOperator]
+     * @param {String} [values.email]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};

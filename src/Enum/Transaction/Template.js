@@ -6,7 +6,7 @@
  * BASIC_JS basic js template type
  * IFRAME_JS iFrame js template type
  *
- * @type {{BASIC_JS: string, IFRAME_JS: string}}
+ * @type {{BASIC_JS: String, IFRAME_JS: String}}
  */
 module.exports = {
     BASIC_JS: 'basic_js',

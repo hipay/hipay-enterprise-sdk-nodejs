@@ -7,7 +7,7 @@ const SimpleHTTPClient = require('../HTTP/SimpleHTTPClient');
 class PIDataClient {
     /**
      * endpoint to create / update a data set
-     * @var {string} ENDPOINT_DATA_API
+     * @var {String} ENDPOINT_DATA_API
      */
     static get ENDPOINT_DATA_API() {
         return '/checkout-data';
@@ -97,7 +97,7 @@ class PIDataClient {
 
     /**
      * Gets common data for every kind of request
-     * @param {string} dataId
+     * @param {String} dataId
      * @param {TransactionRequest} transactionRequest
      */
     getCommonData(dataId, transactionRequest) {

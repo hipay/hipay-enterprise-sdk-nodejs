@@ -30,11 +30,11 @@ class SimpleHTTPClient {
      *  Makes an HTTP request using provided data & configuration
      *
      * @param {'GET'|'HEAD'|'POST'|'DELETE'|'PUT'|'CONNECT'|'OPTIONS'|'TRACE'|'PATCH'} method HTTP method for this request
-     * @param {string} endpoint Endpoint of the request. May be a complete URL or a URL Endpoint in conjunction with baseURL in the options object.
+     * @param {String} endpoint Endpoint of the request. May be a complete URL or a URL Endpoint in conjunction with baseURL in the options object.
      * @param {Object} [options={}] Additional options
-     * @param {string|null} [options.baseUrl = ''] Request base URL
+     * @param {String?} [options.baseUrl = ''] Request base URL
      * @param {Object} [options.body = {}] Request body parameters
-     * @param {boolean} [options.isData = false] Is the request a request to the data API ?
+     * @param {Boolean} [options.isData = false] Is the request a request to the data API ?
      */
     async request(method, endpoint, { baseUrl = '', body = {}, isData = false } = {}) {
         if (

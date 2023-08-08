@@ -323,7 +323,7 @@ describe('Configuration', () => {
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith(
-                'Api HTTP Header Accept should be one of these values: ' + Configuration.VALID_HTTP_HEADERS.join()
+                `Api HTTP Header Accept should be one of these values: ${Configuration.VALID_HTTP_HEADERS.join()}`
             );
 
             catchFn();
@@ -530,7 +530,7 @@ describe('Configuration', () => {
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
-            expect(InvalidArgumentException).toHaveBeenCalledWith('Proxy keys should be: ' + Configuration.VALID_PROXY_KEYS.join());
+            expect(InvalidArgumentException).toHaveBeenCalledWith(`Proxy keys should be: ${Configuration.VALID_PROXY_KEYS.join()}`);
 
             catchFn();
         }
@@ -588,7 +588,7 @@ describe('Configuration', () => {
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith(
-                'Proxy auth should be an object with the following properties : ' + Configuration.VALID_PROXY_AUTH_KEYS.join()
+                `Proxy auth should be an object with the following properties : ${Configuration.VALID_PROXY_AUTH_KEYS.join()}`
             );
 
             catchFn();
@@ -611,7 +611,7 @@ describe('Configuration', () => {
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith(
-                'Proxy auth keys should be: ' + Configuration.VALID_PROXY_AUTH_KEYS.join() + ' and should be string'
+                `Proxy auth keys should be: ${Configuration.VALID_PROXY_AUTH_KEYS.join()} and should be string`
             );
 
             catchFn();
@@ -634,7 +634,7 @@ describe('Configuration', () => {
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith(
-                'Proxy auth keys should be: ' + Configuration.VALID_PROXY_AUTH_KEYS.join() + ' and should be string'
+                `Proxy auth keys should be: ${Configuration.VALID_PROXY_AUTH_KEYS.join()} and should be string`
             );
 
             catchFn();

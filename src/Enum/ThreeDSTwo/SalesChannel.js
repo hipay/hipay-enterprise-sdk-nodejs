@@ -10,7 +10,7 @@
  *     HOSTED_PAYMENT_PAGE: The customer paid on a hosted payment page hosted by HiPay
  *     POS: The customer paid on a physical terminal
  *
- * @type {{DEFAULT: number, ECOMMERCE_API: number, HOSTED_PAYMENT_PAGE: number, POS: number}}
+ * @type {{DEFAULT: Number, ECOMMERCE_API: Number, HOSTED_PAYMENT_PAGE: Number, POS: Number}}
  */
 module.exports = {
     DEFAULT: 0,

@@ -9,7 +9,7 @@
  *     BROWSER: The order is made from a website on a browser
  *     THREE_DS_REQUESTOR_INITIATED: The order is made from an automatic process
  *
- * @type {{APP_BASED: number, BROWSER: number, THREE_DS_REQUESTOR_INITIATED: number}}
+ * @type {{APP_BASED: Number, BROWSER: Number, THREE_DS_REQUESTOR_INITIATED: Number}}
  */
 module.exports = {
     APP_BASED: 1,

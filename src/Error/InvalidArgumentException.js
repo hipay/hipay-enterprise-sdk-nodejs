@@ -2,10 +2,6 @@
 
 const HiPayNodeSDKError = require('./HiPayNodeSDKError');
 
-class InvalidArgumentException extends HiPayNodeSDKError {
-    constructor(...args) {
-        super(...args);
-    }
-}
+class InvalidArgumentException extends HiPayNodeSDKError {}
 
 module.exports = InvalidArgumentException;

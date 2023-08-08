@@ -3,6 +3,18 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class PaymentMethod extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {String} [values.token]
+     * @param {String} [values.brand]
+     * @param {String} [values.pan]
+     * @param {String} [values.cardHolder]
+     * @param {String} [values.cardExpiryMonth]
+     * @param {String} [values.cardExpiryYear]
+     * @param {String} [values.cardId]
+     * @param {String} [values.issuer]
+     * @param {String} [values.country]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};

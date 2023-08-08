@@ -13,7 +13,7 @@
  * SECURE_ECOMMERCE Secure E-commerce with SSL/TLS Encryption
  * RECURRING_ECOMMERCE The first transaction of the customer was an e-Commerce transaction.
  *
- * @type {{RECURRING_MOTO: number, MANUALLY_KEYED_CARD_PRESENT: number, UNDEFINED: number, MOTO: number, RECURRING_ECOMMERCE: number, INSTALLMENT_PAYMENT: number, SECURE_ECOMMERCE: number}}
+ * @type {{RECURRING_MOTO: Number, MANUALLY_KEYED_CARD_PRESENT: Number, UNDEFINED: Number, MOTO: Number, RECURRING_ECOMMERCE: Number, INSTALLMENT_PAYMENT: Number, SECURE_ECOMMERCE: Number}}
  */
 module.exports = {
     UNDEFINED: -1,

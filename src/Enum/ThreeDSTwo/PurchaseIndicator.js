@@ -8,7 +8,7 @@
  *     MERCHANDISE_AVAILABLE: The merchandise is in stock
  *     FUTURE_AVAILABILITY: The merchandise is not yet available
  *
- * @type {{MERCHANDISE_AVAILABLE: number, FUTURE_AVAILABILITY: number}}
+ * @type {{MERCHANDISE_AVAILABLE: Number, FUTURE_AVAILABILITY: Number}}
  */
 module.exports = {
     MERCHANDISE_AVAILABLE: 1,

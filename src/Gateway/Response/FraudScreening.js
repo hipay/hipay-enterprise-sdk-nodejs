@@ -3,6 +3,12 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class FraudScreening extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {Number} [values.scoring]
+     * @param {Number} [values.result]
+     * @param {Number} [values.review]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};

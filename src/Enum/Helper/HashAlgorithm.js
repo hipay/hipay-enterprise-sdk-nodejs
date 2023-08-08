@@ -5,7 +5,7 @@
  *
  * Hash Algorithm is used to verify signature from notification and redirection
  *
- * @type {{SHA256: string, SHA1: string, SHA512: string}}
+ * @type {{SHA256: String, SHA1: String, SHA512: String}}
  */
 module.exports = {
     SHA1: 'SHA1',

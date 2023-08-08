@@ -14,7 +14,7 @@
  * BYPASS : Bypass electronic signature
  * SIGN : Ask for electronic signature
  *
- * @type {{AVAILABLE: number, BYPASS: number, MANDATORY: number, SIGN: number}}
+ * @type {{AVAILABLE: Number, BYPASS: Number, MANDATORY: Number, SIGN: Number}}
  */
 module.exports = {
     BYPASS: 0,

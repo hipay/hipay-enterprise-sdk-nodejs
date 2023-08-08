@@ -13,7 +13,7 @@
  *     DIGITAL_TRAVEL_EVENT_TICKETS: The order contains no physical goods, but contains travel or event tickets
  *     OTHER: Any other situation
  *
- * @type {{SHIP_TO_CARDHOLDER_BILLING_ADDRESS: number, SHIP_TO_VERIFIED_ADDRESS: number, SHIP_TO_DIFFERENT_ADDRESS: number, SHIP_TO_STORE: number, DIGITAL_GOODS: number, DIGITAL_TRAVEL_EVENT_TICKETS: number, OTHER: number}}
+ * @type {{SHIP_TO_CARDHOLDER_BILLING_ADDRESS: Number, SHIP_TO_VERIFIED_ADDRESS: Number, SHIP_TO_DIFFERENT_ADDRESS: Number, SHIP_TO_STORE: Number, DIGITAL_GOODS: Number, DIGITAL_TRAVEL_EVENT_TICKETS: Number, OTHER: Number}}
  */
 module.exports = {
     SHIP_TO_CARDHOLDER_BILLING_ADDRESS: 1,

@@ -11,9 +11,9 @@ class CommonRequest extends AbstractRequestPart {
      * @param {Object} [values.customData] Request's custom data
      * @param {Object} [values.source] Request's source data
      * @param {'AUTO'|'SAPI'|'CONS'|'PAGE'|'TPE'|'RTRY'|'MANU'|'PREF'|'REVI'|'CMS'|'SSDK'|'CSDK'} [values.source.source] Technical source of this call
-     * @param {string} [values.source.integration_version] Integration version (version of the CMS module for example)
-     * @param {string} [values.source.brand] Source Brand (CMS name or Site name)
-     * @param {string} [values.source.brand_version] Version of the brand (version of your site)
+     * @param {String} [values.source.integration_version] Integration version (version of the CMS module for example)
+     * @param {String} [values.source.brand] Source Brand (CMS name or Site name)
+     * @param {String} [values.source.brand_version] Version of the brand (version of your site)
      * @param {Object} [values.basket] Request's basket data
      */
     constructor(values) {

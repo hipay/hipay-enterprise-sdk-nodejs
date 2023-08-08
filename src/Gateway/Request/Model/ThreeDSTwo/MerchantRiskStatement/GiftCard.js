@@ -8,7 +8,7 @@ class GiftCard extends AbstractModel {
      * @param {Object} [values = {}]
      * @param {Number} [values.amount] Amount of the gift card
      * @param {Number} [values.count] Number of gift cards purchased by the client
-     * @param {string} [values.currency] Currency of the gift card
+     * @param {String} [values.currency] Currency of the gift card
      */
     constructor(values) {
         super();

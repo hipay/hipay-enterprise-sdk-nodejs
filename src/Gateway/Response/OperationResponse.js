@@ -3,6 +3,15 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class OperationResponse extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {String} [values.type]
+     * @param {String} [values.id]
+     * @param {String} [values.reference]
+     * @param {Number} [values.amount]
+     * @param {String} [values.currency]
+     * @param {String} [values.dateAuthorized]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};

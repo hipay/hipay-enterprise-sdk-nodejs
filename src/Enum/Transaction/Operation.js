@@ -9,7 +9,7 @@
  * ACCEPT_CHALLENGE operation acceptChallenge
  * DENY_CHALLENGE operation denyChallenge
  *
- * @type {{DENY_CHALLENGE: string, REFUND: string, CANCEL: string, ACCEPT_CHALLENGE: string, CAPTURE: string}}
+ * @type {{DENY_CHALLENGE: String, REFUND: String, CANCEL: String, ACCEPT_CHALLENGE: String, CAPTURE: String}}
  */
 module.exports = {
     CAPTURE: 'capture',

@@ -7,8 +7,8 @@ class IllicadoPaymentMethod extends AbstractPaymentMethod {
      * Creates an Illicado Payment Method Object
      *
      * @param {Object} values
-     * @param {string} values.prepaid_card_number Illicado card number
-     * @param {string} values.prepaid_card_security_code Illicado card security code
+     * @param {String} values.prepaid_card_number Illicado card number
+     * @param {String} values.prepaid_card_security_code Illicado card security code
      */
     constructor(values) {
         super();

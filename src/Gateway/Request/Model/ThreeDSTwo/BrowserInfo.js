@@ -6,16 +6,16 @@ class BrowserInfo extends AbstractModel {
      *  Creates a BrowserInfo Object. Should be populated with the result of the HiPay Front JS SDK getBrowserInfo().
      *
      * @param {Object} [values = {}]
-     * @param {string} [values.ipaddr] Client Ip Adress
-     * @param {string} [values.http_accept] Http Accept Header value from the client
-     * @param {string} [values.http_user_agent] User Agent Header value from the client
-     * @param {boolean} [values.java_enabled] Is java enabled on the client ?
-     * @param {boolean} [values.javascript_enabled] Is Javascript enabled on the client ?
-     * @param {string} [values.language] Client browser language
-     * @param {string} [values.color_depth] Client browser color depth setting
-     * @param {string} [values.screen_height] Client screen height
-     * @param {string} [values.screen_width] Client screen width
-     * @param {string} [values.timezone] Client timezone
+     * @param {String} [values.ipaddr] Client Ip Adress
+     * @param {String} [values.http_accept] Http Accept Header value from the client
+     * @param {String} [values.http_user_agent] User Agent Header value from the client
+     * @param {Boolean} [values.java_enabled] Is java enabled on the client ?
+     * @param {Boolean} [values.javascript_enabled] Is Javascript enabled on the client ?
+     * @param {String} [values.language] Client browser language
+     * @param {String} [values.color_depth] Client browser color depth setting
+     * @param {String} [values.screen_height] Client screen height
+     * @param {String} [values.screen_width] Client screen width
+     * @param {String} [values.timezone] Client timezone
      */
     constructor(values) {
         super();

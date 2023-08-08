@@ -10,7 +10,7 @@
  *     OVERNIGHT_SHIPPING: Goods will be delivered the day after the order
  *     TWO_DAY_OR_MORE_SHIPPING: Goods will be delivered at a later date
  *
- * @type {{ELECTRONIC_DELIVERY: number, SAME_DAY_SHIPPING: number, OVERNIGHT_SHIPPING: number, TWO_DAY_OR_MORE_SHIPPING: number}}
+ * @type {{ELECTRONIC_DELIVERY: Number, SAME_DAY_SHIPPING: Number, OVERNIGHT_SHIPPING: Number, TWO_DAY_OR_MORE_SHIPPING: Number}}
  */
 module.exports = {
     ELECTRONIC_DELIVERY: 1,

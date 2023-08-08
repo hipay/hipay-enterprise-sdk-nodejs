@@ -176,14 +176,14 @@ class ProductCategory {
 
     /**
      * Category technical code
-     * @type {number}
+     * @type {Number}
      * @private
      */
     _code;
 
     /**
      * Human readable name
-     * @type {string}
+     * @type {String}
      * @private
      */
     _name;
@@ -202,7 +202,7 @@ class ProductCategory {
      */
     constructor(categoryData = {}) {
         for (let prop in categoryData) {
-            if (Object.prototype.hasOwnProperty.call(this, '_' + prop)) {
+            if (Object.prototype.hasOwnProperty.call(this, `_${prop}`)) {
                 this[`_${prop}`] = categoryData[prop];
             }
         }
@@ -210,7 +210,7 @@ class ProductCategory {
 
     /**
      * Category technical code
-     * @returns {number}
+     * @returns {Number}
      */
     get code() {
         return this._code;
@@ -218,7 +218,7 @@ class ProductCategory {
 
     /**
      * Human readable name
-     * @returns {string}
+     * @returns {String}
      */
     get name() {
         return this._name;
@@ -236,7 +236,7 @@ class ProductCategory {
 
     /**
      * Sets translations
-     * @param {{isoCode: string}}value
+     * @param {{isoCode: String}}value
      */
     set locals(value) {
         this._locals = value;
@@ -252,8 +252,8 @@ class ProductCategory {
 
     /**
      * Gets localized name
-     * @param {string} langIsoCode the two letter iso code
-     * @returns {string}
+     * @param {String} langIsoCode the two letter iso code
+     * @returns {String}
      */
     getLocal(langIsoCode = ProductCategory.DEFAULT_LANG_ISO_CODE) {
         return this.locals[langIsoCode] ?? this.locals[ProductCategory.DEFAULT_LANG_ISO_CODE];

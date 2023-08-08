@@ -6,19 +6,19 @@ class CustomerShippingInfoRequest extends AbstractRequestPart {
      * Creates a Shipping recipient Info object
      *
      * @param {Object} [values = {}]
-     * @param {string} [values.shipto_firstname] Shipping recipient firstname
-     * @param {string} [values.shipto_lastname] Shipping recipient lastname
-     * @param {string} [values.shipto_recipientinfo] Shipping recipient additional info
-     * @param {string} [values.shipto_house_number] Shipping recipient house number
-     * @param {string} [values.shipto_streetaddress] Shipping recipient address
-     * @param {string} [values.shipto_streetaddress2] Shipping recipient address (line 2)
-     * @param {string} [values.shipto_city] Shipping recipient city
-     * @param {string} [values.shipto_state] Shipping recipient state or province
-     * @param {string} [values.shipto_zipcode] Shipping recipient zipcode
-     * @param {string} [values.shipto_country] Shipping recipient country (Two letter ISO code)
-     * @param {string} [values.shipto_phone] Shipping recipient phone
-     * @param {string} [values.shipto_msisdn] Shipping recipient mobile phone
-     * @param {string} [values.shipto_gender] Shipping recipient gender. See Gender Enum
+     * @param {String} [values.shipto_firstname] Shipping recipient firstname
+     * @param {String} [values.shipto_lastname] Shipping recipient lastname
+     * @param {String} [values.shipto_recipientinfo] Shipping recipient additional info
+     * @param {String} [values.shipto_house_number] Shipping recipient house number
+     * @param {String} [values.shipto_streetaddress] Shipping recipient address
+     * @param {String} [values.shipto_streetaddress2] Shipping recipient address (line 2)
+     * @param {String} [values.shipto_city] Shipping recipient city
+     * @param {String} [values.shipto_state] Shipping recipient state or province
+     * @param {String} [values.shipto_zipcode] Shipping recipient zipcode
+     * @param {String} [values.shipto_country] Shipping recipient country (Two letter ISO code)
+     * @param {String} [values.shipto_phone] Shipping recipient phone
+     * @param {String} [values.shipto_msisdn] Shipping recipient mobile phone
+     * @param {String} [values.shipto_gender] Shipping recipient gender. See Gender Enum
      */
     constructor(values) {
         super();

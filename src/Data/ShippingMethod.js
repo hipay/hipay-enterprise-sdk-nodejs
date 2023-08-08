@@ -107,7 +107,7 @@ class ShippingMethod {
      */
     constructor(shippingMethodData = {}) {
         for (let prop in shippingMethodData) {
-            if (Object.prototype.hasOwnProperty.call(this, '_' + prop)) {
+            if (Object.prototype.hasOwnProperty.call(this, `_${prop}`)) {
                 this[`_${prop}`] = shippingMethodData[prop];
             }
         }
@@ -130,14 +130,14 @@ class ShippingMethod {
 
     /**
      *
-     * @returns {string}
+     * @returns {String}
      */
     getDisplayName(langIsoCode = ShippingMethod.DEFAULT_LANG_ISO_CODE) {
         return this._displayName?.[langIsoCode] ?? this._displayName?.[ShippingMethod.DEFAULT_LANG_ISO_CODE];
     }
 
     /**
-     * @param {{isoCode: string}} value
+     * @param {{isoCode: String}} value
      */
     set displayName(value) {
         this._displayName = value;

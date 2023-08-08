@@ -3,6 +3,16 @@
 const AbstractResponsePart = require('./AbstractResponsePart');
 
 class ThreeDSecure extends AbstractResponsePart {
+    /**
+     * @param {Object} values
+     * @param {Number} [values.eci]
+     * @param {String} [values.enrollmentStatus]
+     * @param {String} [values.enrollmentMessage]
+     * @param {String} [values.authenticationStatus]
+     * @param {String} [values.authenticationMessage]
+     * @param {String} [values.authenticationToken]
+     * @param {String} [values.xid]
+     */
     constructor(values) {
         if (typeof values !== 'object') {
             values = {};

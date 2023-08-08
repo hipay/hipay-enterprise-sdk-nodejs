@@ -1915,7 +1915,7 @@ describe('HiPay object', () => {
         expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual(['{MAPPED_OBJECT}']);
         expect(mockHttpClient.request).toHaveBeenCalledWith(
             HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
-            HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION + '?orderid={ORDER_ID}',
+            `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
             {
                 baseUrl: '{API_ENDPOINT}'
             }
@@ -1950,7 +1950,7 @@ describe('HiPay object', () => {
         expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual(['{MAPPED_OBJECT}', '{MAPPED_OBJECT}', '{MAPPED_OBJECT}']);
         expect(mockHttpClient.request).toHaveBeenCalledWith(
             HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
-            HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION + '?orderid={ORDER_ID}',
+            `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
             {
                 baseUrl: '{API_ENDPOINT}'
             }
@@ -1979,7 +1979,7 @@ describe('HiPay object', () => {
         expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual([]);
         expect(mockHttpClient.request).toHaveBeenCalledWith(
             HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
-            HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION + '?orderid={ORDER_ID}',
+            `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
             {
                 baseUrl: '{API_ENDPOINT}'
             }

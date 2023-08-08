@@ -57,19 +57,19 @@ class Configuration {
 
     /**
      * @param {Object} [options] options
-     * @param {string} [options.apiToken] Your authentication token for the HiPay API. Either this or username and password must be specified.
-     * @param {string} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
-     * @param {string} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
-     * @param {string} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
-     * @param {string} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
+     * @param {String} [options.apiToken] Your authentication token for the HiPay API. Either this or username and password must be specified.
+     * @param {String} [options.apiUsername=null] Your username for the HiPay API. Either username and password or token must be specified.
+     * @param {String} [options.apiPassword=null] Your password for the HiPay API. Either username and password or token must be specified.
+     * @param {String} [options.apiEnv=Configuration.API_ENV_STAGE] The HiPay API environment (production or stage), defaults to stage
+     * @param {String} [options.apiHTTPHeaderAccept='application/json'] The accept header to set for the requests. Defaults to JSON
      * @param {Object} [options.proxy={}] Proxy information to add to the requests
-     * @param {string} [options.proxy.host] Your proxy host
+     * @param {String} [options.proxy.host] Your proxy host
      * @param {Number} [options.proxy.port] Your proxy port
      * @param {Object} [options.proxy.auth] Your proxy authentication information
-     * @param {string} [options.proxy.auth.username] Proxy authentication Username
-     * @param {string} [options.proxy.auth.password] Proxy authentication Password
+     * @param {String} [options.proxy.auth.username] Proxy authentication Username
+     * @param {String} [options.proxy.auth.password] Proxy authentication Password
      * @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
-     * @param {string} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
+     * @param {String} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
      */
     constructor(options) {
         const {
@@ -227,11 +227,11 @@ class Configuration {
     /**
      * Set proxy
      * @param {Object} proxy
-     * @param {string} [proxy.host] Your proxy host
+     * @param {String} [proxy.host] Your proxy host
      * @param {Number} [proxy.port] Your proxy port
      * @param {Object} [proxy.auth] Your proxy authentication information
-     * @param {string} [proxy.auth.username] Proxy authentication Username
-     * @param {string} [proxy.auth.password] Proxy authentication Password
+     * @param {String} [proxy.auth.username] Proxy authentication Username
+     * @param {String} [proxy.auth.password] Proxy authentication Password
      */
     set proxy(proxy) {
         if (typeof proxy !== 'object') {

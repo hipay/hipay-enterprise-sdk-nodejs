@@ -25,7 +25,7 @@
  * MISSING CVC should be on the card, but the cardholder has reported that it isn't.
  * NOT_SUPPORTED Card issuer does not support CVC.
  *
- * @type {{NOT_APPLICABLE: string, NOT_SUPPORTED: string, NOT_PROCESSED: string, NO_MATCH: string, MISSING: string, MATCH: string}}
+ * @type {{NOT_APPLICABLE: String, NOT_SUPPORTED: String, NOT_PROCESSED: String, NO_MATCH: String, MISSING: String, MATCH: String}}
  */
 module.exports = {
     NOT_APPLICABLE: ' ',

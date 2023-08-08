@@ -1,6 +1,11 @@
 'use strict';
 
 class Response {
+    /**
+     * @param {Object} body
+     * @param {Number} status
+     * @param {Object} headers
+     */
     constructor(body, status, headers) {
         this._body = body;
         this._statusCode = status;
