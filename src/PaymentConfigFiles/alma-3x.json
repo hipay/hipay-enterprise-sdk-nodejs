@@ -1,0 +1,20 @@
+{
+    "productCode": "alma-3x",
+    "brandName": "Alma 3x",
+    "category": "credit-consumption",
+    "comment": "",
+    "can3ds": 1,
+    "canRecurring": 0,
+    "canManualCapture": 1,
+    "canManualCapturePartially": 0,
+    "canRefund": 1,
+    "canRefundPartially": 1,
+    "basketRequired": 0,
+    "currencies": ["EUR"],
+    "countries": ["FR", "DE", "IT", "BE", "LUX", "NL", "IE", "AT", "PT", "ES"],
+    "checkoutFieldsMandatory": [],
+    "additionalFields": {
+        "sdkClass": "AbstractPaymentMethod"
+    },
+    "priority": 32
+}

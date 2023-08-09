@@ -1,0 +1,9 @@
+**/node_modules/**
+.idea/
+.vscode
+
+coverage
+reports
+
+*.log
+.stryker-tmp/

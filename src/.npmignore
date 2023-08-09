@@ -1,0 +1,7 @@
+test
+.eslintrc.js
+.eslintignore
+.prettierrc
+stryker.conf.js
+coverage
+reports
