@@ -126,6 +126,14 @@ class HiPay {
         return 'GET';
     }
 
+    static get API_ENV_STAGE() {
+        return Configuration.API_ENV_STAGE;
+    }
+
+    static get API_ENV_PRODUCTION() {
+        return Configuration.API_ENV_PRODUCTION;
+    }
+
     /**
      * @type {Configuration}
      * @private
@@ -158,15 +166,17 @@ class HiPay {
     /**
      * Request New Order
      * @param {OrderRequest} orderRequest
+     * @param {Object} [options = {}] options
+     * @param {String} [options.dataId=null] Custom dataId to use in call to Data API
      * @returns {Promise<import('./Gateway/Response/Transaction')>}
      */
-    async requestNewOrder(orderRequest) {
+    async requestNewOrder(orderRequest, { dataId = null } = {}) {
         if (!(orderRequest instanceof OrderRequest)) {
             orderRequest = new OrderRequest(orderRequest);
         }
 
         const piDataClient = new PIDataClient(this._clientProvider);
-        const piDataId = piDataClient.getDataId(orderRequest.deviceFingerprint, orderRequest.acceptUrl, orderRequest.orderid);
+        const piDataId = piDataClient.getDataId(dataId);
 
         const formattedParams = {};
         HiPay.#formatParams(orderRequest, formattedParams);
@@ -189,10 +199,12 @@ class HiPay {
     /**
      * Executes Hosted Payment Page request
      * @param {HostedPaymentPageRequest} pageRequest
-     * @param {Boolean} legacy Call the legacy payment page
+     * @param {Object} [options = {}] options
+     * @param {String} [options.dataId=null] Custom dataId to use in call to Data API
+     * @param {Boolean} [options.legacy=false] Call the legacy payment page
      * @returns {Promise<import('./Gateway/Response/Transaction')>} Resolves generate page URL
      */
-    async requestHostedPaymentPage(pageRequest, legacy = false) {
+    async requestHostedPaymentPage(pageRequest, { legacy = false, dataId = null } = {}) {
         if (!(pageRequest instanceof HostedPaymentPageRequest)) {
             pageRequest = new HostedPaymentPageRequest(pageRequest);
         }
@@ -201,8 +213,7 @@ class HiPay {
         const piDataClient = new PIDataClient(this._clientProvider);
 
         // Gets ID for Data API
-        // If there is no device fingerprint, only uses acceptUrl
-        const piDataId = piDataClient.getDataId(pageRequest.deviceFingerprint, pageRequest.acceptUrl, pageRequest.orderid);
+        const piDataId = piDataClient.getDataId(dataId);
 
         const formattedParams = {};
         HiPay.#formatParams(pageRequest, formattedParams);
@@ -214,7 +225,10 @@ class HiPay {
         // Call Hosted Payment Page generation endpoint
         const response = await this._clientProvider.request(HiPay.METHOD_HOSTED_PAYMENT_PAGE, endpointHpayment, {
             baseUrl: hpaymentUrl,
-            body: formattedParams
+            body: formattedParams,
+            additionalHeaders: {
+                X_HIPAY_DATA_ID: piDataId
+            }
         });
 
         const transactionMapper = new HostedPaymentPageMapper(response.body);

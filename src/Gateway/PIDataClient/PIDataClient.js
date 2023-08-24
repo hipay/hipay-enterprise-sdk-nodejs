@@ -1,7 +1,7 @@
 'use strict';
+const uuidv4 = require('uuid').v4;
 
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
-const crypto = require('crypto');
 const SimpleHTTPClient = require('../HTTP/SimpleHTTPClient');
 
 class PIDataClient {
@@ -160,23 +160,16 @@ class PIDataClient {
     }
 
     /**
-     * Encrypt on sha256 string with the following format: device_fingerprint:host_domain
-     * @param {String} deviceFingerprint Device Fingerprint
-     * @param {String} acceptUrl Accept URL
-     * @param {String} orderId Order ID
-     * @returns sha256 dataId
+     * Returns the data_id, or creates a new one in the form of uuid if not set
+     * @returns {String} dataId
      */
-    getDataId(deviceFingerprint, acceptUrl, orderId) {
-        // If device fingerprint is available, add it in ID, otherwise only use orderId
-        if (deviceFingerprint) {
-            let domain = this.getDomainFromUrl(acceptUrl);
-            return crypto
-                .createHash('sha256')
-                .update(deviceFingerprint + (domain ? `:${domain}` : ''), 'utf8')
-                .digest('hex');
-        } else {
-            return crypto.createHash('sha256').update(orderId, 'utf8').digest('hex');
+    getDataId(dataId = null) {
+        // If dataId is not set, we generate a new one in the form of a uuid
+        if (!dataId) {
+            dataId = uuidv4();
         }
+
+        return dataId;
     }
 }
 
