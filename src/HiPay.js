@@ -227,7 +227,7 @@ class HiPay {
             baseUrl: hpaymentUrl,
             body: formattedParams,
             additionalHeaders: {
-                X_HIPAY_DATA_ID: piDataId
+                ['X-HIPAY-DATA-ID']: piDataId
             }
         });
 

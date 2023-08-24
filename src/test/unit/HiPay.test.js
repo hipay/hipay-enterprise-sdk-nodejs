@@ -1459,7 +1459,7 @@ describe('HiPay object', () => {
                 display_cancel_button: '{DISPLAYCANCELBUTTON}'
             },
             additionalHeaders: {
-                X_HIPAY_DATA_ID: '{DATA_ID}'
+                ['X-HIPAY-DATA-ID']: '{DATA_ID}'
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -1709,7 +1709,7 @@ describe('HiPay object', () => {
                 display_cancel_button: '{DISPLAYCANCELBUTTON}'
             },
             additionalHeaders: {
-                X_HIPAY_DATA_ID: '{DATA_ID}'
+                ['X-HIPAY-DATA-ID']: '{DATA_ID}'
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -1959,7 +1959,7 @@ describe('HiPay object', () => {
                 display_cancel_button: '{DISPLAYCANCELBUTTON}'
             },
             additionalHeaders: {
-                X_HIPAY_DATA_ID: null
+                ['X-HIPAY-DATA-ID']: null
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -2209,7 +2209,7 @@ describe('HiPay object', () => {
                 display_cancel_button: '{DISPLAYCANCELBUTTON}'
             },
             additionalHeaders: {
-                X_HIPAY_DATA_ID: '{DATA_ID}'
+                ['X-HIPAY-DATA-ID']: '{DATA_ID}'
             }
         });
         expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
