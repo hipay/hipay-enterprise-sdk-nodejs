@@ -33,7 +33,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -58,7 +57,6 @@ describe('Test constructor', () => {
         expect(hpaymentRequest.orderCategoryCode).toEqual('{ORDERCATEGORYCODE}');
         expect(hpaymentRequest.carrierDescription).toEqual('{CARRIERDESCRIPTION}');
         expect(hpaymentRequest.salesChannel).toEqual('{SALESCHANNEL}');
-        expect(hpaymentRequest.softDescriptor).toEqual('{SOFTDESCRIPTOR}');
         expect(hpaymentRequest.themeCode).toEqual('{THEMECODE}');
         expect(hpaymentRequest.displayCancelButton).toEqual('{DISPLAYCANCELBUTTON}');
     });
@@ -94,7 +92,6 @@ describe('Test constructor', () => {
         expect(hpaymentRequest.orderCategoryCode).toEqual(null);
         expect(hpaymentRequest.carrierDescription).toEqual(null);
         expect(hpaymentRequest.salesChannel).toEqual(null);
-        expect(hpaymentRequest.softDescriptor).toEqual(null);
         expect(hpaymentRequest.themeCode).toEqual(null);
         expect(hpaymentRequest.displayCancelButton).toEqual(false);
     });
@@ -121,7 +118,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -146,7 +142,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -178,7 +173,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -203,7 +197,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -235,7 +228,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -260,7 +252,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -292,7 +283,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });
@@ -317,7 +307,6 @@ describe('Test constructor', () => {
                 orderCategoryCode: '{ORDERCATEGORYCODE}',
                 carrierDescription: '{CARRIERDESCRIPTION}',
                 salesChannel: '{SALESCHANNEL}',
-                softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
                 displayCancelButton: '{DISPLAYCANCELBUTTON}'
             });

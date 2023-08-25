@@ -50,6 +50,7 @@ class OrderRequest extends TransactionRequest {
      * @param {Number} [values.deviceChannel] Device Channel. See the Device Channel Enumeration
      * @param {RecurringInfo} [values.recurringInfo] Reccurent order information, for 3DS validation purposes
      * @param {Number} [values.requestId] The request ID
+     * @param {String} [values.softDescriptor] Billing descriptor.
      *
      * @param {String} values.paymentProduct Payment product for the order
      * @param {BrowserInfo} [values.browserInfo] Browser information as sent by the HiPay Front JS SDK, for 3DS validation purposes
