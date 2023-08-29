@@ -48,6 +48,7 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {Number} [values.deviceChannel] Device Channel. See the Device Channel Enumeration
      * @param {RecurringInfo} [values.recurringInfo] Reccurent order information, for 3DS validation purposes
      * @param {Number} [values.requestId] The request ID
+     * @param {String} [values.softDescriptor] Billing descriptor.
      *
      * @param {Array<String>|string} [values.paymentProductList] List of payment means you want to display on the payment page
      * @param {Array<String>|string} [values.paymentProductCategoryList] List of payment means categories you want to display on the payment page
@@ -63,7 +64,6 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {String} [values.orderCategoryCode] Category of the order. See ProductCategory Collection
      * @param {String} [values.carrierDescription] Short Description of your carrier
      * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
-     * @param {String} [values.softDescriptor] Billing descriptor.
      * @param {String} [values.themeCode] Custom theme code to display in the payment page
      * @param {Boolean} [values.displayCancelButton = false] Whether to add a cancel button to the page or not
      */
@@ -124,10 +124,6 @@ class HostedPaymentPageRequest extends TransactionRequest {
 
         if (Object.prototype.hasOwnProperty.call(values, 'salesChannel')) {
             this.salesChannel = values.salesChannel;
-        }
-
-        if (Object.prototype.hasOwnProperty.call(values, 'softDescriptor')) {
-            this.softDescriptor = values.softDescriptor;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'themeCode')) {

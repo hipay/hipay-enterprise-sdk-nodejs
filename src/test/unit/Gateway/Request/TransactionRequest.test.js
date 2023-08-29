@@ -56,7 +56,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         }).not.toThrow();
 
@@ -91,6 +92,7 @@ describe('Test constructor', () => {
         expect(transactionRequest.deviceChannel).toEqual('{DEVICECHANNEL}');
         expect(transactionRequest.recurringInfo).toStrictEqual(recurringInfo);
         expect(transactionRequest.requestId).toEqual('{REQUESTID}');
+        expect(transactionRequest.softDescriptor).toEqual('{SOFTDESCRIPTOR}');
     });
 
     it('Initializes correctly with plain objects', () => {
@@ -195,7 +197,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         }).not.toThrow();
 
@@ -237,6 +240,7 @@ describe('Test constructor', () => {
         expect(transactionRequest.recurringInfo).toBeInstanceOf(RecurringInfo);
         expect(transactionRequest.recurringInfo).toEqual(recurringInfo);
         expect(transactionRequest.requestId).toEqual('{REQUESTID}');
+        expect(transactionRequest.softDescriptor).toEqual('{SOFTDESCRIPTOR}');
     });
 
     it('Initializes correctly with minimal parameters', () => {
@@ -282,6 +286,7 @@ describe('Test constructor', () => {
         expect(transactionRequest.deviceChannel).toEqual(null);
         expect(transactionRequest.recurringInfo).toEqual(null);
         expect(transactionRequest.requestId).toEqual(null);
+        expect(transactionRequest.softDescriptor).toEqual(null);
     });
 
     it('Errors when orderid is absent', () => {
@@ -326,7 +331,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         }).toThrow();
 
@@ -360,7 +366,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -410,7 +417,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         }).toThrow();
 
@@ -444,7 +452,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -494,7 +503,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         }).toThrow();
 
@@ -528,7 +538,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -578,7 +589,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         }).toThrow();
 
@@ -612,7 +624,8 @@ describe('Test constructor', () => {
                 accountInfo: accountInfo,
                 deviceChannel: '{DEVICECHANNEL}',
                 recurringInfo: recurringInfo,
-                requestId: '{REQUESTID}'
+                requestId: '{REQUESTID}',
+                softDescriptor: '{SOFTDESCRIPTOR}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
