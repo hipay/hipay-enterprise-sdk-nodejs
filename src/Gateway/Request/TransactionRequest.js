@@ -56,6 +56,7 @@ class TransactionRequest extends CommonRequest {
      * @param {Number} [values.deviceChannel] Device Channel. See the Device Channel Enumeration
      * @param {RecurringInfo} [values.recurringInfo] Reccurent order information, for 3DS validation purposes
      * @param {Number} [values.requestId] The request ID
+     * @param {String} [values.softDescriptor] Billing descriptor.
      */
     constructor(values) {
         super(values);
@@ -215,6 +216,10 @@ class TransactionRequest extends CommonRequest {
         if (Object.prototype.hasOwnProperty.call(values, 'requestId')) {
             this.requestId = values.requestId;
         }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'softDescriptor')) {
+            this.softDescriptor = values.softDescriptor;
+        }
     }
 
     initValues() {
@@ -250,6 +255,7 @@ class TransactionRequest extends CommonRequest {
         this.deviceChannel = null;
         this.recurringInfo = null;
         this.requestId = null;
+        this.softDescriptor = null;
     }
 }
 

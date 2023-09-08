@@ -34,9 +34,10 @@ class SimpleHTTPClient {
      * @param {Object} [options={}] Additional options
      * @param {String?} [options.baseUrl = ''] Request base URL
      * @param {Object} [options.body = {}] Request body parameters
+     * @param {Object} [options.additionalHeaders = {}] Request additional headers
      * @param {Boolean} [options.isData = false] Is the request a request to the data API ?
      */
-    async request(method, endpoint, { baseUrl = '', body = {}, isData = false } = {}) {
+    async request(method, endpoint, { baseUrl = '', body = {}, additionalHeaders = {}, isData = false } = {}) {
         if (
             typeof method !== 'string' ||
             !['GET', 'HEAD', 'POST', 'DELETE', 'PUT', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'].includes(method.toUpperCase())
@@ -66,6 +67,7 @@ class SimpleHTTPClient {
             baseURL: baseUrl,
             timeout: timeout * 1000,
             headers: {
+                ...additionalHeaders,
                 Accept: this.configuration.apiHTTPHeaderAccept,
                 'User-Agent': userAgent
             }

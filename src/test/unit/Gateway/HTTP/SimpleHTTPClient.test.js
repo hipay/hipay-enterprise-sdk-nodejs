@@ -158,6 +158,56 @@ describe('Test order request method', () => {
         done();
     });
 
+    it('calls API with additional headers if everything is right', async (done) => {
+        let mockConfig = new Configuration({});
+        mockConfig.timeout = 5;
+        mockConfig.apiEndpoint = '{API_ENDPOINT}';
+        mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
+        mockConfig.apiHTTPHeaderAccept = '{HTTP_ACCEPT}';
+        mockConfig.apiToken = '{API_TOKEN}';
+        mockConfig.proxy = {};
+
+        let client = new SimpleHTTPClient(mockConfig);
+
+        let params = {
+            mockProp: 'mockValue',
+            mockProp2: 'mockValue2'
+        };
+
+        axios.request.mockReturnValue({
+            data: '{DATA}',
+            status: '{STATUS}'
+        });
+
+        const mockResponse = new Response('{DATA}', '{STATUS}', {
+            'Content-Type': 'application/json; encoding=UTF-8'
+        });
+
+        let actualResponse = await client.request('POST', '{ENDPOINT}', {
+            body: params,
+            baseUrl: '{API_ENDPOINT}',
+            additionalHeaders: { ADDITIONAL_HEADER: 'HEADER_VALUE' }
+        });
+        expect(actualResponse).toBeInstanceOf(Response);
+        expect(actualResponse).toStrictEqual(mockResponse);
+        expect(axios.request).toHaveBeenCalledWith({
+            url: '{ENDPOINT}',
+            method: 'POST',
+            baseURL: '{API_ENDPOINT}',
+            timeout: 5000,
+            headers: {
+                ADDITIONAL_HEADER: 'HEADER_VALUE',
+                Accept: '{HTTP_ACCEPT}',
+                'User-Agent': '{HTTP_USER_AGENT}',
+                Authorization: 'Bearer {API_TOKEN}',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: 'mockProp=mockValue&mockProp2=mockValue2'
+        });
+
+        done();
+    });
+
     it('calls API in GET if everything is right', async (done) => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;

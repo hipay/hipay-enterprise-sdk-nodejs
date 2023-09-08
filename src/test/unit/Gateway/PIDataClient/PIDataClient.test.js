@@ -6,6 +6,9 @@ jest.mock('../../../../Gateway/HTTP/Configuration/Configuration');
 jest.mock('../../../../Gateway/HTTP/SimpleHTTPClient');
 jest.mock('../../../../Error/InvalidArgumentException');
 
+const { v4 } = require('uuid');
+jest.mock('uuid');
+
 const mockConfiguration = new Configuration({});
 mockConfiguration.dataApiEndpoint = 'DATA_API_ENDPOINT';
 const mockClientInterface = new SimpleHTTPClient();
@@ -82,37 +85,20 @@ describe('Test class initializer', () => {
 });
 
 describe('Test dataId generation', () => {
-    it('returns correct dataId', () => {
+    it('returns existing dataId', () => {
         const piDataClient = new PIDataClient(mockClientInterface);
-        const deviceFingerprint = 'device_fingerprint';
-        const acceptUrl = 'http://accept_url.com/?accept';
-        const orderId = 'orderid_12345';
-        const expected = '006e4504082fde16845d28db28427b4d1277b291c8443774b5db17faa743e97e';
 
-        const dataId = piDataClient.getDataId(deviceFingerprint, acceptUrl, orderId);
-        expect(dataId).toEqual(expected);
+        const dataId = piDataClient.getDataId('{DATA_ID}');
+        expect(dataId).toEqual('{DATA_ID}');
     });
 
-    it('returns correct dataId without correct acceptUrl', () => {
+    it('returns new data_id', () => {
+        v4.mockReturnValue('{NEW_UUID}');
+
         const piDataClient = new PIDataClient(mockClientInterface);
-        const deviceFingerprint = 'device_fingerprint';
-        const acceptUrl = 'acceptUrl';
-        const orderId = 'orderid_12345';
-        const expected = 'ddd6dcea9876c04e427c4bf70527e4bbfec8b47b580c3839b43d40b06c190fe4';
 
-        const dataId = piDataClient.getDataId(deviceFingerprint, acceptUrl, orderId);
-        expect(dataId).toEqual(expected);
-    });
-
-    it('returns correct dataId without device fingerprint', () => {
-        const piDataClient = new PIDataClient(mockClientInterface);
-        const deviceFingerprint = null;
-        const acceptUrl = 'acceptUrl';
-        const orderId = 'orderid_12345';
-        const expected = '3831f63c9a1e55a4cf1cc834f85f7484fa24474ae486da9a97d134a9d53bb7c1';
-
-        const dataId = piDataClient.getDataId(deviceFingerprint, acceptUrl, orderId);
-        expect(dataId).toEqual(expected);
+        const dataId = piDataClient.getDataId();
+        expect(dataId).toEqual('{NEW_UUID}');
     });
 });
 
