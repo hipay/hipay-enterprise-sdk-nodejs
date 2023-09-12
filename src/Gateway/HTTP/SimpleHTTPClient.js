@@ -18,6 +18,9 @@ class SimpleHTTPClient {
         return this._configuration;
     }
 
+    /**
+     * @param {Configuration} configuration
+     */
     set configuration(configuration) {
         if (!(configuration instanceof Configuration)) {
             throw new InvalidArgumentException('Configuration should be a Configuration object');
@@ -56,7 +59,6 @@ class SimpleHTTPClient {
         let userAgent = this.configuration.httpUserAgent;
 
         if (isData) {
-            baseUrl = this.configuration.dataApiEndpoint;
             timeout = 60;
             userAgent = this.configuration.dataApiHttpUserAgent;
         }

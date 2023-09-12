@@ -3,6 +3,14 @@
 const InvalidArgumentException = require('../../../Error/InvalidArgumentException');
 
 class Configuration {
+    static get SECURE_VAULT_ENDPOINT_PROD() {
+        return 'https://secure2-vault.hipay-tpp.com/rest/';
+    }
+
+    static get SECURE_VAULT_ENDPOINT_STAGE() {
+        return 'https://stage-secure2-vault.hipay-tpp.com/rest/';
+    }
+
     static get API_ENDPOINT_PROD() {
         return 'https://secure-gateway.hipay-tpp.com';
     }
@@ -112,6 +120,14 @@ class Configuration {
         this.httpUserAgent = httpUserAgent;
     }
 
+    get secureVaultEndpointProd() {
+        return Configuration.SECURE_VAULT_ENDPOINT_PROD;
+    }
+
+    get secureVaultEndpointStage() {
+        return Configuration.SECURE_VAULT_ENDPOINT_STAGE;
+    }
+
     get apiEndpointProd() {
         return Configuration.API_ENDPOINT_PROD;
     }
@@ -126,6 +142,10 @@ class Configuration {
 
     get hpaymentApiEndpointStage() {
         return Configuration.HPAYMENT_API_ENDPOINT_STAGE;
+    }
+
+    get secureVaultEndpoint() {
+        return this.apiEnv === Configuration.API_ENV_PRODUCTION ? this.secureVaultEndpointProd : this.secureVaultEndpointStage;
     }
 
     get apiEndpoint() {
