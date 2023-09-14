@@ -11,6 +11,7 @@ const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper')
 const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
 const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
 const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
+const PaymentCardTokenMapper = require('./Gateway/Response/Mapper/PaymentCardTokenMapper');
 
 const AbstractModel = require('./Gateway/Request/Model/AbstractModel');
 const AbstractRequestPart = require('./Gateway/Request/AbstractRequestPart');
@@ -123,6 +124,20 @@ class HiPay {
      * @return {String} METHOD_ORDER_TRANSACTION_INFORMATION http method to call transaction information
      */
     static get METHOD_SECURITY_SETTINGS() {
+        return 'GET';
+    }
+
+    /**
+     * @var {String} ENDPOINT_LOOKUP_TOKEN ENDPOINT_LOOKUP_TOKEN endpoint to get vault information by token
+     */
+    static get ENDPOINT_LOOKUP_TOKEN() {
+        return 'v2/token/{token}';
+    }
+
+    /**
+     * @var {String} METHOD_LOOKUP_TOKEN METHOD_LOOKUP_TOKEN http method to get vault information by token
+     */
+    static get METHOD_LOOKUP_TOKEN() {
         return 'GET';
     }
 
@@ -351,6 +366,25 @@ class HiPay {
 
         const securitySettingsMapper = new SecuritySettingsMapper(response.body);
         return securitySettingsMapper.mappedObject;
+    }
+
+    /**
+     * Returns vault information by token
+     *
+     * @param {String} token
+     * @param {String} requestId
+     * @returns {Promise<import('./Gateway/Response/PaymentCardToken')>}
+     */
+    async requestLookupToken(token, requestId = '0') {
+        let endpoint = HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', token);
+        endpoint += `?request_id=${requestId}`;
+
+        const response = await this._clientProvider.request(HiPay.METHOD_LOOKUP_TOKEN, endpoint, {
+            baseUrl: this._configuration.secureVaultEndpoint
+        });
+
+        const paymentCardTokenMapper = new PaymentCardTokenMapper(response.body);
+        return paymentCardTokenMapper.mappedObject;
     }
 
     /**
