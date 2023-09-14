@@ -9,13 +9,22 @@ describe('Test abstract mapper initialization', () => {
         }
 
         expect(() => {
-            new AbstractMapper('{SOURCE}');
+            new AbstractMapper({
+                source_1: 'source1',
+                source2: 'source2'
+            });
         }).not.toThrow();
 
-        let dummyobj = new DummyClass('{SOURCE}');
+        let dummyobj = new DummyClass({
+            source_1: 'source1',
+            source2: 'source2'
+        });
 
         expect(dummyobj).toBeInstanceOf(AbstractMapper);
-        expect(dummyobj.source).toEqual('{SOURCE}');
+        expect(dummyobj.source).toEqual({
+            source1: 'source1',
+            source2: 'source2'
+        });
         expect(dummyobj.mappedObject).toEqual('Hello world');
     });
 });
