@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+- **add** : Add endpoint to lookup a card token informations
+
 ## 1.1.0
 
 - **fix** : Fixed usage of `soft_descriptor` parameter
