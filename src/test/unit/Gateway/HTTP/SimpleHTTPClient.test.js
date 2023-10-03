@@ -353,7 +353,6 @@ describe('Test order request method', () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
-        mockConfig.dataApiEndpoint = '{DATA_API_ENDPOINT}';
         mockConfig.httpUserAgent = '{HTTP_USER_AGENT}';
         mockConfig.dataApiHttpUserAgent = '{DATA_HTTP_USER_AGENT}';
         mockConfig.apiHTTPHeaderAccept = '{HTTP_ACCEPT}';
@@ -377,7 +376,7 @@ describe('Test order request method', () => {
             'Content-Type': 'application/json; encoding=UTF-8'
         });
 
-        let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}', isData: true });
+        let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{DATA_API_ENDPOINT}', isData: true });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
         expect(axios.request).toHaveBeenCalledWith({

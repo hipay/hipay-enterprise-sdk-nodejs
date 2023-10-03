@@ -33,6 +33,7 @@ describe('Configuration', () => {
         expect(conf.apiUsername).toEqual(undefined);
         expect(conf.apiPassword).toEqual(undefined);
         expect(conf.apiEnv).toEqual(Configuration.API_ENV_CUSTOM);
+        expect(conf.secureVaultEndpoint).toEqual('https://stage-secure2-vault.hipay-tpp.com/rest/');
         expect(conf.apiEndpoint).toEqual('https://google.fr');
         expect(conf.hpaymentApiEndpoint).toEqual('https://google.fr');
         expect(conf.dataApiEndpoint).toEqual('https://console.hipay.com');
@@ -47,6 +48,12 @@ describe('Configuration', () => {
         });
         expect(conf.timeout).toEqual(9999);
         expect(conf.httpUserAgent).toEqual('USER_AGENT');
+
+        expect(Configuration.SECURE_VAULT_ENDPOINT_PROD).toEqual('https://secure2-vault.hipay-tpp.com/rest/');
+        expect(conf.secureVaultEndpointProd).toEqual('https://secure2-vault.hipay-tpp.com/rest/');
+
+        expect(Configuration.SECURE_VAULT_ENDPOINT_STAGE).toEqual('https://stage-secure2-vault.hipay-tpp.com/rest/');
+        expect(conf.secureVaultEndpointStage).toEqual('https://stage-secure2-vault.hipay-tpp.com/rest/');
 
         expect(Configuration.API_ENDPOINT_PROD).toEqual('https://secure-gateway.hipay-tpp.com');
         expect(conf.apiEndpointProd).toEqual('https://secure-gateway.hipay-tpp.com');
@@ -83,6 +90,7 @@ describe('Configuration', () => {
         expect(conf.apiUsername).toEqual(undefined);
         expect(conf.apiPassword).toEqual(undefined);
         expect(conf.apiEnv).toEqual(Configuration.API_ENV_STAGE);
+        expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_STAGE);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_STAGE);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_STAGE);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_STAGE);
@@ -102,6 +110,7 @@ describe('Configuration', () => {
         expect(conf.apiUsername).toEqual(undefined);
         expect(conf.apiPassword).toEqual(undefined);
         expect(conf.apiEnv).toEqual(Configuration.API_ENV_PRODUCTION);
+        expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_PROD);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_PROD);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_PROD);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_PROD);
@@ -121,6 +130,7 @@ describe('Configuration', () => {
         expect(conf.apiUsername).toEqual('USERNAME');
         expect(conf.apiPassword).toEqual('PASSWORD');
         expect(conf.apiEnv).toEqual(Configuration.API_ENV_STAGE);
+        expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_STAGE);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_STAGE);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_STAGE);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_STAGE);
@@ -141,6 +151,7 @@ describe('Configuration', () => {
         expect(conf.apiUsername).toEqual(undefined);
         expect(conf.apiPassword).toEqual(undefined);
         expect(conf.apiEnv).toEqual(Configuration.API_ENV_CUSTOM);
+        expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_STAGE);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_STAGE);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_STAGE);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_STAGE);
@@ -160,6 +171,7 @@ describe('Configuration', () => {
         expect(conf.apiUsername).toEqual(undefined);
         expect(conf.apiPassword).toEqual(undefined);
         expect(conf.apiEnv).toEqual(Configuration.API_ENV_STAGE);
+        expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_STAGE);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_STAGE);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_STAGE);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_STAGE);

@@ -27,6 +27,9 @@ jest.mock('../../Gateway/Response/Mapper/OperationMapper');
 const SecuritySettingsMapper = require('../../Gateway/Response/Mapper/SecuritySettingsMapper');
 jest.mock('../../Gateway/Response/Mapper/SecuritySettingsMapper');
 
+const PaymentCardTokenMapper = require('../../Gateway/Response/Mapper/PaymentCardTokenMapper');
+jest.mock('../../Gateway/Response/Mapper/PaymentCardTokenMapper');
+
 let mockHttpClient = {
     request: jest.fn()
 };
@@ -46,9 +49,10 @@ TransactionMapper.mockImplementation(() => mockMapper);
 HostedPaymentPageMapper.mockImplementation(() => mockMapper);
 OperationMapper.mockImplementation(() => mockMapper);
 SecuritySettingsMapper.mockImplementation(() => mockMapper);
+PaymentCardTokenMapper.mockImplementation(() => mockMapper);
 
 Configuration.mockImplementation(() => {
-    return { apiEndpoint: '{API_ENDPOINT}', hpaymentApiEndpoint: '{HPAYMENT_API_ENDPOINT}' };
+    return { apiEndpoint: '{API_ENDPOINT}', hpaymentApiEndpoint: '{HPAYMENT_API_ENDPOINT}', secureVaultEndpoint: '{SECURED_ENDPOINT}' };
 });
 
 beforeEach(() => {
@@ -66,6 +70,7 @@ beforeEach(() => {
     HostedPaymentPageMapper.mockClear();
     OperationMapper.mockClear();
     SecuritySettingsMapper.mockClear();
+    PaymentCardTokenMapper.mockClear();
 });
 
 expect.extend({
@@ -154,6 +159,8 @@ describe('HiPay object', () => {
         expect(HiPay.METHOD_ORDER_TRANSACTION_INFORMATION).toEqual('GET');
         expect(HiPay.ENDPOINT_SECURITY_SETTINGS).toEqual('/rest/v2/security-settings');
         expect(HiPay.METHOD_SECURITY_SETTINGS).toEqual('GET');
+        expect(HiPay.ENDPOINT_LOOKUP_TOKEN).toEqual('v2/token/{token}');
+        expect(HiPay.METHOD_LOOKUP_TOKEN).toEqual('GET');
         expect(HiPay.API_ENV_STAGE).toEqual('{API_ENV_STAGE}');
         expect(HiPay.API_ENV_PRODUCTION).toEqual('{API_ENV_PRODUCTION}');
 
@@ -2561,5 +2568,47 @@ describe('HiPay object', () => {
             baseUrl: '{API_ENDPOINT}'
         });
         expect(SecuritySettingsMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+    });
+
+    it('requests lookup token', async () => {
+        let hiPay = new HiPay({
+            apiEndpoint: '{API_ENDPOINT}',
+            secureVaultEndpoint: '{SECURED_ENDPOINT}'
+        });
+
+        mockHttpClient.request.mockResolvedValue({
+            body: '{RESPONSE_BODY}'
+        });
+
+        expect(await hiPay.requestLookupToken('TOKEN')).toEqual('{MAPPED_OBJECT}');
+        expect(mockHttpClient.request).toHaveBeenCalledWith(
+            HiPay.METHOD_LOOKUP_TOKEN,
+            HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', 'TOKEN') + '?request_id=0',
+            {
+                baseUrl: '{SECURED_ENDPOINT}'
+            }
+        );
+        expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+    });
+
+    it('requests lookup token with request ID', async () => {
+        let hiPay = new HiPay({
+            apiEndpoint: '{API_ENDPOINT}',
+            secureVaultEndpoint: '{SECURED_ENDPOINT}'
+        });
+
+        mockHttpClient.request.mockResolvedValue({
+            body: '{RESPONSE_BODY}'
+        });
+
+        expect(await hiPay.requestLookupToken('TOKEN', '5')).toEqual('{MAPPED_OBJECT}');
+        expect(mockHttpClient.request).toHaveBeenCalledWith(
+            HiPay.METHOD_LOOKUP_TOKEN,
+            HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', 'TOKEN') + '?request_id=5',
+            {
+                baseUrl: '{SECURED_ENDPOINT}'
+            }
+        );
+        expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
     });
 });
