@@ -1,0 +1,1 @@
+{"version":3,"file":"DeliveryShippingInfoRequest.d.ts","sourceRoot":"","sources":["../../../../Gateway/Request/Info/DeliveryShippingInfoRequest.js"],"names":[],"mappings":";AAGA;IACI;;;;;;OAMG;IACH;QAH2B,aAAa;QAC6E,eAAe,GAAzH,OAAO,GAAC,UAAU,GAAC,SAAS,GAAC,YAAY,GAAC,YAAY,GAAC,eAAe,GAAC,YAAY,GAAC,YAAY;OAgB1G;IANO,sBAAyC;IAIzC,gIAA6C;CASxD"}

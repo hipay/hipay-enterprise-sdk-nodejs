@@ -1,0 +1,1 @@
+{"version":3,"file":"SEPADirectDebitPaymentMethod.d.ts","sourceRoot":"","sources":["../../../../Gateway/Request/PaymentMethod/SEPADirectDebitPaymentMethod.js"],"names":[],"mappings":";AAIA;IACI;;;;;;;;;OASG;IACH;QAN0B,cAAc;QACb,kBAAkB;QAClB,iBAAiB;QAClB,SAAS;QACT,IAAI;OAwB7B;IAlBO,2BAAmD;IAInD,0BAAiD;IAIjD,kBAAiC;IAMjC,aAAuB;CAclC"}

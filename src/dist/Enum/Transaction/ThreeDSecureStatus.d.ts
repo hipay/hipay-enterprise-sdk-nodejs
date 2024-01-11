@@ -1,0 +1,15 @@
+declare const _exports: {
+    AUTHENTICATION_OTHER: string;
+    ENROLLMENT_AUTHENTICATION_AVAILABLE: string;
+    ENROLLMENT_OTHER_ERROR: string;
+    AUTHENTICATION_ATTEMPTED: string;
+    ENROLLMENT_UNKNOWN: string;
+    ENROLLMENT_CARD_HOLDER_NOT_ENROLLED: string;
+    AUTHENTICATION_UNKNOWN: string;
+    AUTHENTICATION_COULD_NOT_PERFORMED: string;
+    AUTHENTICATION_FAILED: string;
+    ENROLLMENT_UNABLE_TO_AUTHENTICATE: string;
+    AUTHENTICATION_SUCCESSFUL: string;
+};
+export = _exports;
+//# sourceMappingURL=ThreeDSecureStatus.d.ts.map
