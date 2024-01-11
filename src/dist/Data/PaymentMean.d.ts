@@ -114,7 +114,7 @@ declare class PaymentMean {
     private _checkoutFieldsMandatory;
     /**
      * Optional fields for this payment mean
-     * @type {Array<Object>}
+     * @type {PaymentMeanAdditionalFields}
      * @private
      */
     private _additionalFields;
@@ -196,13 +196,41 @@ declare class PaymentMean {
     get checkoutFieldsMandatory(): string[];
     /**
      * Optional fields for this payment mean
-     * @returns {Array<String>}
+     * @returns {PaymentMeanAdditionalFields}
      */
-    get additionalFields(): string[];
+    get additionalFields(): PaymentMeanAdditionalFields;
     /**
      * Payment mean priority in the payment page
      * @returns {Number}
      */
     get priority(): number;
+}
+declare class PaymentMeanAdditionalFields {
+    /**
+     *
+     * @param {Object} [additionalFields]
+     * @param {String} [additionalFields.sdkClass] Name of the SDK Class for this payment mean
+     * @param {Object} [additionalFields.formFields] Additional fields available for this payment mean
+     */
+    constructor(additionalFields?: {
+        sdkClass?: string;
+        formFields?: any;
+    });
+    /**
+     * Name of the SDK Class for this payment mean
+     *
+     * @type {String}
+     * @private
+     */
+    private _sdkClass;
+    /**
+     * Additional fields available for this payment mean
+     * @type {Object}
+     * @private
+     */
+    private _formFields;
+    get sdkClass(): any;
+    get formFields(): any;
+    getLocalizedFields(language?: string): {};
 }
 //# sourceMappingURL=PaymentMean.d.ts.map

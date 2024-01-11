@@ -157,7 +157,7 @@ class PaymentMean {
 
     /**
      * Optional fields for this payment mean
-     * @type {Array<Object>}
+     * @type {PaymentMeanAdditionalFields}
      * @private
      */
     _additionalFields = [];
@@ -309,7 +309,7 @@ class PaymentMean {
 
     /**
      * Optional fields for this payment mean
-     * @returns {Array<String>}
+     * @returns {PaymentMeanAdditionalFields}
      */
     get additionalFields() {
         return this._additionalFields;
