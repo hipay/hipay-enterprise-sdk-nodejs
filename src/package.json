@@ -10,6 +10,7 @@
     },
     "homepage": "https://hipay.com/product-enterprise/",
     "main": "HiPay.js",
+    "types": "./dist/HiPay.d.ts",
     "keywords": [
         "hipay",
         "payment",
