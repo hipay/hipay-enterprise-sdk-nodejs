@@ -27,7 +27,6 @@ const DeliveryShippingInfoRequest = require('./Gateway/Request/Info/DeliveryShip
 const ThreeDSTwoModels = require('./Gateway/Request/Model/ThreeDSTwo');
 const PaymentMethods = require('./Gateway/Request/PaymentMethod');
 
-const TransactionEnums = require('./Enum/Transaction');
 const ThreeDSTwoEnums = require('./Enum/ThreeDSTwo');
 const HelperEnums = require('./Enum/Helper');
 const CustomerEnums = require('./Enum/Customer');
@@ -440,18 +439,6 @@ HiPay.PaymentMethods = PaymentMethods;
 
 HiPay.Transaction = Transaction;
 HiPay.Operation = Operation;
-
-HiPay.Transaction.AuthenticationIndicator = TransactionEnums.AuthenticationIndicator;
-HiPay.Transaction.AVSResult = TransactionEnums.AVSResult;
-HiPay.Transaction.CVCResult = TransactionEnums.CVCResult;
-HiPay.Transaction.ECI = TransactionEnums.ECI;
-HiPay.Transaction.FraudScreening = TransactionEnums.FraudScreening;
-HiPay.Transaction.Operation = TransactionEnums.Operation;
-HiPay.Transaction.SecurityCodeType = TransactionEnums.SecurityCodeType;
-HiPay.Transaction.Template = TransactionEnums.Template;
-HiPay.Transaction.ThreeDSecureStatus = TransactionEnums.ThreeDSecureStatus;
-HiPay.Transaction.TransactionState = TransactionEnums.TransactionState;
-HiPay.Transaction.TransactionStatus = TransactionEnums.TransactionStatus;
 
 HiPay.ThreeDSTwo = {
     ...ThreeDSTwoEnums,

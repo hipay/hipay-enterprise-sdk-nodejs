@@ -1,8 +1,21 @@
 'use strict';
 
 const AbstractResponsePart = require('./AbstractResponsePart');
+const TransactionEnums = require('../../Enum/Transaction');
 
 class Transaction extends AbstractResponsePart {
+    static AuthenticationIndicator = TransactionEnums.AuthenticationIndicator;
+    static AVSResult = TransactionEnums.AVSResult;
+    static CVCResult = TransactionEnums.CVCResult;
+    static ECI = TransactionEnums.ECI;
+    static FraudScreening = TransactionEnums.FraudScreening;
+    static Operation = TransactionEnums.Operation;
+    static SecurityCodeType = TransactionEnums.SecurityCodeType;
+    static Template = TransactionEnums.Template;
+    static ThreeDSecureStatus = TransactionEnums.ThreeDSecureStatus;
+    static TransactionState = TransactionEnums.TransactionState;
+    static TransactionStatus = TransactionEnums.TransactionStatus;
+
     /**
      * @param {Object} values
      * @param {String} [values.mid]
