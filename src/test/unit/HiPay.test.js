@@ -140,6 +140,7 @@ const DeliveryMethod = require('../../Data/DeliveryMethod');
 const PaymentMean = require('../../Data/PaymentMean');
 const ProductCategory = require('../../Data/ProductCategory');
 const ShippingMethod = require('../../Data/ShippingMethod');
+const Transaction = require('../../Gateway/Response/Transaction');
 
 describe('HiPay object', () => {
     it('constructs correctly', () => {
@@ -183,7 +184,7 @@ describe('HiPay object', () => {
             XTimesCreditCardPaymentMethod
         });
 
-        expect(HiPay.Transaction).toStrictEqual({
+        /*         expect(HiPay.Transaction).toStrictEqual({
             AuthenticationIndicator,
             AVSResult,
             CVCResult,
@@ -196,7 +197,9 @@ describe('HiPay object', () => {
             TransactionState,
             TransactionStatus
         });
+ */
 
+        expect(HiPay.Transaction).toStrictEqual(Transaction);
         expect(HiPay.ThreeDSTwo).toStrictEqual({
             DeliveryTimeFrame,
             DeviceChannel,
