@@ -180,7 +180,8 @@ declare namespace HiPay {
     export { CustomerShippingInfoRequest };
     export { DeliveryShippingInfoRequest };
     export { PaymentMethods };
-    export { TransactionEnums as Transaction };
+    export { Transaction };
+    export { Operation };
     export let ThreeDSTwo: {
         AccountInfo: typeof ThreeDSTwoModels.AccountInfo;
         BrowserInfo: typeof ThreeDSTwoModels.BrowserInfo;
@@ -234,6 +235,7 @@ declare namespace HiPay {
     export { CustomerEnums as Customer };
     export { CartEnums as Cart };
     export { DataCollections };
+    export { HiPayNodeSDKError };
 }
 import SimpleHTTPClient = require("./Gateway/HTTP/SimpleHTTPClient");
 import OrderRequest = require("./Gateway/Request/OrderRequest");
@@ -243,10 +245,12 @@ import CustomerBillingInfoRequest = require("./Gateway/Request/Info/CustomerBill
 import CustomerShippingInfoRequest = require("./Gateway/Request/Info/CustomerShippingInfoRequest");
 import DeliveryShippingInfoRequest = require("./Gateway/Request/Info/DeliveryShippingInfoRequest");
 import PaymentMethods = require("./Gateway/Request/PaymentMethod");
-import TransactionEnums = require("./Enum/Transaction");
+import Transaction = require("./Gateway/Response/Transaction");
+import Operation = require("./Gateway/Response/Operation");
 import ThreeDSTwoModels = require("./Gateway/Request/Model/ThreeDSTwo");
 import HelperEnums = require("./Enum/Helper");
 import CustomerEnums = require("./Enum/Customer");
 import CartEnums = require("./Enum/Cart");
 import DataCollections = require("./Data");
+import HiPayNodeSDKError = require("./Error/HiPayNodeSDKError");
 //# sourceMappingURL=HiPay.d.ts.map

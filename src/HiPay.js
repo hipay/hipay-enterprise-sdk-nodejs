@@ -34,6 +34,9 @@ const CustomerEnums = require('./Enum/Customer');
 const CartEnums = require('./Enum/Cart');
 
 const DataCollections = require('./Data');
+const HiPayNodeSDKError = require('./Error/HiPayNodeSDKError');
+const Operation = require('./Gateway/Response/Operation');
+const Transaction = require('./Gateway/Response/Transaction');
 
 class HiPay {
     /**
@@ -435,7 +438,21 @@ HiPay.DeliveryShippingInfoRequest = DeliveryShippingInfoRequest;
 
 HiPay.PaymentMethods = PaymentMethods;
 
-HiPay.Transaction = TransactionEnums;
+HiPay.Transaction = Transaction;
+HiPay.Operation = Operation;
+
+HiPay.Transaction.AuthenticationIndicator = TransactionEnums.AuthenticationIndicator;
+HiPay.Transaction.AVSResult = TransactionEnums.AVSResult;
+HiPay.Transaction.CVCResult = TransactionEnums.CVCResult;
+HiPay.Transaction.ECI = TransactionEnums.ECI;
+HiPay.Transaction.FraudScreening = TransactionEnums.FraudScreening;
+HiPay.Transaction.Operation = TransactionEnums.Operation;
+HiPay.Transaction.SecurityCodeType = TransactionEnums.SecurityCodeType;
+HiPay.Transaction.Template = TransactionEnums.Template;
+HiPay.Transaction.ThreeDSecureStatus = TransactionEnums.ThreeDSecureStatus;
+HiPay.Transaction.TransactionState = TransactionEnums.TransactionState;
+HiPay.Transaction.TransactionStatus = TransactionEnums.TransactionStatus;
+
 HiPay.ThreeDSTwo = {
     ...ThreeDSTwoEnums,
     ...ThreeDSTwoModels
@@ -445,5 +462,7 @@ HiPay.Customer = CustomerEnums;
 HiPay.Cart = CartEnums;
 
 HiPay.DataCollections = DataCollections;
+
+HiPay.HiPayNodeSDKError = HiPayNodeSDKError;
 
 module.exports = HiPay;
