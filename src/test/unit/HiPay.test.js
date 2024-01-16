@@ -184,22 +184,19 @@ describe('HiPay object', () => {
             XTimesCreditCardPaymentMethod
         });
 
-        /*         expect(HiPay.Transaction).toStrictEqual({
-            AuthenticationIndicator,
-            AVSResult,
-            CVCResult,
-            ECI,
-            FraudScreening,
-            Operation,
-            SecurityCodeType,
-            Template,
-            ThreeDSecureStatus,
-            TransactionState,
-            TransactionStatus
-        });
- */
+        expect(HiPay.Transaction).toEqual(Transaction);
+        expect(HiPay.Transaction.AuthenticationIndicator).toEqual(AuthenticationIndicator);
+        expect(HiPay.Transaction.AVSResult).toEqual(AVSResult);
+        expect(HiPay.Transaction.CVCResult).toEqual(CVCResult);
+        expect(HiPay.Transaction.ECI).toEqual(ECI);
+        expect(HiPay.Transaction.FraudScreening).toEqual(FraudScreening);
+        expect(HiPay.Transaction.Operation).toEqual(Operation);
+        expect(HiPay.Transaction.SecurityCodeType).toEqual(SecurityCodeType);
+        expect(HiPay.Transaction.Template).toEqual(Template);
+        expect(HiPay.Transaction.ThreeDSecureStatus).toEqual(ThreeDSecureStatus);
+        expect(HiPay.Transaction.TransactionState).toEqual(TransactionState);
+        expect(HiPay.Transaction.TransactionStatus).toEqual(TransactionStatus);
 
-        expect(HiPay.Transaction).toStrictEqual(Transaction);
         expect(HiPay.ThreeDSTwo).toStrictEqual({
             DeliveryTimeFrame,
             DeviceChannel,
