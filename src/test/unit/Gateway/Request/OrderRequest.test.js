@@ -26,7 +26,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: paymentMethod,
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).not.toThrow();
 
@@ -39,6 +40,7 @@ describe('Test constructor', () => {
         expect(orderRequest.paymentMethod).toStrictEqual(paymentMethod);
         expect(orderRequest.browserInfo).toStrictEqual(browserInfo);
         expect(orderRequest.salesChannel).toEqual('{SALESCHANNEL}');
+        expect(orderRequest.providerData).toEqual('{PROVIDERDATA}');
     });
 
     it('Initializes correctly with plain object', () => {
@@ -68,7 +70,10 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: paymentMethod,
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: {
+                    paypal_id: '3G784840JJ573503S'
+                }
             });
         }).not.toThrow();
 
@@ -82,6 +87,7 @@ describe('Test constructor', () => {
         expect(orderRequest.browserInfo).toBeInstanceOf(BrowserInfo);
         expect(orderRequest.browserInfo).toEqual(browserInfo);
         expect(orderRequest.salesChannel).toEqual('{SALESCHANNEL}');
+        expect(orderRequest.providerData).toEqual('{"paypal_id":"3G784840JJ573503S"}');
     });
 
     it('Initializes correctly with minimal parameters', () => {
@@ -106,6 +112,7 @@ describe('Test constructor', () => {
         expect(orderRequest.paymentMethod).toEqual(null);
         expect(orderRequest.browserInfo).toEqual(null);
         expect(orderRequest.salesChannel).toEqual(null);
+        expect(orderRequest.providerData).toEqual(null);
     });
 
     it('Errors when orderid is absent', () => {
@@ -121,7 +128,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).toThrow();
 
@@ -133,7 +141,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -154,7 +163,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).toThrow();
 
@@ -166,7 +176,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -187,7 +198,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).toThrow();
 
@@ -199,7 +211,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -220,7 +233,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).toThrow();
 
@@ -232,7 +246,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -253,7 +268,8 @@ describe('Test constructor', () => {
                 amount: '{AMOUNT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).toThrow();
 
@@ -265,7 +281,8 @@ describe('Test constructor', () => {
                 amount: '{AMOUNT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
@@ -287,7 +304,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         }).toThrow();
 
@@ -300,7 +318,8 @@ describe('Test constructor', () => {
                 paymentProduct: '{PAYMENTPRODUCT}',
                 paymentMethod: '{PAYMENTMETHOD}',
                 browserInfo: browserInfo,
-                salesChannel: '{SALESCHANNEL}'
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);

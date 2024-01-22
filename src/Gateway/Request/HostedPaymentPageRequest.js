@@ -153,7 +153,6 @@ class HostedPaymentPageRequest extends TransactionRequest {
         this.orderCategoryCode = null;
         this.carrierDescription = null;
         this.salesChannel = null;
-        this.softDescriptor = null;
         this.themeCode = null;
         this.displayCancelButton = false;
     }
