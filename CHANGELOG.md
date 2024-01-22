@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+- **add** : Add `provider_data` property to Order Requests
+
 ## 1.2.0
 
 - **add** : Add endpoint to lookup a card token informations
