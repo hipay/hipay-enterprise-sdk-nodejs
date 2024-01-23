@@ -56,6 +56,7 @@ class OrderRequest extends TransactionRequest {
      * @param {BrowserInfo} [values.browserInfo] Browser information as sent by the HiPay Front JS SDK, for 3DS validation purposes
      * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
      * @param {AbstractPaymentMethod} [values.paymentMethod] Payment data for this order
+     * @param {Object} [values.providerData] Parameter to use for specific provider data like PayPal.
      */
     constructor(values) {
         super(values);
@@ -85,6 +86,14 @@ class OrderRequest extends TransactionRequest {
         if (Object.prototype.hasOwnProperty.call(values, 'salesChannel')) {
             this.salesChannel = values.salesChannel;
         }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'providerData')) {
+            if (typeof values.providerData === 'object') {
+                this.providerData = JSON.stringify(values.providerData);
+            } else {
+                this.providerData = values.providerData;
+            }
+        }
     }
 
     initValues() {
@@ -94,6 +103,7 @@ class OrderRequest extends TransactionRequest {
         this.paymentMethod = null;
         this.browserInfo = null;
         this.salesChannel = null;
+        this.providerData = null;
     }
 }
 

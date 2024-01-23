@@ -336,7 +336,8 @@ describe('HiPay object', () => {
                 screen_width: '{SCREEN_WIDTH}',
                 timezone: '{TIMEZONE}'
             },
-            salesChannel: '{SALESCHANNEL}'
+            salesChannel: '{SALESCHANNEL}',
+            providerData: '{PROVIDERDATA}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -464,7 +465,8 @@ describe('HiPay object', () => {
                         timezone: '{TIMEZONE}'
                     })
                 ),
-                sales_channel: '{SALESCHANNEL}'
+                sales_channel: '{SALESCHANNEL}',
+                provider_data: '{PROVIDERDATA}'
             }
         });
         expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -589,7 +591,8 @@ describe('HiPay object', () => {
                 screen_width: '{SCREEN_WIDTH}',
                 timezone: '{TIMEZONE}'
             },
-            salesChannel: '{SALESCHANNEL}'
+            salesChannel: '{SALESCHANNEL}',
+            providerData: '{PROVIDERDATA}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -717,7 +720,8 @@ describe('HiPay object', () => {
                         timezone: '{TIMEZONE}'
                     })
                 ),
-                sales_channel: '{SALESCHANNEL}'
+                sales_channel: '{SALESCHANNEL}',
+                provider_data: '{PROVIDERDATA}'
             }
         });
         expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -842,7 +846,8 @@ describe('HiPay object', () => {
                 screen_width: '{SCREEN_WIDTH}',
                 timezone: '{TIMEZONE}'
             },
-            salesChannel: '{SALESCHANNEL}'
+            salesChannel: '{SALESCHANNEL}',
+            providerData: '{PROVIDERDATA}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -963,7 +968,8 @@ describe('HiPay object', () => {
                         timezone: '{TIMEZONE}'
                     })
                 ),
-                sales_channel: '{SALESCHANNEL}'
+                sales_channel: '{SALESCHANNEL}',
+                provider_data: '{PROVIDERDATA}'
             }
         });
         expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
@@ -1088,7 +1094,8 @@ describe('HiPay object', () => {
                 screen_width: '{SCREEN_WIDTH}',
                 timezone: '{TIMEZONE}'
             },
-            salesChannel: '{SALESCHANNEL}'
+            salesChannel: '{SALESCHANNEL}',
+            providerData: '{PROVIDERDATA}'
         });
 
         mockPIDataClient.getDataId.mockReturnValue(null);
@@ -1216,7 +1223,8 @@ describe('HiPay object', () => {
                         timezone: '{TIMEZONE}'
                     })
                 ),
-                sales_channel: '{SALESCHANNEL}'
+                sales_channel: '{SALESCHANNEL}',
+                provider_data: '{PROVIDERDATA}'
             }
         });
         expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
