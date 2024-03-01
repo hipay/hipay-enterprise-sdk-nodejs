@@ -341,9 +341,8 @@ class HiPay {
 
                 transactions.push(transactionMapper.mappedObject);
             } else {
-                //Array of transactions
-
-                for (const transaction of response.body.transaction) {
+                // Array of transactions with format : {index => trx}
+                for (const transaction of Object.values(response.body.transaction)) {
                     const transactionMapper = new TransactionMapper(transaction);
 
                     transactions.push(transactionMapper.mappedObject);
