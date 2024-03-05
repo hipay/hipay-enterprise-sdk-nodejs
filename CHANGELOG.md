@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.1
 
 - **fix** : Fixed `requestOrderTransactionInformation` method when its returning multiple transactions
 
