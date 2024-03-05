@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+- **fix** : Fixed `requestOrderTransactionInformation` method when its returning multiple transactions
+
 ## 1.3.0
 
 - **add** : Add `provider_data` property to Order Requests
