@@ -65,7 +65,7 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {String} [values.carrierDescription] Short Description of your carrier
      * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
      * @param {String} [values.themeCode] Custom theme code to display in the payment page
-     * @param {Boolean} [values.displayCancelButton = false] Whether to add a cancel button to the page or not
+     * @param {0|1} [values.displayCancelButton = 0] Whether to add a cancel button to the page or not
      */
     constructor(values) {
         super(values);
@@ -154,7 +154,7 @@ class HostedPaymentPageRequest extends TransactionRequest {
         this.carrierDescription = null;
         this.salesChannel = null;
         this.themeCode = null;
-        this.displayCancelButton = false;
+        this.displayCancelButton = 0;
     }
 }
 
