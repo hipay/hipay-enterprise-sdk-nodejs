@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Fix** : Fixed `display_cancel_button` field when requesting Hpayment
+
 ## 1.3.1
 
 - **fix** : Fixed `requestOrderTransactionInformation` method when its returning multiple transactions
