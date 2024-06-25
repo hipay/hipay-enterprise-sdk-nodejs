@@ -109,7 +109,7 @@ class PIDataClient {
             currency: transactionRequest.currency,
             order_id: transactionRequest.orderid,
             customer: {
-                email: transactionRequest.customerBillingInfo.email,
+                email: transactionRequest.customerBillingInfo?.email,
                 cid: transactionRequest.cid,
                 ipaddr: transactionRequest.ipaddr
             },

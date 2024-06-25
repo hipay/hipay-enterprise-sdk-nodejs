@@ -93,7 +93,7 @@ describe('Test constructor', () => {
         expect(hpaymentRequest.carrierDescription).toEqual(null);
         expect(hpaymentRequest.salesChannel).toEqual(null);
         expect(hpaymentRequest.themeCode).toEqual(null);
-        expect(hpaymentRequest.displayCancelButton).toEqual(false);
+        expect(hpaymentRequest.displayCancelButton).toEqual(0);
     });
 
     it('Errors when orderid is absent', () => {
