@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.3.2
 
 - **Fix** : Fixed `display_cancel_button` field when requesting Hpayment
 
