@@ -27,6 +27,14 @@ class Configuration {
         return 'https://stage-api.hipay.com';
     }
 
+    static get CONSULTATION_API_ENDPOINT_STAGE() {
+        return 'https://stage-api-gateway.hipay.com';
+    }
+
+    static get CONSULTATION_API_ENDPOINT_PROD() {
+        return 'https://api-gateway.hipay.com';
+    }
+
     static get DATA_API_ENDPOINT_PROD() {
         return 'https://data.hipay.com';
     }
@@ -144,6 +152,14 @@ class Configuration {
         return Configuration.HPAYMENT_API_ENDPOINT_STAGE;
     }
 
+    get consultationApiEndpointProd() {
+        return Configuration.CONSULTATION_API_ENDPOINT_PROD;
+    }
+
+    get consultationApiEndpointStage() {
+        return Configuration.CONSULTATION_API_ENDPOINT_STAGE;
+    }
+
     get secureVaultEndpoint() {
         return this.apiEnv === Configuration.API_ENV_PRODUCTION ? this.secureVaultEndpointProd : this.secureVaultEndpointStage;
     }
@@ -171,6 +187,19 @@ class Configuration {
                 return this.hpaymentApiEndpointStage;
         }
     }
+
+    get consultationApiEndpoint() {
+        switch (this.apiEnv) {
+            case Configuration.API_ENV_CUSTOM:
+                return this._urlCustom ?? this.consultationApiEndpointStage;
+            case Configuration.API_ENV_PRODUCTION:
+                return this.consultationApiEndpointProd;
+            case Configuration.API_ENV_STAGE:
+            default:
+                return this.consultationApiEndpointStage;
+        }
+    }
+
 
     get dataApiEndpointProd() {
         return Configuration.DATA_API_ENDPOINT_PROD;

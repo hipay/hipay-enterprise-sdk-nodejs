@@ -93,6 +93,13 @@ class HiPay {
     }
 
     /**
+     * @return {String} ENDPOINT_TRANSACTION_DETAILS endpoint to call transaction information
+     */
+    static get ENDPOINT_TRANSACTION_INFORMATION_V3() {
+        return '/v3/transaction/{transaction}';
+    }
+
+    /**
      * @return {String} METHOD_TRANSACTION_DETAILS http method to call transaction information
      */
     static get METHOD_TRANSACTION_INFORMATION() {
@@ -293,28 +300,32 @@ class HiPay {
      * @param {String} transactionReference The HiPay transaction reference
      * @returns {Promise<import('./Gateway/Response/Transaction')|null>}
      */
-    async requestTransactionInformation(transactionReference) {
+    async requestTransactionInformation(transactionReference, { legacy = true }) {
         if (!transactionReference || typeof transactionReference !== 'string') {
             throw new InvalidArgumentException('Transaction reference must be a string');
         }
 
-        const endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join(transactionReference);
-
-        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_INFORMATION, endPoint, {
-            baseUrl: this._configuration.apiEndpoint
+        const apiUrl = legacy ? this._configuration.apiEndpoint : this._configuration.consultationApiEndpoint;
+        const endPoint = legacy ? HiPay.ENDPOINT_TRANSACTION_INFORMATION : HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3;
+        const formattedEndpoint = endPoint.split('{transaction}').join(transactionReference)
+        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_INFORMATION, formattedEndpoint, {
+            baseUrl: apiUrl
         });
 
-        if (response.body.transaction) {
-            response.body.transaction.basket = response.body.basket;
+        const transaction = legacy ? response.body.transaction : response.body;
+        if (transaction) {
+            if (legacy) {
+                transaction.basket = response.body.basket;
+            }
 
-            const transactionMapper = new TransactionMapper(response.body.transaction);
+            const transactionMapper = new TransactionMapper(transaction);
 
             return transactionMapper.mappedObject;
         } else {
             return null;
         }
     }
-
+ 
     /**
      * Returns a transaction information based on a order ID
      *
