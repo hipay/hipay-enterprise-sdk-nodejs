@@ -316,11 +316,12 @@ class HiPay {
         if (transaction) {
             if (legacy) {
                 transaction.basket = response.body.basket;
+                const transactionMapper = new TransactionMapper(transaction);
+
+                return transactionMapper.mappedObject;
             }
 
-            const transactionMapper = new TransactionMapper(transaction);
-
-            return transactionMapper.mappedObject;
+            return transaction
         } else {
             return null;
         }
