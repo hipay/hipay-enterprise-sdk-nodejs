@@ -120,7 +120,7 @@ class PIDataClient {
             domain: this.getDomainFromUrl(transactionRequest.acceptUrl),
             components: {
                 cms: sourceData.brand ?? 'sdk_nodejs',
-                cms_version: sourceData.brandVersion ?? '',
+                cms_version: sourceData.brand_version ?? '',
                 cms_module_version: sourceData.integration_version ?? '',
                 sdk_server: 'nodejs',
                 // Save hipay-enterprise-sdk-nodejs version in data API (for later use)
