@@ -12,11 +12,6 @@ class ThreeDSecure extends AbstractResponsePart {
      * @param {String} [values.authenticationMessage]
      * @param {String} [values.authenticationToken]
      * @param {String} [values.xid]
-     * @param {String} [values.scaPreference]
-     * @param {String} [values.version]
-     * @param {String} [values.authenticationMethod]
-     * @param {String} [values.liability]
-
      */
     constructor(values) {
         if (typeof values !== 'object') {
@@ -46,18 +41,6 @@ class ThreeDSecure extends AbstractResponsePart {
         if (Object.prototype.hasOwnProperty.call(values, 'xid')) {
             this.xid = values.xid;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'scaPreference')) {
-            his.scaPreference = values.scaPreference;
-        }
-        if (Object.prototype.hasOwnProperty.call(values, 'version')) {
-            this.version = values.version;
-        }
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationMethod')) {
-            this.authenticationMethod = values.authenticationMethod;
-        }
-        if (Object.prototype.hasOwnProperty.call(values, 'liability')) {
-            this.liability = values.liability;
-        }
     }
 
     initValues() {
@@ -70,10 +53,6 @@ class ThreeDSecure extends AbstractResponsePart {
         this.authenticationMessage = null;
         this.authenticationToken = null;
         this.xid = null;
-        this.scaPreference = null;
-        this.version = null;
-        this.authenticationMethod = null;
-        this.liability = null;
     }
 }
 
