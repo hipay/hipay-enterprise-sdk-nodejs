@@ -190,7 +190,7 @@ describe('Test API Data object', () => {
             acceptUrl: 'http://example.com',
             source: {
                 brand: '{BRAND}',
-                brandVersion: '{BRAND_VERSION}',
+                brand_version: '{BRAND_VERSION}',
                 integration_version: '{BRAND_MODULE_VERSION}',
                 sdk_server_version: '{SDK_SERVER_VERSION}'
             },
