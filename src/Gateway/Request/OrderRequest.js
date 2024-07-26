@@ -57,7 +57,7 @@ class OrderRequest extends TransactionRequest {
      * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
      * @param {AbstractPaymentMethod} [values.paymentMethod] Payment data for this order
      * @param {Object} [values.providerData] Parameter to use for specific provider data like PayPal.
-     * @param {Number} [values.oneClick] Parameter to use for multi_use Credit Card Token.
+     * @param {Number} [values.oneClick] This parameter indicates whether the payment should be a one-click payment. `1`: Initiate a one-click payment use case
      */
     constructor(values) {
         super(values);
