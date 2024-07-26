@@ -219,2048 +219,138 @@ describe('HiPay object', () => {
         expect(HiPay.DataCollections).toStrictEqual({ DeliveryMethod, PaymentMean, ProductCategory, ShippingMethod });
     });
 
-    it('requests new order', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
+    describe('requests new order', () => {
+        it('requests new order', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
 
-        let request = new OrderRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProduct: '{PAYMENTPRODUCT}',
-            paymentMethod: new CardTokenPaymentMethod({
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE
-            }),
-            browserInfo: {
-                ipaddr: '{IPADDR}',
-                http_accept: '{HTTP_ACCEPT}',
-                http_user_agent: '{HTTP_USER_AGENT}',
-                java_enabled: '{JAVA_ENABLED}',
-                javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                language: '{LANGUAGE}',
-                color_depth: '{COLOR_DEPTH}',
-                screen_height: '{SCREEN_HEIGHT}',
-                screen_width: '{SCREEN_WIDTH}',
-                timezone: '{TIMEZONE}'
-            },
-            salesChannel: '{SALESCHANNEL}',
-            providerData: '{PROVIDERDATA}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
-            baseUrl: '{API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
+            let request = new OrderRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
                     source: '{SOURCE}',
                     brand: '{BRAND}',
                     brand_version: '{BRAND_VERSION}'
-                }),
+                },
                 basket: '{BASKET}',
                 orderid: '{ORDERID}',
                 operation: '{OPERATION}',
                 description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
                 currency: '{CURRENCY}',
                 amount: '{AMOUNT}',
                 shipping: '{SHIPPING}',
                 tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
+                taxRate: '{TAXRATE}',
                 cid: '{CID}',
                 ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
                 language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product: '{PAYMENTPRODUCT}',
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE,
-                browser_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        ipaddr: '{IPADDR}',
-                        http_accept: '{HTTP_ACCEPT}',
-                        http_user_agent: '{HTTP_USER_AGENT}',
-                        java_enabled: '{JAVA_ENABLED}',
-                        javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                        language: '{LANGUAGE}',
-                        color_depth: '{COLOR_DEPTH}',
-                        screen_height: '{SCREEN_HEIGHT}',
-                        screen_width: '{SCREEN_WIDTH}',
-                        timezone: '{TIMEZONE}'
-                    })
-                ),
-                sales_channel: '{SALESCHANNEL}',
-                provider_data: '{PROVIDERDATA}'
-            }
-        });
-        expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
-        expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
-    });
-
-    it('requests new order with custom data id', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        let request = new OrderRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProduct: '{PAYMENTPRODUCT}',
-            paymentMethod: new CardTokenPaymentMethod({
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE
-            }),
-            browserInfo: {
-                ipaddr: '{IPADDR}',
-                http_accept: '{HTTP_ACCEPT}',
-                http_user_agent: '{HTTP_USER_AGENT}',
-                java_enabled: '{JAVA_ENABLED}',
-                javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                language: '{LANGUAGE}',
-                color_depth: '{COLOR_DEPTH}',
-                screen_height: '{SCREEN_HEIGHT}',
-                screen_width: '{SCREEN_WIDTH}',
-                timezone: '{TIMEZONE}'
-            },
-            salesChannel: '{SALESCHANNEL}',
-            providerData: '{PROVIDERDATA}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestNewOrder(request, { dataId: '{RAW_DATA_ID}' })).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith('{RAW_DATA_ID}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
-            baseUrl: '{API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProduct: '{PAYMENTPRODUCT}',
+                paymentMethod: new CardTokenPaymentMethod({
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE
                 }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                cid: '{CID}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product: '{PAYMENTPRODUCT}',
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE,
-                browser_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        ipaddr: '{IPADDR}',
-                        http_accept: '{HTTP_ACCEPT}',
-                        http_user_agent: '{HTTP_USER_AGENT}',
-                        java_enabled: '{JAVA_ENABLED}',
-                        javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                        language: '{LANGUAGE}',
-                        color_depth: '{COLOR_DEPTH}',
-                        screen_height: '{SCREEN_HEIGHT}',
-                        screen_width: '{SCREEN_WIDTH}',
-                        timezone: '{TIMEZONE}'
-                    })
-                ),
-                sales_channel: '{SALESCHANNEL}',
-                provider_data: '{PROVIDERDATA}'
-            }
-        });
-        expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
-        expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
-    });
+                browserInfo: {
+                    ipaddr: '{IPADDR}',
+                    http_accept: '{HTTP_ACCEPT}',
+                    http_user_agent: '{HTTP_USER_AGENT}',
+                    java_enabled: '{JAVA_ENABLED}',
+                    javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                    language: '{LANGUAGE}',
+                    color_depth: '{COLOR_DEPTH}',
+                    screen_height: '{SCREEN_HEIGHT}',
+                    screen_width: '{SCREEN_WIDTH}',
+                    timezone: '{TIMEZONE}'
+                },
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
+            });
 
-    it('requests new order with undefined values', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
 
-        let request = new OrderRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: undefined,
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: null,
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: null
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProduct: '{PAYMENTPRODUCT}',
-            paymentMethod: new CardTokenPaymentMethod({
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE
-            }),
-            browserInfo: {
-                ipaddr: '{IPADDR}',
-                http_accept: '{HTTP_ACCEPT}',
-                http_user_agent: '{HTTP_USER_AGENT}',
-                java_enabled: '{JAVA_ENABLED}',
-                javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                language: '{LANGUAGE}',
-                color_depth: '{COLOR_DEPTH}',
-                screen_height: '{SCREEN_HEIGHT}',
-                screen_width: '{SCREEN_WIDTH}',
-                timezone: '{TIMEZONE}'
-            },
-            salesChannel: '{SALESCHANNEL}',
-            providerData: '{PROVIDERDATA}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
-            baseUrl: '{API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
-                }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product: '{PAYMENTPRODUCT}',
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE,
-                browser_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        ipaddr: '{IPADDR}',
-                        http_accept: '{HTTP_ACCEPT}',
-                        http_user_agent: '{HTTP_USER_AGENT}',
-                        java_enabled: '{JAVA_ENABLED}',
-                        javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                        language: '{LANGUAGE}',
-                        color_depth: '{COLOR_DEPTH}',
-                        screen_height: '{SCREEN_HEIGHT}',
-                        screen_width: '{SCREEN_WIDTH}',
-                        timezone: '{TIMEZONE}'
-                    })
-                ),
-                sales_channel: '{SALESCHANNEL}',
-                provider_data: '{PROVIDERDATA}'
-            }
-        });
-        expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
-        expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
-    });
-
-    it('requests new order sending no data if data-id could not be generated', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        let request = new OrderRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProduct: '{PAYMENTPRODUCT}',
-            paymentMethod: new CardTokenPaymentMethod({
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE
-            }),
-            browserInfo: {
-                ipaddr: '{IPADDR}',
-                http_accept: '{HTTP_ACCEPT}',
-                http_user_agent: '{HTTP_USER_AGENT}',
-                java_enabled: '{JAVA_ENABLED}',
-                javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                language: '{LANGUAGE}',
-                color_depth: '{COLOR_DEPTH}',
-                screen_height: '{SCREEN_HEIGHT}',
-                screen_width: '{SCREEN_WIDTH}',
-                timezone: '{TIMEZONE}'
-            },
-            salesChannel: '{SALESCHANNEL}',
-            providerData: '{PROVIDERDATA}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue(null);
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
-            baseUrl: '{API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
-                }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                cid: '{CID}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product: '{PAYMENTPRODUCT}',
-                eci: ECI.SECURE_ECOMMERCE,
-                cardtoken: '{CARD_TOKEN}',
-                authentication_indicator: AuthenticationIndicator.AVAILABLE,
-                browser_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        ipaddr: '{IPADDR}',
-                        http_accept: '{HTTP_ACCEPT}',
-                        http_user_agent: '{HTTP_USER_AGENT}',
-                        java_enabled: '{JAVA_ENABLED}',
-                        javascript_enabled: '{JAVASCRIPT_ENABLED}',
-                        language: '{LANGUAGE}',
-                        color_depth: '{COLOR_DEPTH}',
-                        screen_height: '{SCREEN_HEIGHT}',
-                        screen_width: '{SCREEN_WIDTH}',
-                        timezone: '{TIMEZONE}'
-                    })
-                ),
-                sales_channel: '{SALESCHANNEL}',
-                provider_data: '{PROVIDERDATA}'
-            }
-        });
-        expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).not.toHaveBeenCalled();
-        expect(mockPIDataClient.sendData).not.toHaveBeenCalled();
-    });
-
-    it('requests new hosted payment page', async () => {
-        let hiPay = new HiPay({});
-
-        let request = new HostedPaymentPageRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProductList: '{PAYMENTPRODUCTLIST}',
-            paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
-            template: '{TEMPLATE}',
-            timeLimitToPay: '{TIMELIMITTOPAY}',
-            multiUse: '{MULTIUSE}',
-            merchantDisplayName: '{MERCHANTDISPLAYNAME}',
-            css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}',
-            eci: '{ECI}',
-            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
-            expirationLimit: '{EXPIRATIONLIMIT}',
-            orderCategoryCode: '{ORDERCATEGORYCODE}',
-            carrierDescription: '{CARRIERDESCRIPTION}',
-            salesChannel: '{SALESCHANNEL}',
-            softDescriptor: '{SOFTDESCRIPTOR}',
-            themeCode: '{THEMECODE}',
-            displayCancelButton: '{DISPLAYCANCELBUTTON}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestHostedPaymentPage(request)).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
-            baseUrl: '{HPAYMENT_API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
-                }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                cid: '{CID}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product_list: '{PAYMENTPRODUCTLIST}',
-                payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
-                template: '{TEMPLATE}',
-                time_limit_to_pay: '{TIMELIMITTOPAY}',
-                multi_use: '{MULTIUSE}',
-                merchant_display_name: '{MERCHANTDISPLAYNAME}',
-                css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}',
-                eci: '{ECI}',
-                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
-                expiration_limit: '{EXPIRATIONLIMIT}',
-                order_category_code: '{ORDERCATEGORYCODE}',
-                carrier_description: '{CARRIERDESCRIPTION}',
-                sales_channel: '{SALESCHANNEL}',
-                soft_descriptor: '{SOFTDESCRIPTOR}',
-                theme_code: '{THEMECODE}',
-                display_cancel_button: '{DISPLAYCANCELBUTTON}'
-            },
-            additionalHeaders: {
-                ['X-HIPAY-DATA-ID']: '{DATA_ID}'
-            }
-        });
-        expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
-        expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
-    });
-
-    it('requests new hosted payment page with custom data id', async () => {
-        let hiPay = new HiPay({});
-
-        let request = new HostedPaymentPageRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProductList: '{PAYMENTPRODUCTLIST}',
-            paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
-            template: '{TEMPLATE}',
-            timeLimitToPay: '{TIMELIMITTOPAY}',
-            multiUse: '{MULTIUSE}',
-            merchantDisplayName: '{MERCHANTDISPLAYNAME}',
-            css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}',
-            eci: '{ECI}',
-            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
-            expirationLimit: '{EXPIRATIONLIMIT}',
-            orderCategoryCode: '{ORDERCATEGORYCODE}',
-            carrierDescription: '{CARRIERDESCRIPTION}',
-            salesChannel: '{SALESCHANNEL}',
-            softDescriptor: '{SOFTDESCRIPTOR}',
-            themeCode: '{THEMECODE}',
-            displayCancelButton: '{DISPLAYCANCELBUTTON}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestHostedPaymentPage(request, { dataId: '{RAW_DATA_ID}' })).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith('{RAW_DATA_ID}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
-            baseUrl: '{HPAYMENT_API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
-                }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                cid: '{CID}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product_list: '{PAYMENTPRODUCTLIST}',
-                payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
-                template: '{TEMPLATE}',
-                time_limit_to_pay: '{TIMELIMITTOPAY}',
-                multi_use: '{MULTIUSE}',
-                merchant_display_name: '{MERCHANTDISPLAYNAME}',
-                css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}',
-                eci: '{ECI}',
-                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
-                expiration_limit: '{EXPIRATIONLIMIT}',
-                order_category_code: '{ORDERCATEGORYCODE}',
-                carrier_description: '{CARRIERDESCRIPTION}',
-                sales_channel: '{SALESCHANNEL}',
-                soft_descriptor: '{SOFTDESCRIPTOR}',
-                theme_code: '{THEMECODE}',
-                display_cancel_button: '{DISPLAYCANCELBUTTON}'
-            },
-            additionalHeaders: {
-                ['X-HIPAY-DATA-ID']: '{DATA_ID}'
-            }
-        });
-        expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
-        expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
-    });
-
-    it('requests new hosted payment page sending no data if data-id could not be generated', async () => {
-        let hiPay = new HiPay({});
-
-        let request = new HostedPaymentPageRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProductList: '{PAYMENTPRODUCTLIST}',
-            paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
-            template: '{TEMPLATE}',
-            timeLimitToPay: '{TIMELIMITTOPAY}',
-            multiUse: '{MULTIUSE}',
-            merchantDisplayName: '{MERCHANTDISPLAYNAME}',
-            css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}',
-            eci: '{ECI}',
-            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
-            expirationLimit: '{EXPIRATIONLIMIT}',
-            orderCategoryCode: '{ORDERCATEGORYCODE}',
-            carrierDescription: '{CARRIERDESCRIPTION}',
-            salesChannel: '{SALESCHANNEL}',
-            softDescriptor: '{SOFTDESCRIPTOR}',
-            themeCode: '{THEMECODE}',
-            displayCancelButton: '{DISPLAYCANCELBUTTON}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue(null);
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestHostedPaymentPage(request)).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
-            baseUrl: '{HPAYMENT_API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
-                }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                cid: '{CID}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product_list: '{PAYMENTPRODUCTLIST}',
-                payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
-                template: '{TEMPLATE}',
-                time_limit_to_pay: '{TIMELIMITTOPAY}',
-                multi_use: '{MULTIUSE}',
-                merchant_display_name: '{MERCHANTDISPLAYNAME}',
-                css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}',
-                eci: '{ECI}',
-                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
-                expiration_limit: '{EXPIRATIONLIMIT}',
-                order_category_code: '{ORDERCATEGORYCODE}',
-                carrier_description: '{CARRIERDESCRIPTION}',
-                sales_channel: '{SALESCHANNEL}',
-                soft_descriptor: '{SOFTDESCRIPTOR}',
-                theme_code: '{THEMECODE}',
-                display_cancel_button: '{DISPLAYCANCELBUTTON}'
-            },
-            additionalHeaders: {
-                ['X-HIPAY-DATA-ID']: null
-            }
-        });
-        expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).not.toHaveBeenCalled();
-        expect(mockPIDataClient.sendData).not.toHaveBeenCalled();
-    });
-
-    it('requests new legacy hosted payment page', async () => {
-        let hiPay = new HiPay({});
-
-        let request = new HostedPaymentPageRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            orderid: '{ORDERID}',
-            operation: '{OPERATION}',
-            description: '{DESCRIPTION}',
-            longDescription: '{LONGDESCRIPTION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            shipping: '{SHIPPING}',
-            tax: '{TAX}',
-            taxRate: '{TAXRATE}',
-            cid: '{CID}',
-            ipaddr: '{IPADDR}',
-            acceptUrl: '{ACCEPTURL}',
-            declineUrl: '{DECLINEURL}',
-            pendingUrl: '{PENDINGURL}',
-            exceptionUrl: '{EXCEPTIONURL}',
-            cancelUrl: '{CANCELURL}',
-            notifyUrl: '{NOTIFYURL}',
-            httpAccept: '{HTTPACCEPT}',
-            httpUserAgent: '{HTTPUSERAGENT}',
-            deviceFingerprint: '{DEVICEFINGERPRINT}',
-            language: '{LANGUAGE}',
-            customerBillingInfo: {
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}'
-            },
-            customerShippingInfo: {
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
-            },
-            deliveryInformation: {
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}'
-            },
-            previousAuthInfo: {
-                transaction_reference: '{TRANSACTION_REFERENCE}'
-            },
-            merchantRiskStatement: {
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-            },
-            accountInfo: {
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
-                shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                }
-            },
-            deviceChannel: '{DEVICECHANNEL}',
-            recurringInfo: {
-                expiration_date: '{EXPIRATION_DATE}',
-                frequency: '{FREQUENCY}'
-            },
-            requestId: '{REQUESTID}',
-            paymentProductList: '{PAYMENTPRODUCTLIST}',
-            paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
-            template: '{TEMPLATE}',
-            timeLimitToPay: '{TIMELIMITTOPAY}',
-            multiUse: '{MULTIUSE}',
-            merchantDisplayName: '{MERCHANTDISPLAYNAME}',
-            css: '{CSS}',
-            displaySelector: '{DISPLAYSELECTOR}',
-            eci: '{ECI}',
-            authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
-            expirationLimit: '{EXPIRATIONLIMIT}',
-            orderCategoryCode: '{ORDERCATEGORYCODE}',
-            carrierDescription: '{CARRIERDESCRIPTION}',
-            salesChannel: '{SALESCHANNEL}',
-            softDescriptor: '{SOFTDESCRIPTOR}',
-            themeCode: '{THEMECODE}',
-            displayCancelButton: '{DISPLAYCANCELBUTTON}'
-        });
-
-        mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-        mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
-
-        expect(await hiPay.requestHostedPaymentPage(request, { legacy: true })).toEqual('{MAPPED_OBJECT}');
-        expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
-        expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE, {
-            baseUrl: '{API_ENDPOINT}',
-            body: {
-                custom_data: '{CUSTOM_DATA}',
-                source: JSON.stringify({
-                    source: '{SOURCE}',
-                    brand: '{BRAND}',
-                    brand_version: '{BRAND_VERSION}'
-                }),
-                basket: '{BASKET}',
-                orderid: '{ORDERID}',
-                operation: '{OPERATION}',
-                description: '{DESCRIPTION}',
-                long_description: '{LONGDESCRIPTION}',
-                currency: '{CURRENCY}',
-                amount: '{AMOUNT}',
-                shipping: '{SHIPPING}',
-                tax: '{TAX}',
-                tax_rate: '{TAXRATE}',
-                cid: '{CID}',
-                ipaddr: '{IPADDR}',
-                accept_url: '{ACCEPTURL}',
-                decline_url: '{DECLINEURL}',
-                pending_url: '{PENDINGURL}',
-                exception_url: '{EXCEPTIONURL}',
-                cancel_url: '{CANCELURL}',
-                notify_url: '{NOTIFYURL}',
-                http_accept: '{HTTPACCEPT}',
-                http_user_agent: '{HTTPUSERAGENT}',
-                device_fingerprint: '{DEVICEFINGERPRINT}',
-                language: '{LANGUAGE}',
-                email: '{EMAIL}',
-                phone: '{PHONE}',
-                msisdn: '{MSISDN}',
-                birthdate: '{BIRTHDATE}',
-                gender: '{GENDER}',
-                firstname: '{FIRSTNAME}',
-                lastname: '{LASTNAME}',
-                recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
-                streetaddress: '{STREETADDRESS}',
-                streetaddress2: '{STREETADDRESS2}',
-                city: '{CITY}',
-                state: '{STATE}',
-                zipcode: '{ZIPCODE}',
-                country: '{COUNTRY}',
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}',
-                delivery_date: '{DELIVERY_DATE}',
-                delivery_method: '{DELIVERY_METHOD}',
-                previous_auth_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        transaction_reference: '{TRANSACTION_REFERENCE}'
-                    })
-                ),
-                merchant_risk_statement: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                        delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                        purchase_indicator: '{PURCHASE_INDICATOR}',
-                        pre_order_date: '{PRE_ORDER_DATE}',
-                        reorder_indicator: '{REORDER_INDICATOR}',
-                        shipping_indicator: '{SHIPPING_INDICATOR}',
-                        gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
-                    })
-                ),
-                account_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                        purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                        payment: { enrollment_date: '2021010' },
-                        shipping: {
-                            name_indicator: NameIndicator.IDENTICAL,
-                            shipping_used_date: '20230202',
-                            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
-                        }
-                    })
-                ),
-                device_channel: '{DEVICECHANNEL}',
-                recurring_info: expect.jsonToBeEqual(
-                    JSON.stringify({
-                        expiration_date: '{EXPIRATION_DATE}',
-                        frequency: '{FREQUENCY}'
-                    })
-                ),
-                request_id: '{REQUESTID}',
-                payment_product_list: '{PAYMENTPRODUCTLIST}',
-                payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
-                template: '{TEMPLATE}',
-                time_limit_to_pay: '{TIMELIMITTOPAY}',
-                multi_use: '{MULTIUSE}',
-                merchant_display_name: '{MERCHANTDISPLAYNAME}',
-                css: '{CSS}',
-                display_selector: '{DISPLAYSELECTOR}',
-                eci: '{ECI}',
-                authentication_indicator: '{AUTHENTICATIONINDICATOR}',
-                expiration_limit: '{EXPIRATIONLIMIT}',
-                order_category_code: '{ORDERCATEGORYCODE}',
-                carrier_description: '{CARRIERDESCRIPTION}',
-                sales_channel: '{SALESCHANNEL}',
-                soft_descriptor: '{SOFTDESCRIPTOR}',
-                theme_code: '{THEMECODE}',
-                display_cancel_button: '{DISPLAYCANCELBUTTON}'
-            },
-            additionalHeaders: {
-                ['X-HIPAY-DATA-ID']: '{DATA_ID}'
-            }
-        });
-        expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-        expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
-        expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
-    });
-
-    it('requests maintenance', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        let request = new MaintenanceRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            operation: '{OPERATION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            operation_id: '{OPERATION_ID}',
-            sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-
-        expect(await hiPay.requestMaintenanceOperation(request, '{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_MAINTENANCE_OPERATION,
-            HiPay.ENDPOINT_MAINTENANCE_OPERATION.split('{transaction}').join('{TRX_REF}'),
-            {
+            expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
                 baseUrl: '{API_ENDPOINT}',
                 body: {
                     custom_data: '{CUSTOM_DATA}',
@@ -2270,353 +360,2835 @@ describe('HiPay object', () => {
                         brand_version: '{BRAND_VERSION}'
                     }),
                     basket: '{BASKET}',
+                    orderid: '{ORDERID}',
                     operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
                     currency: '{CURRENCY}',
                     amount: '{AMOUNT}',
-                    operation_id: '{OPERATION_ID}',
-                    sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product: '{PAYMENTPRODUCT}',
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE,
+                    browser_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            ipaddr: '{IPADDR}',
+                            http_accept: '{HTTP_ACCEPT}',
+                            http_user_agent: '{HTTP_USER_AGENT}',
+                            java_enabled: '{JAVA_ENABLED}',
+                            javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                            language: '{LANGUAGE}',
+                            color_depth: '{COLOR_DEPTH}',
+                            screen_height: '{SCREEN_HEIGHT}',
+                            screen_width: '{SCREEN_WIDTH}',
+                            timezone: '{TIMEZONE}'
+                        })
+                    ),
+                    sales_channel: '{SALESCHANNEL}',
+                    provider_data: '{PROVIDERDATA}'
                 }
-            }
-        );
-        expect(OperationMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-    });
-
-    it('requests maintenance errors if no transaction id is sent', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
         });
 
-        let request = new MaintenanceRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            operation: '{OPERATION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            operation_id: '{OPERATION_ID}',
-            sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
-        });
+        it('requests new order with object param', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
 
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-
-        await expect(hiPay.requestMaintenanceOperation(request)).rejects.toBeInstanceOf(InvalidArgumentException);
-        expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
-        expect(mockHttpClient.request).not.toHaveBeenCalled();
-        expect(OperationMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests maintenance errors if transaction reference is the wrong type', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        let request = new MaintenanceRequest({
-            customData: '{CUSTOM_DATA}',
-            source: {
-                source: '{SOURCE}',
-                brand: '{BRAND}',
-                brand_version: '{BRAND_VERSION}'
-            },
-            basket: '{BASKET}',
-            operation: '{OPERATION}',
-            currency: '{CURRENCY}',
-            amount: '{AMOUNT}',
-            operation_id: '{OPERATION_ID}',
-            sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-
-        await expect(hiPay.requestMaintenanceOperation(request, true)).rejects.toBeInstanceOf(InvalidArgumentException);
-        expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
-        expect(mockHttpClient.request).not.toHaveBeenCalled();
-        expect(OperationMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests transaction information', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: {
-                    value: '{RESPONSE_BODY}'
+            let request = {
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
                 },
-                basket: '{BASKET}'
-            }
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: new CustomerBillingInfoRequest({
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                }),
+                customerShippingInfo: new CustomerShippingInfoRequest({
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                }),
+                deliveryInformation: new DeliveryShippingInfoRequest({
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                }),
+                previousAuthInfo: new PreviousAuthInfo({
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                }),
+                merchantRiskStatement: new MerchantRiskStatement({
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                }),
+                accountInfo: new AccountInfo({
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                }),
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: new RecurringInfo({
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                }),
+                requestId: '{REQUESTID}',
+                paymentProduct: '{PAYMENTPRODUCT}',
+                paymentMethod: new CardTokenPaymentMethod({
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE
+                }),
+                browserInfo: new BrowserInfo({
+                    ipaddr: '{IPADDR}',
+                    http_accept: '{HTTP_ACCEPT}',
+                    http_user_agent: '{HTTP_USER_AGENT}',
+                    java_enabled: '{JAVA_ENABLED}',
+                    javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                    language: '{LANGUAGE}',
+                    color_depth: '{COLOR_DEPTH}',
+                    screen_height: '{SCREEN_HEIGHT}',
+                    screen_width: '{SCREEN_WIDTH}',
+                    timezone: '{TIMEZONE}'
+                }),
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
+            };
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
+                baseUrl: '{API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product: '{PAYMENTPRODUCT}',
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE,
+                    browser_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            ipaddr: '{IPADDR}',
+                            http_accept: '{HTTP_ACCEPT}',
+                            http_user_agent: '{HTTP_USER_AGENT}',
+                            java_enabled: '{JAVA_ENABLED}',
+                            javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                            language: '{LANGUAGE}',
+                            color_depth: '{COLOR_DEPTH}',
+                            screen_height: '{SCREEN_HEIGHT}',
+                            screen_width: '{SCREEN_WIDTH}',
+                            timezone: '{TIMEZONE}'
+                        })
+                    ),
+                    sales_channel: '{SALESCHANNEL}',
+                    provider_data: '{PROVIDERDATA}'
+                }
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith(
+                '{DATA_ID}',
+                { ...request, softDescriptor: null, oneClick: null },
+                '{MAPPED_OBJECT}'
+            );
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
         });
 
-        expect(await hiPay.requestTransactionInformation('{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_TRANSACTION_INFORMATION,
-            HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join('{TRX_REF}'),
-            {
-                baseUrl: '{API_ENDPOINT}'
-            }
-        );
-        expect(TransactionMapper).toHaveBeenCalledWith({
-            value: '{RESPONSE_BODY}',
-            basket: '{BASKET}'
-        });
-    });
+        it('requests new order with custom data id', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
 
-    it('requests transaction information, returns null if transaction does not exist', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {}
-        });
-
-        expect(await hiPay.requestTransactionInformation('{TRX_REF}')).toEqual(null);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_TRANSACTION_INFORMATION,
-            HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join('{TRX_REF}'),
-            {
-                baseUrl: '{API_ENDPOINT}'
-            }
-        );
-        expect(TransactionMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests transaction information errors if no transaction id is sent', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: {
-                    value: '{RESPONSE_BODY}'
+            let request = new OrderRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
                 },
-                basket: '{BASKET}'
-            }
-        });
-
-        await expect(hiPay.requestTransactionInformation()).rejects.toBeInstanceOf(InvalidArgumentException);
-        expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
-
-        expect(mockHttpClient.request).not.toHaveBeenCalled();
-        expect(TransactionMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests transaction information errors if transaction reference is the wrong type', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: {
-                    value: '{RESPONSE_BODY}'
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
                 },
-                basket: '{BASKET}'
-            }
-        });
-
-        await expect(hiPay.requestTransactionInformation(true)).rejects.toBeInstanceOf(InvalidArgumentException);
-        expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
-
-        expect(mockHttpClient.request).not.toHaveBeenCalled();
-        expect(TransactionMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests transaction information by order id', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: {
-                    state: '{TRX_STATE}'
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
                 },
-                basket: '{BASKET}'
-            }
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProduct: '{PAYMENTPRODUCT}',
+                paymentMethod: new CardTokenPaymentMethod({
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE
+                }),
+                browserInfo: {
+                    ipaddr: '{IPADDR}',
+                    http_accept: '{HTTP_ACCEPT}',
+                    http_user_agent: '{HTTP_USER_AGENT}',
+                    java_enabled: '{JAVA_ENABLED}',
+                    javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                    language: '{LANGUAGE}',
+                    color_depth: '{COLOR_DEPTH}',
+                    screen_height: '{SCREEN_HEIGHT}',
+                    screen_width: '{SCREEN_WIDTH}',
+                    timezone: '{TIMEZONE}'
+                },
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestNewOrder(request, { dataId: '{RAW_DATA_ID}' })).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith('{RAW_DATA_ID}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
+                baseUrl: '{API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product: '{PAYMENTPRODUCT}',
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE,
+                    browser_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            ipaddr: '{IPADDR}',
+                            http_accept: '{HTTP_ACCEPT}',
+                            http_user_agent: '{HTTP_USER_AGENT}',
+                            java_enabled: '{JAVA_ENABLED}',
+                            javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                            language: '{LANGUAGE}',
+                            color_depth: '{COLOR_DEPTH}',
+                            screen_height: '{SCREEN_HEIGHT}',
+                            screen_width: '{SCREEN_WIDTH}',
+                            timezone: '{TIMEZONE}'
+                        })
+                    ),
+                    sales_channel: '{SALESCHANNEL}',
+                    provider_data: '{PROVIDERDATA}'
+                }
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
         });
 
-        expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual(['{MAPPED_OBJECT}']);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
-            `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
-            {
-                baseUrl: '{API_ENDPOINT}'
-            }
-        );
-        expect(TransactionMapper).toHaveBeenCalledTimes(1);
-        expect(TransactionMapper).toHaveBeenCalledWith({
-            state: '{TRX_STATE}'
+        it('requests new order with undefined values', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            let request = new OrderRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: undefined,
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: null,
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: null
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProduct: '{PAYMENTPRODUCT}',
+                paymentMethod: new CardTokenPaymentMethod({
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE
+                }),
+                browserInfo: {
+                    ipaddr: '{IPADDR}',
+                    http_accept: '{HTTP_ACCEPT}',
+                    http_user_agent: '{HTTP_USER_AGENT}',
+                    java_enabled: '{JAVA_ENABLED}',
+                    javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                    language: '{LANGUAGE}',
+                    color_depth: '{COLOR_DEPTH}',
+                    screen_height: '{SCREEN_HEIGHT}',
+                    screen_width: '{SCREEN_WIDTH}',
+                    timezone: '{TIMEZONE}'
+                },
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
+                baseUrl: '{API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product: '{PAYMENTPRODUCT}',
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE,
+                    browser_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            ipaddr: '{IPADDR}',
+                            http_accept: '{HTTP_ACCEPT}',
+                            http_user_agent: '{HTTP_USER_AGENT}',
+                            java_enabled: '{JAVA_ENABLED}',
+                            javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                            language: '{LANGUAGE}',
+                            color_depth: '{COLOR_DEPTH}',
+                            screen_height: '{SCREEN_HEIGHT}',
+                            screen_width: '{SCREEN_WIDTH}',
+                            timezone: '{TIMEZONE}'
+                        })
+                    ),
+                    sales_channel: '{SALESCHANNEL}',
+                    provider_data: '{PROVIDERDATA}'
+                }
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
+        });
+
+        it('requests new order sending no data if data-id could not be generated', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            let request = new OrderRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProduct: '{PAYMENTPRODUCT}',
+                paymentMethod: new CardTokenPaymentMethod({
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE
+                }),
+                browserInfo: {
+                    ipaddr: '{IPADDR}',
+                    http_accept: '{HTTP_ACCEPT}',
+                    http_user_agent: '{HTTP_USER_AGENT}',
+                    java_enabled: '{JAVA_ENABLED}',
+                    javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                    language: '{LANGUAGE}',
+                    color_depth: '{COLOR_DEPTH}',
+                    screen_height: '{SCREEN_HEIGHT}',
+                    screen_width: '{SCREEN_WIDTH}',
+                    timezone: '{TIMEZONE}'
+                },
+                salesChannel: '{SALESCHANNEL}',
+                providerData: '{PROVIDERDATA}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue(null);
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestNewOrder(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_NEW_ORDER, HiPay.ENDPOINT_NEW_ORDER, {
+                baseUrl: '{API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product: '{PAYMENTPRODUCT}',
+                    eci: ECI.SECURE_ECOMMERCE,
+                    cardtoken: '{CARD_TOKEN}',
+                    authentication_indicator: AuthenticationIndicator.AVAILABLE,
+                    browser_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            ipaddr: '{IPADDR}',
+                            http_accept: '{HTTP_ACCEPT}',
+                            http_user_agent: '{HTTP_USER_AGENT}',
+                            java_enabled: '{JAVA_ENABLED}',
+                            javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                            language: '{LANGUAGE}',
+                            color_depth: '{COLOR_DEPTH}',
+                            screen_height: '{SCREEN_HEIGHT}',
+                            screen_width: '{SCREEN_WIDTH}',
+                            timezone: '{TIMEZONE}'
+                        })
+                    ),
+                    sales_channel: '{SALESCHANNEL}',
+                    provider_data: '{PROVIDERDATA}'
+                }
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).not.toHaveBeenCalled();
+            expect(mockPIDataClient.sendData).not.toHaveBeenCalled();
         });
     });
 
-    it('requests transaction information by order id with multiple transactions found', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
+    describe('requests new hosted payment page', () => {
+        it('requests new hosted payment page', async () => {
+            let hiPay = new HiPay({});
+
+            let request = new HostedPaymentPageRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProductList: '{PAYMENTPRODUCTLIST}',
+                paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
+                template: '{TEMPLATE}',
+                timeLimitToPay: '{TIMELIMITTOPAY}',
+                multiUse: '{MULTIUSE}',
+                merchantDisplayName: '{MERCHANTDISPLAYNAME}',
+                css: '{CSS}',
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestHostedPaymentPage(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
+                baseUrl: '{HPAYMENT_API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product_list: '{PAYMENTPRODUCTLIST}',
+                    payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
+                    template: '{TEMPLATE}',
+                    time_limit_to_pay: '{TIMELIMITTOPAY}',
+                    multi_use: '{MULTIUSE}',
+                    merchant_display_name: '{MERCHANTDISPLAYNAME}',
+                    css: '{CSS}',
+                    display_selector: '{DISPLAYSELECTOR}',
+                    eci: '{ECI}',
+                    authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                    expiration_limit: '{EXPIRATIONLIMIT}',
+                    order_category_code: '{ORDERCATEGORYCODE}',
+                    carrier_description: '{CARRIERDESCRIPTION}',
+                    sales_channel: '{SALESCHANNEL}',
+                    soft_descriptor: '{SOFTDESCRIPTOR}',
+                    theme_code: '{THEMECODE}',
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                },
+                additionalHeaders: {
+                    ['X-HIPAY-DATA-ID']: '{DATA_ID}'
+                }
+            });
+            expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
         });
 
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: [
-                    {
+        it('requests new hosted payment page with object param', async () => {
+            let hiPay = new HiPay({});
+
+            let request = {
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: new CustomerBillingInfoRequest({
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                }),
+                customerShippingInfo: new CustomerShippingInfoRequest({
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                }),
+                deliveryInformation: new DeliveryShippingInfoRequest({
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                }),
+                previousAuthInfo: new PreviousAuthInfo({
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                }),
+                merchantRiskStatement: new MerchantRiskStatement({
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                }),
+                accountInfo: new AccountInfo({
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                }),
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: new RecurringInfo({
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                }),
+                requestId: '{REQUESTID}',
+                paymentProductList: '{PAYMENTPRODUCTLIST}',
+                paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
+                template: '{TEMPLATE}',
+                timeLimitToPay: '{TIMELIMITTOPAY}',
+                multiUse: '{MULTIUSE}',
+                merchantDisplayName: '{MERCHANTDISPLAYNAME}',
+                css: '{CSS}',
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+            };
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestHostedPaymentPage(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
+                baseUrl: '{HPAYMENT_API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product_list: '{PAYMENTPRODUCTLIST}',
+                    payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
+                    template: '{TEMPLATE}',
+                    time_limit_to_pay: '{TIMELIMITTOPAY}',
+                    multi_use: '{MULTIUSE}',
+                    merchant_display_name: '{MERCHANTDISPLAYNAME}',
+                    css: '{CSS}',
+                    display_selector: '{DISPLAYSELECTOR}',
+                    eci: '{ECI}',
+                    authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                    expiration_limit: '{EXPIRATIONLIMIT}',
+                    order_category_code: '{ORDERCATEGORYCODE}',
+                    carrier_description: '{CARRIERDESCRIPTION}',
+                    sales_channel: '{SALESCHANNEL}',
+                    soft_descriptor: '{SOFTDESCRIPTOR}',
+                    theme_code: '{THEMECODE}',
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                },
+                additionalHeaders: {
+                    ['X-HIPAY-DATA-ID']: '{DATA_ID}'
+                }
+            });
+            expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
+        });
+
+        it('requests new hosted payment page with custom data id', async () => {
+            let hiPay = new HiPay({});
+
+            let request = new HostedPaymentPageRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProductList: '{PAYMENTPRODUCTLIST}',
+                paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
+                template: '{TEMPLATE}',
+                timeLimitToPay: '{TIMELIMITTOPAY}',
+                multiUse: '{MULTIUSE}',
+                merchantDisplayName: '{MERCHANTDISPLAYNAME}',
+                css: '{CSS}',
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestHostedPaymentPage(request, { dataId: '{RAW_DATA_ID}' })).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith('{RAW_DATA_ID}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
+                baseUrl: '{HPAYMENT_API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product_list: '{PAYMENTPRODUCTLIST}',
+                    payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
+                    template: '{TEMPLATE}',
+                    time_limit_to_pay: '{TIMELIMITTOPAY}',
+                    multi_use: '{MULTIUSE}',
+                    merchant_display_name: '{MERCHANTDISPLAYNAME}',
+                    css: '{CSS}',
+                    display_selector: '{DISPLAYSELECTOR}',
+                    eci: '{ECI}',
+                    authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                    expiration_limit: '{EXPIRATIONLIMIT}',
+                    order_category_code: '{ORDERCATEGORYCODE}',
+                    carrier_description: '{CARRIERDESCRIPTION}',
+                    sales_channel: '{SALESCHANNEL}',
+                    soft_descriptor: '{SOFTDESCRIPTOR}',
+                    theme_code: '{THEMECODE}',
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                },
+                additionalHeaders: {
+                    ['X-HIPAY-DATA-ID']: '{DATA_ID}'
+                }
+            });
+            expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
+        });
+
+        it('requests new hosted payment page sending no data if data-id could not be generated', async () => {
+            let hiPay = new HiPay({});
+
+            let request = new HostedPaymentPageRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProductList: '{PAYMENTPRODUCTLIST}',
+                paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
+                template: '{TEMPLATE}',
+                timeLimitToPay: '{TIMELIMITTOPAY}',
+                multiUse: '{MULTIUSE}',
+                merchantDisplayName: '{MERCHANTDISPLAYNAME}',
+                css: '{CSS}',
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue(null);
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestHostedPaymentPage(request)).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE_V2, {
+                baseUrl: '{HPAYMENT_API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product_list: '{PAYMENTPRODUCTLIST}',
+                    payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
+                    template: '{TEMPLATE}',
+                    time_limit_to_pay: '{TIMELIMITTOPAY}',
+                    multi_use: '{MULTIUSE}',
+                    merchant_display_name: '{MERCHANTDISPLAYNAME}',
+                    css: '{CSS}',
+                    display_selector: '{DISPLAYSELECTOR}',
+                    eci: '{ECI}',
+                    authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                    expiration_limit: '{EXPIRATIONLIMIT}',
+                    order_category_code: '{ORDERCATEGORYCODE}',
+                    carrier_description: '{CARRIERDESCRIPTION}',
+                    sales_channel: '{SALESCHANNEL}',
+                    soft_descriptor: '{SOFTDESCRIPTOR}',
+                    theme_code: '{THEMECODE}',
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                },
+                additionalHeaders: {
+                    ['X-HIPAY-DATA-ID']: null
+                }
+            });
+            expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).not.toHaveBeenCalled();
+            expect(mockPIDataClient.sendData).not.toHaveBeenCalled();
+        });
+
+        it('requests new legacy hosted payment page', async () => {
+            let hiPay = new HiPay({});
+
+            let request = new HostedPaymentPageRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                orderid: '{ORDERID}',
+                operation: '{OPERATION}',
+                description: '{DESCRIPTION}',
+                longDescription: '{LONGDESCRIPTION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                shipping: '{SHIPPING}',
+                tax: '{TAX}',
+                taxRate: '{TAXRATE}',
+                cid: '{CID}',
+                ipaddr: '{IPADDR}',
+                acceptUrl: '{ACCEPTURL}',
+                declineUrl: '{DECLINEURL}',
+                pendingUrl: '{PENDINGURL}',
+                exceptionUrl: '{EXCEPTIONURL}',
+                cancelUrl: '{CANCELURL}',
+                notifyUrl: '{NOTIFYURL}',
+                httpAccept: '{HTTPACCEPT}',
+                httpUserAgent: '{HTTPUSERAGENT}',
+                deviceFingerprint: '{DEVICEFINGERPRINT}',
+                language: '{LANGUAGE}',
+                customerBillingInfo: {
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}'
+                },
+                customerShippingInfo: {
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}'
+                },
+                deliveryInformation: {
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}'
+                },
+                previousAuthInfo: {
+                    transaction_reference: '{TRANSACTION_REFERENCE}'
+                },
+                merchantRiskStatement: {
+                    email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                    delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                    purchase_indicator: '{PURCHASE_INDICATOR}',
+                    pre_order_date: '{PRE_ORDER_DATE}',
+                    reorder_indicator: '{REORDER_INDICATOR}',
+                    shipping_indicator: '{SHIPPING_INDICATOR}',
+                    gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                },
+                accountInfo: {
+                    customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                    purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                    payment: { enrollment_date: '2021010' },
+                    shipping: {
+                        name_indicator: NameIndicator.IDENTICAL,
+                        shipping_used_date: '20230202',
+                        suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    }
+                },
+                deviceChannel: '{DEVICECHANNEL}',
+                recurringInfo: {
+                    expiration_date: '{EXPIRATION_DATE}',
+                    frequency: '{FREQUENCY}'
+                },
+                requestId: '{REQUESTID}',
+                paymentProductList: '{PAYMENTPRODUCTLIST}',
+                paymentProductCategoryList: '{PAYMENTPRODUCTCATEGORYLIST}',
+                template: '{TEMPLATE}',
+                timeLimitToPay: '{TIMELIMITTOPAY}',
+                multiUse: '{MULTIUSE}',
+                merchantDisplayName: '{MERCHANTDISPLAYNAME}',
+                css: '{CSS}',
+                displaySelector: '{DISPLAYSELECTOR}',
+                eci: '{ECI}',
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}',
+                expirationLimit: '{EXPIRATIONLIMIT}',
+                orderCategoryCode: '{ORDERCATEGORYCODE}',
+                carrierDescription: '{CARRIERDESCRIPTION}',
+                salesChannel: '{SALESCHANNEL}',
+                softDescriptor: '{SOFTDESCRIPTOR}',
+                themeCode: '{THEMECODE}',
+                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+            });
+
+            mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+            mockPIDataClient.getOrderData.mockReturnValue('{ORDER_DATA}');
+
+            expect(await hiPay.requestHostedPaymentPage(request, { legacy: true })).toEqual('{MAPPED_OBJECT}');
+            expect(PIDataClient).toHaveBeenCalledWith(mockHttpClient);
+            expect(mockPIDataClient.getDataId).toHaveBeenCalledWith(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_HOSTED_PAYMENT_PAGE, HiPay.ENDPOINT_HOSTED_PAYMENT_PAGE, {
+                baseUrl: '{API_ENDPOINT}',
+                body: {
+                    custom_data: '{CUSTOM_DATA}',
+                    source: JSON.stringify({
+                        source: '{SOURCE}',
+                        brand: '{BRAND}',
+                        brand_version: '{BRAND_VERSION}'
+                    }),
+                    basket: '{BASKET}',
+                    orderid: '{ORDERID}',
+                    operation: '{OPERATION}',
+                    description: '{DESCRIPTION}',
+                    long_description: '{LONGDESCRIPTION}',
+                    currency: '{CURRENCY}',
+                    amount: '{AMOUNT}',
+                    shipping: '{SHIPPING}',
+                    tax: '{TAX}',
+                    tax_rate: '{TAXRATE}',
+                    cid: '{CID}',
+                    ipaddr: '{IPADDR}',
+                    accept_url: '{ACCEPTURL}',
+                    decline_url: '{DECLINEURL}',
+                    pending_url: '{PENDINGURL}',
+                    exception_url: '{EXCEPTIONURL}',
+                    cancel_url: '{CANCELURL}',
+                    notify_url: '{NOTIFYURL}',
+                    http_accept: '{HTTPACCEPT}',
+                    http_user_agent: '{HTTPUSERAGENT}',
+                    device_fingerprint: '{DEVICEFINGERPRINT}',
+                    language: '{LANGUAGE}',
+                    email: '{EMAIL}',
+                    phone: '{PHONE}',
+                    msisdn: '{MSISDN}',
+                    birthdate: '{BIRTHDATE}',
+                    gender: '{GENDER}',
+                    firstname: '{FIRSTNAME}',
+                    lastname: '{LASTNAME}',
+                    recipientinfo: '{RECIPIENTINFO}',
+                    house_extension: '{HOUSE_EXTENSION}',
+                    house_number: '{HOUSE_NUMBER}',
+                    streetaddress: '{STREETADDRESS}',
+                    streetaddress2: '{STREETADDRESS2}',
+                    city: '{CITY}',
+                    state: '{STATE}',
+                    zipcode: '{ZIPCODE}',
+                    country: '{COUNTRY}',
+                    shipto_firstname: '{SHIPTO_FIRSTNAME}',
+                    shipto_lastname: '{SHIPTO_LASTNAME}',
+                    shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                    shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
+                    shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
+                    shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
+                    shipto_city: '{SHIPTO_CITY}',
+                    shipto_state: '{SHIPTO_STATE}',
+                    shipto_zipcode: '{SHIPTO_ZIPCODE}',
+                    shipto_country: '{SHIPTO_COUNTRY}',
+                    shipto_phone: '{SHIPTO_PHONE}',
+                    shipto_msisdn: '{SHIPTO_MSISDN}',
+                    shipto_gender: '{SHIPTO_GENDER}',
+                    delivery_date: '{DELIVERY_DATE}',
+                    delivery_method: '{DELIVERY_METHOD}',
+                    previous_auth_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            transaction_reference: '{TRANSACTION_REFERENCE}'
+                        })
+                    ),
+                    merchant_risk_statement: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
+                            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
+                            purchase_indicator: '{PURCHASE_INDICATOR}',
+                            pre_order_date: '{PRE_ORDER_DATE}',
+                            reorder_indicator: '{REORDER_INDICATOR}',
+                            shipping_indicator: '{SHIPPING_INDICATOR}',
+                            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                        })
+                    ),
+                    account_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
+                            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
+                            payment: { enrollment_date: '2021010' },
+                            shipping: {
+                                name_indicator: NameIndicator.IDENTICAL,
+                                shipping_used_date: '20230202',
+                                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                            }
+                        })
+                    ),
+                    device_channel: '{DEVICECHANNEL}',
+                    recurring_info: expect.jsonToBeEqual(
+                        JSON.stringify({
+                            expiration_date: '{EXPIRATION_DATE}',
+                            frequency: '{FREQUENCY}'
+                        })
+                    ),
+                    request_id: '{REQUESTID}',
+                    payment_product_list: '{PAYMENTPRODUCTLIST}',
+                    payment_product_category_list: '{PAYMENTPRODUCTCATEGORYLIST}',
+                    template: '{TEMPLATE}',
+                    time_limit_to_pay: '{TIMELIMITTOPAY}',
+                    multi_use: '{MULTIUSE}',
+                    merchant_display_name: '{MERCHANTDISPLAYNAME}',
+                    css: '{CSS}',
+                    display_selector: '{DISPLAYSELECTOR}',
+                    eci: '{ECI}',
+                    authentication_indicator: '{AUTHENTICATIONINDICATOR}',
+                    expiration_limit: '{EXPIRATIONLIMIT}',
+                    order_category_code: '{ORDERCATEGORYCODE}',
+                    carrier_description: '{CARRIERDESCRIPTION}',
+                    sales_channel: '{SALESCHANNEL}',
+                    soft_descriptor: '{SOFTDESCRIPTOR}',
+                    theme_code: '{THEMECODE}',
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                },
+                additionalHeaders: {
+                    ['X-HIPAY-DATA-ID']: '{DATA_ID}'
+                }
+            });
+            expect(HostedPaymentPageMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+            expect(mockPIDataClient.getOrderData).toHaveBeenCalledWith('{DATA_ID}', request, '{MAPPED_OBJECT}');
+            expect(mockPIDataClient.sendData).toHaveBeenCalledWith('{ORDER_DATA}');
+        });
+    });
+
+    describe('requests maintenance', () => {
+        it('requests maintenance', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            let request = new MaintenanceRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                operation: '{OPERATION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                operation_id: '{OPERATION_ID}',
+                sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            expect(await hiPay.requestMaintenanceOperation(request, '{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_MAINTENANCE_OPERATION,
+                HiPay.ENDPOINT_MAINTENANCE_OPERATION.split('{transaction}').join('{TRX_REF}'),
+                {
+                    baseUrl: '{API_ENDPOINT}',
+                    body: {
+                        custom_data: '{CUSTOM_DATA}',
+                        source: JSON.stringify({
+                            source: '{SOURCE}',
+                            brand: '{BRAND}',
+                            brand_version: '{BRAND_VERSION}'
+                        }),
+                        basket: '{BASKET}',
+                        operation: '{OPERATION}',
+                        currency: '{CURRENCY}',
+                        amount: '{AMOUNT}',
+                        operation_id: '{OPERATION_ID}',
+                        sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+                    }
+                }
+            );
+            expect(OperationMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+        });
+
+        it('requests maintenance with object param', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            let request = {
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                operation: '{OPERATION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                operation_id: '{OPERATION_ID}',
+                sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+            };
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            expect(await hiPay.requestMaintenanceOperation(request, '{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_MAINTENANCE_OPERATION,
+                HiPay.ENDPOINT_MAINTENANCE_OPERATION.split('{transaction}').join('{TRX_REF}'),
+                {
+                    baseUrl: '{API_ENDPOINT}',
+                    body: {
+                        custom_data: '{CUSTOM_DATA}',
+                        source: JSON.stringify({
+                            source: '{SOURCE}',
+                            brand: '{BRAND}',
+                            brand_version: '{BRAND_VERSION}'
+                        }),
+                        basket: '{BASKET}',
+                        operation: '{OPERATION}',
+                        currency: '{CURRENCY}',
+                        amount: '{AMOUNT}',
+                        operation_id: '{OPERATION_ID}',
+                        sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+                    }
+                }
+            );
+            expect(OperationMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+        });
+
+        it('requests maintenance errors if no transaction id is sent', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            let request = new MaintenanceRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                operation: '{OPERATION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                operation_id: '{OPERATION_ID}',
+                sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            await expect(hiPay.requestMaintenanceOperation(request)).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(OperationMapper).not.toHaveBeenCalled();
+        });
+
+        it('requests maintenance errors if transaction reference is the wrong type', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            let request = new MaintenanceRequest({
+                customData: '{CUSTOM_DATA}',
+                source: {
+                    source: '{SOURCE}',
+                    brand: '{BRAND}',
+                    brand_version: '{BRAND_VERSION}'
+                },
+                basket: '{BASKET}',
+                operation: '{OPERATION}',
+                currency: '{CURRENCY}',
+                amount: '{AMOUNT}',
+                operation_id: '{OPERATION_ID}',
+                sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            await expect(hiPay.requestMaintenanceOperation(request, true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(OperationMapper).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('requests transaction information', () => {
+        it('requests transaction information', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: {
+                        value: '{RESPONSE_BODY}'
+                    },
+                    basket: '{BASKET}'
+                }
+            });
+
+            expect(await hiPay.requestTransactionInformation('{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_TRANSACTION_INFORMATION,
+                HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join('{TRX_REF}'),
+                {
+                    baseUrl: '{API_ENDPOINT}'
+                }
+            );
+            expect(TransactionMapper).toHaveBeenCalledWith({
+                value: '{RESPONSE_BODY}',
+                basket: '{BASKET}'
+            });
+        });
+
+        it('requests transaction information, returns null if transaction does not exist', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {}
+            });
+
+            expect(await hiPay.requestTransactionInformation('{TRX_REF}')).toEqual(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_TRANSACTION_INFORMATION,
+                HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join('{TRX_REF}'),
+                {
+                    baseUrl: '{API_ENDPOINT}'
+                }
+            );
+            expect(TransactionMapper).not.toHaveBeenCalled();
+        });
+
+        it('requests transaction information errors if no transaction id is sent', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: {
+                        value: '{RESPONSE_BODY}'
+                    },
+                    basket: '{BASKET}'
+                }
+            });
+
+            await expect(hiPay.requestTransactionInformation()).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
+
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(TransactionMapper).not.toHaveBeenCalled();
+        });
+
+        it('requests transaction information errors if transaction reference is the wrong type', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: {
+                        value: '{RESPONSE_BODY}'
+                    },
+                    basket: '{BASKET}'
+                }
+            });
+
+            await expect(hiPay.requestTransactionInformation(true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
+
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(TransactionMapper).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('requests transaction information by order id', () => {
+        it('requests transaction information by order id', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: {
                         state: '{TRX_STATE}'
                     },
-                    {
-                        state: '{TRX_STATE_2}'
+                    basket: '{BASKET}'
+                }
+            });
+
+            expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual(['{MAPPED_OBJECT}']);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
+                `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
+                {
+                    baseUrl: '{API_ENDPOINT}'
+                }
+            );
+            expect(TransactionMapper).toHaveBeenCalledTimes(1);
+            expect(TransactionMapper).toHaveBeenCalledWith({
+                state: '{TRX_STATE}'
+            });
+        });
+
+        it('requests transaction information by order id with multiple transactions found', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: [
+                        {
+                            state: '{TRX_STATE}'
+                        },
+                        {
+                            state: '{TRX_STATE_2}'
+                        },
+                        {
+                            state: '{TRX_STATE_3}'
+                        }
+                    ]
+                }
+            });
+
+            expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual(['{MAPPED_OBJECT}', '{MAPPED_OBJECT}', '{MAPPED_OBJECT}']);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
+                `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
+                {
+                    baseUrl: '{API_ENDPOINT}'
+                }
+            );
+            expect(TransactionMapper).toHaveBeenCalledTimes(3);
+            expect(TransactionMapper).toHaveBeenCalledWith({
+                state: '{TRX_STATE}'
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith({
+                state: '{TRX_STATE_2}'
+            });
+            expect(TransactionMapper).toHaveBeenCalledWith({
+                state: '{TRX_STATE_3}'
+            });
+        });
+
+        it('requests transaction information by order id with no transactions found', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {}
+            });
+
+            expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual([]);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
+                `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
+                {
+                    baseUrl: '{API_ENDPOINT}'
+                }
+            );
+            expect(TransactionMapper).not.toHaveBeenCalled();
+        });
+
+        it('requests transaction information by order id errors if no order id is sent', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: {
+                        value: '{RESPONSE_BODY}'
                     },
-                    {
-                        state: '{TRX_STATE_3}'
-                    }
-                ]
-            }
+                    basket: '{BASKET}'
+                }
+            });
+
+            await expect(hiPay.requestOrderTransactionInformation()).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('Order ID must be a string');
+
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(TransactionMapper).not.toHaveBeenCalled();
         });
 
-        expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual(['{MAPPED_OBJECT}', '{MAPPED_OBJECT}', '{MAPPED_OBJECT}']);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
-            `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
-            {
+        it('requests transaction information by order id errors if order id is the wrong type', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    transaction: {
+                        value: '{RESPONSE_BODY}'
+                    },
+                    basket: '{BASKET}'
+                }
+            });
+
+            await expect(hiPay.requestOrderTransactionInformation(true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('Order ID must be a string');
+
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(TransactionMapper).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('requests security settings', () => {
+        it('requests security settings', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            expect(await hiPay.requestSecuritySettings()).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_SECURITY_SETTINGS, HiPay.ENDPOINT_SECURITY_SETTINGS, {
                 baseUrl: '{API_ENDPOINT}'
-            }
-        );
-        expect(TransactionMapper).toHaveBeenCalledTimes(3);
-        expect(TransactionMapper).toHaveBeenCalledWith({
-            state: '{TRX_STATE}'
-        });
-        expect(TransactionMapper).toHaveBeenCalledWith({
-            state: '{TRX_STATE_2}'
-        });
-        expect(TransactionMapper).toHaveBeenCalledWith({
-            state: '{TRX_STATE_3}'
+            });
+            expect(SecuritySettingsMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
         });
     });
 
-    it('requests transaction information by order id with no transactions found', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
+    describe('requests lookup token', () => {
+        it('requests lookup token', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}',
+                secureVaultEndpoint: '{SECURED_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            expect(await hiPay.requestLookupToken('TOKEN')).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_LOOKUP_TOKEN,
+                HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', 'TOKEN') + '?request_id=0',
+                {
+                    baseUrl: '{SECURED_ENDPOINT}'
+                }
+            );
+            expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
         });
 
-        mockHttpClient.request.mockResolvedValue({
-            body: {}
+        it('requests lookup token with request ID', async () => {
+            let hiPay = new HiPay({
+                apiEndpoint: '{API_ENDPOINT}',
+                secureVaultEndpoint: '{SECURED_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: '{RESPONSE_BODY}'
+            });
+
+            expect(await hiPay.requestLookupToken('TOKEN', '5')).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_LOOKUP_TOKEN,
+                HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', 'TOKEN') + '?request_id=5',
+                {
+                    baseUrl: '{SECURED_ENDPOINT}'
+                }
+            );
+            expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
         });
-
-        expect(await hiPay.requestOrderTransactionInformation('{ORDER_ID}')).toEqual([]);
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_ORDER_TRANSACTION_INFORMATION,
-            `${HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION}?orderid={ORDER_ID}`,
-            {
-                baseUrl: '{API_ENDPOINT}'
-            }
-        );
-        expect(TransactionMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests transaction information by order id errors if no order id is sent', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: {
-                    value: '{RESPONSE_BODY}'
-                },
-                basket: '{BASKET}'
-            }
-        });
-
-        await expect(hiPay.requestOrderTransactionInformation()).rejects.toBeInstanceOf(InvalidArgumentException);
-        expect(InvalidArgumentException).toHaveBeenCalledWith('Order ID must be a string');
-
-        expect(mockHttpClient.request).not.toHaveBeenCalled();
-        expect(TransactionMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests transaction information by order id errors if order id is the wrong type', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: {
-                transaction: {
-                    value: '{RESPONSE_BODY}'
-                },
-                basket: '{BASKET}'
-            }
-        });
-
-        await expect(hiPay.requestOrderTransactionInformation(true)).rejects.toBeInstanceOf(InvalidArgumentException);
-        expect(InvalidArgumentException).toHaveBeenCalledWith('Order ID must be a string');
-
-        expect(mockHttpClient.request).not.toHaveBeenCalled();
-        expect(TransactionMapper).not.toHaveBeenCalled();
-    });
-
-    it('requests security settings', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-
-        expect(await hiPay.requestSecuritySettings()).toEqual('{MAPPED_OBJECT}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(HiPay.METHOD_SECURITY_SETTINGS, HiPay.ENDPOINT_SECURITY_SETTINGS, {
-            baseUrl: '{API_ENDPOINT}'
-        });
-        expect(SecuritySettingsMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-    });
-
-    it('requests lookup token', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}',
-            secureVaultEndpoint: '{SECURED_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-
-        expect(await hiPay.requestLookupToken('TOKEN')).toEqual('{MAPPED_OBJECT}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_LOOKUP_TOKEN,
-            HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', 'TOKEN') + '?request_id=0',
-            {
-                baseUrl: '{SECURED_ENDPOINT}'
-            }
-        );
-        expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
-    });
-
-    it('requests lookup token with request ID', async () => {
-        let hiPay = new HiPay({
-            apiEndpoint: '{API_ENDPOINT}',
-            secureVaultEndpoint: '{SECURED_ENDPOINT}'
-        });
-
-        mockHttpClient.request.mockResolvedValue({
-            body: '{RESPONSE_BODY}'
-        });
-
-        expect(await hiPay.requestLookupToken('TOKEN', '5')).toEqual('{MAPPED_OBJECT}');
-        expect(mockHttpClient.request).toHaveBeenCalledWith(
-            HiPay.METHOD_LOOKUP_TOKEN,
-            HiPay.ENDPOINT_LOOKUP_TOKEN.replace('{token}', 'TOKEN') + '?request_id=5',
-            {
-                baseUrl: '{SECURED_ENDPOINT}'
-            }
-        );
-        expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
     });
 });
