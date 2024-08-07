@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+- **add** : Added `one_click` property to Order Requests
+
 ## 1.3.2
 
 - **Fix** : Fixed `display_cancel_button` field when requesting Hpayment
