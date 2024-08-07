@@ -57,6 +57,7 @@ class OrderRequest extends TransactionRequest {
      * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
      * @param {AbstractPaymentMethod} [values.paymentMethod] Payment data for this order
      * @param {Object} [values.providerData] Parameter to use for specific provider data like PayPal.
+     * @param {Number} [values.oneClick] This parameter indicates whether the payment should be a one-click payment. `1`: Initiate a one-click payment use case
      */
     constructor(values) {
         super(values);
@@ -94,6 +95,10 @@ class OrderRequest extends TransactionRequest {
                 this.providerData = values.providerData;
             }
         }
+
+        if (Object.prototype.hasOwnProperty.call(values, 'oneClick')) {
+            this.oneClick = values.oneClick;
+        }
     }
 
     initValues() {
@@ -104,6 +109,7 @@ class OrderRequest extends TransactionRequest {
         this.browserInfo = null;
         this.salesChannel = null;
         this.providerData = null;
+        this.oneClick = null;
     }
 }
 

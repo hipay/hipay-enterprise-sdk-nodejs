@@ -27,7 +27,8 @@ describe('Test constructor', () => {
                 paymentMethod: paymentMethod,
                 browserInfo: browserInfo,
                 salesChannel: '{SALESCHANNEL}',
-                providerData: '{PROVIDERDATA}'
+                providerData: '{PROVIDERDATA}',
+                oneClick: 0
             });
         }).not.toThrow();
 
@@ -41,6 +42,7 @@ describe('Test constructor', () => {
         expect(orderRequest.browserInfo).toStrictEqual(browserInfo);
         expect(orderRequest.salesChannel).toEqual('{SALESCHANNEL}');
         expect(orderRequest.providerData).toEqual('{PROVIDERDATA}');
+        expect(orderRequest.oneClick).toEqual(0);
     });
 
     it('Initializes correctly with plain object', () => {
@@ -113,6 +115,7 @@ describe('Test constructor', () => {
         expect(orderRequest.browserInfo).toEqual(null);
         expect(orderRequest.salesChannel).toEqual(null);
         expect(orderRequest.providerData).toEqual(null);
+        expect(orderRequest.oneClick).toEqual(null);
     });
 
     it('Errors when orderid is absent', () => {
