@@ -169,7 +169,7 @@ describe('Test API Data object', () => {
                 sdk_server: 'nodejs',
                 sdk_server_engine_version: process.version
             },
-            one_click: 1
+            one_click: true
         };
 
         const params = piDataClient.getOrderData(dataId, orderRequest, transaction);
@@ -228,7 +228,7 @@ describe('Test API Data object', () => {
                 sdk_server_engine_version: process.version,
                 sdk_server_version: '{SDK_SERVER_VERSION}'
             },
-            one_click: 1
+            one_click: true
         };
 
         const params = piDataClient.getOrderData(dataId, orderRequest, transaction);

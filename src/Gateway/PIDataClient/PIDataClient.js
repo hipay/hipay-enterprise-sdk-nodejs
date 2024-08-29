@@ -68,7 +68,7 @@ class PIDataClient {
             eci: transaction.eci,
             mid: transaction.mid,
             payment_method: orderRequest.paymentProduct,
-            one_click: orderRequest.one_click
+            one_click: Boolean(orderRequest.one_click)
         };
     }
 
