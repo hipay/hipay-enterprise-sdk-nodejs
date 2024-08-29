@@ -135,7 +135,8 @@ describe('Test API Data object', () => {
                 email: 'john@email.com',
                 cid: 'cid'
             },
-            acceptUrl: 'http://example.com'
+            acceptUrl: 'http://example.com',
+            one_click: 1
         };
         const transaction = {
             status: '116',
@@ -167,7 +168,8 @@ describe('Test API Data object', () => {
                 cms_module_version: '',
                 sdk_server: 'nodejs',
                 sdk_server_engine_version: process.version
-            }
+            },
+            one_click: true
         };
 
         const params = piDataClient.getOrderData(dataId, orderRequest, transaction);
@@ -191,7 +193,8 @@ describe('Test API Data object', () => {
                 brandVersion: '{BRAND_VERSION}',
                 integration_version: '{BRAND_MODULE_VERSION}',
                 sdk_server_version: '{SDK_SERVER_VERSION}'
-            }
+            },
+            one_click: 1
         };
         const transaction = {
             status: '116',
@@ -224,7 +227,8 @@ describe('Test API Data object', () => {
                 sdk_server: 'nodejs',
                 sdk_server_engine_version: process.version,
                 sdk_server_version: '{SDK_SERVER_VERSION}'
-            }
+            },
+            one_click: true
         };
 
         const params = piDataClient.getOrderData(dataId, orderRequest, transaction);
