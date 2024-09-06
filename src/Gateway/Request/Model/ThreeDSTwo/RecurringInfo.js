@@ -6,7 +6,7 @@ class RecurringInfo extends AbstractModel {
      * Creates a Recurring Info Object
      *
      * @param {Object} [values = {}]
-     * @param {Number} [values.expiration_date] Recurring payment expiration date, format YYYYMMDD
+     * @param {Number} [values.expirationDate] Recurring payment expiration date, format YYYYMMDD
      * @param {Number} [values.frequency] Recurring payment frequency in days
      */
     constructor(values) {
@@ -16,8 +16,8 @@ class RecurringInfo extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'expiration_date')) {
-            this.expiration_date = values.expiration_date;
+        if (Object.prototype.hasOwnProperty.call(values, 'expirationDate')) {
+            this.expirationDate = values.expirationDate;
         }
         if (Object.prototype.hasOwnProperty.call(values, 'frequency')) {
             this.frequency = values.frequency;
@@ -27,7 +27,7 @@ class RecurringInfo extends AbstractModel {
     initValues() {
         super.initValues();
 
-        this.expiration_date = null;
+        this.expirationDate = null;
         this.frequency = null;
     }
 }

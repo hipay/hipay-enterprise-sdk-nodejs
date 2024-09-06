@@ -16,8 +16,8 @@ describe('Test constructor', () => {
                 operation: '{OPERATION}',
                 currency: '{CURRENCY}',
                 amount: '{AMOUNT}',
-                operation_id: '{OPERATION_ID}',
-                sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+                operationId: '{OPERATION_ID}',
+                subTransactionReference: '{SUB_TRANSACTION_REFERENCE}'
             });
         }).not.toThrow();
 
@@ -25,8 +25,8 @@ describe('Test constructor', () => {
         expect(maintenanceRequest.operation).toEqual('{OPERATION}');
         expect(maintenanceRequest.currency).toEqual('{CURRENCY}');
         expect(maintenanceRequest.amount).toEqual('{AMOUNT}');
-        expect(maintenanceRequest.operation_id).toEqual('{OPERATION_ID}');
-        expect(maintenanceRequest.sub_transaction_reference).toEqual('{SUB_TRANSACTION_REFERENCE}');
+        expect(maintenanceRequest.operationId).toEqual('{OPERATION_ID}');
+        expect(maintenanceRequest.subTransactionReference).toEqual('{SUB_TRANSACTION_REFERENCE}');
     });
 
     it('Initializes correctly with minimal parameters', () => {
@@ -42,8 +42,8 @@ describe('Test constructor', () => {
         expect(maintenanceRequest.operation).toEqual('{OPERATION}');
         expect(maintenanceRequest.currency).toEqual(null);
         expect(maintenanceRequest.amount).toEqual(null);
-        expect(maintenanceRequest.operation_id).toEqual(null);
-        expect(maintenanceRequest.sub_transaction_reference).toEqual(null);
+        expect(maintenanceRequest.operationId).toEqual(null);
+        expect(maintenanceRequest.subTransactionReference).toEqual(null);
     });
 
     it('Errors if operation is absent', () => {
@@ -51,8 +51,8 @@ describe('Test constructor', () => {
             new MaintenanceRequest({
                 currency: '{CURRENCY}',
                 amount: '{AMOUNT}',
-                operation_id: '{OPERATION_ID}',
-                sub_transaction_reference: '{SUB_TRANSACTION_REFERENCE}'
+                operationId: '{OPERATION_ID}',
+                subTransactionReference: '{SUB_TRANSACTION_REFERENCE}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);

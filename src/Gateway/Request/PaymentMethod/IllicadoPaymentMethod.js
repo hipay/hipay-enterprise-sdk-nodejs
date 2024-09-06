@@ -7,20 +7,20 @@ class IllicadoPaymentMethod extends AbstractPaymentMethod {
      * Creates an Illicado Payment Method Object
      *
      * @param {Object} values
-     * @param {String} values.prepaid_card_number Illicado card number
-     * @param {String} values.prepaid_card_security_code Illicado card security code
+     * @param {String} values.prepaidCardNumber Illicado card number
+     * @param {String} values.prepaidCardSecurityCode Illicado card security code
      */
     constructor(values) {
         super();
 
-        if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_number')) {
-            this.prepaid_card_number = values.prepaid_card_number;
+        if (Object.prototype.hasOwnProperty.call(values, 'prepaidCardNumber')) {
+            this.prepaidCardNumber = values.prepaidCardNumber;
         } else {
             throw new InvalidArgumentException('Card Number must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_security_code')) {
-            this.prepaid_card_security_code = values.prepaid_card_security_code;
+        if (Object.prototype.hasOwnProperty.call(values, 'prepaidCardSecurityCode')) {
+            this.prepaidCardSecurityCode = values.prepaidCardSecurityCode;
         } else {
             throw new InvalidArgumentException('Card Security Code must be present');
         }
@@ -29,8 +29,8 @@ class IllicadoPaymentMethod extends AbstractPaymentMethod {
     initValues() {
         super.initValues();
 
-        this.prepaid_card_number = null;
-        this.prepaid_card_security_code = null;
+        this.prepaidCardNumber = null;
+        this.prepaidCardSecurityCode = null;
     }
 }
 

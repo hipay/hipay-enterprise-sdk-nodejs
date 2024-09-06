@@ -13,19 +13,19 @@ describe('Test constructor', () => {
 
         expect(() => {
             sepaDirectDebitPaymentMethod = new SEPADirectDebitPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}',
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
-                bank_name: '{BANK_NAME}',
+                issuerBankId: '{ISSUER_BANK_ID}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
+                bankName: '{BANK_NAME}',
                 iban: '{IBAN}'
             });
         }).not.toThrow();
 
         expect(sepaDirectDebitPaymentMethod).toBeInstanceOf(SEPADirectDebitPaymentMethod);
-        expect(sepaDirectDebitPaymentMethod.issuer_bank_id).toEqual('{ISSUER_BANK_ID}');
-        expect(sepaDirectDebitPaymentMethod.debit_agreement_id).toEqual('{DEBIT_AGREEMENT_ID}');
-        expect(sepaDirectDebitPaymentMethod.recurring_payment).toEqual('{RECURRING_PAYMENT}');
-        expect(sepaDirectDebitPaymentMethod.bank_name).toEqual('{BANK_NAME}');
+        expect(sepaDirectDebitPaymentMethod.issuerBankId).toEqual('{ISSUER_BANK_ID}');
+        expect(sepaDirectDebitPaymentMethod.debitAgreementId).toEqual('{DEBIT_AGREEMENT_ID}');
+        expect(sepaDirectDebitPaymentMethod.recurringPayment).toEqual('{RECURRING_PAYMENT}');
+        expect(sepaDirectDebitPaymentMethod.bankName).toEqual('{BANK_NAME}');
         expect(sepaDirectDebitPaymentMethod.iban).toEqual('{IBAN}');
     });
 
@@ -34,35 +34,35 @@ describe('Test constructor', () => {
 
         expect(() => {
             sepaDirectDebitPaymentMethod = new SEPADirectDebitPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}',
-                bank_name: '{BANK_NAME}',
+                issuerBankId: '{ISSUER_BANK_ID}',
+                bankName: '{BANK_NAME}',
                 iban: '{IBAN}'
             });
         }).not.toThrow();
 
         expect(sepaDirectDebitPaymentMethod).toBeInstanceOf(SEPADirectDebitPaymentMethod);
-        expect(sepaDirectDebitPaymentMethod.issuer_bank_id).toEqual('{ISSUER_BANK_ID}');
-        expect(sepaDirectDebitPaymentMethod.debit_agreement_id).toEqual(null);
-        expect(sepaDirectDebitPaymentMethod.recurring_payment).toEqual(0);
-        expect(sepaDirectDebitPaymentMethod.bank_name).toEqual('{BANK_NAME}');
+        expect(sepaDirectDebitPaymentMethod.issuerBankId).toEqual('{ISSUER_BANK_ID}');
+        expect(sepaDirectDebitPaymentMethod.debitAgreementId).toEqual(null);
+        expect(sepaDirectDebitPaymentMethod.recurringPayment).toEqual(0);
+        expect(sepaDirectDebitPaymentMethod.bankName).toEqual('{BANK_NAME}');
         expect(sepaDirectDebitPaymentMethod.iban).toEqual('{IBAN}');
     });
 
     it('Errors when issuer bank id is absent', () => {
         expect(() => {
             new SEPADirectDebitPaymentMethod({
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
-                bank_name: '{BANK_NAME}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
+                bankName: '{BANK_NAME}',
                 iban: '{IBAN}'
             });
         }).toThrow();
 
         try {
             new SEPADirectDebitPaymentMethod({
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
-                bank_name: '{BANK_NAME}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
+                bankName: '{BANK_NAME}',
                 iban: '{IBAN}'
             });
         } catch (err) {
@@ -75,18 +75,18 @@ describe('Test constructor', () => {
     it('Errors when bank name is absent', () => {
         expect(() => {
             new SEPADirectDebitPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}',
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
+                issuerBankId: '{ISSUER_BANK_ID}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
                 iban: '{IBAN}'
             });
         }).toThrow();
 
         try {
             new SEPADirectDebitPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}',
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
+                issuerBankId: '{ISSUER_BANK_ID}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
                 iban: '{IBAN}'
             });
         } catch (err) {
@@ -99,19 +99,19 @@ describe('Test constructor', () => {
     it('Errors when IBAN is absent', () => {
         expect(() => {
             new SEPADirectDebitPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}',
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
-                bank_name: '{BANK_NAME}'
+                issuerBankId: '{ISSUER_BANK_ID}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
+                bankName: '{BANK_NAME}'
             });
         }).toThrow();
 
         try {
             new SEPADirectDebitPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}',
-                debit_agreement_id: '{DEBIT_AGREEMENT_ID}',
-                recurring_payment: '{RECURRING_PAYMENT}',
-                bank_name: '{BANK_NAME}'
+                issuerBankId: '{ISSUER_BANK_ID}',
+                debitAgreementId: '{DEBIT_AGREEMENT_ID}',
+                recurringPayment: '{RECURRING_PAYMENT}',
+                bankName: '{BANK_NAME}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);

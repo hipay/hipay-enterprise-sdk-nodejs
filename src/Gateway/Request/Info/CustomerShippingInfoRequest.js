@@ -6,19 +6,19 @@ class CustomerShippingInfoRequest extends AbstractRequestPart {
      * Creates a Shipping recipient Info object
      *
      * @param {Object} [values = {}]
-     * @param {String} [values.shipto_firstname] Shipping recipient firstname
-     * @param {String} [values.shipto_lastname] Shipping recipient lastname
-     * @param {String} [values.shipto_recipientinfo] Shipping recipient additional info
-     * @param {String} [values.shipto_house_number] Shipping recipient house number
-     * @param {String} [values.shipto_streetaddress] Shipping recipient address
-     * @param {String} [values.shipto_streetaddress2] Shipping recipient address (line 2)
-     * @param {String} [values.shipto_city] Shipping recipient city
-     * @param {String} [values.shipto_state] Shipping recipient state or province
-     * @param {String} [values.shipto_zipcode] Shipping recipient zipcode
-     * @param {String} [values.shipto_country] Shipping recipient country (Two letter ISO code)
-     * @param {String} [values.shipto_phone] Shipping recipient phone
-     * @param {String} [values.shipto_msisdn] Shipping recipient mobile phone
-     * @param {String} [values.shipto_gender] Shipping recipient gender. See Gender Enum
+     * @param {String} [values.shiptoFirstname] Shipping recipient firstname
+     * @param {String} [values.shiptoLastname] Shipping recipient lastname
+     * @param {String} [values.shiptoRecipientinfo] Shipping recipient additional info
+     * @param {String} [values.shiptoHouseNumber] Shipping recipient house number
+     * @param {String} [values.shiptoStreetaddress] Shipping recipient address
+     * @param {String} [values.shiptoStreetaddress2] Shipping recipient address (line 2)
+     * @param {String} [values.shiptoCity] Shipping recipient city
+     * @param {String} [values.shiptoState] Shipping recipient state or province
+     * @param {String} [values.shiptoZipcode] Shipping recipient zipcode
+     * @param {String} [values.shiptoCountry] Shipping recipient country (Two letter ISO code)
+     * @param {String} [values.shiptoPhone] Shipping recipient phone
+     * @param {String} [values.shiptoMsisdn] Shipping recipient mobile phone
+     * @param {String} [values.shiptoGender] Shipping recipient gender. See Gender Enum
      */
     constructor(values) {
         super();
@@ -27,75 +27,75 @@ class CustomerShippingInfoRequest extends AbstractRequestPart {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_firstname')) {
-            this.shipto_firstname = values.shipto_firstname;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoFirstname')) {
+            this.shiptoFirstname = values.shiptoFirstname;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_lastname')) {
-            this.shipto_lastname = values.shipto_lastname;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoLastname')) {
+            this.shiptoLastname = values.shiptoLastname;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_recipientinfo')) {
-            this.shipto_recipientinfo = values.shipto_recipientinfo;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoRecipientinfo')) {
+            this.shiptoRecipientinfo = values.shiptoRecipientinfo;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_house_number')) {
-            this.shipto_house_number = values.shipto_house_number;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoHouseNumber')) {
+            this.shiptoHouseNumber = values.shiptoHouseNumber;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_streetaddress')) {
-            this.shipto_streetaddress = values.shipto_streetaddress;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoStreetaddress')) {
+            this.shiptoStreetaddress = values.shiptoStreetaddress;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_streetaddress2')) {
-            this.shipto_streetaddress2 = values.shipto_streetaddress2;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoStreetaddress2')) {
+            this.shiptoStreetaddress2 = values.shiptoStreetaddress2;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_city')) {
-            this.shipto_city = values.shipto_city;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoCity')) {
+            this.shiptoCity = values.shiptoCity;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_state')) {
-            this.shipto_state = values.shipto_state;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoState')) {
+            this.shiptoState = values.shiptoState;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_zipcode')) {
-            this.shipto_zipcode = values.shipto_zipcode;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoZipcode')) {
+            this.shiptoZipcode = values.shiptoZipcode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_country')) {
-            this.shipto_country = values.shipto_country;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoCountry')) {
+            this.shiptoCountry = values.shiptoCountry;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_phone')) {
-            this.shipto_phone = values.shipto_phone;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoPhone')) {
+            this.shiptoPhone = values.shiptoPhone;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_msisdn')) {
-            this.shipto_msisdn = values.shipto_msisdn;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoMsisdn')) {
+            this.shiptoMsisdn = values.shiptoMsisdn;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_gender')) {
-            this.shipto_gender = values.shipto_gender;
+        if (Object.prototype.hasOwnProperty.call(values, 'shiptoGender')) {
+            this.shiptoGender = values.shiptoGender;
         }
     }
 
     initValues() {
         super.initValues();
 
-        this.shipto_firstname = null;
-        this.shipto_lastname = null;
-        this.shipto_recipientinfo = null;
-        this.shipto_house_number = null;
-        this.shipto_streetaddress = null;
-        this.shipto_streetaddress2 = null;
-        this.shipto_city = null;
-        this.shipto_state = null;
-        this.shipto_zipcode = null;
-        this.shipto_country = null;
-        this.shipto_phone = null;
-        this.shipto_msisdn = null;
-        this.shipto_gender = null;
+        this.shiptoFirstname = null;
+        this.shiptoLastname = null;
+        this.shiptoRecipientinfo = null;
+        this.shiptoHouseNumber = null;
+        this.shiptoStreetaddress = null;
+        this.shiptoStreetaddress2 = null;
+        this.shiptoCity = null;
+        this.shiptoState = null;
+        this.shiptoZipcode = null;
+        this.shiptoCountry = null;
+        this.shiptoPhone = null;
+        this.shiptoMsisdn = null;
+        this.shiptoGender = null;
     }
 }
 

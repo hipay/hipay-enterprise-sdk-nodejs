@@ -6,12 +6,12 @@ describe('Test constructor', () => {
 
         expect(() => {
             payment = new Payment({
-                enrollment_date: '{ENROLLMENT_DATE}'
+                enrollmentDate: '{ENROLLMENT_DATE}'
             });
         }).not.toThrow();
 
         expect(payment).toBeInstanceOf(Payment);
-        expect(payment.enrollment_date).toEqual('{ENROLLMENT_DATE}');
+        expect(payment.enrollmentDate).toEqual('{ENROLLMENT_DATE}');
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -22,7 +22,7 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(payment).toBeInstanceOf(Payment);
-        expect(payment.enrollment_date).toEqual(null);
+        expect(payment.enrollmentDate).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -33,6 +33,6 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(payment).toBeInstanceOf(Payment);
-        expect(payment.enrollment_date).toEqual(null);
+        expect(payment.enrollmentDate).toEqual(null);
     });
 });

@@ -8,13 +8,13 @@ class IssuerBankIDPaymentMethod extends AbstractPaymentMethod {
      * Used in iDeal & SEPA Direct Debit Payment Methods
      *
      * @param {Object} values
-     * @param {String} values.issuer_bank_id Business Identifier Code of the customer's bank
+     * @param {String} values.issuerBankId Business Identifier Code of the customer's bank
      */
     constructor(values) {
         super();
 
-        if (Object.prototype.hasOwnProperty.call(values, 'issuer_bank_id')) {
-            this.issuer_bank_id = values.issuer_bank_id;
+        if (Object.prototype.hasOwnProperty.call(values, 'issuerBankId')) {
+            this.issuerBankId = values.issuerBankId;
         } else {
             throw new InvalidArgumentException('Issuer Bank ID must be present');
         }
@@ -23,7 +23,7 @@ class IssuerBankIDPaymentMethod extends AbstractPaymentMethod {
     initValues() {
         super.initValues();
 
-        this.issuer_bank_id = null;
+        this.issuerBankId = null;
     }
 }
 

@@ -6,7 +6,7 @@ class Payment extends AbstractModel {
      * Creates a Payment Info Object
      *
      * @param {Object} [values = {}]
-     * @param {Number} [values.enrollment_date] Payment card first use date, format YYYYMMDD
+     * @param {Number} [values.enrollmentDate] Payment card first use date, format YYYYMMDD
      */
     constructor(values) {
         super();
@@ -15,15 +15,15 @@ class Payment extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'enrollment_date')) {
-            this.enrollment_date = values.enrollment_date;
+        if (Object.prototype.hasOwnProperty.call(values, 'enrollmentDate')) {
+            this.enrollmentDate = values.enrollmentDate;
         }
     }
 
     initValues() {
         super.initValues();
 
-        this.enrollment_date = null;
+        this.enrollmentDate = null;
     }
 }
 

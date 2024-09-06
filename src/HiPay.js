@@ -446,3 +446,27 @@ HiPay.Cart = CartEnums;
 HiPay.DataCollections = DataCollections;
 
 module.exports = HiPay;
+
+(async () => {
+    const hipayClient = new HiPay({
+        apiUsername: '94658446.stage-secure-gateway.hipay-tpp.com',
+        apiPassword: 'Test_ClFcu2epJ2HrMrzE3IapOnrd',
+        apiEnv: HiPay.API_ENV_STAGE
+    });
+
+    const page = new HiPay.HostedPaymentPageRequest({
+        orderid: 'testOKokkl' + Math.floor(Math.random()),
+        description: 'ok',
+        amount: 13,
+        currency: 'EUR',
+        customerShippingInfo: new HiPay.CustomerShippingInfoRequest({
+            shiptoCountry: 'FR'
+        })
+    });
+
+    const res = await hipayClient.requestHostedPaymentPage(page);
+
+    console.log(res.forwardUrl);
+})().catch((e) => {
+    console.log(e);
+});

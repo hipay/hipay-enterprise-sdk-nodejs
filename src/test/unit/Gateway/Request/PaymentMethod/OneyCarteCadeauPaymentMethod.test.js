@@ -12,12 +12,12 @@ describe('Test constructor', () => {
 
         expect(() => {
             oneyCarteCadeauPaymentMethod = new OneyCarteCadeauPaymentMethod({
-                payment_product_parameters: '{PAYMENT_PRODUCT_PARAMS}'
+                paymentProductParameters: '{PAYMENT_PRODUCT_PARAMS}'
             });
         }).not.toThrow();
 
         expect(oneyCarteCadeauPaymentMethod).toBeInstanceOf(OneyCarteCadeauPaymentMethod);
-        expect(oneyCarteCadeauPaymentMethod.payment_product_parameters).toEqual('{PAYMENT_PRODUCT_PARAMS}');
+        expect(oneyCarteCadeauPaymentMethod.paymentProductParameters).toEqual('{PAYMENT_PRODUCT_PARAMS}');
     });
 
     it('Initializes correctly with object', () => {
@@ -25,19 +25,19 @@ describe('Test constructor', () => {
 
         expect(() => {
             oneyCarteCadeauPaymentMethod = new OneyCarteCadeauPaymentMethod({
-                payment_product_parameters: {
-                    prepaid_card_number: '{PREPAID_CARD_NUMBER}',
-                    prepaid_card_security_code: '{PREPAID_CARD_SECURITY_CODE}',
+                paymentProductParameters: {
+                    prepaidCardNumber: '{PREPAID_CARD_NUMBER}',
+                    prepaidCardSecurityCode: '{PREPAID_CARD_SECURITY_CODE}',
                     value: '{DUMMY}'
                 }
             });
         }).not.toThrow();
 
         expect(oneyCarteCadeauPaymentMethod).toBeInstanceOf(OneyCarteCadeauPaymentMethod);
-        expect(oneyCarteCadeauPaymentMethod.payment_product_parameters).toEqual(
+        expect(oneyCarteCadeauPaymentMethod.paymentProductParameters).toEqual(
             JSON.stringify({
-                prepaid_card_number: '{PREPAID_CARD_NUMBER}',
-                prepaid_card_security_code: '{PREPAID_CARD_SECURITY_CODE}'
+                prepaidCardNumber: '{PREPAID_CARD_NUMBER}',
+                prepaidCardSecurityCode: '{PREPAID_CARD_SECURITY_CODE}'
             })
         );
     });
@@ -47,8 +47,8 @@ describe('Test constructor', () => {
 
         expect(() => {
             oneyCarteCadeauPaymentMethod = new OneyCarteCadeauPaymentMethod({
-                payment_product_parameters: {
-                    prepaid_card_security_code: '{PREPAID_CARD_SECURITY_CODE}',
+                paymentProductParameters: {
+                    prepaidCardSecurityCode: '{PREPAID_CARD_SECURITY_CODE}',
                     value: '{DUMMY}'
                 }
             });
@@ -56,8 +56,8 @@ describe('Test constructor', () => {
 
         try {
             new OneyCarteCadeauPaymentMethod({
-                payment_product_parameters: {
-                    prepaid_card_security_code: '{PREPAID_CARD_SECURITY_CODE}',
+                paymentProductParameters: {
+                    prepaidCardSecurityCode: '{PREPAID_CARD_SECURITY_CODE}',
                     value: '{DUMMY}'
                 }
             });
@@ -73,8 +73,8 @@ describe('Test constructor', () => {
 
         expect(() => {
             oneyCarteCadeauPaymentMethod = new OneyCarteCadeauPaymentMethod({
-                payment_product_parameters: {
-                    prepaid_card_number: '{PREPAID_CARD_NUMBER}',
+                paymentProductParameters: {
+                    prepaidCardNumber: '{PREPAID_CARD_NUMBER}',
                     value: '{DUMMY}'
                 }
             });
@@ -82,8 +82,8 @@ describe('Test constructor', () => {
 
         try {
             new OneyCarteCadeauPaymentMethod({
-                payment_product_parameters: {
-                    prepaid_card_number: '{PREPAID_CARD_NUMBER}',
+                paymentProductParameters: {
+                    prepaidCardNumber: '{PREPAID_CARD_NUMBER}',
                     value: '{DUMMY}'
                 }
             });
@@ -102,7 +102,7 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(oneyCarteCadeauPaymentMethod).toBeInstanceOf(OneyCarteCadeauPaymentMethod);
-        expect(oneyCarteCadeauPaymentMethod.payment_product_parameters).toEqual(null);
+        expect(oneyCarteCadeauPaymentMethod.paymentProductParameters).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -113,6 +113,6 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(oneyCarteCadeauPaymentMethod).toBeInstanceOf(OneyCarteCadeauPaymentMethod);
-        expect(oneyCarteCadeauPaymentMethod.payment_product_parameters).toEqual(null);
+        expect(oneyCarteCadeauPaymentMethod.paymentProductParameters).toEqual(null);
     });
 });

@@ -6,7 +6,7 @@ class MultibancoPaymentMethod extends AbstractPaymentMethod {
      * Creates a Multibanco Payment Method Object
      *
      * @param {Object} [values = {}]
-     * @param {Number} [values.expiration_limit = 3] Expiration limit in days
+     * @param {Number} [values.expirationLimit = 3] Expiration limit in days
      */
     constructor(values) {
         super();
@@ -15,15 +15,15 @@ class MultibancoPaymentMethod extends AbstractPaymentMethod {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'expiration_limit')) {
-            this.expiration_limit = values.expiration_limit;
+        if (Object.prototype.hasOwnProperty.call(values, 'expirationLimit')) {
+            this.expirationLimit = values.expirationLimit;
         }
     }
 
     initValues() {
         super.initValues();
 
-        this.expiration_limit = 3;
+        this.expirationLimit = 3;
     }
 }
 

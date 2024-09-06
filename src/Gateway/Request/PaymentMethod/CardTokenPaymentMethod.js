@@ -10,7 +10,7 @@ class CardTokenPaymentMethod extends AbstractPaymentMethod {
      * @param {Object} values
      * @param {String} values.cardtoken Card token as returned by the HiPay Tokenization API, or by the HiPay Front JS SDK
      * @param {Number} values.eci Transaction Electronic Commerce Indicator. See the Transaction.ECI Enum
-     * @param {Number} [values.authentication_indicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
+     * @param {Number} [values.authenticationIndicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
      */
     constructor(values) {
         super();
@@ -27,8 +27,8 @@ class CardTokenPaymentMethod extends AbstractPaymentMethod {
             throw new InvalidArgumentException('ECI must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authentication_indicator')) {
-            this.authentication_indicator = values.authentication_indicator;
+        if (Object.prototype.hasOwnProperty.call(values, 'authenticationIndicator')) {
+            this.authenticationIndicator = values.authenticationIndicator;
         }
     }
 
@@ -37,7 +37,7 @@ class CardTokenPaymentMethod extends AbstractPaymentMethod {
 
         this.cardtoken = null;
         this.eci = null;
-        this.authentication_indicator = AuthenticationIndicator.AVAILABLE;
+        this.authenticationIndicator = AuthenticationIndicator.AVAILABLE;
     }
 }
 

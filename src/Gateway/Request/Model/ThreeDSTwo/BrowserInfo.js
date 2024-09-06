@@ -7,14 +7,14 @@ class BrowserInfo extends AbstractModel {
      *
      * @param {Object} [values = {}]
      * @param {String} [values.ipaddr] Client Ip Adress
-     * @param {String} [values.http_accept] Http Accept Header value from the client
-     * @param {String} [values.http_user_agent] User Agent Header value from the client
-     * @param {Boolean} [values.java_enabled] Is java enabled on the client ?
-     * @param {Boolean} [values.javascript_enabled] Is Javascript enabled on the client ?
+     * @param {String} [values.httpAccept] Http Accept Header value from the client
+     * @param {String} [values.httpUserAgent] User Agent Header value from the client
+     * @param {Boolean} [values.javaEnabled] Is java enabled on the client ?
+     * @param {Boolean} [values.javascriptEnabled] Is Javascript enabled on the client ?
      * @param {String} [values.language] Client browser language
-     * @param {String} [values.color_depth] Client browser color depth setting
-     * @param {String} [values.screen_height] Client screen height
-     * @param {String} [values.screen_width] Client screen width
+     * @param {String} [values.colorDepth] Client browser color depth setting
+     * @param {String} [values.screenHeight] Client screen height
+     * @param {String} [values.screenWidth] Client screen width
      * @param {String} [values.timezone] Client timezone
      */
     constructor(values) {
@@ -27,29 +27,29 @@ class BrowserInfo extends AbstractModel {
         if (Object.prototype.hasOwnProperty.call(values, 'ipaddr') && values.ipaddr !== '') {
             this.ipaddr = values.ipaddr;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'http_accept') && values.http_accept !== '') {
-            this.http_accept = values.http_accept;
+        if (Object.prototype.hasOwnProperty.call(values, 'httpAccept') && values.httpAccept !== '') {
+            this.httpAccept = values.httpAccept;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'http_user_agent') && values.http_user_agent !== '') {
-            this.http_user_agent = values.http_user_agent;
+        if (Object.prototype.hasOwnProperty.call(values, 'httpUserAgent') && values.httpUserAgent !== '') {
+            this.httpUserAgent = values.httpUserAgent;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'java_enabled') && values.java_enabled !== '') {
-            this.java_enabled = values.java_enabled;
+        if (Object.prototype.hasOwnProperty.call(values, 'javaEnabled') && values.javaEnabled !== '') {
+            this.javaEnabled = values.javaEnabled;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'javascript_enabled') && values.javascript_enabled !== '') {
-            this.javascript_enabled = values.javascript_enabled;
+        if (Object.prototype.hasOwnProperty.call(values, 'javascriptEnabled') && values.javascriptEnabled !== '') {
+            this.javascriptEnabled = values.javascriptEnabled;
         }
         if (Object.prototype.hasOwnProperty.call(values, 'language') && values.language !== '') {
             this.language = values.language;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'color_depth') && values.color_depth !== '') {
-            this.color_depth = values.color_depth;
+        if (Object.prototype.hasOwnProperty.call(values, 'colorDepth') && values.colorDepth !== '') {
+            this.colorDepth = values.colorDepth;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'screen_height') && values.screen_height !== '') {
-            this.screen_height = values.screen_height;
+        if (Object.prototype.hasOwnProperty.call(values, 'screenHeight') && values.screenHeight !== '') {
+            this.screenHeight = values.screenHeight;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'screen_width') && values.screen_width !== '') {
-            this.screen_width = values.screen_width;
+        if (Object.prototype.hasOwnProperty.call(values, 'screenWidth') && values.screenWidth !== '') {
+            this.screenWidth = values.screenWidth;
         }
         if (Object.prototype.hasOwnProperty.call(values, 'timezone') && values.timezone !== '') {
             this.timezone = values.timezone;
@@ -60,14 +60,14 @@ class BrowserInfo extends AbstractModel {
         super.initValues();
 
         this.ipaddr = null;
-        this.http_accept = null;
-        this.http_user_agent = null;
-        this.java_enabled = null;
-        this.javascript_enabled = null;
+        this.httpAccept = null;
+        this.httpUserAgent = null;
+        this.javaEnabled = null;
+        this.javascriptEnabled = null;
         this.language = null;
-        this.color_depth = null;
-        this.screen_height = null;
-        this.screen_width = null;
+        this.colorDepth = null;
+        this.screenHeight = null;
+        this.screenWidth = null;
         this.timezone = null;
     }
 }

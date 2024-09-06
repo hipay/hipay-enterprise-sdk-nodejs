@@ -21,8 +21,8 @@ class MaintenanceRequest extends CommonRequest {
      * @param {String} values.operation Maintenance Operation. See Transaction.Operation Enum
      * @param {String} [values.currency] Maintenance Operation currency. This three-character currency code complies with ISO 4217.
      * @param {String} [values.amount] Maintenance Operation amount. Amount is required for partial maintenances. Do not specify amount for full captures or refunds.
-     * @param {String} [values.operation_id] Maintenance Operation ID. This will be returned in the notifications related to this operation.
-     * @param {String} [values.sub_transaction_reference] Sub Transaction Reference targeted by the operation, if relevant.
+     * @param {String} [values.operationId] Maintenance Operation ID. This will be returned in the notifications related to this operation.
+     * @param {String} [values.subTransactionReference] Sub Transaction Reference targeted by the operation, if relevant.
      */
     constructor(values) {
         super(values);
@@ -41,12 +41,12 @@ class MaintenanceRequest extends CommonRequest {
             this.amount = values.amount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'operation_id')) {
-            this.operation_id = values.operation_id;
+        if (Object.prototype.hasOwnProperty.call(values, 'operationId')) {
+            this.operationId = values.operationId;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'sub_transaction_reference')) {
-            this.sub_transaction_reference = values.sub_transaction_reference;
+        if (Object.prototype.hasOwnProperty.call(values, 'subTransactionReference')) {
+            this.subTransactionReference = values.subTransactionReference;
         }
     }
 
@@ -56,8 +56,8 @@ class MaintenanceRequest extends CommonRequest {
         this.operation = null;
         this.currency = null;
         this.amount = null;
-        this.operation_id = null;
-        this.sub_transaction_reference = null;
+        this.operationId = null;
+        this.subTransactionReference = null;
     }
 }
 

@@ -50,14 +50,14 @@ describe('Test constructor', () => {
 
         let browserInfo = {
             ipaddr: '{IPADDR}',
-            http_accept: '{HTTP_ACCEPT}',
-            http_user_agent: '{HTTP_USER_AGENT}',
-            java_enabled: '{JAVA_ENABLED}',
-            javascript_enabled: '{JAVASCRIPT_ENABLED}',
+            httpAccept: '{HTTP_ACCEPT}',
+            httpUserAgent: '{HTTP_USER_AGENT}',
+            javaEnabled: '{JAVA_ENABLED}',
+            javascriptEnabled: '{JAVASCRIPT_ENABLED}',
             language: '{LANGUAGE}',
-            color_depth: '{COLOR_DEPTH}',
-            screen_height: '{SCREEN_HEIGHT}',
-            screen_width: '{SCREEN_WIDTH}',
+            colorDepth: '{COLOR_DEPTH}',
+            screenHeight: '{SCREEN_HEIGHT}',
+            screenWidth: '{SCREEN_WIDTH}',
             timezone: '{TIMEZONE}'
         };
 
@@ -74,7 +74,7 @@ describe('Test constructor', () => {
                 browserInfo: browserInfo,
                 salesChannel: '{SALESCHANNEL}',
                 providerData: {
-                    paypal_id: '3G784840JJ573503S'
+                    paypalId: '3G784840JJ573503S'
                 }
             });
         }).not.toThrow();
@@ -89,7 +89,7 @@ describe('Test constructor', () => {
         expect(orderRequest.browserInfo).toBeInstanceOf(BrowserInfo);
         expect(orderRequest.browserInfo).toEqual(browserInfo);
         expect(orderRequest.salesChannel).toEqual('{SALESCHANNEL}');
-        expect(orderRequest.providerData).toEqual('{"paypal_id":"3G784840JJ573503S"}');
+        expect(orderRequest.providerData).toEqual('{"paypalId":"3G784840JJ573503S"}');
     });
 
     it('Initializes correctly with minimal parameters', () => {

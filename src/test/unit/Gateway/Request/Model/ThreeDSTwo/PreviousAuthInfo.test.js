@@ -6,12 +6,12 @@ describe('Test constructor', () => {
 
         expect(() => {
             previousAuthInfo = new PreviousAuthInfo({
-                transaction_reference: '{TRANSACTION_REFERENCE}'
+                transactionReference: '{TRANSACTION_REFERENCE}'
             });
         }).not.toThrow();
 
         expect(previousAuthInfo).toBeInstanceOf(PreviousAuthInfo);
-        expect(previousAuthInfo.transaction_reference).toEqual('{TRANSACTION_REFERENCE}');
+        expect(previousAuthInfo.transactionReference).toEqual('{TRANSACTION_REFERENCE}');
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -22,7 +22,7 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(previousAuthInfo).toBeInstanceOf(PreviousAuthInfo);
-        expect(previousAuthInfo.transaction_reference).toEqual(null);
+        expect(previousAuthInfo.transactionReference).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -33,6 +33,6 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(previousAuthInfo).toBeInstanceOf(PreviousAuthInfo);
-        expect(previousAuthInfo.transaction_reference).toEqual(null);
+        expect(previousAuthInfo.transactionReference).toEqual(null);
     });
 });

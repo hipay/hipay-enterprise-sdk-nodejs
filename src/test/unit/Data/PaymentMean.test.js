@@ -142,7 +142,7 @@ describe('PaymentMean', () => {
         expect(paymentMean.additionalFields).toEqual({
             _sdkClass: 'MultibancoPaymentMethod',
             _formFields: {
-                expiration_limit: {
+                expirationLimit: {
                     label: {
                         en: 'Expiration limit',
                         fr: 'Limite de paiement'
@@ -192,7 +192,7 @@ describe('PaymentMean', () => {
 
         expect(paymentMean.additionalFields.sdkClass).toEqual(MultibancoPaymentMethod);
         expect(paymentMean.additionalFields.getLocalizedFields()).toEqual({
-            expiration_limit: {
+            expirationLimit: {
                 label: 'Expiration limit',
                 type: 'text',
                 required: false,
@@ -224,7 +224,7 @@ describe('PaymentMean', () => {
             }
         });
         expect(paymentMean.additionalFields.getLocalizedFields('fr')).toEqual({
-            expiration_limit: {
+            expirationLimit: {
                 label: 'Limite de paiement',
                 type: 'text',
                 required: false,
@@ -256,7 +256,7 @@ describe('PaymentMean', () => {
             }
         });
         expect(paymentMean.additionalFields.getLocalizedFields('pt')).toEqual({
-            expiration_limit: {
+            expirationLimit: {
                 label: 'Expiration limit',
                 type: 'text',
                 required: false,
@@ -348,7 +348,7 @@ describe('PaymentMean', () => {
                     required: true,
                     display: false
                 },
-                authentication_indicator: {
+                authenticationIndicator: {
                     type: 'text',
                     required: true,
                     display: false
@@ -367,7 +367,7 @@ describe('PaymentMean', () => {
                 required: true,
                 display: false
             },
-            authentication_indicator: {
+            authenticationIndicator: {
                 type: 'text',
                 required: true,
                 display: false

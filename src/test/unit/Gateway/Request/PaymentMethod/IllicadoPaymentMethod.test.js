@@ -13,23 +13,23 @@ describe('Test constructor', () => {
 
         expect(() => {
             illicadoPaymentMethod = new IllicadoPaymentMethod({
-                prepaid_card_number: '{PREPAID_CARD_NUMBER}',
-                prepaid_card_security_code: '{PREPAID_CARD_CVV}'
+                prepaidCardNumber: '{PREPAID_CARD_NUMBER}',
+                prepaidCardSecurityCode: '{PREPAID_CARD_CVV}'
             });
         }).not.toThrow();
 
         expect(illicadoPaymentMethod).toBeInstanceOf(IllicadoPaymentMethod);
-        expect(illicadoPaymentMethod.prepaid_card_number).toEqual('{PREPAID_CARD_NUMBER}');
-        expect(illicadoPaymentMethod.prepaid_card_security_code).toEqual('{PREPAID_CARD_CVV}');
+        expect(illicadoPaymentMethod.prepaidCardNumber).toEqual('{PREPAID_CARD_NUMBER}');
+        expect(illicadoPaymentMethod.prepaidCardSecurityCode).toEqual('{PREPAID_CARD_CVV}');
     });
 
     it('Errors when card token is not present', () => {
         expect(() => {
-            new IllicadoPaymentMethod({ prepaid_card_security_code: '{PREPAID_CARD_CVV}' });
+            new IllicadoPaymentMethod({ prepaidCardSecurityCode: '{PREPAID_CARD_CVV}' });
         }).toThrow();
 
         try {
-            new IllicadoPaymentMethod({ prepaid_card_security_code: '{PREPAID_CARD_CVV}' });
+            new IllicadoPaymentMethod({ prepaidCardSecurityCode: '{PREPAID_CARD_CVV}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
         }
@@ -39,11 +39,11 @@ describe('Test constructor', () => {
 
     it('Errors when card key is not present', () => {
         expect(() => {
-            new IllicadoPaymentMethod({ prepaid_card_number: '{PREPAID_CARD_NUMBER}' });
+            new IllicadoPaymentMethod({ prepaidCardNumber: '{PREPAID_CARD_NUMBER}' });
         }).toThrow();
 
         try {
-            new IllicadoPaymentMethod({ prepaid_card_number: '{PREPAID_CARD_NUMBER}' });
+            new IllicadoPaymentMethod({ prepaidCardNumber: '{PREPAID_CARD_NUMBER}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
         }

@@ -6,13 +6,13 @@ describe('Test constructor', () => {
 
         expect(() => {
             recurringInfo = new RecurringInfo({
-                expiration_date: '{EXPIRATION_DATE}',
+                expirationDate: '{EXPIRATION_DATE}',
                 frequency: '{FREQUENCY}'
             });
         }).not.toThrow();
 
         expect(recurringInfo).toBeInstanceOf(RecurringInfo);
-        expect(recurringInfo.expiration_date).toEqual('{EXPIRATION_DATE}');
+        expect(recurringInfo.expirationDate).toEqual('{EXPIRATION_DATE}');
         expect(recurringInfo.frequency).toEqual('{FREQUENCY}');
     });
 
@@ -24,7 +24,7 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(recurringInfo).toBeInstanceOf(RecurringInfo);
-        expect(recurringInfo.expiration_date).toEqual(null);
+        expect(recurringInfo.expirationDate).toEqual(null);
         expect(recurringInfo.frequency).toEqual(null);
     });
 
@@ -36,7 +36,7 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(recurringInfo).toBeInstanceOf(RecurringInfo);
-        expect(recurringInfo.expiration_date).toEqual(null);
+        expect(recurringInfo.expirationDate).toEqual(null);
         expect(recurringInfo.frequency).toEqual(null);
     });
 });

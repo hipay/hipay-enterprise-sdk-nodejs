@@ -14,18 +14,18 @@ describe('Test constructor', () => {
         expect(() => {
             xTimesCreditCardPaymentMethod = new XTimesCreditCardPaymentMethod({
                 eci: '{ECI}',
-                order_category_code: '{ORDER_CATEGORY_CODE}',
-                carrier_description: '{CARRIER_DESCRIPTION}',
-                payment_product_parameters: '{PAYMENT_PRODUCT_PARAMETERS}'
+                orderCategoryCode: '{ORDER_CATEGORY_CODE}',
+                carrierDescription: '{CARRIER_DESCRIPTION}',
+                paymentProductParameters: '{PAYMENT_PRODUCT_PARAMETERS}'
             });
         }).not.toThrow();
 
         expect(xTimesCreditCardPaymentMethod).toBeInstanceOf(XTimesCreditCardPaymentMethod);
 
         expect(xTimesCreditCardPaymentMethod.eci).toEqual('{ECI}');
-        expect(xTimesCreditCardPaymentMethod.order_category_code).toEqual('{ORDER_CATEGORY_CODE}');
-        expect(xTimesCreditCardPaymentMethod.carrier_description).toEqual('{CARRIER_DESCRIPTION}');
-        expect(xTimesCreditCardPaymentMethod.payment_product_parameters).toEqual('{PAYMENT_PRODUCT_PARAMETERS}');
+        expect(xTimesCreditCardPaymentMethod.orderCategoryCode).toEqual('{ORDER_CATEGORY_CODE}');
+        expect(xTimesCreditCardPaymentMethod.carrierDescription).toEqual('{CARRIER_DESCRIPTION}');
+        expect(xTimesCreditCardPaymentMethod.paymentProductParameters).toEqual('{PAYMENT_PRODUCT_PARAMETERS}');
     });
 
     it('Initializes correctly with objects', () => {
@@ -34,9 +34,9 @@ describe('Test constructor', () => {
         expect(() => {
             xTimesCreditCardPaymentMethod = new XTimesCreditCardPaymentMethod({
                 eci: '{ECI}',
-                order_category_code: '{ORDER_CATEGORY_CODE}',
-                carrier_description: '{CARRIER_DESCRIPTION}',
-                payment_product_parameters: {
+                orderCategoryCode: '{ORDER_CATEGORY_CODE}',
+                carrierDescription: '{CARRIER_DESCRIPTION}',
+                paymentProductParameters: {
                     value: '{PAYMENT_PRODUCT_PARAMETERS}'
                 }
             });
@@ -44,9 +44,9 @@ describe('Test constructor', () => {
 
         expect(xTimesCreditCardPaymentMethod).toBeInstanceOf(XTimesCreditCardPaymentMethod);
         expect(xTimesCreditCardPaymentMethod.eci).toEqual('{ECI}');
-        expect(xTimesCreditCardPaymentMethod.order_category_code).toEqual('{ORDER_CATEGORY_CODE}');
-        expect(xTimesCreditCardPaymentMethod.carrier_description).toEqual('{CARRIER_DESCRIPTION}');
-        expect(xTimesCreditCardPaymentMethod.payment_product_parameters).toEqual('{"value":"{PAYMENT_PRODUCT_PARAMETERS}"}');
+        expect(xTimesCreditCardPaymentMethod.orderCategoryCode).toEqual('{ORDER_CATEGORY_CODE}');
+        expect(xTimesCreditCardPaymentMethod.carrierDescription).toEqual('{CARRIER_DESCRIPTION}');
+        expect(xTimesCreditCardPaymentMethod.paymentProductParameters).toEqual('{"value":"{PAYMENT_PRODUCT_PARAMETERS}"}');
     });
 
     it('Initializes correctly with minimal parameters', () => {
@@ -61,25 +61,25 @@ describe('Test constructor', () => {
         expect(xTimesCreditCardPaymentMethod).toBeInstanceOf(XTimesCreditCardPaymentMethod);
 
         expect(xTimesCreditCardPaymentMethod.eci).toEqual('{ECI}');
-        expect(xTimesCreditCardPaymentMethod.order_category_code).toEqual(null);
-        expect(xTimesCreditCardPaymentMethod.carrier_description).toEqual(null);
-        expect(xTimesCreditCardPaymentMethod.payment_product_parameters).toEqual(null);
+        expect(xTimesCreditCardPaymentMethod.orderCategoryCode).toEqual(null);
+        expect(xTimesCreditCardPaymentMethod.carrierDescription).toEqual(null);
+        expect(xTimesCreditCardPaymentMethod.paymentProductParameters).toEqual(null);
     });
 
     it('Errors when ECI is absent', () => {
         expect(() => {
             new XTimesCreditCardPaymentMethod({
-                order_category_code: '{ORDER_CATEGORY_CODE}',
-                carrier_description: '{CARRIER_DESCRIPTION}',
-                payment_product_parameters: '{PAYMENT_PRODUCT_PARAMETERS}'
+                orderCategoryCode: '{ORDER_CATEGORY_CODE}',
+                carrierDescription: '{CARRIER_DESCRIPTION}',
+                paymentProductParameters: '{PAYMENT_PRODUCT_PARAMETERS}'
             });
         }).toThrow();
 
         try {
             new XTimesCreditCardPaymentMethod({
-                order_category_code: '{ORDER_CATEGORY_CODE}',
-                carrier_description: '{CARRIER_DESCRIPTION}',
-                payment_product_parameters: '{PAYMENT_PRODUCT_PARAMETERS}'
+                orderCategoryCode: '{ORDER_CATEGORY_CODE}',
+                carrierDescription: '{CARRIER_DESCRIPTION}',
+                paymentProductParameters: '{PAYMENT_PRODUCT_PARAMETERS}'
             });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);

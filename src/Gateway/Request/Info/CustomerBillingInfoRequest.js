@@ -14,8 +14,8 @@ class CustomerBillingInfoRequest extends AbstractRequestPart {
      * @param {String} [values.firstname] Customer's firstname
      * @param {String} [values.lastname] Customer's lastname
      * @param {String} [values.recipientinfo] Customer's Additional information (Mr, Mrs, Dr, etc...)
-     * @param {String} [values.house_extension] Customer's house extension
-     * @param {String} [values.house_number] Customer's house number
+     * @param {String} [values.houseExtension] Customer's house extension
+     * @param {String} [values.houseNumber] Customer's house number
      * @param {String} [values.streetaddress] Customer's address
      * @param {String} [values.streetaddress2] Customer's address (line 2)
      * @param {String} [values.city] Customer's city
@@ -62,12 +62,12 @@ class CustomerBillingInfoRequest extends AbstractRequestPart {
             this.recipientinfo = values.recipientinfo;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'house_extension')) {
-            this.house_extension = values.house_extension;
+        if (Object.prototype.hasOwnProperty.call(values, 'houseExtension')) {
+            this.houseExtension = values.houseExtension;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'house_number')) {
-            this.house_number = values.house_number;
+        if (Object.prototype.hasOwnProperty.call(values, 'houseNumber')) {
+            this.houseNumber = values.houseNumber;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'streetaddress')) {
@@ -106,8 +106,8 @@ class CustomerBillingInfoRequest extends AbstractRequestPart {
         this.firstname = null;
         this.lastname = null;
         this.recipientinfo = null;
-        this.house_extension = null;
-        this.house_number = null;
+        this.houseExtension = null;
+        this.houseNumber = null;
         this.streetaddress = null;
         this.streetaddress2 = null;
         this.city = null;

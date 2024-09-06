@@ -6,36 +6,36 @@ describe('Test constructor', () => {
 
         expect(() => {
             customerShippingInfoRequest = new CustomerShippingInfoRequest({
-                shipto_firstname: '{SHIPTO_FIRSTNAME}',
-                shipto_lastname: '{SHIPTO_LASTNAME}',
-                shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-                shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-                shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-                shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-                shipto_city: '{SHIPTO_CITY}',
-                shipto_state: '{SHIPTO_STATE}',
-                shipto_zipcode: '{SHIPTO_ZIPCODE}',
-                shipto_country: '{SHIPTO_COUNTRY}',
-                shipto_phone: '{SHIPTO_PHONE}',
-                shipto_msisdn: '{SHIPTO_MSISDN}',
-                shipto_gender: '{SHIPTO_GENDER}'
+                shiptoFirstname: '{SHIPTO_FIRSTNAME}',
+                shiptoLastname: '{SHIPTO_LASTNAME}',
+                shiptoRecipientinfo: '{SHIPTO_RECIPIENTINFO}',
+                shiptoHouseNumber: '{SHIPTO_HOUSE_NUMBER}',
+                shiptoStreetaddress: '{SHIPTO_STREETADDRESS}',
+                shiptoStreetaddress2: '{SHIPTO_STREETADDRESS2}',
+                shiptoCity: '{SHIPTO_CITY}',
+                shiptoState: '{SHIPTO_STATE}',
+                shiptoZipcode: '{SHIPTO_ZIPCODE}',
+                shiptoCountry: '{SHIPTO_COUNTRY}',
+                shiptoPhone: '{SHIPTO_PHONE}',
+                shiptoMsisdn: '{SHIPTO_MSISDN}',
+                shiptoGender: '{SHIPTO_GENDER}'
             });
         }).not.toThrow();
 
         expect(customerShippingInfoRequest).toBeInstanceOf(CustomerShippingInfoRequest);
-        expect(customerShippingInfoRequest.shipto_firstname).toEqual('{SHIPTO_FIRSTNAME}');
-        expect(customerShippingInfoRequest.shipto_lastname).toEqual('{SHIPTO_LASTNAME}');
-        expect(customerShippingInfoRequest.shipto_recipientinfo).toEqual('{SHIPTO_RECIPIENTINFO}');
-        expect(customerShippingInfoRequest.shipto_house_number).toEqual('{SHIPTO_HOUSE_NUMBER}');
-        expect(customerShippingInfoRequest.shipto_streetaddress).toEqual('{SHIPTO_STREETADDRESS}');
-        expect(customerShippingInfoRequest.shipto_streetaddress2).toEqual('{SHIPTO_STREETADDRESS2}');
-        expect(customerShippingInfoRequest.shipto_city).toEqual('{SHIPTO_CITY}');
-        expect(customerShippingInfoRequest.shipto_state).toEqual('{SHIPTO_STATE}');
-        expect(customerShippingInfoRequest.shipto_zipcode).toEqual('{SHIPTO_ZIPCODE}');
-        expect(customerShippingInfoRequest.shipto_country).toEqual('{SHIPTO_COUNTRY}');
-        expect(customerShippingInfoRequest.shipto_phone).toEqual('{SHIPTO_PHONE}');
-        expect(customerShippingInfoRequest.shipto_msisdn).toEqual('{SHIPTO_MSISDN}');
-        expect(customerShippingInfoRequest.shipto_gender).toEqual('{SHIPTO_GENDER}');
+        expect(customerShippingInfoRequest.shiptoFirstname).toEqual('{SHIPTO_FIRSTNAME}');
+        expect(customerShippingInfoRequest.shiptoLastname).toEqual('{SHIPTO_LASTNAME}');
+        expect(customerShippingInfoRequest.shiptoRecipientinfo).toEqual('{SHIPTO_RECIPIENTINFO}');
+        expect(customerShippingInfoRequest.shiptoHouseNumber).toEqual('{SHIPTO_HOUSE_NUMBER}');
+        expect(customerShippingInfoRequest.shiptoStreetaddress).toEqual('{SHIPTO_STREETADDRESS}');
+        expect(customerShippingInfoRequest.shiptoStreetaddress2).toEqual('{SHIPTO_STREETADDRESS2}');
+        expect(customerShippingInfoRequest.shiptoCity).toEqual('{SHIPTO_CITY}');
+        expect(customerShippingInfoRequest.shiptoState).toEqual('{SHIPTO_STATE}');
+        expect(customerShippingInfoRequest.shiptoZipcode).toEqual('{SHIPTO_ZIPCODE}');
+        expect(customerShippingInfoRequest.shiptoCountry).toEqual('{SHIPTO_COUNTRY}');
+        expect(customerShippingInfoRequest.shiptoPhone).toEqual('{SHIPTO_PHONE}');
+        expect(customerShippingInfoRequest.shiptoMsisdn).toEqual('{SHIPTO_MSISDN}');
+        expect(customerShippingInfoRequest.shiptoGender).toEqual('{SHIPTO_GENDER}');
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -46,19 +46,19 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(customerShippingInfoRequest).toBeInstanceOf(CustomerShippingInfoRequest);
-        expect(customerShippingInfoRequest.shipto_firstname).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_lastname).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_recipientinfo).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_house_number).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_streetaddress).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_streetaddress2).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_city).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_state).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_zipcode).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_country).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_phone).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_msisdn).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_gender).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoFirstname).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoLastname).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoRecipientinfo).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoHouseNumber).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoStreetaddress).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoStreetaddress2).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoCity).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoState).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoZipcode).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoCountry).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoPhone).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoMsisdn).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoGender).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -69,18 +69,18 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(customerShippingInfoRequest).toBeInstanceOf(CustomerShippingInfoRequest);
-        expect(customerShippingInfoRequest.shipto_firstname).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_lastname).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_recipientinfo).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_house_number).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_streetaddress).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_streetaddress2).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_city).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_state).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_zipcode).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_country).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_phone).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_msisdn).toEqual(null);
-        expect(customerShippingInfoRequest.shipto_gender).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoFirstname).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoLastname).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoRecipientinfo).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoHouseNumber).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoStreetaddress).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoStreetaddress2).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoCity).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoState).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoZipcode).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoCountry).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoPhone).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoMsisdn).toEqual(null);
+        expect(customerShippingInfoRequest.shiptoGender).toEqual(null);
     });
 });

@@ -6,16 +6,16 @@ describe('Test constructor', () => {
 
         expect(() => {
             customer = new Customer({
-                account_change: '20220802',
-                opening_account_date: '20220910',
-                password_change: '20211201'
+                accountChange: '20220802',
+                openingAccountDate: '20220910',
+                passwordChange: '20211201'
             });
         }).not.toThrow();
 
         expect(customer).toBeInstanceOf(Customer);
-        expect(customer.account_change).toEqual('20220802');
-        expect(customer.opening_account_date).toEqual('20220910');
-        expect(customer.password_change).toEqual('20211201');
+        expect(customer.accountChange).toEqual('20220802');
+        expect(customer.openingAccountDate).toEqual('20220910');
+        expect(customer.passwordChange).toEqual('20211201');
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -26,9 +26,9 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(customer).toBeInstanceOf(Customer);
-        expect(customer.account_change).toEqual(null);
-        expect(customer.opening_account_date).toEqual(null);
-        expect(customer.password_change).toEqual(null);
+        expect(customer.accountChange).toEqual(null);
+        expect(customer.openingAccountDate).toEqual(null);
+        expect(customer.passwordChange).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -39,8 +39,8 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(customer).toBeInstanceOf(Customer);
-        expect(customer.account_change).toEqual(null);
-        expect(customer.opening_account_date).toEqual(null);
-        expect(customer.password_change).toEqual(null);
+        expect(customer.accountChange).toEqual(null);
+        expect(customer.openingAccountDate).toEqual(null);
+        expect(customer.passwordChange).toEqual(null);
     });
 });

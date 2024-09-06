@@ -59,7 +59,7 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {String} [values.css] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. CSS URL to use on the Payment Page
      * @param {Number} [values.displaySelector] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. 0 : Do not display payment means selector | 1 : Display selector
      * @param {Number} [values.eci] Transaction Electronic Commerce Indicator. See the Transaction.ECI Enum
-     * @param {Number} [values.authentication_indicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
+     * @param {Number} [values.authenticationIndicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
      * @param {Number} [values.expirationLimit = 3] Expiration limit in days
      * @param {String} [values.orderCategoryCode] Category of the order. See ProductCategory Collection
      * @param {String} [values.carrierDescription] Short Description of your carrier

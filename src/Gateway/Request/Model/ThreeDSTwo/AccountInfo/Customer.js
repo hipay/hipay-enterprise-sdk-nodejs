@@ -6,9 +6,9 @@ class Customer extends AbstractModel {
      * Creates a Customer Info Object
      *
      * @param {Object} [values = {}]
-     * @param {Number} [values.account_change] Customer's last account change date, format YYYYMMDD
-     * @param {Number} [values.opening_account_date] Customer's opening account date, format YYYYMMDD
-     * @param {Number} [values.password_change] Customer's last password change date, format YYYYMMDD
+     * @param {Number} [values.accountChange] Customer's last account change date, format YYYYMMDD
+     * @param {Number} [values.openingAccountDate] Customer's opening account date, format YYYYMMDD
+     * @param {Number} [values.passwordChange] Customer's last password change date, format YYYYMMDD
      */
     constructor(values) {
         super();
@@ -17,23 +17,23 @@ class Customer extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'account_change')) {
-            this.account_change = values.account_change;
+        if (Object.prototype.hasOwnProperty.call(values, 'accountChange')) {
+            this.accountChange = values.accountChange;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'opening_account_date')) {
-            this.opening_account_date = values.opening_account_date;
+        if (Object.prototype.hasOwnProperty.call(values, 'openingAccountDate')) {
+            this.openingAccountDate = values.openingAccountDate;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'password_change')) {
-            this.password_change = values.password_change;
+        if (Object.prototype.hasOwnProperty.call(values, 'passwordChange')) {
+            this.passwordChange = values.passwordChange;
         }
     }
 
     initValues() {
         super.initValues();
 
-        this.account_change = null;
-        this.opening_account_date = null;
-        this.password_change = null;
+        this.accountChange = null;
+        this.openingAccountDate = null;
+        this.passwordChange = null;
     }
 }
 

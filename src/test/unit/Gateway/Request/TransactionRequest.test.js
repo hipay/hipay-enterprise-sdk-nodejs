@@ -107,8 +107,8 @@ describe('Test constructor', () => {
             firstname: '{FIRSTNAME}',
             lastname: '{LASTNAME}',
             recipientinfo: '{RECIPIENTINFO}',
-            house_extension: '{HOUSE_EXTENSION}',
-            house_number: '{HOUSE_NUMBER}',
+            houseExtension: '{HOUSE_EXTENSION}',
+            houseNumber: '{HOUSE_NUMBER}',
             streetaddress: '{STREETADDRESS}',
             streetaddress2: '{STREETADDRESS2}',
             city: '{CITY}',
@@ -117,52 +117,52 @@ describe('Test constructor', () => {
             country: '{COUNTRY}'
         };
         let customerShippingInfo = {
-            shipto_firstname: '{SHIPTO_FIRSTNAME}',
-            shipto_lastname: '{SHIPTO_LASTNAME}',
-            shipto_recipientinfo: '{SHIPTO_RECIPIENTINFO}',
-            shipto_house_number: '{SHIPTO_HOUSE_NUMBER}',
-            shipto_streetaddress: '{SHIPTO_STREETADDRESS}',
-            shipto_streetaddress2: '{SHIPTO_STREETADDRESS2}',
-            shipto_city: '{SHIPTO_CITY}',
-            shipto_state: '{SHIPTO_STATE}',
-            shipto_zipcode: '{SHIPTO_ZIPCODE}',
-            shipto_country: '{SHIPTO_COUNTRY}',
-            shipto_phone: '{SHIPTO_PHONE}',
-            shipto_msisdn: '{SHIPTO_MSISDN}',
-            shipto_gender: '{SHIPTO_GENDER}'
+            shiptoFirstname: '{SHIPTO_FIRSTNAME}',
+            shiptoLastname: '{SHIPTO_LASTNAME}',
+            shiptoRecipientinfo: '{SHIPTO_RECIPIENTINFO}',
+            shiptoHouseNumber: '{SHIPTO_HOUSE_NUMBER}',
+            shiptoStreetaddress: '{SHIPTO_STREETADDRESS}',
+            shiptoStreetaddress2: '{SHIPTO_STREETADDRESS2}',
+            shiptoCity: '{SHIPTO_CITY}',
+            shiptoState: '{SHIPTO_STATE}',
+            shiptoZipcode: '{SHIPTO_ZIPCODE}',
+            shiptoCountry: '{SHIPTO_COUNTRY}',
+            shiptoPhone: '{SHIPTO_PHONE}',
+            shiptoMsisdn: '{SHIPTO_MSISDN}',
+            shiptoGender: '{SHIPTO_GENDER}'
         };
         let deliveryShippingInfo = {
-            delivery_date: '{DELIVERY_DATE}',
-            delivery_method: '{DELIVERY_METHOD}'
+            deliveryDate: '{DELIVERY_DATE}',
+            deliveryMethod: '{DELIVERY_METHOD}'
         };
 
         let previousAuthInfo = {
-            transaction_reference: '{TRANSACTION_REFERENCE}'
+            transactionReference: '{TRANSACTION_REFERENCE}'
         };
 
         let accountInfo = {
-            customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-            purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-            payment: { enrollment_date: '2021010' },
+            customer: { accountChange: '20230101', openingAccountDate: '20220202', passwordChange: '20221010' },
+            purchase: { cardStored24h: '5', count: '6', paymentAttempts1y: '64', paymentAttempts24h: '3' },
+            payment: { enrollmentDate: '2021010' },
             shipping: {
-                name_indicator: NameIndicator.IDENTICAL,
-                shipping_used_date: '20230202',
-                suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                nameIndicator: NameIndicator.IDENTICAL,
+                shippingUsedDate: '20230202',
+                suspiciousActivity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
             }
         };
 
         let merchantRiskStatement = {
-            email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-            delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-            purchase_indicator: '{PURCHASE_INDICATOR}',
-            pre_order_date: '{PRE_ORDER_DATE}',
-            reorder_indicator: '{REORDER_INDICATOR}',
-            shipping_indicator: '{SHIPPING_INDICATOR}',
-            gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+            emailDeliveryAddress: '{EMAIL_DELIVERY_ADDRESS}',
+            deliveryTimeFrame: '{DELIVERY_TIME_FRAME}',
+            purchaseIndicator: '{PURCHASE_INDICATOR}',
+            preOrderDate: '{PRE_ORDER_DATE}',
+            reorderIndicator: '{REORDER_INDICATOR}',
+            shippingIndicator: '{SHIPPING_INDICATOR}',
+            giftCard: { amount: 99.9, count: 5, currency: 'EUR' }
         };
 
         let recurringInfo = {
-            expiration_date: '{EXPIRATION_DATE}',
+            expirationDate: '{EXPIRATION_DATE}',
             frequency: '{FREQUENCY}'
         };
 

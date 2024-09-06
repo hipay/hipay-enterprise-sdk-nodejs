@@ -16,14 +16,14 @@ describe('Test constructor', () => {
             cardTokenPaymentMethod = new CardTokenPaymentMethod({
                 cardtoken: '{CARDTOKEN}',
                 eci: '{ECI}',
-                authentication_indicator: '{AUTHENTICATION_INDICATOR}'
+                authenticationIndicator: '{AUTHENTICATIONINDICATOR}'
             });
         }).not.toThrow();
 
         expect(cardTokenPaymentMethod).toBeInstanceOf(CardTokenPaymentMethod);
         expect(cardTokenPaymentMethod.cardtoken).toEqual('{CARDTOKEN}');
         expect(cardTokenPaymentMethod.eci).toEqual('{ECI}');
-        expect(cardTokenPaymentMethod.authentication_indicator).toEqual('{AUTHENTICATION_INDICATOR}');
+        expect(cardTokenPaymentMethod.authenticationIndicator).toEqual('{AUTHENTICATIONINDICATOR}');
     });
 
     it('Initializes correctly with minimal values', () => {
@@ -39,16 +39,16 @@ describe('Test constructor', () => {
         expect(cardTokenPaymentMethod).toBeInstanceOf(CardTokenPaymentMethod);
         expect(cardTokenPaymentMethod.cardtoken).toEqual('{CARDTOKEN}');
         expect(cardTokenPaymentMethod.eci).toEqual('{ECI}');
-        expect(cardTokenPaymentMethod.authentication_indicator).toEqual(AuthenticationIndicator.AVAILABLE);
+        expect(cardTokenPaymentMethod.authenticationIndicator).toEqual(AuthenticationIndicator.AVAILABLE);
     });
 
     it('Errors when card token is not present', () => {
         expect(() => {
-            new CardTokenPaymentMethod({ eci: '{ECI}', authentication_indicator: '{AUTHENTICATION_INDICATOR}' });
+            new CardTokenPaymentMethod({ eci: '{ECI}', authenticationIndicator: '{AUTHENTICATIONINDICATOR}' });
         }).toThrow();
 
         try {
-            new CardTokenPaymentMethod({ eci: '{ECI}', authentication_indicator: '{AUTHENTICATION_INDICATOR}' });
+            new CardTokenPaymentMethod({ eci: '{ECI}', authenticationIndicator: '{AUTHENTICATIONINDICATOR}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
         }
@@ -58,11 +58,11 @@ describe('Test constructor', () => {
 
     it('Errors when eci is not present', () => {
         expect(() => {
-            new CardTokenPaymentMethod({ cardtoken: '{CARDTOKEN}', authentication_indicator: '{AUTHENTICATION_INDICATOR}' });
+            new CardTokenPaymentMethod({ cardtoken: '{CARDTOKEN}', authenticationIndicator: '{AUTHENTICATIONINDICATOR}' });
         }).toThrow();
 
         try {
-            new CardTokenPaymentMethod({ cardtoken: '{CARDTOKEN}', authentication_indicator: '{AUTHENTICATION_INDICATOR}' });
+            new CardTokenPaymentMethod({ cardtoken: '{CARDTOKEN}', authenticationIndicator: '{AUTHENTICATIONINDICATOR}' });
         } catch (err) {
             expect(err).toBeInstanceOf(InvalidArgumentException);
         }

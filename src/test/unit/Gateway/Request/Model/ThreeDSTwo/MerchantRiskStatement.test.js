@@ -9,24 +9,24 @@ describe('Test constructor', () => {
 
         expect(() => {
             merchantRiskStatement = new MerchantRiskStatement({
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: giftCard
+                emailDeliveryAddress: '{EMAIL_DELIVERY_ADDRESS}',
+                deliveryTimeFrame: '{DELIVERY_TIME_FRAME}',
+                purchaseIndicator: '{PURCHASE_INDICATOR}',
+                preOrderDate: '{PRE_ORDER_DATE}',
+                reorderIndicator: '{REORDER_INDICATOR}',
+                shippingIndicator: '{SHIPPING_INDICATOR}',
+                giftCard: giftCard
             });
         }).not.toThrow();
 
         expect(merchantRiskStatement).toBeInstanceOf(MerchantRiskStatement);
-        expect(merchantRiskStatement.email_delivery_address).toEqual('{EMAIL_DELIVERY_ADDRESS}');
-        expect(merchantRiskStatement.delivery_time_frame).toEqual('{DELIVERY_TIME_FRAME}');
-        expect(merchantRiskStatement.purchase_indicator).toEqual('{PURCHASE_INDICATOR}');
-        expect(merchantRiskStatement.pre_order_date).toEqual('{PRE_ORDER_DATE}');
-        expect(merchantRiskStatement.reorder_indicator).toEqual('{REORDER_INDICATOR}');
-        expect(merchantRiskStatement.shipping_indicator).toEqual('{SHIPPING_INDICATOR}');
-        expect(merchantRiskStatement.gift_card).toStrictEqual(giftCard);
+        expect(merchantRiskStatement.emailDeliveryAddress).toEqual('{EMAIL_DELIVERY_ADDRESS}');
+        expect(merchantRiskStatement.deliveryTimeFrame).toEqual('{DELIVERY_TIME_FRAME}');
+        expect(merchantRiskStatement.purchaseIndicator).toEqual('{PURCHASE_INDICATOR}');
+        expect(merchantRiskStatement.preOrderDate).toEqual('{PRE_ORDER_DATE}');
+        expect(merchantRiskStatement.reorderIndicator).toEqual('{REORDER_INDICATOR}');
+        expect(merchantRiskStatement.shippingIndicator).toEqual('{SHIPPING_INDICATOR}');
+        expect(merchantRiskStatement.giftCard).toStrictEqual(giftCard);
     });
 
     it('Initializes correctly with object giftCard', () => {
@@ -34,25 +34,25 @@ describe('Test constructor', () => {
 
         expect(() => {
             merchantRiskStatement = new MerchantRiskStatement({
-                email_delivery_address: '{EMAIL_DELIVERY_ADDRESS}',
-                delivery_time_frame: '{DELIVERY_TIME_FRAME}',
-                purchase_indicator: '{PURCHASE_INDICATOR}',
-                pre_order_date: '{PRE_ORDER_DATE}',
-                reorder_indicator: '{REORDER_INDICATOR}',
-                shipping_indicator: '{SHIPPING_INDICATOR}',
-                gift_card: { amount: 99.9, count: 5, currency: 'EUR' }
+                emailDeliveryAddress: '{EMAIL_DELIVERY_ADDRESS}',
+                deliveryTimeFrame: '{DELIVERY_TIME_FRAME}',
+                purchaseIndicator: '{PURCHASE_INDICATOR}',
+                preOrderDate: '{PRE_ORDER_DATE}',
+                reorderIndicator: '{REORDER_INDICATOR}',
+                shippingIndicator: '{SHIPPING_INDICATOR}',
+                giftCard: { amount: 99.9, count: 5, currency: 'EUR' }
             });
         }).not.toThrow();
 
         expect(merchantRiskStatement).toBeInstanceOf(MerchantRiskStatement);
-        expect(merchantRiskStatement.email_delivery_address).toEqual('{EMAIL_DELIVERY_ADDRESS}');
-        expect(merchantRiskStatement.delivery_time_frame).toEqual('{DELIVERY_TIME_FRAME}');
-        expect(merchantRiskStatement.purchase_indicator).toEqual('{PURCHASE_INDICATOR}');
-        expect(merchantRiskStatement.pre_order_date).toEqual('{PRE_ORDER_DATE}');
-        expect(merchantRiskStatement.reorder_indicator).toEqual('{REORDER_INDICATOR}');
-        expect(merchantRiskStatement.shipping_indicator).toEqual('{SHIPPING_INDICATOR}');
-        expect(merchantRiskStatement.gift_card).toBeInstanceOf(GiftCard);
-        expect(merchantRiskStatement.gift_card).toEqual({ amount: 99.9, count: 5, currency: 'EUR' });
+        expect(merchantRiskStatement.emailDeliveryAddress).toEqual('{EMAIL_DELIVERY_ADDRESS}');
+        expect(merchantRiskStatement.deliveryTimeFrame).toEqual('{DELIVERY_TIME_FRAME}');
+        expect(merchantRiskStatement.purchaseIndicator).toEqual('{PURCHASE_INDICATOR}');
+        expect(merchantRiskStatement.preOrderDate).toEqual('{PRE_ORDER_DATE}');
+        expect(merchantRiskStatement.reorderIndicator).toEqual('{REORDER_INDICATOR}');
+        expect(merchantRiskStatement.shippingIndicator).toEqual('{SHIPPING_INDICATOR}');
+        expect(merchantRiskStatement.giftCard).toBeInstanceOf(GiftCard);
+        expect(merchantRiskStatement.giftCard).toEqual({ amount: 99.9, count: 5, currency: 'EUR' });
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -63,13 +63,13 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(merchantRiskStatement).toBeInstanceOf(MerchantRiskStatement);
-        expect(merchantRiskStatement.email_delivery_address).toEqual(null);
-        expect(merchantRiskStatement.delivery_time_frame).toEqual(null);
-        expect(merchantRiskStatement.purchase_indicator).toEqual(null);
-        expect(merchantRiskStatement.pre_order_date).toEqual(null);
-        expect(merchantRiskStatement.reorder_indicator).toEqual(null);
-        expect(merchantRiskStatement.shipping_indicator).toEqual(null);
-        expect(merchantRiskStatement.gift_card).toEqual(null);
+        expect(merchantRiskStatement.emailDeliveryAddress).toEqual(null);
+        expect(merchantRiskStatement.deliveryTimeFrame).toEqual(null);
+        expect(merchantRiskStatement.purchaseIndicator).toEqual(null);
+        expect(merchantRiskStatement.preOrderDate).toEqual(null);
+        expect(merchantRiskStatement.reorderIndicator).toEqual(null);
+        expect(merchantRiskStatement.shippingIndicator).toEqual(null);
+        expect(merchantRiskStatement.giftCard).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -80,12 +80,12 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(merchantRiskStatement).toBeInstanceOf(MerchantRiskStatement);
-        expect(merchantRiskStatement.email_delivery_address).toEqual(null);
-        expect(merchantRiskStatement.delivery_time_frame).toEqual(null);
-        expect(merchantRiskStatement.purchase_indicator).toEqual(null);
-        expect(merchantRiskStatement.pre_order_date).toEqual(null);
-        expect(merchantRiskStatement.reorder_indicator).toEqual(null);
-        expect(merchantRiskStatement.shipping_indicator).toEqual(null);
-        expect(merchantRiskStatement.gift_card).toEqual(null);
+        expect(merchantRiskStatement.emailDeliveryAddress).toEqual(null);
+        expect(merchantRiskStatement.deliveryTimeFrame).toEqual(null);
+        expect(merchantRiskStatement.purchaseIndicator).toEqual(null);
+        expect(merchantRiskStatement.preOrderDate).toEqual(null);
+        expect(merchantRiskStatement.reorderIndicator).toEqual(null);
+        expect(merchantRiskStatement.shippingIndicator).toEqual(null);
+        expect(merchantRiskStatement.giftCard).toEqual(null);
     });
 });

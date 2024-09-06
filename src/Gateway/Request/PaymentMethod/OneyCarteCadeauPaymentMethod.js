@@ -7,9 +7,9 @@ class OneyCarteCadeauPaymentMethod extends AbstractPaymentMethod {
      * Creates an Oney Carte Cadeau Payment Method Object
      *
      * @param {Object} values
-     * @param {Object} values.payment_product_parameters Carte cadeau parameters
-     * @param {Number} values.payment_product_parameters.prepaid_card_number Carte cadeau number
-     * @param {Number} values.payment_product_parameters.prepaid_card_security_code Carte cadeau security code
+     * @param {Object} values.paymentProductParameters Carte cadeau parameters
+     * @param {Number} values.paymentProductParameters.prepaidCardNumber Carte cadeau number
+     * @param {Number} values.paymentProductParameters.prepaidCardSecurityCode Carte cadeau security code
      */
     constructor(values) {
         super();
@@ -18,22 +18,22 @@ class OneyCarteCadeauPaymentMethod extends AbstractPaymentMethod {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'payment_product_parameters')) {
-            if (typeof values.payment_product_parameters === 'object') {
-                if (!Object.prototype.hasOwnProperty.call(values.payment_product_parameters, 'prepaid_card_number')) {
+        if (Object.prototype.hasOwnProperty.call(values, 'paymentProductParameters')) {
+            if (typeof values.paymentProductParameters === 'object') {
+                if (!Object.prototype.hasOwnProperty.call(values.paymentProductParameters, 'prepaidCardNumber')) {
                     throw new InvalidArgumentException('Card Number must be present');
                 }
 
-                if (!Object.prototype.hasOwnProperty.call(values.payment_product_parameters, 'prepaid_card_security_code')) {
+                if (!Object.prototype.hasOwnProperty.call(values.paymentProductParameters, 'prepaidCardSecurityCode')) {
                     throw new InvalidArgumentException('Card Security Code must be present');
                 }
 
-                this.payment_product_parameters = JSON.stringify({
-                    prepaid_card_number: values.payment_product_parameters.prepaid_card_number,
-                    prepaid_card_security_code: values.payment_product_parameters.prepaid_card_security_code
+                this.paymentProductParameters = JSON.stringify({
+                    prepaidCardNumber: values.paymentProductParameters.prepaidCardNumber,
+                    prepaidCardSecurityCode: values.paymentProductParameters.prepaidCardSecurityCode
                 });
             } else {
-                this.payment_product_parameters = values.payment_product_parameters;
+                this.paymentProductParameters = values.paymentProductParameters;
             }
         }
     }
@@ -41,7 +41,7 @@ class OneyCarteCadeauPaymentMethod extends AbstractPaymentMethod {
     initValues() {
         super.initValues();
 
-        this.payment_product_parameters = null;
+        this.paymentProductParameters = null;
     }
 }
 

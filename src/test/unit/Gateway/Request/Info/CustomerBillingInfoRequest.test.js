@@ -14,8 +14,8 @@ describe('Test constructor', () => {
                 firstname: '{FIRSTNAME}',
                 lastname: '{LASTNAME}',
                 recipientinfo: '{RECIPIENTINFO}',
-                house_extension: '{HOUSE_EXTENSION}',
-                house_number: '{HOUSE_NUMBER}',
+                houseExtension: '{HOUSE_EXTENSION}',
+                houseNumber: '{HOUSE_NUMBER}',
                 streetaddress: '{STREETADDRESS}',
                 streetaddress2: '{STREETADDRESS2}',
                 city: '{CITY}',
@@ -34,8 +34,8 @@ describe('Test constructor', () => {
         expect(customerBillingInfoRequest.firstname).toEqual('{FIRSTNAME}');
         expect(customerBillingInfoRequest.lastname).toEqual('{LASTNAME}');
         expect(customerBillingInfoRequest.recipientinfo).toEqual('{RECIPIENTINFO}');
-        expect(customerBillingInfoRequest.house_extension).toEqual('{HOUSE_EXTENSION}');
-        expect(customerBillingInfoRequest.house_number).toEqual('{HOUSE_NUMBER}');
+        expect(customerBillingInfoRequest.houseExtension).toEqual('{HOUSE_EXTENSION}');
+        expect(customerBillingInfoRequest.houseNumber).toEqual('{HOUSE_NUMBER}');
         expect(customerBillingInfoRequest.streetaddress).toEqual('{STREETADDRESS}');
         expect(customerBillingInfoRequest.streetaddress2).toEqual('{STREETADDRESS2}');
         expect(customerBillingInfoRequest.city).toEqual('{CITY}');
@@ -60,8 +60,8 @@ describe('Test constructor', () => {
         expect(customerBillingInfoRequest.firstname).toEqual(null);
         expect(customerBillingInfoRequest.lastname).toEqual(null);
         expect(customerBillingInfoRequest.recipientinfo).toEqual(null);
-        expect(customerBillingInfoRequest.house_extension).toEqual(null);
-        expect(customerBillingInfoRequest.house_number).toEqual(null);
+        expect(customerBillingInfoRequest.houseExtension).toEqual(null);
+        expect(customerBillingInfoRequest.houseNumber).toEqual(null);
         expect(customerBillingInfoRequest.streetaddress).toEqual(null);
         expect(customerBillingInfoRequest.streetaddress2).toEqual(null);
         expect(customerBillingInfoRequest.city).toEqual(null);
@@ -86,8 +86,8 @@ describe('Test constructor', () => {
         expect(customerBillingInfoRequest.firstname).toEqual(null);
         expect(customerBillingInfoRequest.lastname).toEqual(null);
         expect(customerBillingInfoRequest.recipientinfo).toEqual(null);
-        expect(customerBillingInfoRequest.house_extension).toEqual(null);
-        expect(customerBillingInfoRequest.house_number).toEqual(null);
+        expect(customerBillingInfoRequest.houseExtension).toEqual(null);
+        expect(customerBillingInfoRequest.houseNumber).toEqual(null);
         expect(customerBillingInfoRequest.streetaddress).toEqual(null);
         expect(customerBillingInfoRequest.streetaddress2).toEqual(null);
         expect(customerBillingInfoRequest.city).toEqual(null);

@@ -8,9 +8,9 @@ class XTimesCreditCardPaymentMethod extends AbstractPaymentMethod {
      *
      * @param {Object} values
      * @param {Number} values.eci Transaction Electronic Commerce Indicator. See the Transaction.ECI Enum
-     * @param {String} [values.order_category_code] Category of the order. See ProductCategory Collection
-     * @param {String} [values.carrier_description] Short Description of your carrier
-     * @param {Object} [values.payment_product_parameters] Additional parameters
+     * @param {String} [values.orderCategoryCode] Category of the order. See ProductCategory Collection
+     * @param {String} [values.carrierDescription] Short Description of your carrier
+     * @param {Object} [values.paymentProductParameters] Additional parameters
      */
     constructor(values) {
         super();
@@ -21,19 +21,19 @@ class XTimesCreditCardPaymentMethod extends AbstractPaymentMethod {
             throw new InvalidArgumentException('ECI must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'order_category_code')) {
-            this.order_category_code = values.order_category_code;
+        if (Object.prototype.hasOwnProperty.call(values, 'orderCategoryCode')) {
+            this.orderCategoryCode = values.orderCategoryCode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'carrier_description')) {
-            this.carrier_description = values.carrier_description;
+        if (Object.prototype.hasOwnProperty.call(values, 'carrierDescription')) {
+            this.carrierDescription = values.carrierDescription;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'payment_product_parameters')) {
-            if (typeof values.payment_product_parameters === 'object') {
-                this.payment_product_parameters = JSON.stringify(values.payment_product_parameters);
+        if (Object.prototype.hasOwnProperty.call(values, 'paymentProductParameters')) {
+            if (typeof values.paymentProductParameters === 'object') {
+                this.paymentProductParameters = JSON.stringify(values.paymentProductParameters);
             } else {
-                this.payment_product_parameters = values.payment_product_parameters;
+                this.paymentProductParameters = values.paymentProductParameters;
             }
         }
     }
@@ -42,9 +42,9 @@ class XTimesCreditCardPaymentMethod extends AbstractPaymentMethod {
         super.initValues();
 
         this.eci = null;
-        this.order_category_code = null;
-        this.carrier_description = null;
-        this.payment_product_parameters = null;
+        this.orderCategoryCode = null;
+        this.carrierDescription = null;
+        this.paymentProductParameters = null;
     }
 }
 

@@ -13,12 +13,12 @@ describe('Test constructor', () => {
 
         expect(() => {
             issuerBankIDPaymentMethod = new IssuerBankIDPaymentMethod({
-                issuer_bank_id: '{ISSUER_BANK_ID}'
+                issuerBankId: '{ISSUER_BANK_ID}'
             });
         }).not.toThrow();
 
         expect(issuerBankIDPaymentMethod).toBeInstanceOf(IssuerBankIDPaymentMethod);
-        expect(issuerBankIDPaymentMethod.issuer_bank_id).toEqual('{ISSUER_BANK_ID}');
+        expect(issuerBankIDPaymentMethod.issuerBankId).toEqual('{ISSUER_BANK_ID}');
     });
 
     it('Errors when card token is not present', () => {

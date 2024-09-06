@@ -6,7 +6,7 @@ class PreviousAuthInfo extends AbstractModel {
      * Creates a PreviousAuthInfo Object
      *
      * @param {Object} [values = {}]
-     * @param {String} [values.transaction_reference] Previous transaction reference made by the customer
+     * @param {String} [values.transactionReference] Previous transaction reference made by the customer
      */
     constructor(values) {
         super();
@@ -15,15 +15,15 @@ class PreviousAuthInfo extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'transaction_reference')) {
-            this.transaction_reference = values.transaction_reference;
+        if (Object.prototype.hasOwnProperty.call(values, 'transactionReference')) {
+            this.transactionReference = values.transactionReference;
         }
     }
 
     initValues() {
         super.initValues();
 
-        this.transaction_reference = null;
+        this.transactionReference = null;
     }
 }
 

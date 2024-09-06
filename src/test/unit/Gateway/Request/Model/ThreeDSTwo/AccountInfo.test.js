@@ -35,29 +35,29 @@ describe('Test constructor', () => {
 
         expect(() => {
             accountInfo = new AccountInfo({
-                customer: { account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' },
-                purchase: { card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' },
-                payment: { enrollment_date: '2021010' },
+                customer: { accountChange: '20230101', openingAccountDate: '20220202', passwordChange: '20221010' },
+                purchase: { cardStored24h: '5', count: '6', paymentAttempts1y: '64', paymentAttempts24h: '3' },
+                payment: { enrollmentDate: '2021010' },
                 shipping: {
-                    name_indicator: NameIndicator.IDENTICAL,
-                    shipping_used_date: '20230202',
-                    suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+                    nameIndicator: NameIndicator.IDENTICAL,
+                    shippingUsedDate: '20230202',
+                    suspiciousActivity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
                 }
             });
         }).not.toThrow();
 
         expect(accountInfo).toBeInstanceOf(AccountInfo);
         expect(accountInfo.customer).toBeInstanceOf(Customer);
-        expect(accountInfo.customer).toEqual({ account_change: '20230101', opening_account_date: '20220202', password_change: '20221010' });
+        expect(accountInfo.customer).toEqual({ accountChange: '20230101', openingAccountDate: '20220202', passwordChange: '20221010' });
         expect(accountInfo.purchase).toBeInstanceOf(Purchase);
-        expect(accountInfo.purchase).toEqual({ card_stored_24h: '5', count: '6', payment_attempts_1y: '64', payment_attempts_24h: '3' });
+        expect(accountInfo.purchase).toEqual({ cardStored24h: '5', count: '6', paymentAttempts1y: '64', paymentAttempts24h: '3' });
         expect(accountInfo.payment).toBeInstanceOf(Payment);
-        expect(accountInfo.payment).toEqual({ enrollment_date: '2021010' });
+        expect(accountInfo.payment).toEqual({ enrollmentDate: '2021010' });
         expect(accountInfo.shipping).toBeInstanceOf(Shipping);
         expect(accountInfo.shipping).toEqual({
-            name_indicator: NameIndicator.IDENTICAL,
-            shipping_used_date: '20230202',
-            suspicious_activity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
+            nameIndicator: NameIndicator.IDENTICAL,
+            shippingUsedDate: '20230202',
+            suspiciousActivity: SuspiciousActivity.SUSPICIOUS_ACTIVITY
         });
     });
 

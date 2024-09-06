@@ -7,25 +7,25 @@ class SEPADirectDebitPaymentMethod extends IssuerBankIDPaymentMethod {
      * Creates a SEPA Direct Debit Payment Method Object
      *
      * @param {Object} values
-     * @param {String} values.issuer_bank_id Business Identifier Code of the customer's bank
-     * @param {String} [values.debit_agreement_id] Debit agreement ID
-     * @param {Number} [values.recurring_payment = 0] Indicates if the debit agreement will be created for a single-use or a multi-use. 0 : Single use, 1 : Multi-use
-     * @param {String} values.bank_name Customer's bank name
+     * @param {String} values.issuerBankId Business Identifier Code of the customer's bank
+     * @param {String} [values.debitAgreementId] Debit agreement ID
+     * @param {Number} [values.recurringPayment = 0] Indicates if the debit agreement will be created for a single-use or a multi-use. 0 : Single use, 1 : Multi-use
+     * @param {String} values.bankName Customer's bank name
      * @param {String} values.iban Customer's IBAN
      */
     constructor(values) {
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'debit_agreement_id')) {
-            this.debit_agreement_id = values.debit_agreement_id;
+        if (Object.prototype.hasOwnProperty.call(values, 'debitAgreementId')) {
+            this.debitAgreementId = values.debitAgreementId;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'recurring_payment')) {
-            this.recurring_payment = values.recurring_payment;
+        if (Object.prototype.hasOwnProperty.call(values, 'recurringPayment')) {
+            this.recurringPayment = values.recurringPayment;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'bank_name')) {
-            this.bank_name = values.bank_name;
+        if (Object.prototype.hasOwnProperty.call(values, 'bankName')) {
+            this.bankName = values.bankName;
         } else {
             throw new InvalidArgumentException('Bank name must be present');
         }
@@ -40,9 +40,9 @@ class SEPADirectDebitPaymentMethod extends IssuerBankIDPaymentMethod {
     initValues() {
         super.initValues();
 
-        this.debit_agreement_id = null;
-        this.recurring_payment = 0;
-        this.bank_name = null;
+        this.debitAgreementId = null;
+        this.recurringPayment = 0;
+        this.bankName = null;
         this.iban = null;
     }
 }

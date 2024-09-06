@@ -7,13 +7,13 @@ class MerchantRiskStatement extends AbstractModel {
      * Creates a MerchantRiskStatement Object
      *
      * @param {Object} [values = {}]
-     * @param {String} [values.email_delivery_address] Customer's email adress for electronic goods
-     * @param {Number} [values.delivery_time_frame] See DeliveryTimeFrame Enum
-     * @param {Number} [values.purchase_indicator] See PurchaseIndicator Enum
-     * @param {Number} [values.pre_order_date] Date of the pre-order, format YYYYMMDD
-     * @param {Number} [values.reorder_indicator] See ReorderIndicator Enum
-     * @param {Number} [values.shipping_indicator] See ShippingIndicator Enum
-     * @param {GiftCard} [values.gift_card] GiftCard information
+     * @param {String} [values.emailDeliveryAddress] Customer's email adress for electronic goods
+     * @param {Number} [values.deliveryTimeFrame] See DeliveryTimeFrame Enum
+     * @param {Number} [values.purchaseIndicator] See PurchaseIndicator Enum
+     * @param {Number} [values.preOrderDate] Date of the pre-order, format YYYYMMDD
+     * @param {Number} [values.reorderIndicator] See ReorderIndicator Enum
+     * @param {Number} [values.shippingIndicator] See ShippingIndicator Enum
+     * @param {GiftCard} [values.giftCard] GiftCard information
      */
     constructor(values) {
         super();
@@ -22,29 +22,29 @@ class MerchantRiskStatement extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'email_delivery_address')) {
-            this.email_delivery_address = values.email_delivery_address;
+        if (Object.prototype.hasOwnProperty.call(values, 'emailDeliveryAddress')) {
+            this.emailDeliveryAddress = values.emailDeliveryAddress;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'delivery_time_frame')) {
-            this.delivery_time_frame = values.delivery_time_frame;
+        if (Object.prototype.hasOwnProperty.call(values, 'deliveryTimeFrame')) {
+            this.deliveryTimeFrame = values.deliveryTimeFrame;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'purchase_indicator')) {
-            this.purchase_indicator = values.purchase_indicator;
+        if (Object.prototype.hasOwnProperty.call(values, 'purchaseIndicator')) {
+            this.purchaseIndicator = values.purchaseIndicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'pre_order_date')) {
-            this.pre_order_date = values.pre_order_date;
+        if (Object.prototype.hasOwnProperty.call(values, 'preOrderDate')) {
+            this.preOrderDate = values.preOrderDate;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'reorder_indicator')) {
-            this.reorder_indicator = values.reorder_indicator;
+        if (Object.prototype.hasOwnProperty.call(values, 'reorderIndicator')) {
+            this.reorderIndicator = values.reorderIndicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'shipping_indicator')) {
-            this.shipping_indicator = values.shipping_indicator;
+        if (Object.prototype.hasOwnProperty.call(values, 'shippingIndicator')) {
+            this.shippingIndicator = values.shippingIndicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'gift_card')) {
-            if (values.gift_card instanceof GiftCard) {
-                this.gift_card = values.gift_card;
+        if (Object.prototype.hasOwnProperty.call(values, 'giftCard')) {
+            if (values.giftCard instanceof GiftCard) {
+                this.giftCard = values.giftCard;
             } else {
-                this.gift_card = new GiftCard(values.gift_card);
+                this.giftCard = new GiftCard(values.giftCard);
             }
         }
     }
@@ -52,13 +52,13 @@ class MerchantRiskStatement extends AbstractModel {
     initValues() {
         super.initValues();
 
-        this.email_delivery_address = null;
-        this.delivery_time_frame = null;
-        this.purchase_indicator = null;
-        this.pre_order_date = null;
-        this.reorder_indicator = null;
-        this.shipping_indicator = null;
-        this.gift_card = null;
+        this.emailDeliveryAddress = null;
+        this.deliveryTimeFrame = null;
+        this.purchaseIndicator = null;
+        this.preOrderDate = null;
+        this.reorderIndicator = null;
+        this.shippingIndicator = null;
+        this.giftCard = null;
     }
 }
 

@@ -6,12 +6,12 @@ describe('Test constructor', () => {
 
         expect(() => {
             multibancoPaymentMethod = new MultibancoPaymentMethod({
-                expiration_limit: 55
+                expirationLimit: 55
             });
         }).not.toThrow();
 
         expect(multibancoPaymentMethod).toBeInstanceOf(MultibancoPaymentMethod);
-        expect(multibancoPaymentMethod.expiration_limit).toEqual(55);
+        expect(multibancoPaymentMethod.expirationLimit).toEqual(55);
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -22,7 +22,7 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(multibancoPaymentMethod).toBeInstanceOf(MultibancoPaymentMethod);
-        expect(multibancoPaymentMethod.expiration_limit).toEqual(3);
+        expect(multibancoPaymentMethod.expirationLimit).toEqual(3);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -33,6 +33,6 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(multibancoPaymentMethod).toBeInstanceOf(MultibancoPaymentMethod);
-        expect(multibancoPaymentMethod.expiration_limit).toEqual(3);
+        expect(multibancoPaymentMethod.expirationLimit).toEqual(3);
     });
 });

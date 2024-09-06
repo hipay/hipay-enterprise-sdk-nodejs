@@ -7,28 +7,28 @@ describe('Test constructor', () => {
         expect(() => {
             browserInfo = new BrowserInfo({
                 ipaddr: '{IPADDR}',
-                http_accept: '{HTTP_ACCEPT}',
-                http_user_agent: '{HTTP_USER_AGENT}',
-                java_enabled: '{JAVA_ENABLED}',
-                javascript_enabled: '{JAVASCRIPT_ENABLED}',
+                httpAccept: '{HTTP_ACCEPT}',
+                httpUserAgent: '{HTTP_USER_AGENT}',
+                javaEnabled: '{JAVA_ENABLED}',
+                javascriptEnabled: '{JAVASCRIPT_ENABLED}',
                 language: '{LANGUAGE}',
-                color_depth: '{COLOR_DEPTH}',
-                screen_height: '{SCREEN_HEIGHT}',
-                screen_width: '{SCREEN_WIDTH}',
+                colorDepth: '{COLOR_DEPTH}',
+                screenHeight: '{SCREEN_HEIGHT}',
+                screenWidth: '{SCREEN_WIDTH}',
                 timezone: '{TIMEZONE}'
             });
         }).not.toThrow();
 
         expect(browserInfo).toBeInstanceOf(BrowserInfo);
         expect(browserInfo.ipaddr).toEqual('{IPADDR}');
-        expect(browserInfo.http_accept).toEqual('{HTTP_ACCEPT}');
-        expect(browserInfo.http_user_agent).toEqual('{HTTP_USER_AGENT}');
-        expect(browserInfo.java_enabled).toEqual('{JAVA_ENABLED}');
-        expect(browserInfo.javascript_enabled).toEqual('{JAVASCRIPT_ENABLED}');
+        expect(browserInfo.httpAccept).toEqual('{HTTP_ACCEPT}');
+        expect(browserInfo.httpUserAgent).toEqual('{HTTP_USER_AGENT}');
+        expect(browserInfo.javaEnabled).toEqual('{JAVA_ENABLED}');
+        expect(browserInfo.javascriptEnabled).toEqual('{JAVASCRIPT_ENABLED}');
         expect(browserInfo.language).toEqual('{LANGUAGE}');
-        expect(browserInfo.color_depth).toEqual('{COLOR_DEPTH}');
-        expect(browserInfo.screen_height).toEqual('{SCREEN_HEIGHT}');
-        expect(browserInfo.screen_width).toEqual('{SCREEN_WIDTH}');
+        expect(browserInfo.colorDepth).toEqual('{COLOR_DEPTH}');
+        expect(browserInfo.screenHeight).toEqual('{SCREEN_HEIGHT}');
+        expect(browserInfo.screenWidth).toEqual('{SCREEN_WIDTH}');
         expect(browserInfo.timezone).toEqual('{TIMEZONE}');
     });
 
@@ -41,14 +41,14 @@ describe('Test constructor', () => {
 
         expect(browserInfo).toBeInstanceOf(BrowserInfo);
         expect(browserInfo.ipaddr).toEqual(null);
-        expect(browserInfo.http_accept).toEqual(null);
-        expect(browserInfo.http_user_agent).toEqual(null);
-        expect(browserInfo.java_enabled).toEqual(null);
-        expect(browserInfo.javascript_enabled).toEqual(null);
+        expect(browserInfo.httpAccept).toEqual(null);
+        expect(browserInfo.httpUserAgent).toEqual(null);
+        expect(browserInfo.javaEnabled).toEqual(null);
+        expect(browserInfo.javascriptEnabled).toEqual(null);
         expect(browserInfo.language).toEqual(null);
-        expect(browserInfo.color_depth).toEqual(null);
-        expect(browserInfo.screen_height).toEqual(null);
-        expect(browserInfo.screen_width).toEqual(null);
+        expect(browserInfo.colorDepth).toEqual(null);
+        expect(browserInfo.screenHeight).toEqual(null);
+        expect(browserInfo.screenWidth).toEqual(null);
         expect(browserInfo.timezone).toEqual(null);
     });
 
@@ -61,14 +61,14 @@ describe('Test constructor', () => {
 
         expect(browserInfo).toBeInstanceOf(BrowserInfo);
         expect(browserInfo.ipaddr).toEqual(null);
-        expect(browserInfo.http_accept).toEqual(null);
-        expect(browserInfo.http_user_agent).toEqual(null);
-        expect(browserInfo.java_enabled).toEqual(null);
-        expect(browserInfo.javascript_enabled).toEqual(null);
+        expect(browserInfo.httpAccept).toEqual(null);
+        expect(browserInfo.httpUserAgent).toEqual(null);
+        expect(browserInfo.javaEnabled).toEqual(null);
+        expect(browserInfo.javascriptEnabled).toEqual(null);
         expect(browserInfo.language).toEqual(null);
-        expect(browserInfo.color_depth).toEqual(null);
-        expect(browserInfo.screen_height).toEqual(null);
-        expect(browserInfo.screen_width).toEqual(null);
+        expect(browserInfo.colorDepth).toEqual(null);
+        expect(browserInfo.screenHeight).toEqual(null);
+        expect(browserInfo.screenWidth).toEqual(null);
         expect(browserInfo.timezone).toEqual(null);
     });
 });

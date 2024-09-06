@@ -6,16 +6,16 @@ describe('Test constructor', () => {
 
         expect(() => {
             shipping = new Shipping({
-                shipping_used_date: '{SHIPPING_USED_DATE}',
-                name_indicator: '{NAME_INDICATOR}',
-                suspicious_activity: '{SUSPICIOUS_ACTIVITY}'
+                shippingUsedDate: '{SHIPPING_USED_DATE}',
+                nameIndicator: '{NAME_INDICATOR}',
+                suspiciousActivity: '{SUSPICIOUS_ACTIVITY}'
             });
         }).not.toThrow();
 
         expect(shipping).toBeInstanceOf(Shipping);
-        expect(shipping.shipping_used_date).toEqual('{SHIPPING_USED_DATE}');
-        expect(shipping.name_indicator).toEqual('{NAME_INDICATOR}');
-        expect(shipping.suspicious_activity).toEqual('{SUSPICIOUS_ACTIVITY}');
+        expect(shipping.shippingUsedDate).toEqual('{SHIPPING_USED_DATE}');
+        expect(shipping.nameIndicator).toEqual('{NAME_INDICATOR}');
+        expect(shipping.suspiciousActivity).toEqual('{SUSPICIOUS_ACTIVITY}');
     });
 
     it('Initializes correctly with empty parameters', () => {
@@ -26,9 +26,9 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(shipping).toBeInstanceOf(Shipping);
-        expect(shipping.shipping_used_date).toEqual(null);
-        expect(shipping.name_indicator).toEqual(null);
-        expect(shipping.suspicious_activity).toEqual(null);
+        expect(shipping.shippingUsedDate).toEqual(null);
+        expect(shipping.nameIndicator).toEqual(null);
+        expect(shipping.suspiciousActivity).toEqual(null);
     });
 
     it('Initializes correctly with no parameter', () => {
@@ -39,8 +39,8 @@ describe('Test constructor', () => {
         }).not.toThrow();
 
         expect(shipping).toBeInstanceOf(Shipping);
-        expect(shipping.shipping_used_date).toEqual(null);
-        expect(shipping.name_indicator).toEqual(null);
-        expect(shipping.suspicious_activity).toEqual(null);
+        expect(shipping.shippingUsedDate).toEqual(null);
+        expect(shipping.nameIndicator).toEqual(null);
+        expect(shipping.suspiciousActivity).toEqual(null);
     });
 });
