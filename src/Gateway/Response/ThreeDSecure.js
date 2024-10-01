@@ -47,7 +47,7 @@ class ThreeDSecure extends AbstractResponsePart {
             this.xid = values.xid;
         }
         if (Object.prototype.hasOwnProperty.call(values, 'scaPreference')) {
-            his.scaPreference = values.scaPreference;
+            this.scaPreference = values.scaPreference;
         }
         if (Object.prototype.hasOwnProperty.call(values, 'version')) {
             this.version = values.version;

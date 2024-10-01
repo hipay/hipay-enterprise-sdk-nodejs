@@ -300,7 +300,7 @@ class HiPay {
      * @param {String} transactionReference The HiPay transaction reference
      * @returns {Promise<import('./Gateway/Response/Transaction')|null>}
      */
-    async requestTransactionInformation(transactionReference, { legacy = true }) {
+    async requestTransactionInformation(transactionReference, legacy = true) {
         if (!transactionReference || typeof transactionReference !== 'string') {
             throw new InvalidArgumentException('Transaction reference must be a string');
         }
