@@ -306,33 +306,54 @@ class HiPay {
      * @param {String} transactionReference The HiPay transaction reference
      * @returns {Promise<import('./Gateway/Response/Transaction')|null>}
      */
-    async requestTransactionInformation(transactionReference, legacy = true) {
+    async requestTransactionInformation(transactionReference) {
         if (!transactionReference || typeof transactionReference !== 'string') {
             throw new InvalidArgumentException('Transaction reference must be a string');
         }
 
-        const apiUrl = legacy ? this._configuration.apiEndpoint : this._configuration.consultationApiEndpoint;
-        const endPoint = legacy ? HiPay.ENDPOINT_TRANSACTION_INFORMATION : HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3;
-        const formattedEndpoint = endPoint.split('{transaction}').join(transactionReference)
-        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_INFORMATION, formattedEndpoint, {
-            baseUrl: apiUrl
+        const endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION.split('{transaction}').join(transactionReference);
+
+        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_INFORMATION, endPoint, {
+            baseUrl: this._configuration.apiEndpoint
         });
 
-        const transaction = legacy ? response.body.transaction : response.body;
-        if (transaction) {
-            if (legacy) {
-                transaction.basket = response.body.basket;
-                const transactionMapper = new TransactionMapper(transaction);
+        if (response.body.transaction) {
+            response.body.transaction.basket = response.body.basket;
 
-                return transactionMapper.mappedObject;
-            }
+            const transactionMapper = new TransactionMapper(response.body.transaction);
 
-            return transaction
+            return transactionMapper.mappedObject;
         } else {
             return null;
         }
     }
- 
+
+    /**
+     * Returns a transaction V3 information
+     *
+     * @param {String} transactionReference The HiPay transaction v3 reference
+     * @returns {Promise<import('./Gateway/Response/TransactionV3')|null>}
+     */
+    async requestTransactionV3Information(transactionReference) {
+        if (!transactionReference || typeof transactionReference !== 'string') {
+            throw new InvalidArgumentException('TransactionV3 reference must be a string');
+        }
+
+        const endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3.split('{transaction}').join(transactionReference);
+
+        const response = await this._clientProvider.request(HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3, endPoint, {
+            baseUrl: this._configuration.consultationApiEndpoint
+        });
+
+        if (response.body) {
+            const transactionMapper = new TransactionV3Mapper(response.body);
+
+            return transactionMapper.mappedObject;
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Returns a transaction V3 information
      *
