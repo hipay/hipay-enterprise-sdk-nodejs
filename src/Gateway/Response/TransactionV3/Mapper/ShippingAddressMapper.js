@@ -1,7 +1,7 @@
 'use strict';
 
-const AbstractMapper = require('./AbstractMapper');
-const ShippingAddress = require('../ShippingAddress');
+const AbstractMapper = require('../../Mapper/AbstractMapper');
+ const ShippingAddress = require('../ShippingAddress');
 
 class ShippingAddressMapper extends AbstractMapper {
     mapResponseToModel() {

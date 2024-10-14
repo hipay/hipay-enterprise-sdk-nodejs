@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractMapper = require('./AbstractMapper');
+const AbstractMapper = require('../../Mapper/AbstractMapper');
 const Transaction = require('../Transaction');
 const OrderMapper = require('./OrderMapper');
 const ReasonCodeMapper = require('./ReasonCodeMapper');
@@ -52,7 +52,7 @@ class TransactionMapper extends AbstractMapper {
             dateUpdated: typeof this.source.dateUpdated !== 'undefined' ? this.source.dateUpdated : null,
             dateAuthorized: typeof this.source.dateAuthorized !== 'undefined' ? this.source.dateAuthorized : null,
             mid: typeof this.source.mid !== 'undefined' ? this.source.mid : null,
-            operations: typeof this.source.operations !== 'undefined' ? new OperationMapper(this.source.operations).mappedObject : null,
+            operations: typeof this.source.operations !== 'undefined' ? this.source.operations.map((operation) => new OperationMapper(operation).mappedObject) : null,
             authorizedAmount: typeof this.source.authorizedAmount !== 'undefined' ? this.source.authorizedAmount : null,
             currency: typeof this.source.currency !== 'undefined' ? this.source.currency : null,
             decimals: typeof this.source.decimals !== 'undefined' ? this.source.decimals : null

@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractMapper = require('./AbstractMapper');
+const AbstractMapper = require('../../Mapper/AbstractMapper');
 const PaymentMethod = require('../PaymentMethod');
 
 class PaymentMethodMapper extends AbstractMapper {

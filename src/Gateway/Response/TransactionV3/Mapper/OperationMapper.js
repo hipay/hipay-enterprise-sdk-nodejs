@@ -1,7 +1,7 @@
 'use strict';
 
-const AbstractMapper = require('./AbstractMapper');
-const Operation = require('../Operration');
+const AbstractMapper = require('../../Mapper/AbstractMapper');
+const Operation = require('../Operation');
 
 class OperationMapper extends AbstractMapper {
     mapResponseToModel() {

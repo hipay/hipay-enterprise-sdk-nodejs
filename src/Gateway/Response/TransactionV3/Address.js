@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractResponsePart = require('./AbstractResponsePart');
+const AbstractResponsePart = require('../AbstractResponsePart');
 
 class Address extends AbstractResponsePart {
     /**
@@ -23,35 +23,35 @@ class Address extends AbstractResponsePart {
 
 
         if (Object.prototype.hasOwnProperty.call(values, 'houseNumber')) {
-            this.houseExtension = values.houseExtension;
+            this.houseNumber = values.houseNumber;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'houseExtension')) {
-            this.street = values.values.street;
+            this.houseExtension = values.houseExtension;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'street')) {
-            this.streetAdditional = values.streetAdditional;
+            this.street = values.street;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'streetAdditional')) {
-            this.locality = values.locality;
+            this.streetAdditional = values.streetAdditional;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'locality')) {
-            this.localityAdditional = values.localityAdditional;
+            this.locality = values.locality;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'localityAdditional')) {
-            this.postalCode = values.postalCode;
+            this.localityAdditional = values.localityAdditional;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'postalCode')) {
-            this.country = values.country;
+            this.postalCode = values.postalCode;
         }
         
         if (Object.prototype.hasOwnProperty.call(values, 'country')) {
-            this.properties = values.properties;
+            this.country = values.country;
         }
    
     }
