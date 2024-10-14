@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractResponsePart = require('./AbstractResponsePart');
+const AbstractResponsePart = require('../AbstractResponsePart');
 
 class ShippingAddress extends AbstractResponsePart {
     /**
@@ -30,7 +30,7 @@ class ShippingAddress extends AbstractResponsePart {
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'street')) {
-            this.street = values.values.street;
+            this.street = values.street;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'streetAdditional')) {
@@ -59,13 +59,13 @@ class ShippingAddress extends AbstractResponsePart {
     initValues() {
         super.initValues();
 
-        this.house_number = null;
-        this.house_extension = null;
+        this.houseNumber = null;
+        this.houseExtension = null;
         this.street = null;
-        this.street_additional = null;
+        this.streetAdditional = null;
         this.locality = null;
-        this.locality_additional = null;
-        this.postal_code = null;
+        this.localityAdditional = null;
+        this.postalCode = null;
         this.country = null;
     }
 }

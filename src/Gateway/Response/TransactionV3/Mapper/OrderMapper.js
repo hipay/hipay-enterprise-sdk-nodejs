@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractMapper = require('./AbstractMapper');
+const AbstractMapper = require('../../Mapper/AbstractMapper');
 const CustomerMapper = require('./CustomerMapper');
 const ShippingAddressMapper = require('./ShippingAddressMapper');
 const AddressMapper = require('./AddressMapper');

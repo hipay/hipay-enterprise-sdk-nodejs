@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractResponsePart = require('./AbstractResponsePart');
+const AbstractResponsePart = require('../AbstractResponsePart');
 
 class Order extends AbstractResponsePart {
     /**
@@ -62,7 +62,7 @@ class Order extends AbstractResponsePart {
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'decimals')) {
-            this.decimals = values.currency;
+            this.decimals = values.decimals;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'billingTo')) {

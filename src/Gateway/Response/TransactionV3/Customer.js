@@ -1,6 +1,6 @@
 'use strict';
 
-const AbstractResponsePart = require('./AbstractResponsePart');
+const AbstractResponsePart = require('../AbstractResponsePart');
 
 class Customer extends AbstractResponsePart {
     /**
