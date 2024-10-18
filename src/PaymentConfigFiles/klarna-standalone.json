@@ -13,6 +13,8 @@
     "currencies": ["EUR", "CHF", "GBP", "SEK"],
     "countries": ["DE", "AT", "GB", "SE", "CH"],
     "checkoutFieldsMandatory": ["firstname", "lastname", "email", "streetaddress", "city", "zipcode", "country"],
-    "additionalFields": {},
+    "additionalFields": {
+        "sdkClass": "AbstractPaymentMethod"
+    },
     "priority": 13
 }
