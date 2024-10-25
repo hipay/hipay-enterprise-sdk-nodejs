@@ -8,6 +8,7 @@ const SimpleHTTPClient = require('./Gateway/HTTP/SimpleHTTPClient');
 const PIDataClient = require('./Gateway/PIDataClient/PIDataClient');
 
 const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper');
+const TransactionV3Mapper = require('./Gateway/Response/Mapper/TransactionV3Mapper');
 
 const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
 const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
@@ -339,32 +340,6 @@ class HiPay {
             throw new InvalidArgumentException('TransactionV3 reference must be a string');
         }
 
-        const endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3.split('{transaction}').join(transactionReference);
-
-        const response = await this._clientProvider.request(HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3, endPoint, {
-            baseUrl: this._configuration.consultationApiEndpoint
-        });
-
-        if (response.body) {
-            const transactionMapper = new TransactionV3Mapper(response.body);
-
-            return transactionMapper.mappedObject;
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Returns a transaction V3 information
-     *
-     * @param {String} transactionReference The HiPay transaction v3 reference
-     * @returns {Promise<import('./Gateway/Response/TransactionV3')|null>}
-     */
-    async requestTransactionV3Information(transactionReference) {
-        if (!transactionReference || typeof transactionReference !== 'string') {
-            throw new InvalidArgumentException('TransactionV3 reference must be a string');
-        }
-
         const endPoint = HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join(transactionReference);
 
         const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_V3_INFORMATION, endPoint, {
@@ -372,7 +347,9 @@ class HiPay {
         });
 
         if (response.body) {
-            return response.body;
+            const transactionMapper = new TransactionV3Mapper(response.body);
+
+            return transactionMapper.mappedObject;
         } else {
             return null;
         }

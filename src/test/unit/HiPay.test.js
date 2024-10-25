@@ -18,6 +18,9 @@ jest.mock('../../Gateway/PIDataClient/PIDataClient');
 const TransactionMapper = require('../../Gateway/Response/Mapper/TransactionMapper');
 jest.mock('../../Gateway/Response/Mapper/TransactionMapper');
 
+const TransactionV3Mapper = require('../../Gateway/Response//Mapper/TransactionV3Mapper');
+jest.mock('../../Gateway/Response/Mapper/TransactionV3Mapper');
+
 const HostedPaymentPageMapper = require('../../Gateway/Response/Mapper/HostedPaymentPageMapper');
 jest.mock('../../Gateway/Response/Mapper/HostedPaymentPageMapper');
 
@@ -46,6 +49,7 @@ let mockMapper = {
     mappedObject: '{MAPPED_OBJECT}'
 };
 TransactionMapper.mockImplementation(() => mockMapper);
+TransactionV3Mapper.mockImplementation(() => mockMapper);
 HostedPaymentPageMapper.mockImplementation(() => mockMapper);
 OperationMapper.mockImplementation(() => mockMapper);
 SecuritySettingsMapper.mockImplementation(() => mockMapper);
@@ -72,6 +76,7 @@ beforeEach(() => {
     mockPIDataClient.getOrderData.mockReset();
 
     TransactionMapper.mockClear();
+    TransactionV3Mapper.mockClear();
     HostedPaymentPageMapper.mockClear();
     OperationMapper.mockClear();
     SecuritySettingsMapper.mockClear();
@@ -3149,8 +3154,7 @@ describe('HiPay object', () => {
                 }
             });
 
-            const res = await hiPay.requestTransactionV3Information('{TRX_REF}');
-            expect(res).toEqual({ value: '{RESPONSE_BODY}' });
+            expect(await hiPay.requestTransactionV3Information('{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
             expect(mockHttpClient.request).toHaveBeenCalledWith(
                 HiPay.METHOD_TRANSACTION_V3_INFORMATION,
                 HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
@@ -3158,6 +3162,7 @@ describe('HiPay object', () => {
                     baseUrl: '{CONSULTATION_API_ENDPOINT}'
                 }
             );
+            expect(TransactionV3Mapper).toHaveBeenCalledWith({ value: '{RESPONSE_BODY}' });
         });
 
         it('requests transaction V3 information, returns null if transaction V3 does not exist', async () => {
@@ -3166,9 +3171,8 @@ describe('HiPay object', () => {
             });
 
             mockHttpClient.request.mockResolvedValue({});
-            const res = await hiPay.requestTransactionV3Information('{TRX_REF}');
-
-            expect(res).toEqual(null);
+            
+            expect(await hiPay.requestTransactionV3Information('{TRX_REF}')).toEqual(null);
             expect(mockHttpClient.request).toHaveBeenCalledWith(
                 HiPay.METHOD_TRANSACTION_V3_INFORMATION,
                 HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
@@ -3176,6 +3180,7 @@ describe('HiPay object', () => {
                     baseUrl: '{CONSULTATION_API_ENDPOINT}'
                 }
             );
+            expect(TransactionV3Mapper).not.toHaveBeenCalled();
         });
 
         it('requests transaction V3 information errors if no transaction id is sent', async () => {
@@ -3193,6 +3198,7 @@ describe('HiPay object', () => {
             expect(InvalidArgumentException).toHaveBeenCalledWith('TransactionV3 reference must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(TransactionV3Mapper).not.toHaveBeenCalled();
         });
 
         it('requests transaction V3 information errors if transaction reference is the wrong type', async () => {
@@ -3210,6 +3216,7 @@ describe('HiPay object', () => {
             expect(InvalidArgumentException).toHaveBeenCalledWith('TransactionV3 reference must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
+            expect(TransactionV3Mapper).not.toHaveBeenCalled();
         });
     });
 
