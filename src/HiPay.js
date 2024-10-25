@@ -8,6 +8,8 @@ const SimpleHTTPClient = require('./Gateway/HTTP/SimpleHTTPClient');
 const PIDataClient = require('./Gateway/PIDataClient/PIDataClient');
 
 const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper');
+const TransactionV3Mapper = require('./Gateway/Response/Mapper/TransactionV3Mapper');
+
 const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
 const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
 const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
@@ -95,7 +97,7 @@ class HiPay {
     /**
      * @return {String} ENDPOINT_TRANSACTION_DETAILS endpoint to call transaction information
      */
-    static get ENDPOINT_TRANSACTION_INFORMATION_V3() {
+    static get ENDPOINT_TRANSACTION_V3_INFORMATION() {
         return '/v3/transaction/{transaction}';
     }
 
@@ -103,6 +105,12 @@ class HiPay {
      * @return {String} METHOD_TRANSACTION_DETAILS http method to call transaction information
      */
     static get METHOD_TRANSACTION_INFORMATION() {
+        return 'GET';
+    }
+    /**
+     * @return {String} METHOD_TRANSACTIONV3_DETAILS http method to call transactionv3 information
+     */
+    static get METHOD_TRANSACTION_V3_INFORMATION() {
         return 'GET';
     }
 
@@ -332,9 +340,9 @@ class HiPay {
             throw new InvalidArgumentException('TransactionV3 reference must be a string');
         }
 
-        const endPoint = HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3.split('{transaction}').join(transactionReference);
+        const endPoint = HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join(transactionReference);
 
-        const response = await this._clientProvider.request(HiPay.ENDPOINT_TRANSACTION_INFORMATION_V3, endPoint, {
+        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_V3_INFORMATION, endPoint, {
             baseUrl: this._configuration.consultationApiEndpoint
         });
 
