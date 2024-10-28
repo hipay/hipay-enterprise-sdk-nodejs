@@ -8,7 +8,6 @@ const SimpleHTTPClient = require('./Gateway/HTTP/SimpleHTTPClient');
 const PIDataClient = require('./Gateway/PIDataClient/PIDataClient');
 
 const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper');
-const TransactionV3Mapper = require('./Gateway/Response/Mapper/TransactionV3Mapper');
 
 const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
 const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
@@ -347,9 +346,7 @@ class HiPay {
         });
 
         if (response.body) {
-            const transactionMapper = new TransactionV3Mapper(response.body);
-
-            return transactionMapper.mappedObject;
+            return response.body;
         } else {
             return null;
         }
