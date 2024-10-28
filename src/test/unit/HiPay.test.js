@@ -1,4 +1,5 @@
 const isEqual = require('lodash.isequal');
+const { fixtures } = require('./fixtures');
 
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
 jest.mock('../../Error/InvalidArgumentException');
@@ -18,8 +19,8 @@ jest.mock('../../Gateway/PIDataClient/PIDataClient');
 const TransactionMapper = require('../../Gateway/Response/Mapper/TransactionMapper');
 jest.mock('../../Gateway/Response/Mapper/TransactionMapper');
 
-const TransactionV3Mapper = require('../../Gateway/Response//Mapper/TransactionV3Mapper');
-jest.mock('../../Gateway/Response/Mapper/TransactionV3Mapper');
+const TransactionV3Mapper = require('../../Gateway/Response/TransactionV3/Mapper/TransactionMapper');
+jest.mock('../../Gateway/Response/TransactionV3/Mapper/TransactionMapper');
 
 const HostedPaymentPageMapper = require('../../Gateway/Response/Mapper/HostedPaymentPageMapper');
 jest.mock('../../Gateway/Response/Mapper/HostedPaymentPageMapper');
@@ -150,6 +151,7 @@ const DeliveryMethod = require('../../Data/DeliveryMethod');
 const PaymentMean = require('../../Data/PaymentMean');
 const ProductCategory = require('../../Data/ProductCategory');
 const ShippingMethod = require('../../Data/ShippingMethod');
+const { transaction } = require('./fixtures/TransactionV3/transaction.fixture');
 
 describe('HiPay object', () => {
     it('constructs correctly', () => {
@@ -3149,9 +3151,7 @@ describe('HiPay object', () => {
             });
 
             mockHttpClient.request.mockResolvedValue({
-                body: {
-                    value: '{RESPONSE_BODY}'
-                }
+                body: fixtures.transactionV3.transaction.apiData
             });
 
             expect(await hiPay.requestTransactionV3Information('{TRX_REF}')).toEqual('{MAPPED_OBJECT}');
@@ -3162,7 +3162,7 @@ describe('HiPay object', () => {
                     baseUrl: '{CONSULTATION_API_ENDPOINT}'
                 }
             );
-            expect(TransactionV3Mapper).toHaveBeenCalledWith({ value: '{RESPONSE_BODY}' });
+            expect(TransactionV3Mapper).toHaveBeenCalledWith(fixtures.transactionV3.transaction.apiData);
         });
 
         it('requests transaction V3 information, returns null if transaction V3 does not exist', async () => {
@@ -3171,8 +3171,9 @@ describe('HiPay object', () => {
             });
 
             mockHttpClient.request.mockResolvedValue({});
-            
+
             expect(await hiPay.requestTransactionV3Information('{TRX_REF}')).toEqual(null);
+            
             expect(mockHttpClient.request).toHaveBeenCalledWith(
                 HiPay.METHOD_TRANSACTION_V3_INFORMATION,
                 HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
@@ -3189,9 +3190,7 @@ describe('HiPay object', () => {
             });
 
             mockHttpClient.request.mockResolvedValue({
-                body: {
-                    value: '{RESPONSE_BODY}'
-                }
+                body: fixtures.transactionV3.transaction.apiData
             });
 
             await expect(hiPay.requestTransactionV3Information()).rejects.toBeInstanceOf(InvalidArgumentException);
@@ -3207,9 +3206,7 @@ describe('HiPay object', () => {
             });
 
             mockHttpClient.request.mockResolvedValue({
-                body: {
-                    value: '{RESPONSE_BODY}'
-                }
+                body: fixtures.transactionV3.transaction.apiData
             });
 
             await expect(hiPay.requestTransactionV3Information(true)).rejects.toBeInstanceOf(InvalidArgumentException);
