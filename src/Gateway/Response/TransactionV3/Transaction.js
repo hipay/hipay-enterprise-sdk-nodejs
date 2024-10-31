@@ -35,7 +35,7 @@ class Transaction extends AbstractResponsePart {
      * @param {String} [values.dateUpdated]
      * @param {String} [values.dateAuthorized]
      * @param {Number} [values.mid]
-     * @param {<Array<import('./Operation')>} [values.operations]
+     * @param {Array<import('./Operation')>} [values.operations]
      * @param {String} [values.authorizedAmount]
      * @param {String} [values.currency]
      * @param {Number} [values.decimals]
