@@ -8,7 +8,7 @@ const SimpleHTTPClient = require('./Gateway/HTTP/SimpleHTTPClient');
 const PIDataClient = require('./Gateway/PIDataClient/PIDataClient');
 
 const TransactionMapper = require('./Gateway/Response/Mapper/TransactionMapper');
-
+const TransactionV3Mapper = require('./Gateway/Response/TransactionV3/Mapper/TransactionMapper');
 const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
 const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
 const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
@@ -332,7 +332,7 @@ class HiPay {
      * Returns a transaction V3 information
      *
      * @param {String} transactionReference The HiPay transaction v3 reference
-     * @returns {Promise<import('./Gateway/Response/TransactionV3')|null>}
+     * @returns {Promise<import('./Gateway/Response/TransactionV3/Transaction')|null>}
      */
     async requestTransactionV3Information(transactionReference) {
         if (!transactionReference || typeof transactionReference !== 'string') {
@@ -346,7 +346,9 @@ class HiPay {
         });
 
         if (response.body) {
-            return response.body;
+            const transactionMapper = new TransactionV3Mapper(response.body);
+
+            return transactionMapper.mappedObject;
         } else {
             return null;
         }
