@@ -46,8 +46,8 @@ class CommonRequest extends AbstractRequestPart {
         this.source = {
             source: 'AUTO',
             brand: 'sdk_nodejs',
-            brand_version: packageData.version
-        };
+            brand_version: packageData.version.length < 10 ? packageData.version : undefined
+         };
         this.basket = null;
     }
 }

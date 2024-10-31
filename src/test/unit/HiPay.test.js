@@ -52,7 +52,12 @@ SecuritySettingsMapper.mockImplementation(() => mockMapper);
 PaymentCardTokenMapper.mockImplementation(() => mockMapper);
 
 Configuration.mockImplementation(() => {
-    return { apiEndpoint: '{API_ENDPOINT}', hpaymentApiEndpoint: '{HPAYMENT_API_ENDPOINT}', secureVaultEndpoint: '{SECURED_ENDPOINT}' };
+    return {
+        apiEndpoint: '{API_ENDPOINT}',
+        consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}',
+        hpaymentApiEndpoint: '{HPAYMENT_API_ENDPOINT}',
+        secureVaultEndpoint: '{SECURED_ENDPOINT}'
+    };
 });
 
 beforeEach(() => {
@@ -154,7 +159,9 @@ describe('HiPay object', () => {
         expect(HiPay.ENDPOINT_MAINTENANCE_OPERATION).toEqual('/rest/v1/maintenance/transaction/{transaction}');
         expect(HiPay.METHOD_MAINTENANCE_OPERATION).toEqual('POST');
         expect(HiPay.ENDPOINT_TRANSACTION_INFORMATION).toEqual('/rest/v1/transaction/{transaction}');
+        expect(HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION).toEqual('/v3/transaction/{transaction}');
         expect(HiPay.METHOD_TRANSACTION_INFORMATION).toEqual('GET');
+        expect(HiPay.METHOD_TRANSACTION_V3_INFORMATION).toEqual('GET');
         expect(HiPay.ENDPOINT_ORDER_TRANSACTION_INFORMATION).toEqual('/rest/v1/transaction');
         expect(HiPay.METHOD_ORDER_TRANSACTION_INFORMATION).toEqual('GET');
         expect(HiPay.ENDPOINT_SECURITY_SETTINGS).toEqual('/rest/v2/security-settings');
@@ -3127,6 +3134,82 @@ describe('HiPay object', () => {
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
             expect(TransactionMapper).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('requests transaction V3 information', () => {
+        it('requests transaction V3 information', async () => {
+            let hiPay = new HiPay({
+                consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    value: '{RESPONSE_BODY}'
+                }
+            });
+
+            const res = await hiPay.requestTransactionV3Information('{TRX_REF}');
+            expect(res).toEqual({ value: '{RESPONSE_BODY}' });
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_TRANSACTION_V3_INFORMATION,
+                HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
+                {
+                    baseUrl: '{CONSULTATION_API_ENDPOINT}'
+                }
+            );
+        });
+
+        it('requests transaction V3 information, returns null if transaction V3 does not exist', async () => {
+            let hiPay = new HiPay({
+                consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({});
+            const res = await hiPay.requestTransactionV3Information('{TRX_REF}');
+
+            expect(res).toEqual(null);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_TRANSACTION_V3_INFORMATION,
+                HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
+                {
+                    baseUrl: '{CONSULTATION_API_ENDPOINT}'
+                }
+            );
+        });
+
+        it('requests transaction V3 information errors if no transaction id is sent', async () => {
+            let hiPay = new HiPay({
+                consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    value: '{RESPONSE_BODY}'
+                }
+            });
+
+            await expect(hiPay.requestTransactionV3Information()).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('TransactionV3 reference must be a string');
+
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
+        });
+
+        it('requests transaction V3 information errors if transaction reference is the wrong type', async () => {
+            let hiPay = new HiPay({
+                apiEnconsultationApiEndpointdpoint: '{CONSULTATION_API_ENDPOINT}'
+            });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: {
+                    value: '{RESPONSE_BODY}'
+                }
+            });
+
+            await expect(hiPay.requestTransactionV3Information(true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            expect(InvalidArgumentException).toHaveBeenCalledWith('TransactionV3 reference must be a string');
+
+            expect(mockHttpClient.request).not.toHaveBeenCalled();
         });
     });
 
