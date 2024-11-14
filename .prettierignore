@@ -1,0 +1,21 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+*.html
+
+# Ignore stryker generated files:
+.stryker-tmp
+
+# Ignore node modules
+node_modules
+
+**/*.min.js
+
+*.md
+.prettierignore
+
+report
+*.xml
+*.log

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0
+
+- **add**: Added `requestTransactionV3Information` method to Hipay
+
 ## 1.4.0
 
 - **add** : Added `one_click` property to Order Requests
