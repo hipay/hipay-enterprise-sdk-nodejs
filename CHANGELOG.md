@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.5.0
 
 - **add**: Added `requestTransactionV3Information` method to Hipay
 
