@@ -27,6 +27,8 @@ install:
 get-jira-tickets:
   stage: release
   image: node:latest
+  needs:
+    - test-jest
   rules:
     - if: $CI_COMMIT_TAG
   script:
