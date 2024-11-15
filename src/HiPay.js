@@ -29,6 +29,7 @@ const ThreeDSTwoModels = require('./Gateway/Request/Model/ThreeDSTwo');
 const PaymentMethods = require('./Gateway/Request/PaymentMethod');
 
 const TransactionEnums = require('./Enum/Transaction');
+const TransactionV3Enums = require('./Enum/Transaction/V3')
 const ThreeDSTwoEnums = require('./Enum/ThreeDSTwo');
 const HelperEnums = require('./Enum/Helper');
 const CustomerEnums = require('./Enum/Customer');
@@ -474,6 +475,8 @@ HiPay.DeliveryShippingInfoRequest = DeliveryShippingInfoRequest;
 HiPay.PaymentMethods = PaymentMethods;
 
 HiPay.Transaction = TransactionEnums;
+HiPay.TransactionV3 = TransactionV3Enums;
+
 HiPay.ThreeDSTwo = {
     ...ThreeDSTwoEnums,
     ...ThreeDSTwoModels

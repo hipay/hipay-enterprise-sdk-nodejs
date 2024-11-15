@@ -11,7 +11,6 @@ const Template = require('./Template');
 const ThreeDSecureStatus = require('./ThreeDSecureStatus');
 const TransactionState = require('./TransactionState');
 const TransactionStatus = require('./TransactionStatus');
-const TransactionV3 = require('./v3');
 
 module.exports = {
     AuthenticationIndicator,
@@ -24,6 +23,5 @@ module.exports = {
     Template,
     ThreeDSecureStatus,
     TransactionState,
-    TransactionStatus,
-    TransactionV3
+    TransactionStatus
 };

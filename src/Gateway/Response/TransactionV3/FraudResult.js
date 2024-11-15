@@ -5,8 +5,8 @@ const AbstractResponsePart = require('../AbstractResponsePart');
 class FraudResult extends AbstractResponsePart {
     /**
      * @param {Object} values
-     * @param {import('../../../Enum/Transaction/v3/Result')} [values.result]
-     * @param {import('../../../Enum/Transaction/v3/Review')} [values.review]
+     * @param {import('../../../Enum/Transaction/V3/Result')} [values.result]
+     * @param {import('../../../Enum/Transaction/V3/Review')} [values.review]
      * @param {Number} [values.score]
      */
     constructor(values) {

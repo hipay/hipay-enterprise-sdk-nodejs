@@ -7,7 +7,7 @@ class DebitAgreement extends AbstractResponsePart {
      * @param {Object} values
      * @param {Number} [values.id]
      * @param {String} [values.schemeReferenceData]
-     * @param {import('../../../Enum/Transaction/v3/DebitAgreementStatus')} [values.status]
+     * @param {import('../../../Enum/Transaction/V3/DebitAgreementStatus')} [values.status]
      */
     constructor(values) {
         if (typeof values !== 'object') {

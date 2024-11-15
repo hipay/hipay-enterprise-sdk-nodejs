@@ -120,6 +120,15 @@ const MultibancoPaymentMethod = require('../../Gateway/Request/PaymentMethod/Mul
 const OneyCarteCadeauPaymentMethod = require('../../Gateway/Request/PaymentMethod/OneyCarteCadeauPaymentMethod');
 const SEPADirectDebitPaymentMethod = require('../../Gateway/Request/PaymentMethod/SEPADirectDebitPaymentMethod');
 const XTimesCreditCardPaymentMethod = require('../../Gateway/Request/PaymentMethod/XTimesCreditCardPaymentMethod');
+const Cvc = require('../../Enum/Transaction/V3/Cvc');
+const DebitAgreementStatus = require('../../Enum/Transaction/V3/DebitAgreementStatus');
+const OperationStatus = require('../../Enum/Transaction/V3/OperationStatus');
+const OperationType = require('../../Enum/Transaction/V3/OperationType');
+const Result = require('../../Enum/Transaction/V3/Result');
+const Review = require('../../Enum/Transaction/V3/Review');
+const ThreeDSAuthenticationLiability = require('../../Enum/Transaction/V3/ThreeDSAuthenticationLiability');
+const ThreeDSAuthenticationMethod = require('../../Enum/Transaction/V3/ThreeDSAuthenticationMethod');
+const TransactionV3Status = require('../../Enum/Transaction/V3/TransactionStatus');
 const AuthenticationIndicator = require('../../Enum/Transaction/AuthenticationIndicator');
 const AVSResult = require('../../Enum/Transaction/AVSResult');
 const CVCResult = require('../../Enum/Transaction/CVCResult');
@@ -151,7 +160,6 @@ const DeliveryMethod = require('../../Data/DeliveryMethod');
 const PaymentMean = require('../../Data/PaymentMean');
 const ProductCategory = require('../../Data/ProductCategory');
 const ShippingMethod = require('../../Data/ShippingMethod');
-const { transaction } = require('./fixtures/TransactionV3/transaction.fixture');
 
 describe('HiPay object', () => {
     it('constructs correctly', () => {
@@ -209,6 +217,18 @@ describe('HiPay object', () => {
             ThreeDSecureStatus,
             TransactionState,
             TransactionStatus
+        });
+
+        expect(HiPay.TransactionV3).toStrictEqual({
+            Cvc,
+            DebitAgreementStatus,
+            OperationStatus,
+            OperationType,
+            Result,
+            Review,
+            ThreeDSAuthenticationLiability,
+            ThreeDSAuthenticationMethod,
+            TransactionStatus: TransactionV3Status
         });
 
         expect(HiPay.ThreeDSTwo).toStrictEqual({

@@ -6,8 +6,8 @@ class Operation extends AbstractResponsePart {
     /**
      * @param {Object} values
      * @param {Number} [values.id]
-     * @param {import('../../../Enum/Transaction/v3/OperationType')} [values.type]
-     * @param {import('../../../Enum/Transaction/v3/OperationStatus')} [values.status]
+     * @param {import('../../../Enum/Transaction/V3/OperationType')} [values.type]
+     * @param {import('../../../Enum/Transaction/V3/OperationStatus')} [values.status]
      * @param {String} [values.amount]
      * @param {String} [values.arn]
      * @param {String} [values.merchantReference]
