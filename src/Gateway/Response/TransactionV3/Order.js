@@ -5,16 +5,16 @@ const AbstractResponsePart = require('../AbstractResponsePart');
 class Order extends AbstractResponsePart {
     /**
      * @param {Object} values
-     * @param {String} [values.id]
+     * @param {Number} [values.id]
      * @param {Number} [values.attempts]
-     * @param {Number} [values.amount]
+     * @param {String} [values.amount]
      * @param {String} [values.shipping]
      * @param {String} [values.tax]
      * @param {import('./Customer')} [values.customer]
      * @param {import('./ShippingAddress')} [values.shippingTo]
      * @param {String} [values.dateCreated]
      * @param {String} [values.currency]
-     * @param {String} [values.decimals]
+     * @param {Number} [values.decimals]
      * @param {import('./Address')} [values.billingTo]
      * @param {String} [values.customData]
      */

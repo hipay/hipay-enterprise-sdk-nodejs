@@ -23,7 +23,7 @@ class Transaction extends AbstractResponsePart {
      * @param {Object} [values.acquirerTra]
      * @param {import('./Issuer')} [values.issuer]
      * @param {import('./Card')} [values.card]
-     * @param {import('./DebitAgreement')} [values.debitAgreement]
+     * @param {import('./DebitAgeement')} [values.debitAgreement]
      * @param {import('./Device')} [values.device]
      * @param {import('./Authentication')} [values.authentication]
      * @param {String} [values.authorizationCode]

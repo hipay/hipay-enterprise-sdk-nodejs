@@ -6,8 +6,8 @@ class Customer extends AbstractResponsePart {
     /**
      * @param {Object} values
      * @param {String} [values.id]
-     * @param {Number} [values.firstname]
-     * @param {Number} [values.email]
+     * @param {String} [values.firstname]
+     * @param {String} [values.email]
      * @param {String} [values.phone]
      * @param {String} [values.language]
      */

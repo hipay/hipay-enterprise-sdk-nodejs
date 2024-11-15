@@ -13,8 +13,8 @@ class Authentication extends AbstractResponsePart {
      * @param {Number} [values.scaPreference]
      * @param {String} [values.method]
      * @param {String} [values.threeDsVersion]
-     * @param {import('../../../Enum/Authentication/ThreeDSAuthenticationMethod')} [values.threeDsAuthenticationMethod]
-     * @param {import('../../../Enum/Authentication/ThreeDSAuthenticationLiability')} [values.threeDsLiability]
+     * @param {import('../../../Enum/Transaction/v3/ThreeDSAuthenticationMethod')} [values.threeDsAuthenticationMethod]
+     * @param {import('../../../Enum/Transaction/v3/ThreeDSAuthenticationLiability')} [values.threeDsLiability]
      */
     constructor(values) {
         if (typeof values !== 'object') {
