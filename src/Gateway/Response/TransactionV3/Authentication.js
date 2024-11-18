@@ -7,14 +7,14 @@ class Authentication extends AbstractResponsePart {
      * @param {Object} values
      * @param {String} [values.enrollmentStatus]
      * @param {String} [values.enrollmentMessage]
-     * @param {String} [values.authenticationStatus]
+     * @param {import('../../../Enum/Transaction/V3/Authentication/AuthenticationStatus')} [values.authenticationStatus]
      * @param {String} [values.authenticationMessage]
      * @param {Number} [values.eci]
      * @param {Number} [values.scaPreference]
      * @param {String} [values.method]
      * @param {String} [values.threeDsVersion]
-     * @param {import('../../../Enum/Transaction/V3/ThreeDSAuthenticationMethod')} [values.threeDsAuthenticationMethod]
-     * @param {import('../../../Enum/Transaction/V3/ThreeDSAuthenticationLiability')} [values.threeDsLiability]
+     * @param {import('../../../Enum/Transaction/V3/Authentication/ThreeDSAuthenticationMethod')} [values.threeDsAuthenticationMethod]
+     * @param {import('../../../Enum/Transaction/V3/Authentication/ThreeDSAuthenticationLiability')} [values.threeDsLiability]
      */
     constructor(values) {
         if (typeof values !== 'object') {

@@ -126,9 +126,7 @@ const OperationStatus = require('../../Enum/Transaction/V3/OperationStatus');
 const OperationType = require('../../Enum/Transaction/V3/OperationType');
 const Result = require('../../Enum/Transaction/V3/Result');
 const Review = require('../../Enum/Transaction/V3/Review');
-const ThreeDSAuthenticationLiability = require('../../Enum/Transaction/V3/ThreeDSAuthenticationLiability');
-const ThreeDSAuthenticationMethod = require('../../Enum/Transaction/V3/ThreeDSAuthenticationMethod');
-const TransactionV3Status = require('../../Enum/Transaction/V3/TransactionStatus');
+const Authentication = require('../../Enum/Transaction/V3/Authentication');
 const AuthenticationIndicator = require('../../Enum/Transaction/AuthenticationIndicator');
 const AVSResult = require('../../Enum/Transaction/AVSResult');
 const CVCResult = require('../../Enum/Transaction/CVCResult');
@@ -137,9 +135,12 @@ const FraudScreening = require('../../Enum/Transaction/FraudScreening');
 const Operation = require('../../Enum/Transaction/Operation');
 const SecurityCodeType = require('../../Enum/Transaction/SecurityCodeType');
 const Template = require('../../Enum/Transaction/Template');
+const ComputedAuthenticationStatus = require('../../Enum/Transaction/V3/ComputedAuthenticationStatus');
 const ThreeDSecureStatus = require('../../Enum/Transaction/ThreeDSecureStatus');
 const TransactionState = require('../../Enum/Transaction/TransactionState');
+const TransactionV3State = require('../../Enum/Transaction/V3/TransactionState');
 const TransactionStatus = require('../../Enum/Transaction/TransactionStatus');
+const TransactionV3Status = require('../../Enum/Transaction/V3/TransactionStatus');
 const DeliveryTimeFrame = require('../../Enum/ThreeDSTwo/DeliveryTimeFrame');
 const DeviceChannel = require('../../Enum/ThreeDSTwo/DeviceChannel');
 const NameIndicator = require('../../Enum/ThreeDSTwo/NameIndicator');
@@ -220,14 +221,15 @@ describe('HiPay object', () => {
         });
 
         expect(HiPay.TransactionV3).toStrictEqual({
+            Authentication,
             Cvc,
+            ComputedAuthenticationStatus,
             DebitAgreementStatus,
             OperationStatus,
             OperationType,
             Result,
             Review,
-            ThreeDSAuthenticationLiability,
-            ThreeDSAuthenticationMethod,
+            TransactionState: TransactionV3State,
             TransactionStatus: TransactionV3Status
         });
 
