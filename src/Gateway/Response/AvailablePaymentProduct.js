@@ -32,8 +32,8 @@ class AvailablePaymentProduct extends AbstractResponsePart {
             this.description = values.description;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'descriptioncustomerDescription')) {
-            this.descriptioncustomerDescription = values.descriptioncustomerDescription;
+        if (Object.prototype.hasOwnProperty.call(values, 'customerDescription')) {
+            this.customerDescription = values.customerDescription;
         }
 
         if (Object.prototype.hasOwnProperty.call(values, 'paymentProductCategoryCode')) {
@@ -55,7 +55,7 @@ class AvailablePaymentProduct extends AbstractResponsePart {
         this.id = null;
         this.code = null;
         this.description = null;
-        this.descriptioncustomerDescription = null;
+        this.customerDescription = null;
         this.paymentProductCategoryCode = null;
         this.tokenizable = null;
         this.options = null;
