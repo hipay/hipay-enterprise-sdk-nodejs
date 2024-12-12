@@ -13,6 +13,7 @@ const OperationMapper = require('./Gateway/Response/Mapper/OperationMapper');
 const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPaymentPageMapper');
 const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
 const PaymentCardTokenMapper = require('./Gateway/Response/Mapper/PaymentCardTokenMapper');
+const AvailablePaymentProductMapper = require('./Gateway/Response/Mapper/AvailablePaymentProductMapper');
 
 const AbstractModel = require('./Gateway/Request/Model/AbstractModel');
 const AbstractRequestPart = require('./Gateway/Request/AbstractRequestPart');
@@ -20,6 +21,7 @@ const AbstractRequestPart = require('./Gateway/Request/AbstractRequestPart');
 const OrderRequest = require('./Gateway/Request/OrderRequest');
 const HostedPaymentPageRequest = require('./Gateway/Request/HostedPaymentPageRequest');
 const MaintenanceRequest = require('./Gateway/Request/MaintenanceRequest');
+const AvailablePaymentProductRequest = require('./Gateway/Request/Info/AvailablePaymentProductRequest');
 
 const CustomerBillingInfoRequest = require('./Gateway/Request/Info/CustomerBillingInfoRequest');
 const CustomerShippingInfoRequest = require('./Gateway/Request/Info/CustomerShippingInfoRequest');
@@ -152,6 +154,20 @@ class HiPay {
      * @var {String} METHOD_LOOKUP_TOKEN METHOD_LOOKUP_TOKEN http method to get vault information by token
      */
     static get METHOD_LOOKUP_TOKEN() {
+        return 'GET';
+    }
+
+    /**
+     * @return {String} ENDPOINT_AVAILABLE_PAYMENT_PRODUCT endpoint to get available payment products
+     */
+    static get ENDPOINT_AVAILABLE_PAYMENT_PRODUCT() {
+        return 'rest/v2/available-payment-products';
+    }
+
+    /**
+     * @return {String} METHOD_AVAILABLE_PAYMENT_PRODUCT http method to get available payment products
+     */
+    static get METHOD_AVAILABLE_PAYMENT_PRODUCT() {
         return 'GET';
     }
 
@@ -393,6 +409,38 @@ class HiPay {
     }
 
     /**
+     * Returns available payment products
+     *
+     * @param {String} availablePaymentProductRequest The HiPay available payment product request
+     * @returns {Promise<import('./Gateway/Response/AvailablePaymentProduct')|null>}
+     */
+    async requestAvailablePaymentProduct(availablePaymentProductRequest) {
+        if (!(availablePaymentProductRequest instanceof AvailablePaymentProductRequest)) {
+            availablePaymentProductRequest = new AvailablePaymentProductRequest(availablePaymentProductRequest);
+        }
+
+        const formattedParams = {};
+        HiPay.#formatParams(availablePaymentProductRequest, formattedParams);
+
+        const endPoint = HiPay.ENDPOINT_AVAILABLE_PAYMENT_PRODUCT + '.json?';
+
+        const response = await this._clientProvider.request(HiPay.METHOD_AVAILABLE_PAYMENT_PRODUCT, endPoint, {
+            baseUrl: this._configuration.apiEndpoint,
+            body: formattedParams
+        });
+
+        let availablePaymentProducts = [];
+
+        response.body.forEach((productData) => {
+            const availablePaymentProductMapper = new AvailablePaymentProductMapper(productData);
+            const availablePaymentProduct = availablePaymentProductMapper.mappedObject;
+            availablePaymentProducts.push(availablePaymentProduct);
+        });
+
+        return availablePaymentProducts;
+    }
+
+    /**
      * Returns security settings
      *
      * @returns {Promise<import('./Gateway/Response/SecuritySettings')>}
@@ -466,6 +514,7 @@ class HiPay {
 HiPay.OrderRequest = OrderRequest;
 HiPay.HostedPaymentPageRequest = HostedPaymentPageRequest;
 HiPay.MaintenanceRequest = MaintenanceRequest;
+HiPay.AvailablePaymentProductRequest = AvailablePaymentProductRequest;
 
 HiPay.CustomerBillingInfoRequest = CustomerBillingInfoRequest;
 HiPay.CustomerShippingInfoRequest = CustomerShippingInfoRequest;
