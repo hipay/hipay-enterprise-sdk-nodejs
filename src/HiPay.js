@@ -422,7 +422,7 @@ class HiPay {
         const formattedParams = {};
         HiPay.#formatParams(availablePaymentProductRequest, formattedParams);
 
-        const endPoint = HiPay.ENDPOINT_AVAILABLE_PAYMENT_PRODUCT + '.json?';
+        const endPoint = `${HiPay.ENDPOINT_AVAILABLE_PAYMENT_PRODUCT}.json?${availablePaymentProductRequest.toQueryString()}`;
 
         const response = await this._clientProvider.request(HiPay.METHOD_AVAILABLE_PAYMENT_PRODUCT, endPoint, {
             baseUrl: this._configuration.apiEndpoint,

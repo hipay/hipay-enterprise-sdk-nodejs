@@ -73,6 +73,21 @@ class AvailablePaymentProductRequest extends CommonRequest {
         this.currency = [];
         this.payment_product_category = [];
     }
+
+    toQueryString() {
+        return Object.entries({
+            operation: this.operation,
+            payment_product: this.payment_product,
+            eci: this.eci,
+            with_options: this.with_options ? 'true' : 'false',
+            customer_country: this.customer_country,
+            currency: this.currency,
+            payment_product_category: this.payment_product_category
+        })
+            .filter(([_, value]) => value != null && (!Array.isArray(value) || value.length))
+            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+            .join('&');
+    }
 }
 
 module.exports = AvailablePaymentProductRequest;
