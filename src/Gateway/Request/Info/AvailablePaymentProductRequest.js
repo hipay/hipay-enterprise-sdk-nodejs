@@ -84,7 +84,7 @@ class AvailablePaymentProductRequest extends CommonRequest {
             currency: this.currency,
             payment_product_category: this.payment_product_category
         })
-            .filter(([_, value]) => value != null && (!Array.isArray(value) || value.length))
+            .filter(([key, value]) => key && value != null && (!Array.isArray(value) || value.length))
             .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
             .join('&');
     }
