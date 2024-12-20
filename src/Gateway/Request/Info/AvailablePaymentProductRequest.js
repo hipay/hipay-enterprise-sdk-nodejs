@@ -1,33 +1,22 @@
 'use strict';
 
-const CommonRequest = require('../CommonRequest');
+const AbstractRequestPart = require('../AbstractRequestPart');
 
-class AvailablePaymentProductRequest extends CommonRequest {
+class AvailablePaymentProductRequest extends AbstractRequestPart {
     /**
      * @inheritDoc
      *
-     * Common Request data to use with getAvailablePaymentProduct
-     * @param {Object} values
-     *
-     * Inherited from CommonRequest
-     * @param {Object} [values.customData] Request's custom data
-     * @param {Object} [values.source] Request's source data
-     * @param {'AUTO'|'SAPI'|'CONS'|'PAGE'|'TPE'|'RTRY'|'MANU'|'PREF'|'REVI'|'CMS'|'SSDK'|'CSDK'} [values.source.source] Technical source of this call
-     * @param {String} [values.source.integration_version] Integration version (version of the CMS module for example)
-     * @param {String} [values.source.brand] Source Brand (CMS name or Site name)
-     * @param {String} [values.source.brand_version] Version of the brand (version of your site)
-     * @param {Object} [values.basket] Request's basket data. You must send only items that must be captured or refunded.
-     *
-     * @param {Object} values.operation Transaction types
-     * @param {Object} [values.payment_product] The payment products
-     * @param {Object} values.eci Electronic Commerce Indicators (ECI)
+     * @param {Object} [values = {}]
+     * @param {Array<String>} values.operation Transaction types
+     * @param {Array<String>} [values.payment_product] The payment products
+     * @param {Array<String>} [values.eci] Electronic Commerce Indicators (ECI)
      * @param {Boolean} [values.with_options] Whether to include additional options in the response
-     * @param {Object} values.customer_country The country codes of the customer (ISO 3166-1 alpha-2)
-     * @param {Object} values.currency Base currencies for this request. These three-character currency codes comply with ISO 4217.
-     * @param {Object} values.payment_product_category The payment product categories
+     * @param {Array<String>} values.customer_country The country codes of the customer (ISO 3166-1 alpha-2)
+     * @param {Array<String>} values.currency Base currencies for this request. These three-character currency codes comply with ISO 4217.
+     * @param {Array<String>} values.payment_product_category The payment product categories
      */
     constructor(values) {
-        super(values);
+        super();
 
         if (typeof values !== 'object') {
             values = {};
