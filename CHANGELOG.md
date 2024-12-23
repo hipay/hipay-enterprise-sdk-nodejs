@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **add** : Added implementation of GetAvailablePaymentProduct Endpoint API
+
 ## 1.5.0
 
 - **add** : Added `requestTransactionV3Information` method to Hipay
