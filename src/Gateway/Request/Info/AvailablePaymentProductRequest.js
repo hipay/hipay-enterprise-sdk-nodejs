@@ -7,13 +7,13 @@ class AvailablePaymentProductRequest extends AbstractRequestPart {
      * @inheritDoc
      *
      * @param {Object} [values = {}]
-     * @param {Array<String>} values.operation Transaction types
+     * @param {Array<String>} [values.operation] Transaction types
      * @param {Array<String>} [values.payment_product] The payment products
      * @param {Array<String>} [values.eci] Electronic Commerce Indicators (ECI)
      * @param {Boolean} [values.with_options] Whether to include additional options in the response
-     * @param {Array<String>} values.customer_country The country codes of the customer (ISO 3166-1 alpha-2)
-     * @param {Array<String>} values.currency Base currencies for this request. These three-character currency codes comply with ISO 4217.
-     * @param {Array<String>} values.payment_product_category The payment product categories
+     * @param {Array<String>} [values.customer_country] The country codes of the customer (ISO 3166-1 alpha-2)
+     * @param {Array<String>} [values.currency] Base currencies for this request. These three-character currency codes comply with ISO 4217.
+     * @param {Array<String>} [values.payment_product_category] The payment product categories
      */
     constructor(values) {
         super();
