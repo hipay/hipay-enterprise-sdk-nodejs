@@ -1,9 +1,8 @@
 # Changelog
 
-## 1.5.0
+##  Unreleased
 
-- **add** : Added `requestTransactionV3Information` method to Hipay
-- **add** : Added new **Klarna** payment method
+- **add**: Added `requestTransactionV3Information` method to Hipay
 
 ## 1.4.0
 
