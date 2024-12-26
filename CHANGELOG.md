@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **fix** : Fixed v3 format when requesting transaction information
+
 ## 1.5.0
 
 - **add** : Added `requestTransactionV3Information` method to Hipay
