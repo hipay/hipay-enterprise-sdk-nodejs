@@ -16,15 +16,15 @@ class DebitAgreement extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'schemeReferenceData')) {
+        if (Object.hasOwn(values, 'schemeReferenceData')) {
             this.schemeReferenceData = values.schemeReferenceData;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'status')) {
+        if (Object.hasOwn(values, 'status')) {
             this.status = values.status;
         }
     }

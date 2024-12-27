@@ -16,13 +16,13 @@ class FraudScreening extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'scoring')) {
+        if (Object.hasOwn(values, 'scoring')) {
             this.scoring = values.scoring;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'result')) {
+        if (Object.hasOwn(values, 'result')) {
             this.result = values.result;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'review')) {
+        if (Object.hasOwn(values, 'review')) {
             this.review = values.review;
         }
     }

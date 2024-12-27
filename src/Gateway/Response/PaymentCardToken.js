@@ -23,28 +23,28 @@ class PaymentCardToken extends PaymentMethod {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'requestId')) {
+        if (Object.hasOwn(values, 'requestId')) {
             this.requestId = values.requestId;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'multiUse')) {
+        if (Object.hasOwn(values, 'multiUse')) {
             this.multiUse = values.multiUse;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'domesticNetwork')) {
+        if (Object.hasOwn(values, 'domesticNetwork')) {
             this.domesticNetwork = values.domesticNetwork;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardHash')) {
+        if (Object.hasOwn(values, 'cardHash')) {
             this.cardHash = values.cardHash;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardType')) {
+        if (Object.hasOwn(values, 'cardType')) {
             this.cardType = values.cardType;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardCategory')) {
+        if (Object.hasOwn(values, 'cardCategory')) {
             this.cardCategory = values.cardCategory;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'forbiddenIssuerCountry')) {
+        if (Object.hasOwn(values, 'forbiddenIssuerCountry')) {
             this.forbiddenIssuerCountry = values.forbiddenIssuerCountry;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'bin')) {
+        if (Object.hasOwn(values, 'bin')) {
             this.bin = values.bin;
         }
     }

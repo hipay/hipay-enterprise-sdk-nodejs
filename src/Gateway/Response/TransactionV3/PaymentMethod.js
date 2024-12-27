@@ -15,11 +15,11 @@ class PaymentMethod extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'name')) {
+        if (Object.hasOwn(values, 'name')) {
             this.name = values.name;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'description')) {
+        if (Object.hasOwn(values, 'description')) {
             this.description = values.description;
         }
     }

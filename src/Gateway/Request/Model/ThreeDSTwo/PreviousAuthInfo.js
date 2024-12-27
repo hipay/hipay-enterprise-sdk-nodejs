@@ -15,7 +15,7 @@ class PreviousAuthInfo extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'transaction_reference')) {
+        if (Object.hasOwn(values, 'transaction_reference')) {
             this.transaction_reference = values.transaction_reference;
         }
     }

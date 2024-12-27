@@ -25,37 +25,37 @@ class ThreeDSecure extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+        if (Object.hasOwn(values, 'eci')) {
             this.eci = values.eci;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'enrollmentStatus')) {
+        if (Object.hasOwn(values, 'enrollmentStatus')) {
             this.enrollmentStatus = values.enrollmentStatus;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'enrollmentMessage')) {
+        if (Object.hasOwn(values, 'enrollmentMessage')) {
             this.enrollmentMessage = values.enrollmentMessage;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationStatus')) {
+        if (Object.hasOwn(values, 'authenticationStatus')) {
             this.authenticationStatus = values.authenticationStatus;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationMessage')) {
+        if (Object.hasOwn(values, 'authenticationMessage')) {
             this.authenticationMessage = values.authenticationMessage;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationToken')) {
+        if (Object.hasOwn(values, 'authenticationToken')) {
             this.authenticationToken = values.authenticationToken;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'xid')) {
+        if (Object.hasOwn(values, 'xid')) {
             this.xid = values.xid;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'scaPreference')) {
+        if (Object.hasOwn(values, 'scaPreference')) {
             this.scaPreference = values.scaPreference;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'version')) {
+        if (Object.hasOwn(values, 'version')) {
             this.version = values.version;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationMethod')) {
+        if (Object.hasOwn(values, 'authenticationMethod')) {
             this.authenticationMethod = values.authenticationMethod;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'liability')) {
+        if (Object.hasOwn(values, 'liability')) {
             this.liability = values.liability;
         }
     }

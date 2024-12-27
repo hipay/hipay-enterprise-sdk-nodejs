@@ -23,34 +23,34 @@ class PersonalInformation extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'firstname')) {
+        if (Object.hasOwn(values, 'firstname')) {
             this.firstname = values.firstname;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'lastname')) {
+        if (Object.hasOwn(values, 'lastname')) {
             this.lastname = values.lastname;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'streetAddress')) {
+        if (Object.hasOwn(values, 'streetAddress')) {
             this.streetAddress = values.streetAddress;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'locality')) {
+        if (Object.hasOwn(values, 'locality')) {
             this.locality = values.locality;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'postalCode')) {
+        if (Object.hasOwn(values, 'postalCode')) {
             this.postalCode = values.postalCode;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'country')) {
+        if (Object.hasOwn(values, 'country')) {
             this.country = values.country;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'msisdn')) {
+        if (Object.hasOwn(values, 'msisdn')) {
             this.msisdn = values.msisdn;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'phone')) {
+        if (Object.hasOwn(values, 'phone')) {
             this.phone = values.phone;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'phoneOperator')) {
+        if (Object.hasOwn(values, 'phoneOperator')) {
             this.phoneOperator = values.phoneOperator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'email')) {
+        if (Object.hasOwn(values, 'email')) {
             this.email = values.email;
         }
     }

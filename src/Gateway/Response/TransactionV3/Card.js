@@ -19,27 +19,27 @@ class Card extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'pan')) {
+        if (Object.hasOwn(values, 'pan')) {
             this.pan = values.pan;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'lastDigits')) {
+        if (Object.hasOwn(values, 'lastDigits')) {
             this.lastDigits = values.lastDigits;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'scheme')) {
+        if (Object.hasOwn(values, 'scheme')) {
             this.scheme = values.scheme;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'category')) {
+        if (Object.hasOwn(values, 'category')) {
             this.category = values.category;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'type')) {
+        if (Object.hasOwn(values, 'type')) {
             this.type = values.type;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'bin')) {
+        if (Object.hasOwn(values, 'bin')) {
             this.bin = values.bin;
         }
     }

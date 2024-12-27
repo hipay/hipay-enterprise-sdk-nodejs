@@ -29,7 +29,7 @@ const ThreeDSTwoModels = require('./Gateway/Request/Model/ThreeDSTwo');
 const PaymentMethods = require('./Gateway/Request/PaymentMethod');
 
 const TransactionEnums = require('./Enum/Transaction');
-const TransactionV3Enums = require('./Enum/Transaction/V3')
+const TransactionV3Enums = require('./Enum/Transaction/V3');
 const ThreeDSTwoEnums = require('./Enum/ThreeDSTwo');
 const HelperEnums = require('./Enum/Helper');
 const CustomerEnums = require('./Enum/Customer');
@@ -433,7 +433,7 @@ class HiPay {
      */
     static #formatParams(object, formattedParams) {
         for (const prop in object) {
-            if (Object.prototype.hasOwnProperty.call(object, prop)) {
+            if (Object.hasOwn(object, prop)) {
                 let value = object[prop];
 
                 if (typeof value !== 'undefined' && value !== null) {

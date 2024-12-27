@@ -16,15 +16,15 @@ class PaymentProduct extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'paymentMethod')) {
+        if (Object.hasOwn(values, 'paymentMethod')) {
             this.paymentMethod = values.paymentMethod;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'name')) {
+        if (Object.hasOwn(values, 'name')) {
             this.name = values.name;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'description')) {
+        if (Object.hasOwn(values, 'description')) {
             this.description = values.description;
         }
     }

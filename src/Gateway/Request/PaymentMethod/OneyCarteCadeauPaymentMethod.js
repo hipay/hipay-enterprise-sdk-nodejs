@@ -18,13 +18,13 @@ class OneyCarteCadeauPaymentMethod extends AbstractPaymentMethod {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'payment_product_parameters')) {
+        if (Object.hasOwn(values, 'payment_product_parameters')) {
             if (typeof values.payment_product_parameters === 'object') {
-                if (!Object.prototype.hasOwnProperty.call(values.payment_product_parameters, 'prepaid_card_number')) {
+                if (!Object.hasOwn(values.payment_product_parameters, 'prepaid_card_number')) {
                     throw new InvalidArgumentException('Card Number must be present');
                 }
 
-                if (!Object.prototype.hasOwnProperty.call(values.payment_product_parameters, 'prepaid_card_security_code')) {
+                if (!Object.hasOwn(values.payment_product_parameters, 'prepaid_card_security_code')) {
                     throw new InvalidArgumentException('Card Security Code must be present');
                 }
 

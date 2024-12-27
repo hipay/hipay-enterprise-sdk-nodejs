@@ -16,21 +16,21 @@ class SEPADirectDebitPaymentMethod extends IssuerBankIDPaymentMethod {
     constructor(values) {
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'debit_agreement_id')) {
+        if (Object.hasOwn(values, 'debit_agreement_id')) {
             this.debit_agreement_id = values.debit_agreement_id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'recurring_payment')) {
+        if (Object.hasOwn(values, 'recurring_payment')) {
             this.recurring_payment = values.recurring_payment;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'bank_name')) {
+        if (Object.hasOwn(values, 'bank_name')) {
             this.bank_name = values.bank_name;
         } else {
             throw new InvalidArgumentException('Bank name must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'iban')) {
+        if (Object.hasOwn(values, 'iban')) {
             this.iban = values.iban;
         } else {
             throw new InvalidArgumentException('IBAN must be present');

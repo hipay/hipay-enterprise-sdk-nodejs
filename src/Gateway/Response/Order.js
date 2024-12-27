@@ -25,40 +25,40 @@ class Order extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'customerId')) {
+        if (Object.hasOwn(values, 'customerId')) {
             this.customerId = values.customerId;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'tax')) {
+        if (Object.hasOwn(values, 'tax')) {
             this.tax = values.tax;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'shipping')) {
+        if (Object.hasOwn(values, 'shipping')) {
             this.shipping = values.shipping;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'dateCreated')) {
+        if (Object.hasOwn(values, 'dateCreated')) {
             this.dateCreated = values.dateCreated;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'attempts')) {
+        if (Object.hasOwn(values, 'attempts')) {
             this.attempts = values.attempts;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'decimals')) {
+        if (Object.hasOwn(values, 'decimals')) {
             this.decimals = values.decimals;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'gender')) {
+        if (Object.hasOwn(values, 'gender')) {
             this.gender = values.gender;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'language')) {
+        if (Object.hasOwn(values, 'language')) {
             this.language = values.language;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'shippingAddress')) {
+        if (Object.hasOwn(values, 'shippingAddress')) {
             this.shippingAddress = values.shippingAddress;
         }
     }

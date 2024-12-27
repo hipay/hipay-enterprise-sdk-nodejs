@@ -16,15 +16,15 @@ class FraudResult extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'result')) {
+        if (Object.hasOwn(values, 'result')) {
             this.result = values.result;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'review')) {
+        if (Object.hasOwn(values, 'review')) {
             this.review = values.review;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'score')) {
+        if (Object.hasOwn(values, 'score')) {
             this.score = values.score;
         }
     }

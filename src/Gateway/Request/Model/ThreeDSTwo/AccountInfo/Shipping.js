@@ -17,13 +17,13 @@ class Shipping extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipping_used_date')) {
+        if (Object.hasOwn(values, 'shipping_used_date')) {
             this.shipping_used_date = values.shipping_used_date;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'name_indicator')) {
+        if (Object.hasOwn(values, 'name_indicator')) {
             this.name_indicator = values.name_indicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'suspicious_activity')) {
+        if (Object.hasOwn(values, 'suspicious_activity')) {
             this.suspicious_activity = values.suspicious_activity;
         }
     }

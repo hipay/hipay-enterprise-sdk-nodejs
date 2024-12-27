@@ -62,13 +62,13 @@ class OrderRequest extends TransactionRequest {
     constructor(values) {
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'paymentProduct')) {
+        if (Object.hasOwn(values, 'paymentProduct')) {
             this.paymentProduct = values.paymentProduct;
         } else {
             throw new InvalidArgumentException('Order Request must have a Payment Product');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'paymentMethod')) {
+        if (Object.hasOwn(values, 'paymentMethod')) {
             if (!(values.paymentMethod instanceof AbstractPaymentMethod)) {
                 throw new InvalidArgumentException('paymentMethod must be instance of AbstractPaymentMethod');
             }
@@ -76,7 +76,7 @@ class OrderRequest extends TransactionRequest {
             this.paymentMethod = values.paymentMethod;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'browserInfo')) {
+        if (Object.hasOwn(values, 'browserInfo')) {
             if (values.browserInfo instanceof BrowserInfo) {
                 this.browserInfo = values.browserInfo;
             } else {
@@ -84,11 +84,11 @@ class OrderRequest extends TransactionRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'salesChannel')) {
+        if (Object.hasOwn(values, 'salesChannel')) {
             this.salesChannel = values.salesChannel;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'providerData')) {
+        if (Object.hasOwn(values, 'providerData')) {
             if (typeof values.providerData === 'object') {
                 this.providerData = JSON.stringify(values.providerData);
             } else {
@@ -96,7 +96,7 @@ class OrderRequest extends TransactionRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'oneClick')) {
+        if (Object.hasOwn(values, 'oneClick')) {
             this.oneClick = values.oneClick;
         }
     }
