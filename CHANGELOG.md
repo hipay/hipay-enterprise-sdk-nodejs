@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **add** : Supports new minimal version : `16.0.0`
 - **fix** : Fixed v3 format when requesting transaction information
 
 ## 1.5.0
