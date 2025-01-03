@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.6.0
 
 - **add** : Supports new minimal version : `16.0.0`
 - **add** : Added implementation of GetAvailablePaymentProduct Endpoint API

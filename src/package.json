@@ -1,7 +1,7 @@
 {
     "name": "@hipay/hipay-enterprise-sdk-nodejs",
     "description": "The HiPay Enterprise SDK for NodeJS is a library for developers who want to integrate HiPay Enterprise payment methods to any NodeJS platform.",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "license": "Apache-2.0",
     "author": {
         "name": "HiPay",
