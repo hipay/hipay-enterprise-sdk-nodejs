@@ -15,7 +15,7 @@ class Payment extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'enrollment_date')) {
+        if (Object.hasOwn(values, 'enrollment_date')) {
             this.enrollment_date = values.enrollment_date;
         }
     }

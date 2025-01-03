@@ -7,7 +7,7 @@ class DebitAgreement extends AbstractResponsePart {
      * @param {Object} values
      * @param {Number} [values.id]
      * @param {String} [values.schemeReferenceData]
-     * @param {import('../../../Enum/Transaction/v3/DebitAgreementStatus')} [values.status]
+     * @param {import('../../../Enum/Transaction/V3/DebitAgreementStatus')} [values.status]
      */
     constructor(values) {
         if (typeof values !== 'object') {
@@ -16,15 +16,15 @@ class DebitAgreement extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'schemeReferenceData')) {
+        if (Object.hasOwn(values, 'schemeReferenceData')) {
             this.schemeReferenceData = values.schemeReferenceData;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'status')) {
+        if (Object.hasOwn(values, 'status')) {
             this.status = values.status;
         }
     }

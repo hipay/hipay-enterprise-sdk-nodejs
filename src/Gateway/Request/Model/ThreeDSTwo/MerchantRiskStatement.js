@@ -22,25 +22,25 @@ class MerchantRiskStatement extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'email_delivery_address')) {
+        if (Object.hasOwn(values, 'email_delivery_address')) {
             this.email_delivery_address = values.email_delivery_address;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'delivery_time_frame')) {
+        if (Object.hasOwn(values, 'delivery_time_frame')) {
             this.delivery_time_frame = values.delivery_time_frame;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'purchase_indicator')) {
+        if (Object.hasOwn(values, 'purchase_indicator')) {
             this.purchase_indicator = values.purchase_indicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'pre_order_date')) {
+        if (Object.hasOwn(values, 'pre_order_date')) {
             this.pre_order_date = values.pre_order_date;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'reorder_indicator')) {
+        if (Object.hasOwn(values, 'reorder_indicator')) {
             this.reorder_indicator = values.reorder_indicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'shipping_indicator')) {
+        if (Object.hasOwn(values, 'shipping_indicator')) {
             this.shipping_indicator = values.shipping_indicator;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'gift_card')) {
+        if (Object.hasOwn(values, 'gift_card')) {
             if (values.gift_card instanceof GiftCard) {
                 this.gift_card = values.gift_card;
             } else {

@@ -200,7 +200,6 @@ class Configuration {
         }
     }
 
-
     get dataApiEndpointProd() {
         return Configuration.DATA_API_ENDPOINT_PROD;
     }
@@ -213,8 +212,8 @@ class Configuration {
         return this._urlDataCustom
             ? this._urlDataCustom
             : this.apiEnv === Configuration.API_ENV_PRODUCTION
-            ? this.dataApiEndpointProd
-            : this.dataApiEndpointStage;
+              ? this.dataApiEndpointProd
+              : this.dataApiEndpointStage;
     }
 
     get dataApiHttpUserAgent() {
@@ -287,7 +286,7 @@ class Configuration {
             throw new InvalidArgumentException('Proxy should be an object');
         } else {
             for (const prop in proxy) {
-                if (Object.prototype.hasOwnProperty.call(proxy, prop) && !Configuration.VALID_PROXY_KEYS.includes(prop)) {
+                if (Object.hasOwn(proxy, prop) && !Configuration.VALID_PROXY_KEYS.includes(prop)) {
                     throw new InvalidArgumentException(`Proxy keys should be: ${Configuration.VALID_PROXY_KEYS.join()}`);
                 }
             }
@@ -312,7 +311,7 @@ class Configuration {
                 } else {
                     for (const prop in proxy.auth) {
                         if (
-                            Object.prototype.hasOwnProperty.call(proxy.auth, prop) &&
+                            Object.hasOwn(proxy.auth, prop) &&
                             (!Configuration.VALID_PROXY_AUTH_KEYS.includes(prop) || typeof proxy.auth[prop] !== 'string')
                         ) {
                             throw new InvalidArgumentException(

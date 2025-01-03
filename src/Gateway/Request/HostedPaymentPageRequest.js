@@ -59,7 +59,7 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {String} [values.css] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. CSS URL to use on the Payment Page
      * @param {Number} [values.displaySelector] DEPRECATED, ONLY WORKS WITH LEGACY HOSTEDPAGE. 0 : Do not display payment means selector | 1 : Display selector
      * @param {Number} [values.eci] Transaction Electronic Commerce Indicator. See the Transaction.ECI Enum
-     * @param {Number} [values.authentication_indicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
+     * @param {Number} [values.authenticationIndicator] Card Authentication Indicator. See the Transaction.AuthenticationIndicator Enum
      * @param {Number} [values.expirationLimit = 3] Expiration limit in days
      * @param {String} [values.orderCategoryCode] Category of the order. See ProductCategory Collection
      * @param {String} [values.carrierDescription] Short Description of your carrier
@@ -70,67 +70,67 @@ class HostedPaymentPageRequest extends TransactionRequest {
     constructor(values) {
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'paymentProductList')) {
+        if (Object.hasOwn(values, 'paymentProductList')) {
             this.paymentProductList = values.paymentProductList;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'paymentProductCategoryList')) {
+        if (Object.hasOwn(values, 'paymentProductCategoryList')) {
             this.paymentProductCategoryList = values.paymentProductCategoryList;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'template')) {
+        if (Object.hasOwn(values, 'template')) {
             this.template = values.template;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'timeLimitToPay')) {
+        if (Object.hasOwn(values, 'timeLimitToPay')) {
             this.timeLimitToPay = values.timeLimitToPay;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'multiUse')) {
+        if (Object.hasOwn(values, 'multiUse')) {
             this.multiUse = values.multiUse;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'merchantDisplayName')) {
+        if (Object.hasOwn(values, 'merchantDisplayName')) {
             this.merchantDisplayName = values.merchantDisplayName;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'css')) {
+        if (Object.hasOwn(values, 'css')) {
             this.css = values.css;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'displaySelector')) {
+        if (Object.hasOwn(values, 'displaySelector')) {
             this.displaySelector = values.displaySelector;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+        if (Object.hasOwn(values, 'eci')) {
             this.eci = values.eci;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationIndicator')) {
+        if (Object.hasOwn(values, 'authenticationIndicator')) {
             this.authenticationIndicator = values.authenticationIndicator;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'expirationLimit')) {
+        if (Object.hasOwn(values, 'expirationLimit')) {
             this.expirationLimit = values.expirationLimit;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'orderCategoryCode')) {
+        if (Object.hasOwn(values, 'orderCategoryCode')) {
             this.orderCategoryCode = values.orderCategoryCode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'carrierDescription')) {
+        if (Object.hasOwn(values, 'carrierDescription')) {
             this.carrierDescription = values.carrierDescription;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'salesChannel')) {
+        if (Object.hasOwn(values, 'salesChannel')) {
             this.salesChannel = values.salesChannel;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'themeCode')) {
+        if (Object.hasOwn(values, 'themeCode')) {
             this.themeCode = values.themeCode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'displayCancelButton')) {
+        if (Object.hasOwn(values, 'displayCancelButton')) {
             this.displayCancelButton = values.displayCancelButton;
         }
     }

@@ -13,13 +13,13 @@ class IllicadoPaymentMethod extends AbstractPaymentMethod {
     constructor(values) {
         super();
 
-        if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_number')) {
+        if (Object.hasOwn(values, 'prepaid_card_number')) {
             this.prepaid_card_number = values.prepaid_card_number;
         } else {
             throw new InvalidArgumentException('Card Number must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'prepaid_card_security_code')) {
+        if (Object.hasOwn(values, 'prepaid_card_security_code')) {
             this.prepaid_card_security_code = values.prepaid_card_security_code;
         } else {
             throw new InvalidArgumentException('Card Security Code must be present');

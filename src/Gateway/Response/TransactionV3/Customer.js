@@ -6,8 +6,8 @@ class Customer extends AbstractResponsePart {
     /**
      * @param {Object} values
      * @param {String} [values.id]
-     * @param {Number} [values.firstname]
-     * @param {Number} [values.email]
+     * @param {String} [values.firstname]
+     * @param {String} [values.email]
      * @param {String} [values.phone]
      * @param {String} [values.language]
      */
@@ -18,23 +18,23 @@ class Customer extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'firstname')) {
+        if (Object.hasOwn(values, 'firstname')) {
             this.firstname = values.firstname;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'email')) {
+        if (Object.hasOwn(values, 'email')) {
             this.email = values.email;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'phone')) {
+        if (Object.hasOwn(values, 'phone')) {
             this.phone = values.phone;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'language')) {
+        if (Object.hasOwn(values, 'language')) {
             this.language = values.language;
         }
     }

@@ -17,13 +17,13 @@ class GiftCard extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'count')) {
+        if (Object.hasOwn(values, 'count')) {
             this.count = values.count;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
     }

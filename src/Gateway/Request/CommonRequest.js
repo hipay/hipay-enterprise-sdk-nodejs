@@ -23,18 +23,18 @@ class CommonRequest extends AbstractRequestPart {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'customData')) {
+        if (Object.hasOwn(values, 'customData')) {
             this.customData = values.customData;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'source')) {
+        if (Object.hasOwn(values, 'source')) {
             if (typeof values.source !== 'object') {
                 throw new InvalidArgumentException('Source data must be an object');
             }
             this.source = { ...this.source, ...values.source };
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'basket')) {
+        if (Object.hasOwn(values, 'basket')) {
             this.basket = values.basket;
         }
     }
@@ -47,7 +47,7 @@ class CommonRequest extends AbstractRequestPart {
             source: 'AUTO',
             brand: 'sdk_nodejs',
             brand_version: packageData.version.length < 10 ? packageData.version : undefined
-         };
+        };
         this.basket = null;
     }
 }

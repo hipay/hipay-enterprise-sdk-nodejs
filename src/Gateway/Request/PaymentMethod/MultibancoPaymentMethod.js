@@ -15,7 +15,7 @@ class MultibancoPaymentMethod extends AbstractPaymentMethod {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'expiration_limit')) {
+        if (Object.hasOwn(values, 'expiration_limit')) {
             this.expiration_limit = values.expiration_limit;
         }
     }

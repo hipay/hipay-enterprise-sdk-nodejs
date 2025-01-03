@@ -27,25 +27,25 @@ class MaintenanceRequest extends CommonRequest {
     constructor(values) {
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'operation')) {
+        if (Object.hasOwn(values, 'operation')) {
             this.operation = values.operation;
         } else {
             throw new InvalidArgumentException('Maintenance Request must have an Operation');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'operation_id')) {
+        if (Object.hasOwn(values, 'operation_id')) {
             this.operation_id = values.operation_id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'sub_transaction_reference')) {
+        if (Object.hasOwn(values, 'sub_transaction_reference')) {
             this.sub_transaction_reference = values.sub_transaction_reference;
         }
     }

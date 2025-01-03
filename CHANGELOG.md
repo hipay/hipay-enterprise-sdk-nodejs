@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0
+
+- **add** : Supports new minimal version : `16.0.0`
+- **add** : Added implementation of GetAvailablePaymentProduct Endpoint API
+- **fix** : Fixed v3 format when requesting transaction information
+
 ## 1.5.0
 
 - **add** : Added `requestTransactionV3Information` method to Hipay

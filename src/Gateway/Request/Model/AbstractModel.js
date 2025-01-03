@@ -9,7 +9,7 @@ class AbstractModel extends AbstractRequestPart {
 
     cleanNullValues() {
         for (let prop in this) {
-            if (Object.prototype.hasOwnProperty.call(this, prop)) {
+            if (Object.hasOwn(this, prop)) {
                 let value = this[prop];
 
                 if (value === null) {

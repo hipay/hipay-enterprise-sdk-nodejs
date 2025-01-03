@@ -16,10 +16,10 @@ class RecurringInfo extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'expiration_date')) {
+        if (Object.hasOwn(values, 'expiration_date')) {
             this.expiration_date = values.expiration_date;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'frequency')) {
+        if (Object.hasOwn(values, 'frequency')) {
             this.frequency = values.frequency;
         }
     }

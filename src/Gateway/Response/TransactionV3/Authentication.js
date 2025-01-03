@@ -7,14 +7,14 @@ class Authentication extends AbstractResponsePart {
      * @param {Object} values
      * @param {String} [values.enrollmentStatus]
      * @param {String} [values.enrollmentMessage]
-     * @param {String} [values.authenticationStatus]
+     * @param {import('../../../Enum/Transaction/V3/Authentication/AuthenticationStatus')} [values.authenticationStatus]
      * @param {String} [values.authenticationMessage]
      * @param {Number} [values.eci]
      * @param {Number} [values.scaPreference]
      * @param {String} [values.method]
      * @param {String} [values.threeDsVersion]
-     * @param {import('../../../Enum/Authentication/ThreeDSAuthenticationMethod')} [values.threeDsAuthenticationMethod]
-     * @param {import('../../../Enum/Authentication/ThreeDSAuthenticationLiability')} [values.threeDsLiability]
+     * @param {import('../../../Enum/Transaction/V3/Authentication/ThreeDSAuthenticationMethod')} [values.threeDsAuthenticationMethod]
+     * @param {import('../../../Enum/Transaction/V3/Authentication/ThreeDSAuthenticationLiability')} [values.threeDsLiability]
      */
     constructor(values) {
         if (typeof values !== 'object') {
@@ -23,43 +23,43 @@ class Authentication extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'enrollmentStatus')) {
+        if (Object.hasOwn(values, 'enrollmentStatus')) {
             this.enrollmentStatus = values.enrollmentStatus;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'enrollmentMessage')) {
+        if (Object.hasOwn(values, 'enrollmentMessage')) {
             this.enrollmentMessage = values.enrollmentMessage;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationStatus')) {
+        if (Object.hasOwn(values, 'authenticationStatus')) {
             this.authenticationStatus = values.authenticationStatus;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authenticationMessage')) {
+        if (Object.hasOwn(values, 'authenticationMessage')) {
             this.authenticationMessage = values.authenticationMessage;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+        if (Object.hasOwn(values, 'eci')) {
             this.eci = values.eci;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'scaPreference')) {
+        if (Object.hasOwn(values, 'scaPreference')) {
             this.scaPreference = values.scaPreference;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'method')) {
+        if (Object.hasOwn(values, 'method')) {
             this.method = values.method;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'threeDsVersion')) {
+        if (Object.hasOwn(values, 'threeDsVersion')) {
             this.threeDsVersion = values.threeDsVersion;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'threeDsAuthenticationMethod')) {
+        if (Object.hasOwn(values, 'threeDsAuthenticationMethod')) {
             this.threeDsAuthenticationMethod = values.threeDsAuthenticationMethod;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'threeDsLiability')) {
+        if (Object.hasOwn(values, 'threeDsLiability')) {
             this.threeDsLiability = values.threeDsLiability;
         }
     }

@@ -19,22 +19,22 @@ class OperationResponse extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'type')) {
+        if (Object.hasOwn(values, 'type')) {
             this.type = values.type;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'reference')) {
+        if (Object.hasOwn(values, 'reference')) {
             this.reference = values.reference;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'dateAuthorized')) {
+        if (Object.hasOwn(values, 'dateAuthorized')) {
             this.dateAuthorized = values.dateAuthorized;
         }
     }

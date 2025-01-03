@@ -22,31 +22,31 @@ class PaymentMethod extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'token')) {
+        if (Object.hasOwn(values, 'token')) {
             this.token = values.token;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'brand')) {
+        if (Object.hasOwn(values, 'brand')) {
             this.brand = values.brand;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'pan')) {
+        if (Object.hasOwn(values, 'pan')) {
             this.pan = values.pan;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardHolder')) {
+        if (Object.hasOwn(values, 'cardHolder')) {
             this.cardHolder = values.cardHolder;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardExpiryMonth')) {
+        if (Object.hasOwn(values, 'cardExpiryMonth')) {
             this.cardExpiryMonth = values.cardExpiryMonth;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardExpiryYear')) {
+        if (Object.hasOwn(values, 'cardExpiryYear')) {
             this.cardExpiryYear = values.cardExpiryYear;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'cardId')) {
+        if (Object.hasOwn(values, 'cardId')) {
             this.cardId = values.cardId;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'issuer')) {
+        if (Object.hasOwn(values, 'issuer')) {
             this.issuer = values.issuer;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'country')) {
+        if (Object.hasOwn(values, 'country')) {
             this.country = values.country;
         }
     }

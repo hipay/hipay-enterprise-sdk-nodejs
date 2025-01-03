@@ -16,15 +16,15 @@ class Issuer extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'fullname')) {
+        if (Object.hasOwn(values, 'fullname')) {
             this.fullname = values.fullname;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'institution')) {
+        if (Object.hasOwn(values, 'institution')) {
             this.institution = values.institution;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'country')) {
+        if (Object.hasOwn(values, 'country')) {
             this.country = values.country;
         }
     }
