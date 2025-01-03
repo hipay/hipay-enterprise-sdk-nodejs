@@ -12,11 +12,9 @@ describe('Test Order constructor', () => {
         expect(order).toBeInstanceOf(Order);
 
         const orderArray = Object.entries(fixtures.transactionV3.order.mappedData);
-    const test= orderArray.map(([property, value]) => {
-        console.info('tetezr')
+        orderArray.map(([property, value]) => {
             expect(order[property]).toEqual(value);
         });
-        console.log(test);
     });
 
     it('Initializes correctly with empty parameters', () => {
