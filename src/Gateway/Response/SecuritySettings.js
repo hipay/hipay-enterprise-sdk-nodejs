@@ -14,7 +14,7 @@ class SecuritySettings extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'hashingAlgorithm')) {
+        if (Object.hasOwn(values, 'hashingAlgorithm')) {
             this.hashingAlgorithm = values.hashingAlgorithm;
         }
     }

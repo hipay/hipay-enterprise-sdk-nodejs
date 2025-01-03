@@ -15,11 +15,11 @@ class Device extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'ipAddress')) {
+        if (Object.hasOwn(values, 'ipAddress')) {
             this.ipAddress = values.ipAddress;
         }
     }

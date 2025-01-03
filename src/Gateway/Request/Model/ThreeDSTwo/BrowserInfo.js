@@ -24,34 +24,34 @@ class BrowserInfo extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'ipaddr') && values.ipaddr !== '') {
+        if (Object.hasOwn(values, 'ipaddr') && values.ipaddr !== '') {
             this.ipaddr = values.ipaddr;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'http_accept') && values.http_accept !== '') {
+        if (Object.hasOwn(values, 'http_accept') && values.http_accept !== '') {
             this.http_accept = values.http_accept;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'http_user_agent') && values.http_user_agent !== '') {
+        if (Object.hasOwn(values, 'http_user_agent') && values.http_user_agent !== '') {
             this.http_user_agent = values.http_user_agent;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'java_enabled') && values.java_enabled !== '') {
+        if (Object.hasOwn(values, 'java_enabled') && values.java_enabled !== '') {
             this.java_enabled = values.java_enabled;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'javascript_enabled') && values.javascript_enabled !== '') {
+        if (Object.hasOwn(values, 'javascript_enabled') && values.javascript_enabled !== '') {
             this.javascript_enabled = values.javascript_enabled;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'language') && values.language !== '') {
+        if (Object.hasOwn(values, 'language') && values.language !== '') {
             this.language = values.language;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'color_depth') && values.color_depth !== '') {
+        if (Object.hasOwn(values, 'color_depth') && values.color_depth !== '') {
             this.color_depth = values.color_depth;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'screen_height') && values.screen_height !== '') {
+        if (Object.hasOwn(values, 'screen_height') && values.screen_height !== '') {
             this.screen_height = values.screen_height;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'screen_width') && values.screen_width !== '') {
+        if (Object.hasOwn(values, 'screen_width') && values.screen_width !== '') {
             this.screen_width = values.screen_width;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'timezone') && values.timezone !== '') {
+        if (Object.hasOwn(values, 'timezone') && values.timezone !== '') {
             this.timezone = values.timezone;
         }
     }

@@ -14,7 +14,7 @@ class Acquirer extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'transactionReference')) {
+        if (Object.hasOwn(values, 'transactionReference')) {
             this.transactionReference = values.transactionReference;
         }
     }

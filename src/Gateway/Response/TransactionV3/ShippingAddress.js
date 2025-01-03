@@ -21,39 +21,37 @@ class ShippingAddress extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'houseNumber')) {
+        if (Object.hasOwn(values, 'houseNumber')) {
             this.houseNumber = values.houseNumber;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'houseExtension')) {
+        if (Object.hasOwn(values, 'houseExtension')) {
             this.houseExtension = values.houseExtension;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'street')) {
+        if (Object.hasOwn(values, 'street')) {
             this.street = values.street;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'streetAdditional')) {
+        if (Object.hasOwn(values, 'streetAdditional')) {
             this.streetAdditional = values.streetAdditional;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'locality')) {
+        if (Object.hasOwn(values, 'locality')) {
             this.locality = values.locality;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'localityAdditional')) {
+        if (Object.hasOwn(values, 'localityAdditional')) {
             this.localityAdditional = values.localityAdditional;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'postalCode')) {
+        if (Object.hasOwn(values, 'postalCode')) {
             this.postalCode = values.postalCode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'country')) {
+        if (Object.hasOwn(values, 'country')) {
             this.country = values.country;
         }
-
-   
     }
 
     initValues() {
@@ -71,4 +69,3 @@ class ShippingAddress extends AbstractResponsePart {
 }
 
 module.exports = ShippingAddress;
-

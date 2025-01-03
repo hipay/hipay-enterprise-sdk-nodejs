@@ -27,55 +27,55 @@ class CustomerShippingInfoRequest extends AbstractRequestPart {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_firstname')) {
+        if (Object.hasOwn(values, 'shipto_firstname')) {
             this.shipto_firstname = values.shipto_firstname;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_lastname')) {
+        if (Object.hasOwn(values, 'shipto_lastname')) {
             this.shipto_lastname = values.shipto_lastname;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_recipientinfo')) {
+        if (Object.hasOwn(values, 'shipto_recipientinfo')) {
             this.shipto_recipientinfo = values.shipto_recipientinfo;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_house_number')) {
+        if (Object.hasOwn(values, 'shipto_house_number')) {
             this.shipto_house_number = values.shipto_house_number;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_streetaddress')) {
+        if (Object.hasOwn(values, 'shipto_streetaddress')) {
             this.shipto_streetaddress = values.shipto_streetaddress;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_streetaddress2')) {
+        if (Object.hasOwn(values, 'shipto_streetaddress2')) {
             this.shipto_streetaddress2 = values.shipto_streetaddress2;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_city')) {
+        if (Object.hasOwn(values, 'shipto_city')) {
             this.shipto_city = values.shipto_city;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_state')) {
+        if (Object.hasOwn(values, 'shipto_state')) {
             this.shipto_state = values.shipto_state;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_zipcode')) {
+        if (Object.hasOwn(values, 'shipto_zipcode')) {
             this.shipto_zipcode = values.shipto_zipcode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_country')) {
+        if (Object.hasOwn(values, 'shipto_country')) {
             this.shipto_country = values.shipto_country;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_phone')) {
+        if (Object.hasOwn(values, 'shipto_phone')) {
             this.shipto_phone = values.shipto_phone;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_msisdn')) {
+        if (Object.hasOwn(values, 'shipto_msisdn')) {
             this.shipto_msisdn = values.shipto_msisdn;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipto_gender')) {
+        if (Object.hasOwn(values, 'shipto_gender')) {
             this.shipto_gender = values.shipto_gender;
         }
     }

@@ -18,16 +18,16 @@ class Purchase extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'count')) {
+        if (Object.hasOwn(values, 'count')) {
             this.count = values.count;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'card_stored_24h')) {
+        if (Object.hasOwn(values, 'card_stored_24h')) {
             this.card_stored_24h = values.card_stored_24h;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'payment_attempts_24h')) {
+        if (Object.hasOwn(values, 'payment_attempts_24h')) {
             this.payment_attempts_24h = values.payment_attempts_24h;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'payment_attempts_1y')) {
+        if (Object.hasOwn(values, 'payment_attempts_1y')) {
             this.payment_attempts_1y = values.payment_attempts_1y;
         }
     }

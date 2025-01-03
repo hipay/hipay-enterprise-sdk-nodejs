@@ -28,63 +28,63 @@ class Operation extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'operation')) {
+        if (Object.hasOwn(values, 'operation')) {
             this.operation = values.operation;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'mid')) {
+        if (Object.hasOwn(values, 'mid')) {
             this.mid = values.mid;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authorizationCode')) {
+        if (Object.hasOwn(values, 'authorizationCode')) {
             this.authorizationCode = values.authorizationCode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'transactionReference')) {
+        if (Object.hasOwn(values, 'transactionReference')) {
             this.transactionReference = values.transactionReference;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateCreated')) {
+        if (Object.hasOwn(values, 'dateCreated')) {
             this.dateCreated = values.dateCreated;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateUpdated')) {
+        if (Object.hasOwn(values, 'dateUpdated')) {
             this.dateUpdated = values.dateUpdated;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateAuthorized')) {
+        if (Object.hasOwn(values, 'dateAuthorized')) {
             this.dateAuthorized = values.dateAuthorized;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'status')) {
+        if (Object.hasOwn(values, 'status')) {
             this.status = values.status;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'state')) {
+        if (Object.hasOwn(values, 'state')) {
             this.state = values.state;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'message')) {
+        if (Object.hasOwn(values, 'message')) {
             this.message = values.message;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authorizedAmount')) {
+        if (Object.hasOwn(values, 'authorizedAmount')) {
             this.authorizedAmount = values.authorizedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'capturedAmount')) {
+        if (Object.hasOwn(values, 'capturedAmount')) {
             this.capturedAmount = values.capturedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'refundedAmount')) {
+        if (Object.hasOwn(values, 'refundedAmount')) {
             this.refundedAmount = values.refundedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'decimals')) {
+        if (Object.hasOwn(values, 'decimals')) {
             this.decimals = values.decimals;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
     }

@@ -13,7 +13,7 @@ class IssuerBankIDPaymentMethod extends AbstractPaymentMethod {
     constructor(values) {
         super();
 
-        if (Object.prototype.hasOwnProperty.call(values, 'issuer_bank_id')) {
+        if (Object.hasOwn(values, 'issuer_bank_id')) {
             this.issuer_bank_id = values.issuer_bank_id;
         } else {
             throw new InvalidArgumentException('Issuer Bank ID must be present');

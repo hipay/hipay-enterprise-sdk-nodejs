@@ -22,7 +22,7 @@ class AccountInfo extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'customer')) {
+        if (Object.hasOwn(values, 'customer')) {
             if (values.customer instanceof Customer) {
                 this.customer = values.customer;
             } else {
@@ -30,7 +30,7 @@ class AccountInfo extends AbstractModel {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'purchase')) {
+        if (Object.hasOwn(values, 'purchase')) {
             if (values.purchase instanceof Purchase) {
                 this.purchase = values.purchase;
             } else {
@@ -38,7 +38,7 @@ class AccountInfo extends AbstractModel {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'payment')) {
+        if (Object.hasOwn(values, 'payment')) {
             if (values.payment instanceof Payment) {
                 this.payment = values.payment;
             } else {
@@ -46,7 +46,7 @@ class AccountInfo extends AbstractModel {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipping')) {
+        if (Object.hasOwn(values, 'shipping')) {
             if (values.shipping instanceof Shipping) {
                 this.shipping = values.shipping;
             } else {

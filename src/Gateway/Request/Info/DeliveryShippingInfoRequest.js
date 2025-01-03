@@ -16,11 +16,11 @@ class DeliveryShippingInfoRequest extends AbstractRequestPart {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'delivery_date')) {
+        if (Object.hasOwn(values, 'delivery_date')) {
             this.delivery_date = values.delivery_date;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'delivery_method')) {
+        if (Object.hasOwn(values, 'delivery_method')) {
             this.delivery_method = values.delivery_method;
         }
     }

@@ -15,21 +15,21 @@ class XTimesCreditCardPaymentMethod extends AbstractPaymentMethod {
     constructor(values) {
         super();
 
-        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+        if (Object.hasOwn(values, 'eci')) {
             this.eci = values.eci;
         } else {
             throw new InvalidArgumentException('ECI must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'order_category_code')) {
+        if (Object.hasOwn(values, 'order_category_code')) {
             this.order_category_code = values.order_category_code;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'carrier_description')) {
+        if (Object.hasOwn(values, 'carrier_description')) {
             this.carrier_description = values.carrier_description;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'payment_product_parameters')) {
+        if (Object.hasOwn(values, 'payment_product_parameters')) {
             if (typeof values.payment_product_parameters === 'object') {
                 this.payment_product_parameters = JSON.stringify(values.payment_product_parameters);
             } else {

@@ -15,11 +15,11 @@ class ReasonCode extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'code')) {
+        if (Object.hasOwn(values, 'code')) {
             this.code = values.code;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'reason')) {
+        if (Object.hasOwn(values, 'reason')) {
             this.reason = values.reason;
         }
     }

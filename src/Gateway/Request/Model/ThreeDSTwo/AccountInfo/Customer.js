@@ -17,13 +17,13 @@ class Customer extends AbstractModel {
             values = {};
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'account_change')) {
+        if (Object.hasOwn(values, 'account_change')) {
             this.account_change = values.account_change;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'opening_account_date')) {
+        if (Object.hasOwn(values, 'opening_account_date')) {
             this.opening_account_date = values.opening_account_date;
         }
-        if (Object.prototype.hasOwnProperty.call(values, 'password_change')) {
+        if (Object.hasOwn(values, 'password_change')) {
             this.password_change = values.password_change;
         }
     }

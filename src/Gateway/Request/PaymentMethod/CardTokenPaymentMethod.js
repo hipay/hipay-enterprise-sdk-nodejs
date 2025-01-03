@@ -15,19 +15,19 @@ class CardTokenPaymentMethod extends AbstractPaymentMethod {
     constructor(values) {
         super();
 
-        if (Object.prototype.hasOwnProperty.call(values, 'cardtoken')) {
+        if (Object.hasOwn(values, 'cardtoken')) {
             this.cardtoken = values.cardtoken;
         } else {
             throw new InvalidArgumentException('Card Token must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+        if (Object.hasOwn(values, 'eci')) {
             this.eci = values.eci;
         } else {
             throw new InvalidArgumentException('ECI must be present');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authentication_indicator')) {
+        if (Object.hasOwn(values, 'authentication_indicator')) {
             this.authentication_indicator = values.authentication_indicator;
         }
     }

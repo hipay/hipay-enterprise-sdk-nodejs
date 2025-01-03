@@ -9,9 +9,9 @@ class Transaction extends AbstractResponsePart {
      * @param {import('./Order')} [values.order]
      * @param {Number} [values.attemptid]
      * @param {String} [values.merchantOrderId]
-     * @param {import('../../../Enum/Transaction/TransactionState')} [values.state]
-     * @param {import('../../../Enum/Transaction/v3/TransactionStatus')} [values.status]
-     * @param {import('../../../Enum/Authentication/ComputedAuthenticationStatus')} [values.computedAuthenticationStatus]
+     * @param {import('../../../Enum/Transaction/V3/TransactionState')} [values.state]
+     * @param {import('../../../Enum/Transaction/V3/TransactionStatus')} [values.status]
+     * @param {import('../../../Enum/Transaction/V3/ComputedAuthenticationStatus')} [values.computedAuthenticationStatus]
      * @param {import('./ReasonCode')} [values.reason]
      * @param {Number}[values.eci]
      * @param {String} [values.amount]
@@ -29,7 +29,7 @@ class Transaction extends AbstractResponsePart {
      * @param {String} [values.authorizationCode]
      * @param {String} [values.forwardUrl]
      * @param {import('./FraudResult')} [values.fraudScreening]
-     * @param {import('../../../Enum/Transaction/v3/Cvc')} [values.cvcResult]
+     * @param {import('../../../Enum/Transaction/V3/Cvc')} [values.cvcResult]
      * @param {String} [values.customerCountry]
      * @param {String} [values.dateCreated]
      * @param {String} [values.dateUpdated]
@@ -47,139 +47,139 @@ class Transaction extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'order')) {
+        if (Object.hasOwn(values, 'order')) {
             this.order = values.order;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'attemptid')) {
+        if (Object.hasOwn(values, 'attemptid')) {
             this.attemptid = values.attemptid;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'merchantOrderId')) {
+        if (Object.hasOwn(values, 'merchantOrderId')) {
             this.merchantOrderId = values.merchantOrderId;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'state')) {
+        if (Object.hasOwn(values, 'state')) {
             this.state = values.state;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'status')) {
+        if (Object.hasOwn(values, 'status')) {
             this.status = values.status;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'computedAuthenticationStatus')) {
+        if (Object.hasOwn(values, 'computedAuthenticationStatus')) {
             this.computedAuthenticationStatus = values.computedAuthenticationStatus;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'reason')) {
+        if (Object.hasOwn(values, 'reason')) {
             this.reason = values.reason;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'eci')) {
+        if (Object.hasOwn(values, 'eci')) {
             this.eci = values.eci;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'capturedAmount')) {
+        if (Object.hasOwn(values, 'capturedAmount')) {
             this.capturedAmount = values.capturedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'refundedAmount')) {
+        if (Object.hasOwn(values, 'refundedAmount')) {
             this.refundedAmount = values.refundedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'creditedAmount')) {
+        if (Object.hasOwn(values, 'creditedAmount')) {
             this.creditedAmount = values.creditedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'paymentProduct')) {
+        if (Object.hasOwn(values, 'paymentProduct')) {
             this.paymentProduct = values.paymentProduct;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'acquirer')) {
+        if (Object.hasOwn(values, 'acquirer')) {
             this.acquirer = values.acquirer;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'acquirerTra')) {
+        if (Object.hasOwn(values, 'acquirerTra')) {
             this.acquirerTra = values.acquirerTra;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'issuer')) {
+        if (Object.hasOwn(values, 'issuer')) {
             this.issuer = values.issuer;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'card')) {
+        if (Object.hasOwn(values, 'card')) {
             this.card = values.card;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'debitAgreement')) {
+        if (Object.hasOwn(values, 'debitAgreement')) {
             this.debitAgreement = values.debitAgreement;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'device')) {
+        if (Object.hasOwn(values, 'device')) {
             this.device = values.device;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authentication')) {
+        if (Object.hasOwn(values, 'authentication')) {
             this.authentication = values.authentication;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authorizationCode')) {
+        if (Object.hasOwn(values, 'authorizationCode')) {
             this.authorizationCode = values.authorizationCode;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'forwardUrl')) {
+        if (Object.hasOwn(values, 'forwardUrl')) {
             this.forwardUrl = values.forwardUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'fraudScreening')) {
+        if (Object.hasOwn(values, 'fraudScreening')) {
             this.fraudScreening = values.fraudScreening;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'cvcResult')) {
+        if (Object.hasOwn(values, 'cvcResult')) {
             this.cvcResult = values.cvcResult;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'customerCountry')) {
+        if (Object.hasOwn(values, 'customerCountry')) {
             this.customerCountry = values.customerCountry;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateCreated')) {
+        if (Object.hasOwn(values, 'dateCreated')) {
             this.dateCreated = values.dateCreated;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateUpdated')) {
+        if (Object.hasOwn(values, 'dateUpdated')) {
             this.dateUpdated = values.dateUpdated;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateAuthorized')) {
+        if (Object.hasOwn(values, 'dateAuthorized')) {
             this.dateAuthorized = values.dateAuthorized;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'mid')) {
+        if (Object.hasOwn(values, 'mid')) {
             this.mid = values.mid;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'operations')) {
+        if (Object.hasOwn(values, 'operations')) {
             this.operations = values.operations;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'authorizedAmount')) {
+        if (Object.hasOwn(values, 'authorizedAmount')) {
             this.authorizedAmount = values.authorizedAmount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'decimals')) {
+        if (Object.hasOwn(values, 'decimals')) {
             this.decimals = values.decimals;
         }
     }

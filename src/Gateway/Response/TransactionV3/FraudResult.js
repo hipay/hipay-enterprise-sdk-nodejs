@@ -5,8 +5,8 @@ const AbstractResponsePart = require('../AbstractResponsePart');
 class FraudResult extends AbstractResponsePart {
     /**
      * @param {Object} values
-     * @param {import('../../../Enum/Transaction/v3/Result')} [values.result]
-     * @param {import('../../../Enum/Transaction/v3/Review')} [values.review]
+     * @param {import('../../../Enum/Transaction/V3/Result')} [values.result]
+     * @param {import('../../../Enum/Transaction/V3/Review')} [values.review]
      * @param {Number} [values.score]
      */
     constructor(values) {
@@ -16,15 +16,15 @@ class FraudResult extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'result')) {
+        if (Object.hasOwn(values, 'result')) {
             this.result = values.result;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'review')) {
+        if (Object.hasOwn(values, 'review')) {
             this.review = values.review;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'score')) {
+        if (Object.hasOwn(values, 'score')) {
             this.score = values.score;
         }
     }

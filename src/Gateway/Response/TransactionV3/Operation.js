@@ -6,8 +6,8 @@ class Operation extends AbstractResponsePart {
     /**
      * @param {Object} values
      * @param {Number} [values.id]
-     * @param {import('../../../Enum/Transaction/v3/OperationType')} [values.type]
-     * @param {import('../../../Enum/Transaction/v3/OperationStatus')} [values.status]
+     * @param {import('../../../Enum/Transaction/V3/OperationType')} [values.type]
+     * @param {import('../../../Enum/Transaction/V3/OperationStatus')} [values.status]
      * @param {String} [values.amount]
      * @param {String} [values.arn]
      * @param {String} [values.merchantReference]
@@ -25,51 +25,51 @@ class Operation extends AbstractResponsePart {
 
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'id')) {
+        if (Object.hasOwn(values, 'id')) {
             this.id = values.id;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'type')) {
+        if (Object.hasOwn(values, 'type')) {
             this.type = values.type;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'status')) {
+        if (Object.hasOwn(values, 'status')) {
             this.status = values.status;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'arn')) {
+        if (Object.hasOwn(values, 'arn')) {
             this.arn = values.arn;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'merchantReference')) {
+        if (Object.hasOwn(values, 'merchantReference')) {
             this.merchantReference = values.merchantReference;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateCreated')) {
+        if (Object.hasOwn(values, 'dateCreated')) {
             this.dateCreated = values.dateCreated;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateRemitted')) {
+        if (Object.hasOwn(values, 'dateRemitted')) {
             this.dateRemitted = values.dateRemitted;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateProcessed')) {
+        if (Object.hasOwn(values, 'dateProcessed')) {
             this.dateProcessed = values.dateProcessed;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'dateReconciled')) {
+        if (Object.hasOwn(values, 'dateReconciled')) {
             this.dateReconciled = values.dateReconciled;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'decimals')) {
+        if (Object.hasOwn(values, 'decimals')) {
             this.decimals = values.decimals;
         }
     }

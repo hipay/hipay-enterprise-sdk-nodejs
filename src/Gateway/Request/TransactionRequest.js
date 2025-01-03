@@ -61,99 +61,99 @@ class TransactionRequest extends CommonRequest {
     constructor(values) {
         super(values);
 
-        if (Object.prototype.hasOwnProperty.call(values, 'orderid')) {
+        if (Object.hasOwn(values, 'orderid')) {
             this.orderid = values.orderid;
         } else {
             throw new InvalidArgumentException('Request must have an Order ID');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'operation')) {
+        if (Object.hasOwn(values, 'operation')) {
             this.operation = values.operation;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'description')) {
+        if (Object.hasOwn(values, 'description')) {
             this.description = values.description;
         } else {
             throw new InvalidArgumentException('Request must have a description');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'longDescription')) {
+        if (Object.hasOwn(values, 'longDescription')) {
             this.longDescription = values.longDescription;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'currency')) {
+        if (Object.hasOwn(values, 'currency')) {
             this.currency = values.currency;
         } else {
             throw new InvalidArgumentException('Request must have a currency');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'amount')) {
+        if (Object.hasOwn(values, 'amount')) {
             this.amount = values.amount;
         } else {
             throw new InvalidArgumentException('Request must have an amount');
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'shipping')) {
+        if (Object.hasOwn(values, 'shipping')) {
             this.shipping = values.shipping;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'tax')) {
+        if (Object.hasOwn(values, 'tax')) {
             this.tax = values.tax;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'taxRate')) {
+        if (Object.hasOwn(values, 'taxRate')) {
             this.taxRate = values.taxRate;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'cid')) {
+        if (Object.hasOwn(values, 'cid')) {
             this.cid = values.cid;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'ipaddr')) {
+        if (Object.hasOwn(values, 'ipaddr')) {
             this.ipaddr = values.ipaddr;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'acceptUrl')) {
+        if (Object.hasOwn(values, 'acceptUrl')) {
             this.acceptUrl = values.acceptUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'declineUrl')) {
+        if (Object.hasOwn(values, 'declineUrl')) {
             this.declineUrl = values.declineUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'pendingUrl')) {
+        if (Object.hasOwn(values, 'pendingUrl')) {
             this.pendingUrl = values.pendingUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'exceptionUrl')) {
+        if (Object.hasOwn(values, 'exceptionUrl')) {
             this.exceptionUrl = values.exceptionUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'cancelUrl')) {
+        if (Object.hasOwn(values, 'cancelUrl')) {
             this.cancelUrl = values.cancelUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'notifyUrl')) {
+        if (Object.hasOwn(values, 'notifyUrl')) {
             this.notifyUrl = values.notifyUrl;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'httpAccept')) {
+        if (Object.hasOwn(values, 'httpAccept')) {
             this.httpAccept = values.httpAccept;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'httpUserAgent')) {
+        if (Object.hasOwn(values, 'httpUserAgent')) {
             this.httpUserAgent = values.httpUserAgent;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'deviceFingerprint')) {
+        if (Object.hasOwn(values, 'deviceFingerprint')) {
             this.deviceFingerprint = values.deviceFingerprint;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'language')) {
+        if (Object.hasOwn(values, 'language')) {
             this.language = values.language;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'customerBillingInfo')) {
+        if (Object.hasOwn(values, 'customerBillingInfo')) {
             if (values.customerBillingInfo instanceof CustomerBillingInfoRequest) {
                 this.customerBillingInfo = values.customerBillingInfo;
             } else {
@@ -161,7 +161,7 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'customerShippingInfo')) {
+        if (Object.hasOwn(values, 'customerShippingInfo')) {
             if (values.customerShippingInfo instanceof CustomerShippingInfoRequest) {
                 this.customerShippingInfo = values.customerShippingInfo;
             } else {
@@ -169,7 +169,7 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'deliveryInformation')) {
+        if (Object.hasOwn(values, 'deliveryInformation')) {
             if (values.deliveryInformation instanceof DeliveryShippingInfoRequest) {
                 this.deliveryInformation = values.deliveryInformation;
             } else {
@@ -177,7 +177,7 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'previousAuthInfo')) {
+        if (Object.hasOwn(values, 'previousAuthInfo')) {
             if (values.previousAuthInfo instanceof PreviousAuthInfo) {
                 this.previousAuthInfo = values.previousAuthInfo;
             } else {
@@ -185,7 +185,7 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'merchantRiskStatement')) {
+        if (Object.hasOwn(values, 'merchantRiskStatement')) {
             if (values.merchantRiskStatement instanceof MerchantRiskStatement) {
                 this.merchantRiskStatement = values.merchantRiskStatement;
             } else {
@@ -193,7 +193,7 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'accountInfo')) {
+        if (Object.hasOwn(values, 'accountInfo')) {
             if (values.accountInfo instanceof AccountInfo) {
                 this.accountInfo = values.accountInfo;
             } else {
@@ -201,11 +201,11 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'deviceChannel')) {
+        if (Object.hasOwn(values, 'deviceChannel')) {
             this.deviceChannel = values.deviceChannel;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'recurringInfo')) {
+        if (Object.hasOwn(values, 'recurringInfo')) {
             if (values.recurringInfo instanceof RecurringInfo) {
                 this.recurringInfo = values.recurringInfo;
             } else {
@@ -213,11 +213,11 @@ class TransactionRequest extends CommonRequest {
             }
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'requestId')) {
+        if (Object.hasOwn(values, 'requestId')) {
             this.requestId = values.requestId;
         }
 
-        if (Object.prototype.hasOwnProperty.call(values, 'softDescriptor')) {
+        if (Object.hasOwn(values, 'softDescriptor')) {
             this.softDescriptor = values.softDescriptor;
         }
     }
