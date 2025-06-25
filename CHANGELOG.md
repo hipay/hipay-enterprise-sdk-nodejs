@@ -1,5 +1,9 @@
 # Changelog
 
+## UNRELEASED
+
+- **add** : Handle PayPal v2 specific parameters
+
 ## 1.6.0
 
 - **add** : Supports new minimal version : `16.0.0`
