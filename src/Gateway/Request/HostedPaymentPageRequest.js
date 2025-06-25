@@ -137,6 +137,10 @@ class HostedPaymentPageRequest extends TransactionRequest {
             this.themeCode = values.themeCode;
         }
 
+        if (Object.hasOwn(values, 'displayCancelButton')) {
+            this.displayCancelButton = values.displayCancelButton;
+        }
+
         if (Object.hasOwn(values, 'paypal_v2_label')) {
             this.paypal_v2_label = values.paypal_v2_label;
         }
