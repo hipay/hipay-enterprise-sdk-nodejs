@@ -68,11 +68,11 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {0|1} [values.displayCancelButton = 0] Whether to add a cancel button to the page or not
      *
      * --- PayPal v2 specific parameters
-     * @param {String} [values.paypal_v2_label] Label of PayPal v2 button.
-     * @param {String} [values.paypal_v2_shape] Shape of PayPal v2 button.
-     * @param {String} [values.paypal_v2_color] Color of PayPal v2 button
-     * @param {Number} [values.paypal_v2_height] Height of PayPal v2 button
-     * @param {0|1} [values.paypal_v2_bnpl] If true, display “Buy Now / Pay Later” PayPal v2 button below classic PayPal v2 button.
+     * @param {String} [values.paypal_v2_label] Label of PayPal v2 button. Default is "pay".
+     * @param {String} [values.paypal_v2_shape] Shape of PayPal v2 button. Default is "pill".
+     * @param {String} [values.paypal_v2_color] Color of PayPal v2 button. Default is "gold".
+     * @param {Number} [values.paypal_v2_height] Height of PayPal v2 button. Default is 40.
+     * @param {0|1} [values.paypal_v2_bnpl] If true, display “Buy Now / Pay Later” PayPal v2 button below classic PayPal v2 button. Default is 1 (true).
      */
     constructor(values) {
         super(values);
