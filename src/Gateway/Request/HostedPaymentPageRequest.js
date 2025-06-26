@@ -66,6 +66,13 @@ class HostedPaymentPageRequest extends TransactionRequest {
      * @param {Number} [values.salesChannel = 1] Sales Channel. See the Sales Channel Enumeration
      * @param {String} [values.themeCode] Custom theme code to display in the payment page
      * @param {0|1} [values.displayCancelButton = 0] Whether to add a cancel button to the page or not
+     *
+     * --- PayPal v2 specific parameters
+     * @param {String} [values.paypal_v2_label] Label of PayPal v2 button. Default is "pay".
+     * @param {String} [values.paypal_v2_shape] Shape of PayPal v2 button. Default is "pill".
+     * @param {String} [values.paypal_v2_color] Color of PayPal v2 button. Default is "gold".
+     * @param {Number} [values.paypal_v2_height] Height of PayPal v2 button. Default is 40.
+     * @param {0|1} [values.paypal_v2_bnpl] If true, display “Buy Now / Pay Later” PayPal v2 button below classic PayPal v2 button. Default is 1 (true).
      */
     constructor(values) {
         super(values);
@@ -133,6 +140,26 @@ class HostedPaymentPageRequest extends TransactionRequest {
         if (Object.hasOwn(values, 'displayCancelButton')) {
             this.displayCancelButton = values.displayCancelButton;
         }
+
+        if (Object.hasOwn(values, 'paypal_v2_label')) {
+            this.paypal_v2_label = values.paypal_v2_label;
+        }
+
+        if (Object.hasOwn(values, 'paypal_v2_shape')) {
+            this.paypal_v2_shape = values.paypal_v2_shape;
+        }
+
+        if (Object.hasOwn(values, 'paypal_v2_color')) {
+            this.paypal_v2_color = values.paypal_v2_color;
+        }
+
+        if (Object.hasOwn(values, 'paypal_v2_height')) {
+            this.paypal_v2_height = values.paypal_v2_height;
+        }
+
+        if (Object.hasOwn(values, 'paypal_v2_bnpl')) {
+            this.paypal_v2_bnpl = values.paypal_v2_bnpl;
+        }
     }
 
     initValues() {
@@ -155,6 +182,12 @@ class HostedPaymentPageRequest extends TransactionRequest {
         this.salesChannel = null;
         this.themeCode = null;
         this.displayCancelButton = 0;
+
+        this.paypal_v2_label = null;
+        this.paypal_v2_shape = null;
+        this.paypal_v2_color = null;
+        this.paypal_v2_height = null;
+        this.paypal_v2_bnpl = null;
     }
 }
 

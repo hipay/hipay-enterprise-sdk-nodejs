@@ -1893,7 +1893,12 @@ describe('HiPay object', () => {
                 salesChannel: '{SALESCHANNEL}',
                 softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
-                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+                displayCancelButton: '{DISPLAYCANCELBUTTON}',
+                paypal_v2_bnpl: '{PAYPAL_V2_BNPL}',
+                paypal_v2_color: '{PAYPAL_V2_COLOR}',
+                paypal_v2_height: '{PAYPAL_V2_HEIGHT}',
+                paypal_v2_label: '{PAYPAL_V2_LABEL}',
+                paypal_v2_shape: '{PAYPAL_V2_SHAPE}'
             };
 
             mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -2019,7 +2024,12 @@ describe('HiPay object', () => {
                     sales_channel: '{SALESCHANNEL}',
                     soft_descriptor: '{SOFTDESCRIPTOR}',
                     theme_code: '{THEMECODE}',
-                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}',
+                    paypal_v2_bnpl: '{PAYPAL_V2_BNPL}',
+                    paypal_v2_color: '{PAYPAL_V2_COLOR}',
+                    paypal_v2_height: '{PAYPAL_V2_HEIGHT}',
+                    paypal_v2_label: '{PAYPAL_V2_LABEL}',
+                    paypal_v2_shape: '{PAYPAL_V2_SHAPE}'
                 },
                 additionalHeaders: {
                     ['X-HIPAY-DATA-ID']: '{DATA_ID}'
@@ -3195,7 +3205,7 @@ describe('HiPay object', () => {
             mockHttpClient.request.mockResolvedValue({});
 
             expect(await hiPay.requestTransactionV3Information('{TRX_REF}')).toEqual(null);
-            
+
             expect(mockHttpClient.request).toHaveBeenCalledWith(
                 HiPay.METHOD_TRANSACTION_V3_INFORMATION,
                 HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
