@@ -28,7 +28,7 @@
         "lint": "yarn ../node_modules/.bin/eslint ."
     },
     "dependencies": {
-        "axios": "^1.4.0",
+        "axios": "^1.11.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {
@@ -43,7 +43,7 @@
         "jest-sonar-reporter": "^2.0.0",
         "lint-staged": "^9.4.3",
         "lodash.isequal": "^4.5.0",
-        "prettier": "3.3.3",
+        "prettier": "^3.6.2",
         "supertest": "^4.0.2"
     },
     "jest": {

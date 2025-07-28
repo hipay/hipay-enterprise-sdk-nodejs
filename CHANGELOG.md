@@ -3,6 +3,7 @@
 ## UNRELEASED
 
 - **add** : Handle PayPal v2 specific parameters
+- **fix** : Fixed NPM dependency vulnerability
 
 ## 1.6.0
 
