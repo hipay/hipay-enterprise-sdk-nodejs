@@ -37,6 +37,7 @@ describe('Configuration', () => {
         expect(conf.apiEndpoint).toEqual('https://google.fr');
         expect(conf.hpaymentApiEndpoint).toEqual('https://google.fr');
         expect(conf.dataApiEndpoint).toEqual('https://console.hipay.com');
+        expect(conf.financeApiEndpoint).toEqual('https://google.fr');
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({
             auth: {
@@ -67,6 +68,12 @@ describe('Configuration', () => {
         expect(Configuration.HPAYMENT_API_ENDPOINT_STAGE).toEqual('https://stage-api.hipay.com');
         expect(conf.hpaymentApiEndpointStage).toEqual('https://stage-api.hipay.com');
 
+        expect(Configuration.FINANCE_API_ENDPOINT_PROD).toEqual('https://api.hipay-tpp.com');
+        expect(conf.financeApiEndpointProd).toEqual('https://api.hipay-tpp.com');
+
+        expect(Configuration.FINANCE_API_ENDPOINT_STAGE).toEqual('https://stage-api.hipay-tpp.com');
+        expect(conf.financeApiEndpointStage).toEqual('https://stage-api.hipay-tpp.com');
+
         expect(Configuration.DATA_API_ENDPOINT_PROD).toEqual('https://data.hipay.com');
         expect(conf.dataApiEndpointProd).toEqual('https://data.hipay.com');
 
@@ -93,6 +100,7 @@ describe('Configuration', () => {
         expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_STAGE);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_STAGE);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_STAGE);
+        expect(conf.financeApiEndpoint).toEqual(Configuration.FINANCE_API_ENDPOINT_STAGE);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_STAGE);
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});
@@ -113,6 +121,7 @@ describe('Configuration', () => {
         expect(conf.secureVaultEndpoint).toEqual(Configuration.SECURE_VAULT_ENDPOINT_PROD);
         expect(conf.apiEndpoint).toEqual(Configuration.API_ENDPOINT_PROD);
         expect(conf.hpaymentApiEndpoint).toEqual(Configuration.HPAYMENT_API_ENDPOINT_PROD);
+        expect(conf.financeApiEndpoint).toEqual(Configuration.FINANCE_API_ENDPOINT_PROD);
         expect(conf.dataApiEndpoint).toEqual(Configuration.DATA_API_ENDPOINT_PROD);
         expect(conf.apiHTTPHeaderAccept).toEqual('application/json');
         expect(conf.proxy).toEqual({});

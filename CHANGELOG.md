@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- **add** : Add transaction retrieval by arn, operation ID and acquerer ID
+- **add** : Add settlements API support
 - **add** : Handle PayPal v2 specific parameters
 - **fix** : Fixed NPM dependency vulnerability
 - **add** : Adding numberRetry property to HostedPaymentPageMapper and Transaction class
