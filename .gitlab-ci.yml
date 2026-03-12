@@ -30,7 +30,9 @@ install:
   needs: [install]
   before_script:
     - cp *.md $PATH_SRC/
+    - export NPM_REGISTRY_TOKEN=$NPM_REGISTRY_PUSH_TOKEN
   script:
+    - echo $NPM_REGISTRY_TOKEN
     - cd $PATH_SRC/
     - echo $PKG_VERSION
     - echo $PKG_TAG
