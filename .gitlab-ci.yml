@@ -13,13 +13,13 @@ include:
     file:
       - library-ci.yaml
   - project: 'pi-ecommerce/cms/cms-template-ci'
-    ref: '1.2.0'
-    file: 'release.yaml'
+    ref: '1.3.0'
+    file: 'github.yaml'
 
 stages:
   - build
   - test
-  - release
+  - documentation
   - deploy
 
 install:
@@ -38,3 +38,8 @@ install:
     - echo $PKG_TAG
     - npm --no-git-tag-version --allow-same-version version $PKG_VERSION
     - npm publish --access public --tag $PKG_TAG
+
+trigger-github-workflow:
+  stage: documentation
+  needs:
+    - release-note-jira
