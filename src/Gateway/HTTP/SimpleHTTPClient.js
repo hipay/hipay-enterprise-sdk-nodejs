@@ -14,16 +14,6 @@ class SimpleHTTPClient {
      */
     constructor(configuration) {
         this.configuration = configuration;
-
-        const agentOptions = { keepAlive: this.configuration.keepAlive };
-
-        this._httpAgent = new http.Agent(agentOptions);
-        this._httpsAgent = new https.Agent(agentOptions);
-
-        this._axiosInstance = axios.create({
-            httpAgent: this._httpAgent,
-            httpsAgent: this._httpsAgent
-        });
     }
 
     get configuration() {
@@ -38,19 +28,6 @@ class SimpleHTTPClient {
             throw new InvalidArgumentException('Configuration should be a Configuration object');
         } else {
             this._configuration = configuration;
-        }
-    }
-
-    /**
-     * Destroys underlying HTTP/HTTPS agents, closing all open connections
-     **/
-    destroy() {
-        if (this._httpAgent) {
-            this._httpAgent.destroy();
-        }
-
-        if (this._httpsAgent) {
-            this._httpsAgent.destroy();
         }
     }
 
@@ -84,7 +61,7 @@ class SimpleHTTPClient {
         let userAgent = this.configuration.httpUserAgent;
 
         if (isData) {
-            timeout = 60;
+            timeout = 10;
             userAgent = this.configuration.dataApiHttpUserAgent;
         }
 
@@ -115,6 +92,8 @@ class SimpleHTTPClient {
         if (isData) {
             requestOptions.headers['X-Who-Api'] = this.configuration.dataApiHttpUserAgent;
             delete requestOptions.headers.Authorization;
+            requestOptions.httpAgent = new http.Agent({ keepAlive: false });
+            requestOptions.httpsAgent = new https.Agent({ keepAlive: false });
         }
 
         if (method === 'POST') {
@@ -132,7 +111,7 @@ class SimpleHTTPClient {
         }
 
         try {
-            const rawResponse = await this._axiosInstance.request(requestOptions);
+            const rawResponse = await axios.request(requestOptions);
 
             return new Response(rawResponse.data, rawResponse.status, {
                 'Content-Type': 'application/json; encoding=UTF-8'

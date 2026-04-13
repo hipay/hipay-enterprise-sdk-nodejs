@@ -203,19 +203,10 @@ class HiPay {
      * @param {String} [options.proxy.auth.password] Proxy authentication Password
      * @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
      * @param {String} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
-     * @param {Boolean} [options.keepAlive=true] Whether to keep HTTP connections alive between requests. Set to false in serverless environments (AWS Lambda, Cloud Functions, etc.) to avoid open handles preventing graceful shutdown.
      */
     constructor(options) {
         this._configuration = new Configuration(options);
         this._clientProvider = new SimpleHTTPClient(this._configuration);
-    }
-
-    /**
-     * Destroys underlying HTTP connections. Must be called when the SDK instance
-     * is no longer needed, especially in serverless environments.
-     **/
-    destroy() {
-        this._clientProvider.destroy();
     }
 
     /**
