@@ -9,11 +9,19 @@ const Configuration = require('../../../../Gateway/HTTP/Configuration/Configurat
 jest.mock('../../../../Gateway/HTTP/Configuration/Configuration');
 
 const axios = require('axios');
-jest.mock('axios');
-axios.AxiosError = jest.requireActual('axios').AxiosError;
+const mockRequest = jest.fn();
+jest.mock('axios', () => {
+    const actualAxios = jest.requireActual('axios');
+    return {
+        ...actualAxios,
+        create: jest.fn(() => ({
+            request: mockRequest
+        }))
+    };
+});
 
 afterEach(async () => {
-    await axios.request.mockReset();
+    await mockRequest.mockReset();
 });
 
 describe('Test SimpleHTTPClient constructor, getters & setters', () => {
@@ -70,6 +78,33 @@ describe('Test SimpleHTTPClient constructor, getters & setters', () => {
     });
 });
 
+describe('Test SimpleHTTPClient destroy', () => {
+    const SimpleHTTPClient = require('../../../../Gateway/HTTP/SimpleHTTPClient');
+
+    it('creates axios instance with HTTP agents', () => {
+        let mockConfig = new Configuration({});
+        mockConfig.keepAlive = true;
+
+        let client = new SimpleHTTPClient(mockConfig);
+
+        expect(axios.create).toHaveBeenCalledWith(
+            expect.objectContaining({
+                httpAgent: expect.any(Object),
+                httpsAgent: expect.any(Object)
+            })
+        );
+    });
+
+    it('destroys HTTP agents without error', () => {
+        let mockConfig = new Configuration({});
+        mockConfig.keepAlive = false;
+
+        let client = new SimpleHTTPClient(mockConfig);
+
+        expect(() => client.destroy()).not.toThrow();
+    });
+});
+
 describe('Test order request method', () => {
     const SimpleHTTPClient = require('../../../../Gateway/HTTP/SimpleHTTPClient');
 
@@ -84,7 +119,7 @@ describe('Test order request method', () => {
 
         let client = new SimpleHTTPClient(mockConfig);
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -96,7 +131,7 @@ describe('Test order request method', () => {
         let actualResponse = await client.request('POST', '{ENDPOINT}');
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             timeout: 5000,
@@ -129,7 +164,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -141,7 +176,7 @@ describe('Test order request method', () => {
         let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -174,7 +209,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -190,7 +225,7 @@ describe('Test order request method', () => {
         });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -224,7 +259,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -236,7 +271,7 @@ describe('Test order request method', () => {
         let actualResponse = await client.request('GET', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'GET',
             baseURL: '{API_ENDPOINT}',
@@ -270,7 +305,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -282,7 +317,7 @@ describe('Test order request method', () => {
         let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -320,7 +355,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -332,7 +367,7 @@ describe('Test order request method', () => {
         let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}' });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{API_ENDPOINT}',
@@ -367,7 +402,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockReturnValue({
+        mockRequest.mockReturnValue({
             data: '{DATA}',
             status: '{STATUS}'
         });
@@ -379,7 +414,7 @@ describe('Test order request method', () => {
         let actualResponse = await client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{DATA_API_ENDPOINT}', isData: true });
         expect(actualResponse).toBeInstanceOf(Response);
         expect(actualResponse).toStrictEqual(mockResponse);
-        expect(axios.request).toHaveBeenCalledWith({
+        expect(mockRequest).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{DATA_API_ENDPOINT}',
@@ -415,7 +450,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockImplementation(() => {
+        mockRequest.mockImplementation(() => {
             throw new axios.AxiosError();
         });
 
@@ -520,7 +555,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockImplementation(() => {
+        mockRequest.mockImplementation(() => {
             throw new axios.AxiosError(
                 'Sample error',
                 'CODE',
@@ -578,7 +613,7 @@ describe('Test order request method', () => {
             }
         );
 
-        axios.request.mockImplementation(() => {
+        mockRequest.mockImplementation(() => {
             throw error;
         });
 
@@ -623,7 +658,7 @@ describe('Test order request method', () => {
             mockProp2: 'mockValue2'
         };
 
-        axios.request.mockImplementation(() => {
+        mockRequest.mockImplementation(() => {
             throw new Error('Sample error');
         });
 

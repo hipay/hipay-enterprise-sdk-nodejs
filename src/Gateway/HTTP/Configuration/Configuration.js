@@ -86,6 +86,7 @@ class Configuration {
      * @param {String} [options.proxy.auth.password] Proxy authentication Password
      * @param {Number} [options.timeout=35] The timeout of the requests. Defaults to 35 seconds
      * @param {String} [options.httpUserAgent='HiPayEnterprise/1.0 (SDK NodeJS)'] The user agent of the requests.
+     * @param {Boolean} [options.keepAlive=true] Whether to keep HTTP connections alive between requests. Set to false in serverless environments (AWS Lambda, etc.) to avoid open handles preventing graceful shutdown.
      */
     constructor(options) {
         const {
@@ -98,7 +99,8 @@ class Configuration {
             apiHTTPHeaderAccept = 'application/json',
             proxy = {},
             timeout = 35,
-            httpUserAgent = 'HiPayEnterprise/1.0 (SDK NodeJS)'
+            httpUserAgent = 'HiPayEnterprise/1.0 (SDK NodeJS)',
+            keepAlive = true
         } = options;
 
         if (!apiToken && (!apiUsername || !apiPassword)) {
@@ -126,6 +128,7 @@ class Configuration {
         this.proxy = proxy;
         this.timeout = timeout;
         this.httpUserAgent = httpUserAgent;
+        this.keepAlive = keepAlive;
     }
 
     get secureVaultEndpointProd() {
@@ -348,6 +351,18 @@ class Configuration {
         } else {
             this._httpUserAgent = httpUserAgent;
         }
+    }
+
+    get keepAlive() {
+        return this._keepAlive;
+    }
+
+    set keepAlive(keepAlive) {
+        if (typeof keepAlive !== 'boolean') {
+            throw new InvalidArgumentException('keepAlive must be a boolean');
+        }
+
+        this._keepAlive = keepAlive;
     }
 
     get apiToken() {

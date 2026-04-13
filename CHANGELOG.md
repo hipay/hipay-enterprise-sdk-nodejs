@@ -5,6 +5,8 @@
 - **add** : Handle PayPal v2 specific parameters
 - **fix** : Fixed NPM dependency vulnerability
 - **add** : Adding numberRetry property to HostedPaymentPageMapper and Transaction class
+- **add** : Added `destroy()` method to close HTTP connections
+- **add** : Added `keepAlive` configuration option to control HTTP connection persistence
 
 ## 1.6.0
 
