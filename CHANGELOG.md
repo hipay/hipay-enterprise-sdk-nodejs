@@ -5,6 +5,7 @@
 - **add** : Handle PayPal v2 specific parameters
 - **fix** : Fixed NPM dependency vulnerability
 - **add** : Adding numberRetry property to HostedPaymentPageMapper and Transaction class
+- **fix** : Updated dependencies to resolve critical and high security vulnerabilities
 
 ## 1.6.0
 
