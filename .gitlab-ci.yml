@@ -9,16 +9,17 @@ variables:
 
 include:
   - project: common/templates/ci-microservices
-    ref: 1.18.1
+    ref: 1.20.0
     file:
       - library-ci.yaml
   - project: 'pi-ecommerce/cms/cms-template-ci'
-    ref: '1.3.0'
+    ref: '1.4.0'
     file: 'github.yaml'
 
 stages:
   - build
   - test
+  - review
   - documentation
   - deploy
 
