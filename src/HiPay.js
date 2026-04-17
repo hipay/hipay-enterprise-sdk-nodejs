@@ -187,7 +187,7 @@ class HiPay {
     static get ENDPOINT_SETTLEMENT_BY_ID() {
         return '/v1/settlement/{id}';
     }
-    
+
     /**
      * @return {String} METHOD_SETTLEMENTS http method for settlement endpoints
      */
@@ -462,10 +462,7 @@ class HiPay {
             throw new InvalidArgumentException('Value must be a non-empty string');
         }
 
-        const endPoint = HiPay.ENDPOINT_TRANSACTIONS_BY_TYPE.replace('{type}', type).replace(
-            '{value}',
-            encodeURIComponent(value)
-        );
+        const endPoint = HiPay.ENDPOINT_TRANSACTIONS_BY_TYPE.replace('{type}', type).replace('{value}', encodeURIComponent(value));
 
         const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTIONS_BY_TYPE, endPoint, {
             baseUrl: this._configuration.gatewayApiEndpoint
@@ -573,8 +570,7 @@ class HiPay {
      * @returns {Promise<Array<import('./Gateway/Response/Settlement')>>}
      */
     async requestSettlements(options = {}) {
-        const request =
-            options instanceof SettlementListRequest ? options : new SettlementListRequest(options);
+        const request = options instanceof SettlementListRequest ? options : new SettlementListRequest(options);
         const queryString = request.toQueryString();
         const endPoint = queryString ? `${HiPay.ENDPOINT_SETTLEMENTS}?${queryString}` : HiPay.ENDPOINT_SETTLEMENTS;
 
@@ -583,7 +579,8 @@ class HiPay {
         });
 
         const settlements = [];
-        if (response.body?.settlements && Array.isArray(response.body.settlements)) {            for (const item of response.body.settlements) {
+        if (response.body?.settlements && Array.isArray(response.body.settlements)) {
+            for (const item of response.body.settlements) {
                 const mapper = new SettlementMapper(item);
                 settlements.push(mapper.mappedObject);
             }

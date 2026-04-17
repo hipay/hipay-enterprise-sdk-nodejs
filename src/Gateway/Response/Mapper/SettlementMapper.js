@@ -13,8 +13,7 @@ class SettlementMapper extends AbstractMapper {
             recipientName: typeof this.source.recipientName !== 'undefined' ? this.source.recipientName : null,
             recipientIban: typeof this.source.recipientIban !== 'undefined' ? this.source.recipientIban : null,
             recipientBic: typeof this.source.recipientBic !== 'undefined' ? this.source.recipientBic : null,
-            recipientBankCountry:
-                typeof this.source.recipientBankCountry !== 'undefined' ? this.source.recipientBankCountry : null,
+            recipientBankCountry: typeof this.source.recipientBankCountry !== 'undefined' ? this.source.recipientBankCountry : null,
             merchantName: typeof this.source.merchantName !== 'undefined' ? this.source.merchantName : null,
             merchantId: typeof this.source.merchantId !== 'undefined' ? this.source.merchantId : null,
             sales: typeof this.source.sales !== 'undefined' ? this.source.sales : null,
