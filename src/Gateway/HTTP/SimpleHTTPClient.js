@@ -1,5 +1,7 @@
 'use strict';
 
+const http = require('http');
+const https = require('https');
 const axios = require('axios');
 const Response = require('./Response/Response');
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
@@ -59,7 +61,7 @@ class SimpleHTTPClient {
         let userAgent = this.configuration.httpUserAgent;
 
         if (isData) {
-            timeout = 60;
+            timeout = 10;
             userAgent = this.configuration.dataApiHttpUserAgent;
         }
 
@@ -90,6 +92,8 @@ class SimpleHTTPClient {
         if (isData) {
             requestOptions.headers['X-Who-Api'] = this.configuration.dataApiHttpUserAgent;
             delete requestOptions.headers.Authorization;
+            requestOptions.httpAgent = new http.Agent({ keepAlive: false });
+            requestOptions.httpsAgent = new https.Agent({ keepAlive: false });
         }
 
         if (method === 'POST') {
