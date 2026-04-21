@@ -7,6 +7,7 @@
 - **add** : Adding numberRetry property to HostedPaymentPageMapper and Transaction class
 - **fix** : Disabled Keep-Alive on Data API requests to prevent lingering connections in serverless environments
 - **fix** : Reduced Data API timeout from 60s to 10s
+- **fix** : Updated dependencies to resolve critical and high security vulnerabilities
 
 ## 1.6.0
 

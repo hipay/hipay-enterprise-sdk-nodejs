@@ -73,7 +73,7 @@ describe('Test SimpleHTTPClient constructor, getters & setters', () => {
 describe('Test order request method', () => {
     const SimpleHTTPClient = require('../../../../Gateway/HTTP/SimpleHTTPClient');
 
-    it('calls API if everything is empty', async (done) => {
+    it('calls API if everything is empty', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -110,10 +110,9 @@ describe('Test order request method', () => {
             data: ''
         });
 
-        done();
     });
 
-    it('calls API if everything is right', async (done) => {
+    it('calls API if everything is right', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -155,10 +154,9 @@ describe('Test order request method', () => {
             data: 'mockProp=mockValue&mockProp2=mockValue2'
         });
 
-        done();
     });
 
-    it('calls API with additional headers if everything is right', async (done) => {
+    it('calls API with additional headers if everything is right', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -205,10 +203,9 @@ describe('Test order request method', () => {
             data: 'mockProp=mockValue&mockProp2=mockValue2'
         });
 
-        done();
     });
 
-    it('calls API in GET if everything is right', async (done) => {
+    it('calls API in GET if everything is right', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -248,10 +245,9 @@ describe('Test order request method', () => {
             }
         });
 
-        done();
     });
 
-    it('calls API with proxy if everything is right', async (done) => {
+    it('calls API with proxy if everything is right', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -300,10 +296,9 @@ describe('Test order request method', () => {
             data: 'mockProp=mockValue&mockProp2=mockValue2'
         });
 
-        done();
     });
 
-    it('calls API with basic credentials if everything is right', async (done) => {
+    it('calls API with basic credentials if everything is right', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -346,10 +341,9 @@ describe('Test order request method', () => {
             data: 'mockProp=mockValue&mockProp2=mockValue2'
         });
 
-        done();
     });
 
-    it('calls data API if everything is right', async (done) => {
+    it('calls data API if everything is right', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -395,10 +389,9 @@ describe('Test order request method', () => {
             data: '{"mockProp":"mockValue","mockProp2":"mockValue2"}'
         });
 
-        done();
     });
 
-    it('calls data API with error without stopping request', async (done) => {
+    it('calls data API with error without stopping request', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -423,10 +416,9 @@ describe('Test order request method', () => {
 
         await expect(client.request('POST', '{ENDPOINT}', { body: params, baseUrl: '{API_ENDPOINT}', isData: true })).resolves.not.toThrow();
 
-        done();
     });
 
-    it('errors if method is not string', async (done) => {
+    it('errors if method is not string', async () => {
         let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
@@ -443,10 +435,9 @@ describe('Test order request method', () => {
 
         expect(InvalidArgumentException).toHaveBeenCalledWith('HTTP METHOD must a string and a valid HTTP METHOD Value');
 
-        done();
     });
 
-    it('errors if method is not valid', async (done) => {
+    it('errors if method is not valid', async () => {
         let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
@@ -463,10 +454,9 @@ describe('Test order request method', () => {
 
         expect(InvalidArgumentException).toHaveBeenCalledWith('HTTP METHOD must a string and a valid HTTP METHOD Value');
 
-        done();
     });
 
-    it('errors if endpoint is not string', async (done) => {
+    it('errors if endpoint is not string', async () => {
         let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
@@ -483,10 +473,9 @@ describe('Test order request method', () => {
 
         expect(InvalidArgumentException).toHaveBeenCalledWith('Endpoint must be a string and a valid api endpoint');
 
-        done();
     });
 
-    it('errors if endpoint is empty', async (done) => {
+    it('errors if endpoint is empty', async () => {
         let mockConfig = new Configuration({});
         let client = new SimpleHTTPClient(mockConfig);
 
@@ -503,10 +492,9 @@ describe('Test order request method', () => {
 
         expect(InvalidArgumentException).toHaveBeenCalledWith('Endpoint must be a string and a valid api endpoint');
 
-        done();
     });
 
-    it('errors if order API errors', async (done) => {
+    it('errors if order API errors', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -547,10 +535,9 @@ describe('Test order request method', () => {
 
         expect(ApiErrorException).toHaveBeenCalledWith('{ERROR_MESSAGE}', '{ERROR_STATUS}', '{ERROR_CODE}', '{ERROR_DESCRIPTION}');
 
-        done();
     });
 
-    it('errors if order API errors with no info', async (done) => {
+    it('errors if order API errors with no info', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -606,10 +593,9 @@ describe('Test order request method', () => {
             });
         }
 
-        done();
     });
 
-    it('errors if axios errors', async (done) => {
+    it('errors if axios errors', async () => {
         let mockConfig = new Configuration({});
         mockConfig.timeout = 5;
         mockConfig.apiEndpoint = '{API_ENDPOINT}';
@@ -638,6 +624,5 @@ describe('Test order request method', () => {
             expect(err.message).toEqual('Sample error');
         }
 
-        done();
     });
 });
