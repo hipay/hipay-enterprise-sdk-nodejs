@@ -14,6 +14,7 @@ const HostedPaymentPageMapper = require('./Gateway/Response/Mapper/HostedPayment
 const SecuritySettingsMapper = require('./Gateway/Response/Mapper/SecuritySettingsMapper');
 const PaymentCardTokenMapper = require('./Gateway/Response/Mapper/PaymentCardTokenMapper');
 const AvailablePaymentProductMapper = require('./Gateway/Response/Mapper/AvailablePaymentProductMapper');
+const SettlementMapper = require('./Gateway/Response/Mapper/SettlementMapper');
 
 const AbstractModel = require('./Gateway/Request/Model/AbstractModel');
 const AbstractRequestPart = require('./Gateway/Request/AbstractRequestPart');
@@ -22,6 +23,7 @@ const OrderRequest = require('./Gateway/Request/OrderRequest');
 const HostedPaymentPageRequest = require('./Gateway/Request/HostedPaymentPageRequest');
 const MaintenanceRequest = require('./Gateway/Request/MaintenanceRequest');
 const AvailablePaymentProductRequest = require('./Gateway/Request/Info/AvailablePaymentProductRequest');
+const SettlementListRequest = require('./Gateway/Request/Info/SettlementListRequest');
 
 const CustomerBillingInfoRequest = require('./Gateway/Request/Info/CustomerBillingInfoRequest');
 const CustomerShippingInfoRequest = require('./Gateway/Request/Info/CustomerShippingInfoRequest');
@@ -169,6 +171,55 @@ class HiPay {
      * @return {String} METHOD_AVAILABLE_PAYMENT_PRODUCT http method to get available payment products
      */
     static get METHOD_AVAILABLE_PAYMENT_PRODUCT() {
+        return 'GET';
+    }
+
+    /**
+     * @return {String} ENDPOINT_SETTLEMENTS endpoint to list settlements (Finance API)
+     */
+    static get ENDPOINT_SETTLEMENTS() {
+        return '/v1/settlement';
+    }
+
+    /**
+     * @return {String} ENDPOINT_SETTLEMENT_BY_ID endpoint to get a settlement by ID
+     */
+    static get ENDPOINT_SETTLEMENT_BY_ID() {
+        return '/v1/settlement/{id}';
+    }
+
+    /**
+     * @return {String} METHOD_SETTLEMENTS http method for settlement endpoints
+     */
+    static get METHOD_SETTLEMENTS() {
+        return 'GET';
+    }
+
+    /**
+     * @return {String} ENDPOINT_ORDER_V3 endpoint to get order by order ID (Consultation API V3)
+     */
+    static get ENDPOINT_ORDER_V3() {
+        return '/v3/order/{orderid}';
+    }
+
+    /**
+     * @return {String} ENDPOINT_TRANSACTIONS_BY_TYPE endpoint to get transactions by type (Consultation API V3)
+     */
+    static get ENDPOINT_TRANSACTIONS_BY_TYPE() {
+        return '/v3/transactions/{type}/{value}';
+    }
+
+    /**
+     * @return {String} METHOD_ORDER_V3 http method for order V3
+     */
+    static get METHOD_ORDER_V3() {
+        return 'GET';
+    }
+
+    /**
+     * @return {String} METHOD_TRANSACTIONS_BY_TYPE http method for transactions by type
+     */
+    static get METHOD_TRANSACTIONS_BY_TYPE() {
         return 'GET';
     }
 
@@ -359,7 +410,7 @@ class HiPay {
         const endPoint = HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join(transactionReference);
 
         const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTION_V3_INFORMATION, endPoint, {
-            baseUrl: this._configuration.consultationApiEndpoint
+            baseUrl: this._configuration.gatewayApiEndpoint
         });
 
         if (response.body) {
@@ -369,6 +420,63 @@ class HiPay {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Returns order information by order ID (Consultation API V3)
+     *
+     * @param {String} orderId The merchant order ID
+     * @returns {Promise<import('./Gateway/Response/TransactionV3/Transaction')|Object|null>}
+     */
+    async requestOrderV3Information(orderId) {
+        if (!orderId || typeof orderId !== 'string') {
+            throw new InvalidArgumentException('Order ID must be a string');
+        }
+
+        const endPoint = HiPay.ENDPOINT_ORDER_V3.replace('{orderid}', orderId);
+
+        const response = await this._clientProvider.request(HiPay.METHOD_ORDER_V3, endPoint, {
+            baseUrl: this._configuration.gatewayApiEndpoint
+        });
+
+        if (response.body) {
+            const transactionMapper = new TransactionV3Mapper(response.body);
+            return transactionMapper.mappedObject;
+        }
+        return null;
+    }
+
+    /**
+     * Returns transactions by type (Consultation API V3). Type can be 'arn', 'opid', or 'acquirerid'.
+     *
+     * @param {String} type One of: 'arn', 'opid', 'acquirerid'
+     * @param {String} value The value to search for
+     * @returns {Promise<Array<import('./Gateway/Response/TransactionV3/Transaction')>>}
+     */
+    async requestTransactionsByType(type, value) {
+        const validTypes = ['arn', 'opid', 'acquirerid'];
+        if (!validTypes.includes(type)) {
+            throw new InvalidArgumentException(`Type must be one of: ${validTypes.join(', ')}`);
+        }
+        if (!value || typeof value !== 'string') {
+            throw new InvalidArgumentException('Value must be a non-empty string');
+        }
+
+        const endPoint = HiPay.ENDPOINT_TRANSACTIONS_BY_TYPE.replace('{type}', type).replace('{value}', encodeURIComponent(value));
+
+        const response = await this._clientProvider.request(HiPay.METHOD_TRANSACTIONS_BY_TYPE, endPoint, {
+            baseUrl: this._configuration.gatewayApiEndpoint
+        });
+
+        const transactions = [];
+        if (response.body) {
+            const items = Array.isArray(response.body) ? response.body : response.body.transactions || [];
+            for (const item of items) {
+                const transactionMapper = new TransactionV3Mapper(item);
+                transactions.push(transactionMapper.mappedObject);
+            }
+        }
+        return transactions;
     }
 
     /**
@@ -456,6 +564,52 @@ class HiPay {
     }
 
     /**
+     * Returns list of settlements (Finance API)
+     *
+     * @param {SettlementListRequest|Object} [options] Optional filters and pagination
+     * @returns {Promise<Array<import('./Gateway/Response/Settlement')>>}
+     */
+    async requestSettlements(options = {}) {
+        const request = options instanceof SettlementListRequest ? options : new SettlementListRequest(options);
+        const queryString = request.toQueryString();
+        const endPoint = queryString ? `${HiPay.ENDPOINT_SETTLEMENTS}?${queryString}` : HiPay.ENDPOINT_SETTLEMENTS;
+
+        const response = await this._clientProvider.request(HiPay.METHOD_SETTLEMENTS, endPoint, {
+            baseUrl: this._configuration.financeApiEndpoint
+        });
+
+        const settlements = [];
+        if (response.body?.settlements && Array.isArray(response.body.settlements)) {
+            for (const item of response.body.settlements) {
+                const mapper = new SettlementMapper(item);
+                settlements.push(mapper.mappedObject);
+            }
+        }
+        return settlements;
+    }
+
+    /**
+     * Returns a settlement by ID (Finance API)
+     *
+     * @param {Number|String} settlementId The settlement ID
+     * @returns {Promise<import('./Gateway/Response/Settlement')>}
+     */
+    async requestSettlementById(settlementId) {
+        if (!['number', 'string'].includes(typeof settlementId)) {
+            throw new InvalidArgumentException('Settlement ID must be a number or string');
+        }
+
+        const endPoint = HiPay.ENDPOINT_SETTLEMENT_BY_ID.replace('{id}', String(settlementId));
+
+        const response = await this._clientProvider.request(HiPay.METHOD_SETTLEMENTS, endPoint, {
+            baseUrl: this._configuration.financeApiEndpoint
+        });
+
+        const settlementMapper = new SettlementMapper(response.body);
+        return settlementMapper.mappedObject;
+    }
+
+    /**
      * Returns vault information by token
      *
      * @param {String} token
@@ -516,6 +670,7 @@ HiPay.OrderRequest = OrderRequest;
 HiPay.HostedPaymentPageRequest = HostedPaymentPageRequest;
 HiPay.MaintenanceRequest = MaintenanceRequest;
 HiPay.AvailablePaymentProductRequest = AvailablePaymentProductRequest;
+HiPay.SettlementListRequest = SettlementListRequest;
 
 HiPay.CustomerBillingInfoRequest = CustomerBillingInfoRequest;
 HiPay.CustomerShippingInfoRequest = CustomerShippingInfoRequest;

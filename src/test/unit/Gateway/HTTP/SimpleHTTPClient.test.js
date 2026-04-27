@@ -99,6 +99,7 @@ describe('Test order request method', () => {
         expect(axios.request).toHaveBeenCalledWith({
             url: '{ENDPOINT}',
             method: 'POST',
+            baseURL: '',
             timeout: 5000,
             headers: {
                 Accept: '{HTTP_ACCEPT}',
@@ -106,7 +107,6 @@ describe('Test order request method', () => {
                 Authorization: 'Bearer {API_TOKEN}',
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            baseURL: '',
             data: ''
         });
 

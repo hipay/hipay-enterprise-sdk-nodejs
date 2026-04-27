@@ -27,12 +27,20 @@ class Configuration {
         return 'https://stage-api.hipay.com';
     }
 
-    static get CONSULTATION_API_ENDPOINT_STAGE() {
+    static get GATEWAY_API_ENDPOINT_STAGE() {
         return 'https://stage-api-gateway.hipay.com';
     }
 
-    static get CONSULTATION_API_ENDPOINT_PROD() {
+    static get GATEWAY_API_ENDPOINT_PROD() {
         return 'https://api-gateway.hipay.com';
+    }
+
+    static get FINANCE_API_ENDPOINT_PROD() {
+        return 'https://api.hipay-tpp.com';
+    }
+
+    static get FINANCE_API_ENDPOINT_STAGE() {
+        return 'https://stage-api.hipay-tpp.com';
     }
 
     static get DATA_API_ENDPOINT_PROD() {
@@ -152,12 +160,32 @@ class Configuration {
         return Configuration.HPAYMENT_API_ENDPOINT_STAGE;
     }
 
-    get consultationApiEndpointProd() {
-        return Configuration.CONSULTATION_API_ENDPOINT_PROD;
+    get gatewayApiEndpointProd() {
+        return Configuration.GATEWAY_API_ENDPOINT_PROD;
     }
 
-    get consultationApiEndpointStage() {
-        return Configuration.CONSULTATION_API_ENDPOINT_STAGE;
+    get gatewayApiEndpointStage() {
+        return Configuration.GATEWAY_API_ENDPOINT_STAGE;
+    }
+
+    get financeApiEndpointProd() {
+        return Configuration.FINANCE_API_ENDPOINT_PROD;
+    }
+
+    get financeApiEndpointStage() {
+        return Configuration.FINANCE_API_ENDPOINT_STAGE;
+    }
+
+    get financeApiEndpoint() {
+        switch (this.apiEnv) {
+            case Configuration.API_ENV_CUSTOM:
+                return this._urlCustom ?? this.financeApiEndpointStage;
+            case Configuration.API_ENV_PRODUCTION:
+                return this.financeApiEndpointProd;
+            case Configuration.API_ENV_STAGE:
+            default:
+                return this.financeApiEndpointStage;
+        }
     }
 
     get secureVaultEndpoint() {
@@ -188,15 +216,15 @@ class Configuration {
         }
     }
 
-    get consultationApiEndpoint() {
+    get gatewayApiEndpoint() {
         switch (this.apiEnv) {
             case Configuration.API_ENV_CUSTOM:
-                return this._urlCustom ?? this.consultationApiEndpointStage;
+                return this._urlCustom ?? this.gatewayApiEndpointStage;
             case Configuration.API_ENV_PRODUCTION:
-                return this.consultationApiEndpointProd;
+                return this.gatewayApiEndpointProd;
             case Configuration.API_ENV_STAGE:
             default:
-                return this.consultationApiEndpointStage;
+                return this.gatewayApiEndpointStage;
         }
     }
 

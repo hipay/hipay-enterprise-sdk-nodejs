@@ -2,8 +2,9 @@
 
 ## UNRELEASED
 
+- **add** : Add transaction retrieval by arn, operation ID and acquerer ID
+- **add** : Add settlements API support
 - **add** : Handle PayPal v2 specific parameters
-- **fix** : Fixed NPM dependency vulnerability
 - **add** : Adding numberRetry property to HostedPaymentPageMapper and Transaction class
 - **fix** : Disabled Keep-Alive on Data API requests to prevent lingering connections in serverless environments
 - **fix** : Reduced Data API timeout from 60s to 10s
