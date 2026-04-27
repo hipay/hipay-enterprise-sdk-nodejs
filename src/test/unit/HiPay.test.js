@@ -4,6 +4,11 @@ const { fixtures } = require('./fixtures');
 const InvalidArgumentException = require('../../Error/InvalidArgumentException');
 jest.mock('../../Error/InvalidArgumentException');
 
+const RealInvalidArgumentException = jest.requireActual('../../Error/InvalidArgumentException');
+InvalidArgumentException.mockImplementation(function (message) {
+    return new RealInvalidArgumentException(message);
+});
+
 const Configuration = require('../../Gateway/HTTP/Configuration/Configuration');
 jest.mock('../../Gateway/HTTP/Configuration/Configuration');
 
@@ -34,6 +39,9 @@ jest.mock('../../Gateway/Response/Mapper/SecuritySettingsMapper');
 const PaymentCardTokenMapper = require('../../Gateway/Response/Mapper/PaymentCardTokenMapper');
 jest.mock('../../Gateway/Response/Mapper/PaymentCardTokenMapper');
 
+const SettlementMapper = require('../../Gateway/Response/Mapper/SettlementMapper');
+jest.mock('../../Gateway/Response/Mapper/SettlementMapper');
+
 let mockHttpClient = {
     request: jest.fn()
 };
@@ -55,18 +63,23 @@ HostedPaymentPageMapper.mockImplementation(() => mockMapper);
 OperationMapper.mockImplementation(() => mockMapper);
 SecuritySettingsMapper.mockImplementation(() => mockMapper);
 PaymentCardTokenMapper.mockImplementation(() => mockMapper);
+SettlementMapper.mockImplementation(() => mockMapper);
 
 Configuration.mockImplementation(() => {
     return {
         apiEndpoint: '{API_ENDPOINT}',
-        consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}',
+        gatewayApiEndpoint: '{CONSULTATION_API_ENDPOINT}',
         hpaymentApiEndpoint: '{HPAYMENT_API_ENDPOINT}',
+        financeApiEndpoint: '{FINANCE_API_ENDPOINT}',
         secureVaultEndpoint: '{SECURED_ENDPOINT}'
     };
 });
 
 beforeEach(() => {
     InvalidArgumentException.mockReset();
+    InvalidArgumentException.mockImplementation(function (message) {
+        return new RealInvalidArgumentException(message);
+    });
     Configuration.mockClear();
     SimpleHTTPClient.mockClear();
     mockHttpClient.request.mockReset();
@@ -82,6 +95,7 @@ beforeEach(() => {
     OperationMapper.mockClear();
     SecuritySettingsMapper.mockClear();
     PaymentCardTokenMapper.mockClear();
+    SettlementMapper.mockClear();
 });
 
 expect.extend({
@@ -1893,7 +1907,12 @@ describe('HiPay object', () => {
                 salesChannel: '{SALESCHANNEL}',
                 softDescriptor: '{SOFTDESCRIPTOR}',
                 themeCode: '{THEMECODE}',
-                displayCancelButton: '{DISPLAYCANCELBUTTON}'
+                displayCancelButton: '{DISPLAYCANCELBUTTON}',
+                paypal_v2_bnpl: '{PAYPAL_V2_BNPL}',
+                paypal_v2_color: '{PAYPAL_V2_COLOR}',
+                paypal_v2_height: '{PAYPAL_V2_HEIGHT}',
+                paypal_v2_label: '{PAYPAL_V2_LABEL}',
+                paypal_v2_shape: '{PAYPAL_V2_SHAPE}'
             };
 
             mockPIDataClient.getDataId.mockReturnValue('{DATA_ID}');
@@ -2019,7 +2038,12 @@ describe('HiPay object', () => {
                     sales_channel: '{SALESCHANNEL}',
                     soft_descriptor: '{SOFTDESCRIPTOR}',
                     theme_code: '{THEMECODE}',
-                    display_cancel_button: '{DISPLAYCANCELBUTTON}'
+                    display_cancel_button: '{DISPLAYCANCELBUTTON}',
+                    paypal_v2_bnpl: '{PAYPAL_V2_BNPL}',
+                    paypal_v2_color: '{PAYPAL_V2_COLOR}',
+                    paypal_v2_height: '{PAYPAL_V2_HEIGHT}',
+                    paypal_v2_label: '{PAYPAL_V2_LABEL}',
+                    paypal_v2_shape: '{PAYPAL_V2_SHAPE}'
                 },
                 additionalHeaders: {
                     ['X-HIPAY-DATA-ID']: '{DATA_ID}'
@@ -2904,7 +2928,7 @@ describe('HiPay object', () => {
                 body: '{RESPONSE_BODY}'
             });
 
-            await expect(hiPay.requestMaintenanceOperation(request)).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestMaintenanceOperation(request)).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
             expect(mockHttpClient.request).not.toHaveBeenCalled();
             expect(OperationMapper).not.toHaveBeenCalled();
@@ -2934,7 +2958,7 @@ describe('HiPay object', () => {
                 body: '{RESPONSE_BODY}'
             });
 
-            await expect(hiPay.requestMaintenanceOperation(request, true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestMaintenanceOperation(request, true)).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
             expect(mockHttpClient.request).not.toHaveBeenCalled();
             expect(OperationMapper).not.toHaveBeenCalled();
@@ -3004,7 +3028,7 @@ describe('HiPay object', () => {
                 }
             });
 
-            await expect(hiPay.requestTransactionInformation()).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestTransactionInformation()).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
@@ -3025,7 +3049,7 @@ describe('HiPay object', () => {
                 }
             });
 
-            await expect(hiPay.requestTransactionInformation(true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestTransactionInformation(true)).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('Transaction reference must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
@@ -3137,7 +3161,7 @@ describe('HiPay object', () => {
                 }
             });
 
-            await expect(hiPay.requestOrderTransactionInformation()).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestOrderTransactionInformation()).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('Order ID must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
@@ -3158,7 +3182,7 @@ describe('HiPay object', () => {
                 }
             });
 
-            await expect(hiPay.requestOrderTransactionInformation(true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestOrderTransactionInformation(true)).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('Order ID must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
@@ -3169,7 +3193,7 @@ describe('HiPay object', () => {
     describe('requests transaction V3 information', () => {
         it('requests transaction V3 information', async () => {
             let hiPay = new HiPay({
-                consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
+                gatewayApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
             });
 
             mockHttpClient.request.mockResolvedValue({
@@ -3189,13 +3213,13 @@ describe('HiPay object', () => {
 
         it('requests transaction V3 information, returns null if transaction V3 does not exist', async () => {
             let hiPay = new HiPay({
-                consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
+                gatewayApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
             });
 
             mockHttpClient.request.mockResolvedValue({});
 
             expect(await hiPay.requestTransactionV3Information('{TRX_REF}')).toEqual(null);
-            
+
             expect(mockHttpClient.request).toHaveBeenCalledWith(
                 HiPay.METHOD_TRANSACTION_V3_INFORMATION,
                 HiPay.ENDPOINT_TRANSACTION_V3_INFORMATION.split('{transaction}').join('{TRX_REF}'),
@@ -3208,14 +3232,14 @@ describe('HiPay object', () => {
 
         it('requests transaction V3 information errors if no transaction id is sent', async () => {
             let hiPay = new HiPay({
-                consultationApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
+                gatewayApiEndpoint: '{CONSULTATION_API_ENDPOINT}'
             });
 
             mockHttpClient.request.mockResolvedValue({
                 body: fixtures.transactionV3.transaction.apiData
             });
 
-            await expect(hiPay.requestTransactionV3Information()).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestTransactionV3Information()).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('TransactionV3 reference must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
@@ -3224,14 +3248,14 @@ describe('HiPay object', () => {
 
         it('requests transaction V3 information errors if transaction reference is the wrong type', async () => {
             let hiPay = new HiPay({
-                apiEnconsultationApiEndpointdpoint: '{CONSULTATION_API_ENDPOINT}'
+                apiEngatewayApiEndpointdpoint: '{CONSULTATION_API_ENDPOINT}'
             });
 
             mockHttpClient.request.mockResolvedValue({
                 body: fixtures.transactionV3.transaction.apiData
             });
 
-            await expect(hiPay.requestTransactionV3Information(true)).rejects.toBeInstanceOf(InvalidArgumentException);
+            await expect(hiPay.requestTransactionV3Information(true)).rejects.toBeInstanceOf(RealInvalidArgumentException);
             expect(InvalidArgumentException).toHaveBeenCalledWith('TransactionV3 reference must be a string');
 
             expect(mockHttpClient.request).not.toHaveBeenCalled();
@@ -3298,6 +3322,112 @@ describe('HiPay object', () => {
                 }
             );
             expect(PaymentCardTokenMapper).toHaveBeenCalledWith('{RESPONSE_BODY}');
+        });
+    });
+
+    describe('requests settlements', () => {
+        it('requests settlements list without options', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: { settlements: [{ settlementid: 1, amount: 100 }] }
+            });
+
+            const result = await hiPay.requestSettlements();
+            expect(Array.isArray(result)).toBe(true);
+            expect(result).toHaveLength(1);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_SETTLEMENTS,
+                expect.stringMatching(/^\/v1\/settlement(\?.*)?$/),
+                { baseUrl: '{FINANCE_API_ENDPOINT}' }
+            );
+        });
+
+        it('requests settlements list with options', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: { settlements: [] }
+            });
+
+            await hiPay.requestSettlements({ dateFrom: '2020-01-01', page: 2, perPage: 20 });
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_SETTLEMENTS,
+                expect.stringContaining('/v1/settlement?'),
+                { baseUrl: '{FINANCE_API_ENDPOINT}' }
+            );
+            expect(mockHttpClient.request.mock.calls[0][1]).toContain('date_from=2020-01-01');
+            expect(mockHttpClient.request.mock.calls[0][1]).toContain('page=2');
+            expect(mockHttpClient.request.mock.calls[0][1]).toContain('per_page=20');
+        });
+
+        it('requests settlement by id', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: { settlementid: 123456, amount: 1000, currency: 'EUR' }
+            });
+
+            const result = await hiPay.requestSettlementById(123456);
+            expect(result).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_SETTLEMENTS,
+                '/v1/settlement/123456',
+                { baseUrl: '{FINANCE_API_ENDPOINT}' }
+            );
+            expect(SettlementMapper).toHaveBeenCalledWith({ settlementid: 123456, amount: 1000, currency: 'EUR' });
+        });
+    });
+
+    describe('requests order V3 information', () => {
+        it('requests order by order id', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: { reference: 'ORD_001', order: {} }
+            });
+
+            const result = await hiPay.requestOrderV3Information('ORD_001');
+            expect(result).toEqual('{MAPPED_OBJECT}');
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_ORDER_V3,
+                '/v3/order/ORD_001',
+                { baseUrl: '{CONSULTATION_API_ENDPOINT}' }
+            );
+        });
+
+        it('throws when order id is missing', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+            await expect(hiPay.requestOrderV3Information()).rejects.toThrow(RealInvalidArgumentException);
+            await expect(hiPay.requestOrderV3Information('')).rejects.toThrow(RealInvalidArgumentException);
+        });
+    });
+
+    describe('requests transactions by type', () => {
+        it('requests transactions by arn', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+
+            mockHttpClient.request.mockResolvedValue({
+                body: [{ reference: '800000420435' }]
+            });
+
+            const result = await hiPay.requestTransactionsByType('arn', 'ARN123');
+            expect(Array.isArray(result)).toBe(true);
+            expect(mockHttpClient.request).toHaveBeenCalledWith(
+                HiPay.METHOD_TRANSACTIONS_BY_TYPE,
+                '/v3/transactions/arn/ARN123',
+                { baseUrl: '{CONSULTATION_API_ENDPOINT}' }
+            );
+        });
+
+        it('throws when type is invalid', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+            await expect(hiPay.requestTransactionsByType('invalid', 'val')).rejects.toThrow(RealInvalidArgumentException);
+        });
+
+        it('throws when value is missing', async () => {
+            const hiPay = new HiPay({ apiToken: 'TOKEN' });
+            await expect(hiPay.requestTransactionsByType('arn', '')).rejects.toThrow(RealInvalidArgumentException);
         });
     });
 });

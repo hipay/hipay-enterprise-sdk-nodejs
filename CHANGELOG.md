@@ -1,5 +1,17 @@
 # Changelog
 
+## UNRELEASED
+
+## 1.7.0
+
+- **add** : Add transaction retrieval by arn, operation ID and acquerer ID
+- **add** : Add settlements API support
+- **add** : Handle PayPal v2 specific parameters
+- **add** : Adding numberRetry property to HostedPaymentPageMapper and Transaction class
+- **fix** : Disabled Keep-Alive on Data API requests to prevent lingering connections in serverless environments
+- **fix** : Reduced Data API timeout from 60s to 10s
+- **fix** : Updated dependencies to resolve critical and high security vulnerabilities
+
 ## 1.6.0
 
 - **add** : Supports new minimal version : `16.0.0`

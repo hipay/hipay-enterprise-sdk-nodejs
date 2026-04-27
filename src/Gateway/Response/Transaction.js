@@ -39,6 +39,7 @@ class Transaction extends AbstractResponsePart {
      * @param {Object} [values.basket]
      * @param {import('./OperationResponse')} [values.operation]
      * @param {Object} [values.customData]
+     * @param {Number} [values.numberRetry]
      */
     constructor(values) {
         if (typeof values !== 'object') {
@@ -146,6 +147,9 @@ class Transaction extends AbstractResponsePart {
         if (Object.hasOwn(values, 'customData')) {
             this.customData = values.customData;
         }
+        if (Object.hasOwn(values, 'numberRetry')) {
+            this.numberRetry = values.numberRetry;
+        }
     }
 
     initValues() {
@@ -184,6 +188,7 @@ class Transaction extends AbstractResponsePart {
         this.basket = null;
         this.operation = null;
         this.customData = null;
+        this.numberRetry = null;
     }
 }
 
