@@ -377,13 +377,15 @@ describe('Test order request method', () => {
             url: '{ENDPOINT}',
             method: 'POST',
             baseURL: '{DATA_API_ENDPOINT}',
-            timeout: 60000,
+            timeout: 10000,
             headers: {
                 Accept: '{HTTP_ACCEPT}',
                 'User-Agent': '{DATA_HTTP_USER_AGENT}',
                 'X-Who-Api': '{DATA_HTTP_USER_AGENT}',
                 'Content-Type': 'application/json'
             },
+            httpAgent: expect.objectContaining({ keepAlive: false }),
+            httpsAgent: expect.objectContaining({ keepAlive: false }),
             data: '{"mockProp":"mockValue","mockProp2":"mockValue2"}'
         });
 
