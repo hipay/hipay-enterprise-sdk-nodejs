@@ -470,8 +470,7 @@ class HiPay {
 
         const transactions = [];
         if (response.body) {
-            const items = Array.isArray(response.body) ? response.body : response.body.transactions || [];
-            for (const item of items) {
+            for (const item of Object.values(response.body)) {
                 const transactionMapper = new TransactionV3Mapper(item);
                 transactions.push(transactionMapper.mappedObject);
             }
