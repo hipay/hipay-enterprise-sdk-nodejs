@@ -24,6 +24,7 @@
     },
     "scripts": {
         "test": "jest",
+        "test:unit": "jest test/unit",
         "fix": "eslint . --fix",
         "lint": "eslint ."
     },

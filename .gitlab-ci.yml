@@ -1,17 +1,13 @@
 variables:
   NODE_VERSION: 18
 
-.cache:
-  variables:
-    PATH_NODE_MODULES: src/node_modules/
-    PATH_NPMRC: src/.npmrc
-    PATH_SRC: src
-
 include:
   - project: common/templates/ci-microservices
-    ref: 1.20.0
+    ref: 'feature/PI-6454'
     file:
       - library-ci.yaml
+    inputs:
+      package_json_dir: 'src'
   - project: 'pi-ecommerce/cms/cms-template-ci'
     ref: '1.4.0'
     file: 'github.yaml'
@@ -19,22 +15,29 @@ include:
 stages:
   - build
   - test
+  - post-tests
+  - mutation
   - review
   - documentation
   - deploy
 
 install:
   script:
-    - cd $PATH_SRC/ && yarn install
+    - cd src/ && yarn install --frozen-lockfile --prefer-offline
+
+test-unit:
+  extends: .test-jest
+  variables:
+    TEST_TYPE: 'unit'
 
 .npm-publish-template:
   needs: [install]
   before_script:
-    - cp *.md $PATH_SRC/
+    - cp *.md src/
     - export NPM_REGISTRY_TOKEN=$NPM_REGISTRY_PUSH_TOKEN
   script:
     - echo $NPM_REGISTRY_TOKEN
-    - cd $PATH_SRC/
+    - cd src/
     - echo $PKG_VERSION
     - echo $PKG_TAG
     - npm --no-git-tag-version --allow-same-version version $PKG_VERSION
