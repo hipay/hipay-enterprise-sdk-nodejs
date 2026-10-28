@@ -21,6 +21,15 @@ Read the **[project documentation][doc-home]** for comprehensive information abo
 - Credit card API mode
 - Hosted mode
 
+## Development
+
+The package lives in `src/`. From this directory:
+
+- `yarn test` — Run all the tests
+- `yarn test:unit` — Run the unit tests, as in the CI
+- `yarn lint` — Check the code with ESLint
+- `yarn lint:fix` — Fix the ESLint issues that can be fixed automatically
+
 ## License
 
 The **HiPay Enterprise SDK for NodeJS** is available under the **Apache 2.0 License**. Check out the [license file][project-license] for more information.

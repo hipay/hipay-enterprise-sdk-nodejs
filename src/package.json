@@ -25,8 +25,8 @@
     "scripts": {
         "test": "jest",
         "test:unit": "jest test/unit",
-        "fix": "eslint . --fix",
-        "lint": "eslint ."
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
     },
     "dependencies": {
         "axios": "^1.11.0",
