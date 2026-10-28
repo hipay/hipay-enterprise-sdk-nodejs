@@ -21,10 +21,6 @@ stages:
   - documentation
   - deploy
 
-install:
-  script:
-    - cd src/ && yarn install --frozen-lockfile --prefer-offline
-
 test-unit:
   extends: .test-jest
   variables:

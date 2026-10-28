@@ -25,10 +25,10 @@ Read the **[project documentation][doc-home]** for comprehensive information abo
 
 The package lives in `src/`. From this directory:
 
-- `yarn test` — Run all the tests
-- `yarn test:unit` — Run the unit tests, as in the CI
-- `yarn lint` — Check the code with ESLint
-- `yarn lint:fix` — Fix the ESLint issues that can be fixed automatically
+- `npm test` — Run all the tests
+- `npm run test:unit` — Run the unit tests, as in the CI
+- `npm run lint` — Check the code with ESLint
+- `npm run lint:fix` — Fix the ESLint issues that can be fixed automatically
 
 ## License
 
