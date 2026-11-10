@@ -2,6 +2,9 @@
 
 ## UNRELEASED
 
+- **update** : PI-6613 Migrated the CI to the `ci-microservices` 2.0.0 template (unit tests, coverage report, Sonar and mutation tests) with merge request pipelines
+- **update** : PI-6613 Replaced yarn with npm and removed unused ESLint packages
+
 ## 1.7.0
 
 - **add** : Add transaction retrieval by arn, operation ID and acquerer ID
