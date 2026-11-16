@@ -2,6 +2,8 @@
 
 ## UNRELEASED
 
+- **add** : Add Wero payment product
+
 ## 1.7.0
 
 - **add** : Add transaction retrieval by arn, operation ID and acquerer ID
