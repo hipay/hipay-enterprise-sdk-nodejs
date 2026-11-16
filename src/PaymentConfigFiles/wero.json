@@ -1,0 +1,20 @@
+{
+    "productCode": "wero",
+    "brandName": "Wero",
+    "category": "realtime-banking",
+    "comment": "Available only in France, Germany and Belgium. Also available only in EUR currency.",
+    "can3ds": 0,
+    "canRecurring": 0,
+    "canManualCapture": 0,
+    "canManualCapturePartially": 0,
+    "canRefund": 1,
+    "canRefundPartially": 1,
+    "basketRequired": 0,
+    "currencies": ["EUR"],
+    "countries": ["FR", "DE", "BE"],
+    "checkoutFieldsMandatory": ["firstname", "lastname", "country"],
+    "additionalFields": {
+        "sdkClass": "AbstractPaymentMethod"
+    },
+    "priority": 30
+}
